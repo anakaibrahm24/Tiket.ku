@@ -10,14 +10,18 @@ const AuthCallbackPage = () => {
 
   useEffect(() => {
     let mounted = true;
-    getSession().then(({ data: { session }, error }) => {
-      if (!mounted) return;
-      if (error || !session) {
-        navigate("/login", { replace: true });
-      } else {
-        navigate(from, { replace: true });
-      }
-    });
+    getSession()
+      .then(({ data: { session }, error }) => {
+        if (!mounted) return;
+        if (error || !session) {
+          navigate("/login", { replace: true });
+        } else {
+          navigate(from, { replace: true });
+        }
+      })
+      .catch(() => {
+        if (mounted) navigate("/login", { replace: true });
+      });
     return () => {
       mounted = false;
     };

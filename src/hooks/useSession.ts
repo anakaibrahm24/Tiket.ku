@@ -15,9 +15,13 @@ export const useSession = () => {
   useEffect(() => {
     let mounted = true;
 
-    getSession().then(({ data: { session } }) => {
-      if (mounted) setState({ session, isLoading: false });
-    });
+    getSession()
+      .then(({ data: { session } }) => {
+        if (mounted) setState({ session, isLoading: false });
+      })
+      .catch(() => {
+        if (mounted) setState({ session: null, isLoading: false });
+      });
 
     const { data: listener } = onAuthStateChange(async (_event, session) => {
       if (mounted) setState((prev) => ({ ...prev, session }));
