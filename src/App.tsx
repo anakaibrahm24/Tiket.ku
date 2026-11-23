@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Preview from "./components/Preview";
+
 import HomePage from "./features/home/page/Home";
 import Matches from "./features/matches/page/Matches";
 // import Ticket from "./features/tickets/component/Ticket";
@@ -14,7 +14,7 @@ function App() {
         {/* <Route path="/matchs/:matchId/form" element={<RegisterForm />} /> */}
         {/* <Route path="/matchs/:matchId/payment/:userId" element={<Payment />} /> */}
         {/* <Route path="/user/:userId/ticket" element={<Ticket />} /> */}
-        <Route path="/preview" element={<Preview />} />
+
       </Routes>
     </Router>
   );

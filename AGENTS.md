@@ -78,7 +78,8 @@ src/
 - **Loading state:** nonaktifkan tombol submit dan tampilkan spinner saat operasi async berlangsung.
 - **Komponen reusable:** jika komponen bukan dari shadcn/ui, buat file khusus di `src/components/` agar dapat digunakan ulang. Jangan duplikasi komponen.
 - **Bahasa dokumentasi:** semua file `.md` (PRD, DESIGN, AGENTS) ditulis dalam Bahasa Indonesia.
-- **Kontrol versi:** jangan langsung `git add`/`git commit`. Biarkan pengguna meninjau perubahan kode terlebih dahulu.
+- **Kontrol versi:** jangan langsung `git add`/`git commit`. Jangan pernah commit tanpa persetujuan pengguna. Biarkan pengguna meninjau perubahan kode terlebih dahulu.
+- **Branch per progress:** setiap progress/fitur/perbaikan harus dikerjakan di branch baru yang namanya sesuai progress (mis. `feat/<nama-fitur>`, `fix/<nama-bug>`). Jangan commit langsung ke `main`/`master`.
 - **Scope task:** jangan keluar dari scope task. Jika ada yang membingungkan, interview pengguna sebelum bertindak.
 
 ## Instruksi testing
@@ -92,7 +93,7 @@ src/
 
 ## Instruksi PR
 
-- **Branch:** branch default repositori (proyek akan dipindah ke repo baru). Jangan commit langsung ke `main`/`master`.
+- **Branch:** buat branch baru sesuai progress (mis. `feat/<nama-fitur>`, `fix/<nama-bug>`) sebelum mulai bekerja. Jangan commit langsung ke `main`/`master`.
 - **Format judul:** `[tiket.ku] <deskripsi singkat>`
 - **Sebelum commit:** jalankan `npm run lint` dan `npm run build`; keduanya harus lulus.
 - **Scope:** PR fokus pada satu fitur/perbaikan. Referensikan bagian `PRD.md` jika relevan.

@@ -17,14 +17,14 @@ export const Dropdown: React.FC<DropDownProps> = ({
 }) => {
   return (
     <div>
-      <label className="text-base mb-2 text-gray-700">
+      <label className="text-base mb-2 text-ink-700">
         {labelName}
 
         <select
-          className={`w-full p-2.5 mt-2 mb-[5px] border rounded-xl text-base focus:outline-none focus:border-blue-500 ${
+          className={`w-full p-2.5 mt-2 mb-[5px] border rounded-xl text-base focus:outline-none focus:border-primary ${
             errorMessage
-              ? "border-red-500 focus:border-red-500"
-              : "border-gray-300"
+              ? "border-danger focus:border-danger"
+              : "border-border"
           }`}
           {...register}
           defaultValue={defaultValue || ""}
@@ -40,7 +40,7 @@ export const Dropdown: React.FC<DropDownProps> = ({
             );
           })}
         </select>
-        {errorMessage && <p className="text-red-500 text-xs">{errorMessage}</p>}
+        {errorMessage && <p className="text-danger text-xs">{errorMessage}</p>}
       </label>
     </div>
   );

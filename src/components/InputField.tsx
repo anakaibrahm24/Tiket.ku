@@ -30,15 +30,15 @@ export const InputField = ({
         <input
           type={isPassword ? (showPassword ? "text" : "password") : type}
           className={cn(
-            "peer mt-0.5 w-full h-8 rounded border border-gray-300 px-4 pb-4.5 pt-5 sm:text-sm focus:border-gray-500 focus:outline-none",
+            "peer mt-0.5 w-full h-8 rounded border border-border px-4 pb-4.5 pt-5 sm:text-sm focus:border-primary focus:outline-none",
             className,
-            error && "border-red-500 focus:border-red-500",
+            error && "border-danger focus:border-danger",
             props.disabled && "cursor-not-allowed"
           )}
           {...props}
         />
 
-        <span className="absolute inset-y-0 start-3 -translate-y-5.5 px-0.5 text-sm font-medium bg-white text-gray-700 transition-transform peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-5.5">
+        <span className="absolute inset-y-0 start-3 -translate-y-5.5 px-0.5 text-sm font-medium bg-surface-white text-ink-700 transition-transform peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-5.5">
           {labelName}
           {required ? <span className="label-required">*</span> : null}
         </span>
@@ -52,7 +52,7 @@ export const InputField = ({
                 : () => setShowPassword((prev) => !prev)
             }
             className={cn(
-              "absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700 cursor-pointer",
+              "absolute inset-y-0 right-3 flex items-center text-ink-500 hover:text-ink-700 cursor-pointer",
               props.disabled && "cursor-not-allowed"
             )}
             aria-label={showPassword ? "Hide password" : "show password"}
@@ -61,7 +61,7 @@ export const InputField = ({
           </button>
         )}
       </label>
-      <p className="text-xs text-red-500 pt-1 pl-1">{error ?? "\u00A0"}</p>
+      <p className="text-xs text-danger pt-1 pl-1">{error ?? "\u00A0"}</p>
 
       {isPassword && (
         <div className="flex justify-end">
@@ -72,9 +72,9 @@ export const InputField = ({
                 if (props.disabled) e.preventDefault(); // blokir navigasi
               }}
               className={cn(
-                "text-xs text-blue-500 hover:underline hover:text-blue-700 cursor-pointer",
+                "text-xs text-primary hover:underline hover:text-primary-hover cursor-pointer",
                 props.disabled &&
-                  "text-gray-400 cursor-not-allowed hover:no-underline hover:text-gray-400"
+                  "text-ink-300 cursor-not-allowed hover:no-underline hover:text-ink-300"
               )}
             >
               Forgot password?

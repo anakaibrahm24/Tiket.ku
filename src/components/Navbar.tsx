@@ -1,48 +1,66 @@
-import { FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
-  handleSignup: () => void;
   handleLogin: () => void;
+  handleSignup: () => void;
   user: boolean;
 }
 
 export const Navbar = ({ handleLogin, handleSignup, user }: NavbarProps) => {
+  const navigate = useNavigate();
+
   return (
-    <nav
-      className={`grid ${
-        user
-          ? "grid-cols-[120px_1fr_200px_50px]"
-          : "grid-cols-[120px_1fr_180px]"
-      } w-5xl items-center`}
-    >
-      <span className="glassmorphism-left uppercase font-extrabold py-1.5 flex justify-center text-lg text-white">
-        tiket.ku
-      </span>
-      <div className="bg-aquamarine-500 w-full h-full" />
-      <ul className="glassmorphism-right flex items-center justify-around divide-x divide-aquamarine-400/40 h-full">
-        <li
-          className="px-4 py-1.5 text-white font-semibold cursor-pointer"
-          onClick={handleSignup}
+    <nav className="sticky top-0 z-50 flex w-full items-center justify-between border-b border-line-soft bg-surface-white/95 px-6 py-4 backdrop-blur">
+      <button
+        type="button"
+        onClick={() => navigate("/")}
+        className="text-xl font-bold text-brand-blue"
+      >
+        Tiket.ku
+      </button>
+      <div className="flex items-center gap-4 md:gap-8">
+        <button
+          type="button"
+          onClick={() => navigate("/matchs")}
+          className="text-sm font-medium text-ink-700 hover:text-brand-blue"
         >
-          {user ? "Home" : "Sign Up"}
-        </li>
-        <li
-          className="px-4 py-1.5 text-white font-semibold cursor-pointer"
-          onClick={handleLogin}
-        >
-          {user ? "Schedules" : "Login"}
-        </li>
-      </ul>
-      {user && (
-        <ul className="flex">
-          <li className="relative flex items-center justify-center px-4">
-            <div className="z-1 w-10 h-10 rounded-full glassmorphism flex items-center justify-center cursor-pointer">
-              <FaUser color="white" />
-            </div>
-            <div className=" absolute w-15 h-15 glassmorphism rounded-full"></div>
-          </li>
-        </ul>
-      )}
+          Jadwal
+        </button>
+        <a href="#" className="text-sm font-medium text-ink-700 hover:text-brand-blue">
+          Tentang
+        </a>
+        <a href="#" className="text-sm font-medium text-ink-700 hover:text-brand-blue">
+          Bantuan
+        </a>
+      </div>
+      <div className="flex items-center gap-3">
+        {user ? (
+          <button
+            type="button"
+            onClick={() => navigate("/matchs")}
+            className="rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-surface-white hover:bg-brand-hover"
+          >
+            Jadwal
+          </button>
+        ) : (
+          <>
+            <button
+              type="button"
+              onClick={handleLogin}
+              className="rounded-lg border border-line-soft px-4 py-2.5 text-sm font-semibold text-ink-900 hover:bg-surface-subtle"
+            >
+              Masuk
+            </button>
+            <button
+              type="button"
+              onClick={handleSignup}
+              className="rounded-lg bg-brand-blue px-4 py-2.5 text-sm font-semibold text-surface-white hover:bg-brand-hover"
+            >
+              Daftar
+            </button>
+          </>
+        )}
+      </div>
     </nav>
   );
 };
