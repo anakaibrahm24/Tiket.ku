@@ -1,12 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
-  handleLogin: () => void;
-  handleSignup: () => void;
   user: boolean;
 }
 
-export const Navbar = ({ handleLogin, handleSignup, user }: NavbarProps) => {
+export const Navbar = ({ user }: NavbarProps) => {
   const navigate = useNavigate();
 
   return (
@@ -46,14 +44,14 @@ export const Navbar = ({ handleLogin, handleSignup, user }: NavbarProps) => {
           <>
             <button
               type="button"
-              onClick={handleLogin}
+              onClick={() => navigate("/login")}
               className="rounded-lg border border-line-soft px-4 py-2.5 text-sm font-semibold text-ink-900 hover:bg-surface-subtle"
             >
               Masuk
             </button>
             <button
               type="button"
-              onClick={handleSignup}
+              onClick={() => navigate("/signup")}
               className="rounded-lg bg-brand-blue px-4 py-2.5 text-sm font-semibold text-surface-white hover:bg-brand-hover"
             >
               Daftar

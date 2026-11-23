@@ -1,5 +1,5 @@
 export * from "./Alerts.tsx";
-export * from "./AuthModal.tsx";
+
 export * from "./Button.tsx";
 export * from "./CTABanner.tsx";
 export * from "./Dropdown.tsx";
