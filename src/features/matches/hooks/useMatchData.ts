@@ -1,18 +1,28 @@
 // src/features/match/hooks/useMatchData.ts
 import { useEffect, useState } from "react";
 import { getMatches } from "../service/matchService";
-import { MatchPayload } from "../types/matchesPayload.types";
+import type { MatchPayload } from "../types/matchesPayload";
 
 export const useMatchData = () => {
   const [matches, setMatches] = useState<MatchPayload[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const fetch = async () => {
-      const data = await getMatches();
-      setMatches(data);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const data = await getMatches();
+        setMatches(data);
+        setError(null);
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error(String(err)));
+      } finally {
+        setLoading(false);
+      }
     };
-    fetch();
+    void fetchData();
   }, []);
 
-  return { matches };
+  return { matches, loading, error };
 };
