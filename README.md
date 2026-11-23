@@ -1,5 +1,12 @@
 # React + TypeScript + Vite
 
+## Konfigurasi Supabase
+
+1. Salin `.env.example` ke `.env.local`.
+2. Isi `VITE_SUPABASE_URL` dan `VITE_SUPABASE_ANON_KEY` dari Supabase Dashboard → Project Settings → API.
+3. Jalankan `npm run dev`.
+4. Jangan commit `.env.local`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
