@@ -101,8 +101,7 @@ const HomePage = () => {
     <main className="min-h-screen bg-surface-white">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-brand-blue focus:px-4 focus:py-2 focus:text-surface-white"
-      >
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-brand-blue focus:px-4 focus:py-2 focus:text-surface-white">
         Lewati ke konten utama
       </a>
       {alert && (
