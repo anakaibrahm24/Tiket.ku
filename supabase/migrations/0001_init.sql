@@ -121,3 +121,243 @@ grant select on public.orders, public.tickets to authenticated;
 -- select count(*) from public.orders;   -- Expected: minimal 1
 -- select count(*) from public.tickets;  -- Expected: minimal 1
 -- reset role;
+
+-- ============================================================================
+-- TASK 3 — RPC order dan pembayaran atomik (DDL migration)
+-- ============================================================================
+
+create or replace function public.create_order(
+  p_event_id uuid,
+  p_items jsonb,
+  p_buyer_name text,
+  p_buyer_email text,
+  p_identity_number text,
+  p_gender text
+)
+returns table (order_id uuid, total_amount integer)
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_user_id uuid := auth.uid();
+  v_item jsonb;
+  v_category_id uuid;
+  v_qty integer;
+  v_category_name text;
+  v_price integer;
+  v_quota integer;
+  v_sold integer;
+  v_seen uuid[] := array[]::uuid[];
+  v_items jsonb := '[]'::jsonb;
+  v_total integer := 0;
+  v_order_id uuid;
+begin
+  if v_user_id is null then
+    raise exception 'Silakan masuk untuk memesan tiket.';
+  end if;
+
+  if p_items is null or jsonb_typeof(p_items) <> 'array' or jsonb_array_length(p_items) = 0 then
+    raise exception 'Minimal satu kategori tiket harus dipilih.';
+  end if;
+
+  for v_item in select e.value from jsonb_array_elements(p_items) as e(value)
+  loop
+    v_category_id := nullif(v_item ->> 'categoryId', '')::uuid;
+    v_qty := nullif(v_item ->> 'qty', '')::integer;
+
+    if v_category_id is null then
+      raise exception 'Kategori tiket tidak valid.';
+    end if;
+
+    if v_qty is null or v_qty <= 0 then
+      raise exception 'Jumlah tiket harus lebih dari nol.';
+    end if;
+
+    if v_category_id = any (v_seen) then
+      raise exception 'Kategori tiket tidak boleh duplikat.';
+    end if;
+    v_seen := array_append(v_seen, v_category_id);
+
+    select c.name, c.price, c.quota, c.sold
+      into v_category_name, v_price, v_quota, v_sold
+      from public.ticket_categories c
+     where c.id = v_category_id
+       and c.event_id = p_event_id
+       for update;
+
+    if not found then
+      raise exception 'Kategori tiket tidak ditemukan untuk acara ini.';
+    end if;
+
+    if v_qty > v_quota - v_sold then
+      raise exception 'Kuota tiket tidak mencukupi.';
+    end if;
+
+    v_total := v_total + (v_price * v_qty);
+    v_items := v_items || jsonb_build_object(
+      'categoryId', v_category_id,
+      'categoryName', v_category_name,
+      'qty', v_qty,
+      'price', v_price
+    );
+  end loop;
+
+  insert into public.orders (
+    user_id, event_id, buyer_name, buyer_email, identity_number,
+    gender, items, total_amount, status
+  )
+  values (
+    v_user_id, p_event_id, p_buyer_name, p_buyer_email, p_identity_number,
+    p_gender, v_items, v_total, 'pending'
+  )
+  returning id into v_order_id;
+
+  return query select v_order_id, v_total;
+end;
+$$;
+
+create or replace function public.complete_payment(
+  p_order_id uuid,
+  p_payment_method text
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_order public.orders%rowtype;
+  v_item jsonb;
+  v_category_id uuid;
+  v_qty integer;
+  v_ticket_id uuid;
+begin
+  select o.*
+    into v_order
+    from public.orders o
+   where o.id = p_order_id
+     and o.user_id = auth.uid()
+   for update;
+
+  if not found then
+    raise exception 'Pesanan tidak ditemukan.';
+  end if;
+
+  if v_order.status <> 'pending' then
+    raise exception 'Pesanan sudah diproses.';
+  end if;
+
+  for v_item in select e.value from jsonb_array_elements(v_order.items) as e(value)
+  loop
+    v_category_id := (v_item ->> 'categoryId')::uuid;
+    v_qty := (v_item ->> 'qty')::integer;
+
+    update public.ticket_categories c
+       set sold = c.sold + v_qty
+     where c.id = v_category_id
+       and c.sold + v_qty <= c.quota;
+
+    if not found then
+      raise exception 'Kuota tiket tidak mencukupi.';
+    end if;
+  end loop;
+
+  v_ticket_id := gen_random_uuid();
+
+  insert into public.tickets (order_id, qr_code)
+  values (p_order_id, p_order_id::text || '|' || v_ticket_id::text);
+
+  update public.orders o
+     set status = 'paid',
+         payment_method = p_payment_method
+   where o.id = p_order_id;
+
+  return v_ticket_id;
+end;
+$$;
+
+revoke all on function public.create_order(uuid, jsonb, text, text, text, text) from public, anon;
+revoke all on function public.complete_payment(uuid, text) from public, anon;
+
+grant execute on function public.create_order(uuid, jsonb, text, text, text, text) to authenticated;
+grant execute on function public.complete_payment(uuid, text) to authenticated;
+
+-- ============================================================================
+-- VERIFIKASI TASK 3 — dikomentari, jalankan manual di SQL Editor. Bukan DDL.
+-- Owner yang menjalankan; agen TIDAK menjalankan SQL live.
+-- Ganti placeholder: USER_ID, EVENT_ID, CATEGORY_ID, CATEGORY_RACE_ID, ORDER_A, ORDER_B.
+-- ============================================================================
+
+-- V3. Atribut fungsi (opsional, cepat).
+-- Expected: 2 baris, prosecdef = true, proconfig = {search_path=public}.
+--
+-- select p.proname, p.prosecdef, p.proconfig
+-- from pg_proc p
+-- join pg_namespace n on n.oid = p.pronamespace
+-- where n.nspname = 'public'
+--   and p.proname in ('create_order', 'complete_payment')
+-- order by p.proname;
+
+-- V4. Harga dihitung server-side.
+-- Siapkan CATEGORY_ID dengan price = 50000. Jalankan sebagai USER_ID:
+-- set local role authenticated;
+-- set local request.jwt.claim.sub = 'USER_ID';
+--
+-- select * from public.create_order(
+--   'EVENT_ID'::uuid,
+--   '[{"categoryId":"CATEGORY_ID","qty":2,"price":1}]'::jsonb,
+--   'Nama Pembeli', 'pembeli@example.com', '1234567890', 'Laki-laki'
+-- );
+-- Expected: total_amount = 100000 (price 50000 diambil dari DB; price: 1 diabaikan).
+-- reset role;
+
+-- V5. Kuota atomik — VERIFIKASI SEQUENTIAL (dua panggilan berurutan, BUKAN paralel).
+-- Controller mengizinkan sequential bila dua session paralel tidak tersedia.
+-- Catat: agen tidak menjalankan ini; owner yang menjalankan di SQL Editor.
+-- Siapkan CATEGORY_RACE_ID dengan quota = 1, sold = 0:
+--
+-- update public.ticket_categories set sold = 0 where id = 'CATEGORY_RACE_ID'::uuid;
+--
+-- Kedua order pending dibuat SEBELUM pembayaran (create_order mengunci kuota saat baca):
+-- set local role authenticated;
+-- set local request.jwt.claim.sub = 'USER_ID';
+-- select * from public.create_order('EVENT_ID'::uuid,
+--   '[{"categoryId":"CATEGORY_RACE_ID","qty":1}]'::jsonb,
+--   'Pembeli A', 'a@example.com', '1111111111', 'Laki-laki');  -- catat → ORDER_A
+-- select * from public.create_order('EVENT_ID'::uuid,
+--   '[{"categoryId":"CATEGORY_RACE_ID","qty":1}]'::jsonb,
+--   'Pembeli B', 'b@example.com', '2222222222', 'Perempuan');  -- catat → ORDER_B
+--
+-- select public.complete_payment('ORDER_A'::uuid, 'card');  -- Expected: sukses, return uuid tiket
+-- select public.complete_payment('ORDER_B'::uuid, 'card');  -- Expected: error "Kuota tiket tidak mencukupi."
+-- reset role;
+--
+-- select sold from public.ticket_categories where id = 'CATEGORY_RACE_ID'::uuid;
+-- Expected: 1.
+-- select id, status from public.orders
+-- where id in ('ORDER_A'::uuid, 'ORDER_B'::uuid) order by id;
+-- Expected: tepat satu 'paid', satu 'pending' (ORDER_B rollback).
+-- select count(*) from public.tickets
+-- where order_id in ('ORDER_A'::uuid, 'ORDER_B'::uuid);
+-- Expected: 1.
+
+-- V6. Idempotensi pembayaran (ulangi untuk ORDER_A yang sudah paid).
+-- set local role authenticated;
+-- set local request.jwt.claim.sub = 'USER_ID';
+-- select public.complete_payment('ORDER_A'::uuid, 'card');
+-- Expected: error "Pesanan sudah diproses." (status bukan 'pending').
+-- reset role;
+-- select count(*) from public.tickets where order_id = 'ORDER_A'::uuid;
+-- Expected: 1 (dijamin juga oleh unique(order_id)).
+
+-- V7. Duplikat kategori ditolak.
+-- set local role authenticated;
+-- set local request.jwt.claim.sub = 'USER_ID';
+-- select * from public.create_order('EVENT_ID'::uuid,
+--   '[{"categoryId":"CATEGORY_ID","qty":1},{"categoryId":"CATEGORY_ID","qty":1}]'::jsonb,
+--   'Pembeli C', 'c@example.com', '3333333333', 'Laki-laki');
+-- Expected: error "Kategori tiket tidak boleh duplikat."
+-- reset role;
+-- select count(*) from public.orders where user_id = 'USER_ID'::uuid;
+-- Expected: tidak bertambah dibanding sebelum panggilan di atas.
