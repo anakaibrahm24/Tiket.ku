@@ -59,6 +59,6 @@ on conflict (id) do nothing;
 -- Expected: 2 baris; events = 3 per tipe; total_quota = 2400 per tipe.
 -- ----------------------------------------------------------------------------
 --
--- select e.type, count(*) as events, sum(c.quota) as total_quota
+-- select e.type, count(distinct e.id) as events, sum(c.quota) as total_quota
 -- from public.events e join public.ticket_categories c on c.event_id = e.id
 -- group by e.type order by e.type;
