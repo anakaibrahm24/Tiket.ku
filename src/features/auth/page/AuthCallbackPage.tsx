@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { getSession } from "@/features/auth/service/authService";
 
 const AuthCallbackPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as { from?: string } | null)?.from ?? "/matchs";
 
   useEffect(() => {
     let mounted = true;
@@ -13,13 +15,13 @@ const AuthCallbackPage = () => {
       if (error || !session) {
         navigate("/login", { replace: true });
       } else {
-        navigate("/matchs", { replace: true });
+        navigate(from, { replace: true });
       }
     });
     return () => {
       mounted = false;
     };
-  }, [navigate]);
+  }, [navigate, from]);
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-surface-subtle">

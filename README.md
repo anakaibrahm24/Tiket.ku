@@ -6,6 +6,8 @@
 2. Isi `VITE_SUPABASE_URL` dan `VITE_SUPABASE_ANON_KEY` dari Supabase Dashboard → Project Settings → API.
 3. Jalankan `npm run dev`.
 4. Jangan commit `.env.local`.
+5. Di Supabase Dashboard → Authentication → Providers → Email, matikan "Confirm email" untuk MVP agar signup langsung mendapat session. Aktifkan kembali sebelum produksi.
+6. Pastikan `http://localhost:5173/auth/callback` terdaftar di Supabase Dashboard → Authentication → URL Configuration → Redirect URLs.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

@@ -2,7 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Alerts from "@/components/Alerts";
 import { Footer } from "@/components/Footer";
@@ -18,6 +18,8 @@ import {
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as { from?: string } | null)?.from ?? "/matchs";
   const { isLoggedIn, isLoading } = useSession();
   const [alert, setAlert] = useState<{
     variant: "info" | "danger" | "success" | "warning" | "dark";
@@ -33,9 +35,9 @@ const SignupPage = () => {
 
   useEffect(() => {
     if (!isLoading && isLoggedIn) {
-      navigate("/matchs", { replace: true });
+      navigate(from, { replace: true });
     }
-  }, [isLoading, isLoggedIn, navigate]);
+  }, [isLoading, isLoggedIn, navigate, from]);
 
   const onSubmit = async (values: SignupSchema) => {
     const { error } = await signUpWithEmail(
@@ -52,7 +54,7 @@ const SignupPage = () => {
     }
     const { data } = await getSession();
     if (data.session) {
-      navigate("/matchs");
+      navigate(from);
     } else {
       setAlert({
         variant: "success",

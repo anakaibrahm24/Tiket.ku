@@ -2,7 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Alerts from "@/components/Alerts";
 import { Footer } from "@/components/Footer";
@@ -20,6 +20,8 @@ import {
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as { from?: string } | null)?.from ?? "/matchs";
   const { isLoggedIn, isLoading } = useSession();
   const [alert, setAlert] = useState<{
     variant: "info" | "danger" | "success" | "warning" | "dark";
@@ -35,9 +37,9 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!isLoading && isLoggedIn) {
-      navigate("/matchs", { replace: true });
+      navigate(from, { replace: true });
     }
-  }, [isLoading, isLoggedIn, navigate]);
+  }, [isLoading, isLoggedIn, navigate, from]);
 
   const onSubmit = async (values: LoginSchema) => {
     const { error } = await signInWithEmail(values.email, values.password);
@@ -48,7 +50,7 @@ const LoginPage = () => {
       });
       return;
     }
-    navigate("/matchs");
+    navigate(from);
   };
 
   const handleGoogle = async () => {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { Session } from "@supabase/supabase-js";
 
 import {
   getSession,
@@ -6,21 +7,20 @@ import {
 } from "@/features/auth/service/authService";
 
 export const useSession = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [state, setState] = useState<{
+    session: Session | null;
+    isLoading: boolean;
+  }>({ session: null, isLoading: true });
 
   useEffect(() => {
     let mounted = true;
 
     getSession().then(({ data: { session } }) => {
-      if (mounted) {
-        setIsLoggedIn(!!session);
-        setIsLoading(false);
-      }
+      if (mounted) setState({ session, isLoading: false });
     });
 
     const { data: listener } = onAuthStateChange(async (_event, session) => {
-      if (mounted) setIsLoggedIn(!!session);
+      if (mounted) setState((prev) => ({ ...prev, session }));
     });
 
     return () => {
@@ -29,5 +29,11 @@ export const useSession = () => {
     };
   }, []);
 
-  return { isLoggedIn, isLoading };
+  const { session, isLoading } = state;
+  return {
+    isLoggedIn: !!session,
+    isLoading,
+    session,
+    user: session?.user ?? null,
+  };
 };
