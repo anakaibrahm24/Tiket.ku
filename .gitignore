@@ -32,3 +32,6 @@ docs/superpowers/
 # Local agent skills (tooling; tracked skills already in index remain tracked)
 .agents/skills/
 .claude/skills/
+
+# Local Pencil design workspace
+.pencil/
