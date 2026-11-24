@@ -1,4 +1,3 @@
-import { CTABanner } from "@/components/CTABanner";
 import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -34,7 +33,6 @@ const HomePage = () => {
       <Hero onPesanTiket={handlePesanTiket} onLihatJadwal={handleLihatJadwal} />
       <Features />
       <SchedulePreview onDetail={handleLihatJadwal} />
-      <CTABanner onAction={handlePesanTiket} />
       <Footer />
     </main>
   );
