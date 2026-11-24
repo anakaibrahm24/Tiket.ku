@@ -19,7 +19,7 @@ Tiket.ku adalah platform web untuk pemesanan tiket pertandingan sepak bola dan k
 - **Preview build produksi:** `npm run preview`
 - **Variabel lingkungan:** buat `.env.local` dari `.env.example` (jika ada) dengan:
   - `VITE_SUPABASE_URL`
-  - `VITE_SUPABASE_ANON_KEY`
+  - `VITE_SUPABASE_PUBLISHABLE_KEY`
   - Jangan commit `.env.local` atau expose service role key Supabase.
 - **Alias path (tsconfig):**
   - `@/*` → `src/*`
@@ -31,6 +31,11 @@ Tiket.ku adalah platform web untuk pemesanan tiket pertandingan sepak bola dan k
 ## Struktur proyek
 
 ```
+docs/
+└── superpowers/
+    ├── specs/               # desain yang sudah disetujui, format `YYYY-MM-DD-<topik>-design.md`
+    └── plans/               # rencana implementasi, format `YYYY-MM-DD-<topik>-plan.md`
+
 src/
 ├── app.css                  # Tailwind + design tokens
 ├── App.tsx                  # Definisi rute
@@ -81,6 +86,15 @@ src/
 - **Kontrol versi:** jangan langsung `git add`/`git commit`. Jangan pernah commit tanpa persetujuan pengguna. Biarkan pengguna meninjau perubahan kode terlebih dahulu.
 - **Branch per progress:** setiap progress/fitur/perbaikan harus dikerjakan di branch baru yang namanya sesuai progress (mis. `feat/<nama-fitur>`, `fix/<nama-bug>`). Jangan commit langsung ke `main`/`master`.
 - **Scope task:** jangan keluar dari scope task. Jika ada yang membingungkan, interview pengguna sebelum bertindak.
+
+## Perencanaan & dokumentasi superpowers
+
+- Sebelum membangun fitur atau perbaikan yang tidak trivial, ikuti alur skill superpowers: `brainstorming` untuk menyepakati desain, lalu `writing-plans` untuk menyusun rencana. Implementasi baru dimulai setelah desain disetujui pengguna.
+- **Lokasi wajib:** desain di `docs/superpowers/specs/YYYY-MM-DD-<topik>-design.md`; rencana di `docs/superpowers/plans/YYYY-MM-DD-<topik>-plan.md`. Jangan menyimpan plan final di root repositori atau di folder workspace agen (mis. `.opencode/plan`); lokasi itu hanya workspace sementara.
+- File rencana mengikuti format `writing-plans`: blockquote "Untuk pekerja agen", `Tujuan`, `Arsitektur`, `Tech Stack`, `Spesifikasi` yang menunjuk ke file desain, `Global Constraints`, `Review Focus`, lalu task bertanda `- [ ]` dengan `Files`, `Interfaces`, langkah implementasi, dan langkah verifikasi yang bisa dicek.
+- Gunakan `Spesifikasi` sebagai sumber keputusan; plan tidak boleh mengulang seluruh isi desain atau menulis kode lengkap sebagai transcript.
+- Eksekusi plan memakai `subagent-driven-development` atau `executing-plans` sesuai instruksi pada blockquote plan. Jangan mulai implementasi tanpa memilih salah satu.
+- Semua file `.md` di `docs/superpowers/` ditulis dalam Bahasa Indonesia dan tidak di-commit tanpa persetujuan pengguna.
 
 ## Instruksi testing
 

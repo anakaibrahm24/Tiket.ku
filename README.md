@@ -3,7 +3,7 @@
 ## Konfigurasi Supabase
 
 1. Salin `.env.example` ke `.env.local`.
-2. Isi `VITE_SUPABASE_URL` dan `VITE_SUPABASE_ANON_KEY` dari Supabase Dashboard → Project Settings → API.
+2. Isi `VITE_SUPABASE_URL` dan `VITE_SUPABASE_PUBLISHABLE_KEY` dari Supabase Dashboard → Project Settings → API.
 3. Jalankan `npm run dev`.
 4. Jangan commit `.env.local`.
 5. Di Supabase Dashboard → Authentication → Providers → Email, matikan "Confirm email" untuk MVP agar signup langsung mendapat session. Aktifkan kembali sebelum produksi.
@@ -15,15 +15,15 @@ Status: **verifikasi statis selesai; QA live ⚠️ PENDING (owner-side)**. Agen
 
 ### Verifikasi statis — selesai
 
-| No | Pemeriksaan | Bukti | Hasil |
-|---|---|---|---|
-| 1 | Env guard `src/lib/supabase.ts` (Task 1) | Modul dieksekusi via Vite SSR tanpa `.env.local`: melempar `"Supabase URL dan anon key wajib diisi. Salin .env.example ke .env.local."`; jalur sukses dengan env demo → `createClient` valid. | PASS |
-| 2 | `npm run lint` (Tasks 1–6; diulang Task 7) | `✖ 1 problem (0 errors, 1 warning)` — `react-refresh/only-export-components` di `.agents/skills/shadcn/assets/showcase/state-matrix.tsx:62:17` (pre-existing, di luar scope). | PASS — 0 error |
-| 3 | `npx tsc -b --pretty false` dengan `NODE_OPTIONS=--max-old-space-size=4096` (Task 6; diulang Task 7) | Exit 0 tanpa error. Heap default OOM di lingkungan ini; gate memakai 4096 MB. | PASS — 0 error |
-| 4 | `npm run build` dengan heap 4096 MB (Tasks 1/5/6; diulang Task 7) | `✓ 532 modules transformed`, `✓ built in 3.76s`. Warning chunk >500 kB bersifat informasi (pre-existing). | PASS |
-| 5 | Skema, index, RLS, grant (Task 2) | Tinjauan teks `supabase/migrations/0001_init.sql`: 4 tabel, 4 policy `for select` (`events`/`ticket_categories` publik; `orders`/`tickets` owner), `revoke all` mendahului `grant select`, tanpa policy write. | Review teks selesai |
-| 6 | RPC `create_order` / `complete_payment` (Task 3) | Tinjauan teks: `security definer`, `set search_path = public`, harga dari DB, kuota atomik, idempotensi, `qr_code` gabungan `orderId` dan `ticketId`, `grant execute ... to authenticated`. | Review teks selesai |
-| 7 | Seed data (Task 4) | Hitung statis + grep: 6 event (3 football, 3 concert) × 3 kategori = 18 baris; `(100+200+500) × 3 = 2400` per tipe; 18 UUID kategori unik; `sold = 0`. Query verifikasi memakai `count(distinct e.id) as events`. | Hitungan statis cocok |
+| No  | Pemeriksaan                                                                                          | Bukti                                                                                                                                                                                                             | Hasil                 |
+| --- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| 1   | Env guard `src/lib/supabase.ts` (Task 1)                                                             | Modul dieksekusi via Vite SSR tanpa `.env.local`: melempar `"Supabase URL dan anon key wajib diisi. Salin .env.example ke .env.local."`; jalur sukses dengan env demo → `createClient` valid.                     | PASS                  |
+| 2   | `npm run lint` (Tasks 1–6; diulang Task 7)                                                           | `✖ 1 problem (0 errors, 1 warning)` — `react-refresh/only-export-components` di `.agents/skills/shadcn/assets/showcase/state-matrix.tsx:62:17` (pre-existing, di luar scope).                                     | PASS — 0 error        |
+| 3   | `npx tsc -b --pretty false` dengan `NODE_OPTIONS=--max-old-space-size=4096` (Task 6; diulang Task 7) | Exit 0 tanpa error. Heap default OOM di lingkungan ini; gate memakai 4096 MB.                                                                                                                                     | PASS — 0 error        |
+| 4   | `npm run build` dengan heap 4096 MB (Tasks 1/5/6; diulang Task 7)                                    | `✓ 532 modules transformed`, `✓ built in 3.76s`. Warning chunk >500 kB bersifat informasi (pre-existing).                                                                                                         | PASS                  |
+| 5   | Skema, index, RLS, grant (Task 2)                                                                    | Tinjauan teks `supabase/migrations/0001_init.sql`: 4 tabel, 4 policy `for select` (`events`/`ticket_categories` publik; `orders`/`tickets` owner), `revoke all` mendahului `grant select`, tanpa policy write.    | Review teks selesai   |
+| 6   | RPC `create_order` / `complete_payment` (Task 3)                                                     | Tinjauan teks: `security definer`, `set search_path = public`, harga dari DB, kuota atomik, idempotensi, `qr_code` gabungan `orderId` dan `ticketId`, `grant execute ... to authenticated`.                       | Review teks selesai   |
+| 7   | Seed data (Task 4)                                                                                   | Hitung statis + grep: 6 event (3 football, 3 concert) × 3 kategori = 18 baris; `(100+200+500) × 3 = 2400` per tipe; 18 UUID kategori unik; `sold = 0`. Query verifikasi memakai `count(distinct e.id) as events`. | Hitungan statis cocok |
 
 Catatan: butir 5–7 hanya peninjauan teks SQL. Tidak ada SQL yang diapply atau dijalankan di database mana pun.
 
