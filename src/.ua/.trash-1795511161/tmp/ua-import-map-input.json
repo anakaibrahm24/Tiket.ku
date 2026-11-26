@@ -1,0 +1,270 @@
+{
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "files": [
+    {
+      "path": "App.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "app.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "components/Alerts.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Button.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/CTABanner.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Dropdown.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/FeatureCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Features.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/FooterLinks.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Hero.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/InputField.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Navbar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/ScheduleCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/SchedulePreview.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/index.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/page/AuthCallbackPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/page/LoginPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/page/SignupPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/schema/authSchemas.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/service/authService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/events/service/eventService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/events/types/event.types.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/home/page/Home.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/components/Card.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/components/TeamSection.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/components/matchesProps.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/hooks/useMatchData.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/page/Matches.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/service/matchService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/types/matchesPayload.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/matches/types/matchesPayload.types.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/orders/service/orderService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/payment/components/PaymentMethods.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/payment/hooks/usePayment.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/payment/page/Payment.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/payment/schemas/paymentSchema.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/tickets/component/Ticket.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/tickets/service/ticketService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/components/TicketCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/hooks/useUserRegister.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/hooks/useUsers.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/page/RegisterForm.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/schema/userSchema.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/service/userServices.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/types/userPayload.d.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "hooks/useCounter.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "hooks/useSession.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/supabase.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/utiils.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "main.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "services/userService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "vite-env.d.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    }
+  ]
+}

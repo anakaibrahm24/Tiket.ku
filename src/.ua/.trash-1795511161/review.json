@@ -1,0 +1,31 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'file:features/events/types/event.types.ts' has no edges (orphan)",
+    "Node 'file:features/tickets/component/Ticket.tsx' has no edges (orphan)",
+    "Node 'file:features/users/hooks/useUsers.ts' has no edges (orphan)",
+    "Node 'file:features/users/page/RegisterForm.tsx' has no edges (orphan)",
+    "Node 'file:features/users/service/userServices.ts' has no edges (orphan)",
+    "Node 'file:features/users/types/userPayload.d.ts' has no edges (orphan)",
+    "Node 'file:lib/supabase.ts' has no edges (orphan)",
+    "Node 'file:services/userService.ts' has no edges (orphan)",
+    "Node 'file:vite-env.d.ts' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 99,
+    "totalEdges": 163,
+    "totalLayers": 5,
+    "tourSteps": 12,
+    "nodeTypes": {
+      "file": 53,
+      "function": 46
+    },
+    "edgeTypes": {
+      "imports": 25,
+      "contains": 51,
+      "exports": 44,
+      "calls": 21,
+      "depends_on": 22
+    }
+  }
+}

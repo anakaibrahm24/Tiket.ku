@@ -1,0 +1,144 @@
+[
+  {
+    "layerId": "layer:ui",
+    "labels": [
+      {
+        "name": "App shell and routing",
+        "nodeIds": [
+          "file:App.tsx",
+          "file:main.tsx"
+        ]
+      },
+      {
+        "name": "Shared UI primitives",
+        "nodeIds": [
+          "file:components/Alerts.tsx",
+          "file:components/Button.tsx",
+          "file:components/Dropdown.tsx",
+          "file:components/InputField.tsx",
+          "file:components/index.ts"
+        ]
+      },
+      {
+        "name": "Landing page sections",
+        "nodeIds": [
+          "file:features/home/page/Home.tsx",
+          "file:components/Hero.tsx",
+          "file:components/Features.tsx",
+          "file:components/FeatureCard.tsx",
+          "file:components/CTABanner.tsx",
+          "file:components/Navbar.tsx",
+          "file:components/Footer.tsx",
+          "file:components/FooterLinks.tsx"
+        ]
+      },
+      {
+        "name": "Landing schedule preview",
+        "nodeIds": [
+          "file:components/ScheduleCard.tsx",
+          "file:components/SchedulePreview.tsx"
+        ]
+      },
+      {
+        "name": "Match schedule",
+        "nodeIds": [
+          "file:features/matches/components/Card.tsx",
+          "file:features/matches/components/TeamSection.tsx",
+          "file:features/matches/page/Matches.tsx"
+        ]
+      },
+      {
+        "name": "Auth screens",
+        "nodeIds": [
+          "file:features/auth/page/AuthCallbackPage.tsx",
+          "file:features/auth/page/LoginPage.tsx",
+          "file:features/auth/page/SignupPage.tsx"
+        ]
+      },
+      {
+        "name": "Payment flow",
+        "nodeIds": [
+          "file:features/payment/components/PaymentMethods.tsx",
+          "file:features/payment/page/Payment.tsx"
+        ]
+      },
+      {
+        "name": "Ticket and registration",
+        "nodeIds": [
+          "file:features/users/components/TicketCard.tsx",
+          "file:features/users/page/RegisterForm.tsx",
+          "file:features/tickets/component/Ticket.tsx"
+        ]
+      }
+    ]
+  },
+  {
+    "layerId": "layer:hooks",
+    "labels": []
+  },
+  {
+    "layerId": "layer:service",
+    "labels": [
+      {
+        "name": "Auth and Supabase client",
+        "nodeIds": [
+          "file:features/auth/service/authService.ts",
+          "file:lib/supabase.ts"
+        ]
+      },
+      {
+        "name": "Event and match services",
+        "nodeIds": [
+          "file:features/matches/service/matchService.ts",
+          "file:features/events/service/eventService.ts"
+        ]
+      },
+      {
+        "name": "Order and ticket services",
+        "nodeIds": [
+          "file:features/orders/service/orderService.ts",
+          "file:features/tickets/service/ticketService.ts"
+        ]
+      },
+      {
+        "name": "User services",
+        "nodeIds": [
+          "file:features/users/service/userServices.ts",
+          "file:services/userService.ts"
+        ]
+      }
+    ]
+  },
+  {
+    "layerId": "layer:types",
+    "labels": [
+      {
+        "name": "Match payload types",
+        "nodeIds": [
+          "file:features/matches/components/matchesProps.ts",
+          "file:features/matches/types/matchesPayload.ts",
+          "file:features/matches/types/matchesPayload.types.ts"
+        ]
+      },
+      {
+        "name": "Validation schemas",
+        "nodeIds": [
+          "file:features/payment/schemas/paymentSchema.ts",
+          "file:features/users/schema/userSchema.ts",
+          "file:features/auth/schema/authSchemas.ts"
+        ]
+      },
+      {
+        "name": "Domain entity types",
+        "nodeIds": [
+          "file:features/events/types/event.types.ts",
+          "file:features/users/types/userPayload.d.ts"
+        ]
+      }
+    ]
+  },
+  {
+    "layerId": "layer:utility",
+    "labels": []
+  }
+]

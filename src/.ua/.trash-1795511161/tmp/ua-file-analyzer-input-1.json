@@ -1,0 +1,48 @@
+{
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "batchFiles": [
+    {"path": "features/matches/components/Card.tsx", "language": "typescript", "sizeLines": 33, "fileCategory": "code"},
+    {"path": "features/matches/components/TeamSection.tsx", "language": "typescript", "sizeLines": 14, "fileCategory": "code"},
+    {"path": "features/matches/components/matchesProps.ts", "language": "typescript", "sizeLines": 3, "fileCategory": "code"},
+    {"path": "features/matches/hooks/useMatchData.ts", "language": "typescript", "sizeLines": 28, "fileCategory": "code"},
+    {"path": "features/matches/page/Matches.tsx", "language": "typescript", "sizeLines": 25, "fileCategory": "code"},
+    {"path": "features/matches/service/matchService.ts", "language": "typescript", "sizeLines": 24, "fileCategory": "code"},
+    {"path": "features/matches/types/matchesPayload.ts", "language": "typescript", "sizeLines": 13, "fileCategory": "code"},
+    {"path": "features/matches/types/matchesPayload.types.ts", "language": "typescript", "sizeLines": 4, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "features/matches/components/Card.tsx": [
+      "features/matches/components/TeamSection.tsx",
+      "features/matches/components/matchesProps.ts",
+      "features/matches/types/matchesPayload.ts"
+    ],
+    "features/matches/components/TeamSection.tsx": [
+      "features/matches/types/matchesPayload.types.ts"
+    ],
+    "features/matches/components/matchesProps.ts": [],
+    "features/matches/hooks/useMatchData.ts": [
+      "features/matches/service/matchService.ts",
+      "features/matches/types/matchesPayload.ts"
+    ],
+    "features/matches/page/Matches.tsx": [
+      "features/matches/components/Card.tsx",
+      "features/matches/hooks/useMatchData.ts"
+    ],
+    "features/matches/service/matchService.ts": [
+      "features/matches/types/matchesPayload.ts"
+    ],
+    "features/matches/types/matchesPayload.ts": [
+      "features/matches/types/matchesPayload.types.ts"
+    ],
+    "features/matches/types/matchesPayload.types.ts": []
+  },
+  "neighborMap": {
+    "features/matches/page/Matches.tsx": [
+      {
+        "path": "App.tsx",
+        "batchIndex": 2,
+        "symbols": []
+      }
+    ]
+  }
+}

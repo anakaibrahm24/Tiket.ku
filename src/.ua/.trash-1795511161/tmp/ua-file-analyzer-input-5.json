@@ -1,0 +1,190 @@
+{
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "batchFiles": [
+    {
+      "path": "app.css",
+      "language": "css",
+      "sizeLines": 158,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "components/Alerts.tsx",
+      "language": "typescript",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Button.tsx",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/CTABanner.tsx",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Dropdown.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/FeatureCard.tsx",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Features.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/FooterLinks.tsx",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Hero.tsx",
+      "language": "typescript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/InputField.tsx",
+      "language": "typescript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Navbar.tsx",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/ScheduleCard.tsx",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/SchedulePreview.tsx",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/schema/authSchemas.ts",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/service/authService.ts",
+      "language": "typescript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/events/service/eventService.ts",
+      "language": "typescript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/events/types/event.types.ts",
+      "language": "typescript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/orders/service/orderService.ts",
+      "language": "typescript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/tickets/component/Ticket.tsx",
+      "language": "typescript",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/tickets/service/ticketService.ts",
+      "language": "typescript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/hooks/useUsers.ts",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/page/RegisterForm.tsx",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/service/userServices.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/users/types/userPayload.d.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "app.css": [],
+    "components/Alerts.tsx": [],
+    "components/Button.tsx": [],
+    "components/CTABanner.tsx": [],
+    "components/Dropdown.tsx": [],
+    "components/FeatureCard.tsx": [],
+    "components/Features.tsx": [
+      "components/FeatureCard.tsx"
+    ],
+    "components/Footer.tsx": [
+      "components/FooterLinks.tsx"
+    ],
+    "components/FooterLinks.tsx": [],
+    "components/Hero.tsx": [
+      "components/Button.tsx"
+    ],
+    "components/InputField.tsx": [],
+    "components/Navbar.tsx": [],
+    "components/ScheduleCard.tsx": [],
+    "components/SchedulePreview.tsx": [
+      "components/ScheduleCard.tsx"
+    ],
+    "features/auth/schema/authSchemas.ts": [],
+    "features/auth/service/authService.ts": [],
+    "features/events/service/eventService.ts": [],
+    "features/events/types/event.types.ts": [],
+    "features/orders/service/orderService.ts": [],
+    "features/tickets/component/Ticket.tsx": [],
+    "features/tickets/service/ticketService.ts": [],
+    "features/users/hooks/useUsers.ts": [],
+    "features/users/page/RegisterForm.tsx": [],
+    "features/users/service/userServices.ts": [],
+    "features/users/types/userPayload.d.ts": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "batchFiles": [
+    {"path": "features/users/components/TicketCard.tsx", "language": "typescript", "sizeLines": 62, "fileCategory": "code"},
+    {"path": "features/users/hooks/useUserRegister.ts", "language": "typescript", "sizeLines": 18, "fileCategory": "code"},
+    {"path": "features/users/schema/userSchema.ts", "language": "typescript", "sizeLines": 18, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "features/users/components/TicketCard.tsx": [
+      "features/users/schema/userSchema.ts"
+    ],
+    "features/users/hooks/useUserRegister.ts": [
+      "features/users/schema/userSchema.ts"
+    ],
+    "features/users/schema/userSchema.ts": []
+  }
+}

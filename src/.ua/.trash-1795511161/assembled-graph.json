@@ -1,0 +1,2995 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "web-pemesanan-tiket-bola",
+    "languages": [
+      "css",
+      "typescript"
+    ],
+    "frameworks": [
+      "React",
+      "Tailwind CSS",
+      "Vite"
+    ],
+    "description": "React + TypeScript + Vite web app for football ticket booking, integrated with Supabase.",
+    "analyzedAt": "2026-11-24T09:04:42.957218+00:00",
+    "gitCommitHash": "f380ff666b3b2f38a3363d50f0dd6493bbba3328"
+  },
+  "nodes": [
+    {
+      "id": "file:features/matches/components/Card.tsx",
+      "type": "file",
+      "name": "Card.tsx",
+      "filePath": "features/matches/components/Card.tsx",
+      "summary": "Renders a single match schedule card composing two TeamSection blocks with kickoff time, date, and stadium, invoking onClick when clicked.",
+      "tags": [
+        "component",
+        "ui",
+        "match-card",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/components/Card.tsx:MatchScheduleCard",
+      "type": "function",
+      "name": "MatchScheduleCard",
+      "filePath": "features/matches/components/Card.tsx",
+      "lineRange": [
+        5,
+        31
+      ],
+      "summary": "React functional component displaying home/away teams, match time and timezone, date, and stadium for a scheduled match.",
+      "tags": [
+        "component",
+        "presentation",
+        "match-schedule"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/components/TeamSection.tsx",
+      "type": "file",
+      "name": "TeamSection.tsx",
+      "filePath": "features/matches/components/TeamSection.tsx",
+      "summary": "Renders a team's name and logo in a centered section used inside the match schedule card.",
+      "tags": [
+        "component",
+        "team",
+        "ui",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/components/TeamSection.tsx:TeamSection",
+      "type": "function",
+      "name": "TeamSection",
+      "filePath": "features/matches/components/TeamSection.tsx",
+      "lineRange": [
+        3,
+        14
+      ],
+      "summary": "Stateless component rendering a team name heading and logo image from a TeamPayload.",
+      "tags": [
+        "component",
+        "team",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/components/matchesProps.ts",
+      "type": "file",
+      "name": "matchesProps.ts",
+      "filePath": "features/matches/components/matchesProps.ts",
+      "summary": "Defines the MatchCardProps interface carrying an optional onClick handler for match cards.",
+      "tags": [
+        "type-definition",
+        "props",
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/hooks/useMatchData.ts",
+      "type": "file",
+      "name": "useMatchData.ts",
+      "filePath": "features/matches/hooks/useMatchData.ts",
+      "summary": "Custom hook that fetches matches on mount and exposes matches, loading, and error state.",
+      "tags": [
+        "hook",
+        "data-fetching",
+        "match",
+        "state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "function",
+      "name": "useMatchData",
+      "filePath": "features/matches/hooks/useMatchData.ts",
+      "lineRange": [
+        6,
+        28
+      ],
+      "summary": "Fetches match data via getMatches on mount, managing loading and error state and returning matches, loading, error.",
+      "tags": [
+        "hook",
+        "data-fetching",
+        "state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/page/Matches.tsx",
+      "type": "file",
+      "name": "Matches.tsx",
+      "filePath": "features/matches/page/Matches.tsx",
+      "summary": "Page component rendering a grid of match cards and navigating to the match form with the selected match id.",
+      "tags": [
+        "page",
+        "component",
+        "routing",
+        "match-list"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/page/Matches.tsx:Matches",
+      "type": "function",
+      "name": "Matches",
+      "filePath": "features/matches/page/Matches.tsx",
+      "lineRange": [
+        5,
+        23
+      ],
+      "summary": "Renders the matches page, mapping fetched matches to cards and handling card clicks by storing the match id and navigating.",
+      "tags": [
+        "page",
+        "component",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/service/matchService.ts",
+      "type": "file",
+      "name": "matchService.ts",
+      "filePath": "features/matches/service/matchService.ts",
+      "summary": "Adapter service converting event records into the legacy MatchPayload shape used by the match schedule UI.",
+      "tags": [
+        "service",
+        "data-fetching",
+        "adapter",
+        "match"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "function",
+      "name": "getMatches",
+      "filePath": "features/matches/service/matchService.ts",
+      "lineRange": [
+        6,
+        24
+      ],
+      "summary": "Fetches events and maps each into a MatchPayload, including derived team payloads and ticket category pricing.",
+      "tags": [
+        "service",
+        "adapter",
+        "data-mapping"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/types/matchesPayload.ts",
+      "type": "file",
+      "name": "matchesPayload.ts",
+      "filePath": "features/matches/types/matchesPayload.ts",
+      "summary": "Defines the MatchPayload interface describing a scheduled match including teams, times, venue, and ticket categories.",
+      "tags": [
+        "type-definition",
+        "payload",
+        "match"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "file",
+      "name": "matchesPayload.types.ts",
+      "filePath": "features/matches/types/matchesPayload.types.ts",
+      "summary": "Defines the TeamPayload interface with name and logo fields used by match payloads.",
+      "tags": [
+        "type-definition",
+        "payload",
+        "team"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "App.tsx",
+      "summary": "Root component that configures React Router and declares all top-level routes for the application.",
+      "tags": [
+        "entry-point",
+        "routing",
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "App.tsx",
+      "lineRange": [
+        11,
+        27
+      ],
+      "summary": "Renders the BrowserRouter with route definitions for home, matches, login, signup, and auth callback pages.",
+      "tags": [
+        "component",
+        "routing",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/auth/page/AuthCallbackPage.tsx",
+      "type": "file",
+      "name": "AuthCallbackPage.tsx",
+      "filePath": "features/auth/page/AuthCallbackPage.tsx",
+      "summary": "Handles the OAuth redirect callback by checking the Supabase session and redirecting to the intended route or login.",
+      "tags": [
+        "component",
+        "auth",
+        "callback"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage",
+      "type": "function",
+      "name": "AuthCallbackPage",
+      "filePath": "features/auth/page/AuthCallbackPage.tsx",
+      "lineRange": [
+        6,
+        35
+      ],
+      "summary": "Effect-driven component that calls getSession and navigates based on session presence.",
+      "tags": [
+        "component",
+        "auth",
+        "async"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/auth/page/LoginPage.tsx",
+      "type": "file",
+      "name": "LoginPage.tsx",
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "summary": "Login screen with email/password and Google sign-in forms, validation, and redirect handling.",
+      "tags": [
+        "component",
+        "auth",
+        "form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "type": "function",
+      "name": "LoginPage",
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "lineRange": [
+        21,
+        186
+      ],
+      "summary": "Renders the login UI and handles email/password and Google authentication flows.",
+      "tags": [
+        "component",
+        "auth",
+        "form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/auth/page/SignupPage.tsx",
+      "type": "file",
+      "name": "SignupPage.tsx",
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "summary": "Registration screen with name/email/password form, Google sign-up, and email verification feedback.",
+      "tags": [
+        "component",
+        "auth",
+        "form"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "function",
+      "name": "SignupPage",
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "lineRange": [
+        19,
+        233
+      ],
+      "summary": "Renders the signup UI and handles account creation plus post-signup session check.",
+      "tags": [
+        "component",
+        "auth",
+        "form"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:features/home/page/Home.tsx",
+      "type": "file",
+      "name": "Home.tsx",
+      "filePath": "features/home/page/Home.tsx",
+      "summary": "Landing page composing navbar, hero, features, schedule preview, and footer sections.",
+      "tags": [
+        "component",
+        "landing",
+        "layout"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/home/page/Home.tsx:HomePage",
+      "type": "function",
+      "name": "HomePage",
+      "filePath": "features/home/page/Home.tsx",
+      "lineRange": [
+        9,
+        39
+      ],
+      "summary": "Renders the home page and wires navigation handlers for ticket purchase and schedule viewing.",
+      "tags": [
+        "component",
+        "landing",
+        "navigation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "components/index.ts",
+      "summary": "Barrel file re-exporting all shared UI components (Alerts, Button, Dropdown, Hero, etc.) for convenient single-path imports.",
+      "tags": [
+        "barrel",
+        "entry-point",
+        "exports"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Wildcard re-exports (export *) of component modules."
+    },
+    {
+      "id": "file:features/payment/components/PaymentMethods.tsx",
+      "type": "file",
+      "name": "PaymentMethods.tsx",
+      "filePath": "features/payment/components/PaymentMethods.tsx",
+      "summary": "Selectable payment method button component with selected/hover styling and aria-pressed state.",
+      "tags": [
+        "component",
+        "payment",
+        "ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/payment/components/PaymentMethods.tsx:PaymentMethods",
+      "type": "function",
+      "name": "PaymentMethods",
+      "filePath": "features/payment/components/PaymentMethods.tsx",
+      "lineRange": [
+        10,
+        34
+      ],
+      "summary": "Renders a selectable payment method button that calls onSelect with its value and reflects selected state via styling.",
+      "tags": [
+        "component",
+        "payment",
+        "ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/payment/hooks/usePayment.ts",
+      "type": "file",
+      "name": "usePayment.ts",
+      "filePath": "features/payment/hooks/usePayment.ts",
+      "summary": "Hook providing a react-hook-form instance configured with zodResolver and the payment schema.",
+      "tags": [
+        "hook",
+        "form",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/payment/hooks/usePayment.ts:PaymentFormValidation",
+      "type": "function",
+      "name": "PaymentFormValidation",
+      "filePath": "features/payment/hooks/usePayment.ts",
+      "lineRange": [
+        5,
+        13
+      ],
+      "summary": "Creates and returns react-hook-form methods validated by paymentSchema using zodResolver.",
+      "tags": [
+        "hook",
+        "form",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/payment/page/Payment.tsx",
+      "type": "file",
+      "name": "Payment.tsx",
+      "filePath": "features/payment/page/Payment.tsx",
+      "summary": "Payment page rendering payment method options and a card details form, navigating to the ticket page on submit.",
+      "tags": [
+        "page",
+        "payment",
+        "form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/payment/page/Payment.tsx:Payment",
+      "type": "function",
+      "name": "Payment",
+      "filePath": "features/payment/page/Payment.tsx",
+      "lineRange": [
+        19,
+        83
+      ],
+      "summary": "Payment page component managing the selected method, registering form fields, and navigating to the ticket route on submit.",
+      "tags": [
+        "page",
+        "payment",
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/payment/schemas/paymentSchema.ts",
+      "type": "file",
+      "name": "paymentSchema.ts",
+      "filePath": "features/payment/schemas/paymentSchema.ts",
+      "summary": "Zod schema validating payment form fields: cardholder name, 4-digit card number, CVV, and expiry.",
+      "tags": [
+        "validation",
+        "schema",
+        "payment"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/components/TicketCard.tsx",
+      "type": "file",
+      "name": "TicketCard.tsx",
+      "filePath": "features/users/components/TicketCard.tsx",
+      "summary": "React component rendering a ticket tribune card with price display and quantity increase/decrease controls.",
+      "tags": [
+        "component",
+        "react",
+        "ticket",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "function",
+      "name": "TicketCard",
+      "filePath": "features/users/components/TicketCard.tsx",
+      "lineRange": [
+        15,
+        60
+      ],
+      "summary": "Functional component displaying tribune name, price, and quantity stepper that notifies parent via onCountChange.",
+      "tags": [
+        "component",
+        "react",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/users/hooks/useUserRegister.ts",
+      "type": "file",
+      "name": "useUserRegister.ts",
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "summary": "Custom hook wrapping react-hook-form with zod validation for user registration form state.",
+      "tags": [
+        "hook",
+        "form",
+        "validation",
+        "react-hook-form"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "function",
+      "name": "useUserRegister",
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "lineRange": [
+        5,
+        18
+      ],
+      "summary": "Initializes and returns a react-hook-form instance configured with userSchema zod resolver and default values.",
+      "tags": [
+        "hook",
+        "form",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/schema/userSchema.ts",
+      "type": "file",
+      "name": "userSchema.ts",
+      "filePath": "features/users/schema/userSchema.ts",
+      "summary": "Zod schema defining validation rules for user registration fields including name, identity number, email, gender, and ticket quantities.",
+      "tags": [
+        "schema",
+        "validation",
+        "zod",
+        "type-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app.css",
+      "type": "file",
+      "name": "app.css",
+      "filePath": "app.css",
+      "summary": "Tailwind CSS v4 theme defining design tokens (colors, fonts, radius, spacing, shadows) and base styles for Tiket.ku.",
+      "tags": [
+        "styling",
+        "design-tokens",
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Alerts.tsx",
+      "type": "file",
+      "name": "Alerts.tsx",
+      "filePath": "components/Alerts.tsx",
+      "summary": "Toast-style alert component with animated enter/exit and auto-dismiss progress bar, supporting multiple variants.",
+      "tags": [
+        "component",
+        "ui",
+        "alert"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Alerts.tsx:Alerts",
+      "type": "function",
+      "name": "Alerts",
+      "filePath": "components/Alerts.tsx",
+      "lineRange": [
+        50,
+        117
+      ],
+      "summary": "Renders an animated alert toast with variant styling, auto-dismiss timer, and progress bar.",
+      "tags": [
+        "component",
+        "ui",
+        "alert"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Button.tsx",
+      "type": "file",
+      "name": "Button.tsx",
+      "filePath": "components/Button.tsx",
+      "summary": "Reusable button component with loading spinner and disabled styling.",
+      "tags": [
+        "component",
+        "ui",
+        "button"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/Button.tsx:Button",
+      "type": "function",
+      "name": "Button",
+      "filePath": "components/Button.tsx",
+      "lineRange": [
+        8,
+        32
+      ],
+      "summary": "Renders a button with loading spinner state and disabled styling.",
+      "tags": [
+        "component",
+        "ui",
+        "button"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/CTABanner.tsx",
+      "type": "file",
+      "name": "CTABanner.tsx",
+      "filePath": "components/CTABanner.tsx",
+      "summary": "Call-to-action banner prompting users to book tickets.",
+      "tags": [
+        "component",
+        "ui",
+        "cta"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/CTABanner.tsx:CTABanner",
+      "type": "function",
+      "name": "CTABanner",
+      "filePath": "components/CTABanner.tsx",
+      "lineRange": [
+        5,
+        24
+      ],
+      "summary": "Renders a CTA banner with headline and book-now button.",
+      "tags": [
+        "component",
+        "ui",
+        "cta"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/Dropdown.tsx",
+      "type": "file",
+      "name": "Dropdown.tsx",
+      "filePath": "components/Dropdown.tsx",
+      "summary": "Form dropdown select integrated with react-hook-form registration and error display.",
+      "tags": [
+        "component",
+        "form",
+        "dropdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Dropdown.tsx:Dropdown",
+      "type": "function",
+      "name": "Dropdown",
+      "filePath": "components/Dropdown.tsx",
+      "lineRange": [
+        11,
+        47
+      ],
+      "summary": "Renders a labeled select input with validation error message.",
+      "tags": [
+        "component",
+        "form",
+        "dropdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/FeatureCard.tsx",
+      "type": "file",
+      "name": "FeatureCard.tsx",
+      "filePath": "components/FeatureCard.tsx",
+      "summary": "Card displaying a feature icon, title, and description.",
+      "tags": [
+        "component",
+        "ui",
+        "card"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "function",
+      "name": "FeatureCard",
+      "filePath": "components/FeatureCard.tsx",
+      "lineRange": [
+        9,
+        19
+      ],
+      "summary": "Renders a feature card with icon, title, and description.",
+      "tags": [
+        "component",
+        "ui",
+        "card"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/Features.tsx",
+      "type": "file",
+      "name": "Features.tsx",
+      "filePath": "components/Features.tsx",
+      "summary": "Section listing platform features in a responsive grid of FeatureCards.",
+      "tags": [
+        "component",
+        "section",
+        "features"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Features.tsx:Features",
+      "type": "function",
+      "name": "Features",
+      "filePath": "components/Features.tsx",
+      "lineRange": [
+        27,
+        52
+      ],
+      "summary": "Renders the features section grid.",
+      "tags": [
+        "component",
+        "section",
+        "features"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Footer.tsx",
+      "type": "file",
+      "name": "Footer.tsx",
+      "filePath": "components/Footer.tsx",
+      "summary": "Site footer with copyright and footer links.",
+      "tags": [
+        "component",
+        "layout",
+        "footer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/Footer.tsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "components/Footer.tsx",
+      "lineRange": [
+        3,
+        14
+      ],
+      "summary": "Renders the site footer with copyright and links.",
+      "tags": [
+        "component",
+        "layout",
+        "footer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/FooterLinks.tsx",
+      "type": "file",
+      "name": "FooterLinks.tsx",
+      "filePath": "components/FooterLinks.tsx",
+      "summary": "Navigation links list for the footer.",
+      "tags": [
+        "component",
+        "navigation",
+        "footer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "function",
+      "name": "FooterLinks",
+      "filePath": "components/FooterLinks.tsx",
+      "lineRange": [
+        3,
+        17
+      ],
+      "summary": "Renders footer navigation links.",
+      "tags": [
+        "component",
+        "navigation",
+        "footer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/Hero.tsx",
+      "type": "file",
+      "name": "Hero.tsx",
+      "filePath": "components/Hero.tsx",
+      "summary": "Hero section with headline and CTA buttons for booking and schedule.",
+      "tags": [
+        "component",
+        "section",
+        "hero"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Hero.tsx:Hero",
+      "type": "function",
+      "name": "Hero",
+      "filePath": "components/Hero.tsx",
+      "lineRange": [
+        8,
+        46
+      ],
+      "summary": "Renders the hero section with headline and CTA buttons.",
+      "tags": [
+        "component",
+        "section",
+        "hero"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/InputField.tsx",
+      "type": "file",
+      "name": "InputField.tsx",
+      "filePath": "components/InputField.tsx",
+      "summary": "Form input with floating label, password toggle, and error display.",
+      "tags": [
+        "component",
+        "form",
+        "input"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/InputField.tsx:InputField",
+      "type": "function",
+      "name": "InputField",
+      "filePath": "components/InputField.tsx",
+      "lineRange": [
+        15,
+        89
+      ],
+      "summary": "Renders a labeled input with validation error and password visibility toggle.",
+      "tags": [
+        "component",
+        "form",
+        "input"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Navbar.tsx",
+      "type": "file",
+      "name": "Navbar.tsx",
+      "filePath": "components/Navbar.tsx",
+      "summary": "Sticky navigation bar with route links and auth buttons.",
+      "tags": [
+        "component",
+        "navigation",
+        "navbar"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Navbar.tsx:Navbar",
+      "type": "function",
+      "name": "Navbar",
+      "filePath": "components/Navbar.tsx",
+      "lineRange": [
+        7,
+        64
+      ],
+      "summary": "Renders the sticky navbar with navigation and auth actions.",
+      "tags": [
+        "component",
+        "navigation",
+        "navbar"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/ScheduleCard.tsx",
+      "type": "file",
+      "name": "ScheduleCard.tsx",
+      "filePath": "components/ScheduleCard.tsx",
+      "summary": "Card displaying event schedule details with badge and detail button.",
+      "tags": [
+        "component",
+        "card",
+        "schedule"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "function",
+      "name": "ScheduleCard",
+      "filePath": "components/ScheduleCard.tsx",
+      "lineRange": [
+        11,
+        40
+      ],
+      "summary": "Renders an event schedule card with details and detail button.",
+      "tags": [
+        "component",
+        "card",
+        "schedule"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/SchedulePreview.tsx",
+      "type": "file",
+      "name": "SchedulePreview.tsx",
+      "filePath": "components/SchedulePreview.tsx",
+      "summary": "Section previewing upcoming events using ScheduleCard grid.",
+      "tags": [
+        "component",
+        "section",
+        "schedule"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "type": "function",
+      "name": "SchedulePreview",
+      "filePath": "components/SchedulePreview.tsx",
+      "lineRange": [
+        34,
+        54
+      ],
+      "summary": "Renders a preview grid of upcoming events.",
+      "tags": [
+        "component",
+        "section",
+        "schedule"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/auth/schema/authSchemas.ts",
+      "type": "file",
+      "name": "authSchemas.ts",
+      "filePath": "features/auth/schema/authSchemas.ts",
+      "summary": "Zod schemas for login and signup validation with Indonesian error messages.",
+      "tags": [
+        "validation",
+        "schema",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/auth/service/authService.ts",
+      "type": "file",
+      "name": "authService.ts",
+      "filePath": "features/auth/service/authService.ts",
+      "summary": "Supabase auth helpers: session, sign-in/up, Google OAuth, sign-out, and error mapping.",
+      "tags": [
+        "service",
+        "auth",
+        "supabase"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:getSession",
+      "type": "function",
+      "name": "getSession",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        5,
+        5
+      ],
+      "summary": "Returns the current Supabase session.",
+      "tags": [
+        "auth",
+        "session",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "function",
+      "name": "onAuthStateChange",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        7,
+        9
+      ],
+      "summary": "Subscribes to Supabase auth state changes.",
+      "tags": [
+        "auth",
+        "session",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "function",
+      "name": "requireUserId",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        11,
+        17
+      ],
+      "summary": "Returns the authenticated user id or throws if not signed in.",
+      "tags": [
+        "auth",
+        "validation",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signInWithEmail",
+      "type": "function",
+      "name": "signInWithEmail",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        19,
+        20
+      ],
+      "summary": "Signs in with email and password via Supabase.",
+      "tags": [
+        "auth",
+        "login",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "type": "function",
+      "name": "signUpWithEmail",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        22,
+        27
+      ],
+      "summary": "Registers a new user with email, password, and full name.",
+      "tags": [
+        "auth",
+        "signup",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "function",
+      "name": "signInWithGoogle",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        29,
+        33
+      ],
+      "summary": "Initiates Google OAuth sign-in redirecting to auth callback.",
+      "tags": [
+        "auth",
+        "oauth",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signOut",
+      "type": "function",
+      "name": "signOut",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        35,
+        35
+      ],
+      "summary": "Signs out the current user.",
+      "tags": [
+        "auth",
+        "session",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "function",
+      "name": "mapAuthError",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [
+        37,
+        60
+      ],
+      "summary": "Maps Supabase auth errors to Indonesian user-facing messages.",
+      "tags": [
+        "auth",
+        "error-handling",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/events/service/eventService.ts",
+      "type": "file",
+      "name": "eventService.ts",
+      "filePath": "features/events/service/eventService.ts",
+      "summary": "Supabase queries for events with category mapping and date filtering.",
+      "tags": [
+        "service",
+        "events",
+        "supabase"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:mapEvent",
+      "type": "function",
+      "name": "mapEvent",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [
+        28,
+        49
+      ],
+      "summary": "Maps a database event row to the EventRecord domain model.",
+      "tags": [
+        "events",
+        "mapping",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:buildQuery",
+      "type": "function",
+      "name": "buildQuery",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [
+        51,
+        61
+      ],
+      "summary": "Builds a Supabase query for upcoming events with optional type filter.",
+      "tags": [
+        "events",
+        "query",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:getEvents",
+      "type": "function",
+      "name": "getEvents",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [
+        63,
+        67
+      ],
+      "summary": "Fetches upcoming events optionally filtered by type.",
+      "tags": [
+        "events",
+        "service",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:getEventById",
+      "type": "function",
+      "name": "getEventById",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [
+        69,
+        74
+      ],
+      "summary": "Fetches a single event by id.",
+      "tags": [
+        "events",
+        "service",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/events/types/event.types.ts",
+      "type": "file",
+      "name": "event.types.ts",
+      "filePath": "features/events/types/event.types.ts",
+      "summary": "TypeScript types for events, categories, orders, and tickets.",
+      "tags": [
+        "type-definition",
+        "events",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/orders/service/orderService.ts",
+      "type": "file",
+      "name": "orderService.ts",
+      "filePath": "features/orders/service/orderService.ts",
+      "summary": "Order creation and payment completion via Supabase RPCs.",
+      "tags": [
+        "service",
+        "orders",
+        "payment"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/orders/service/orderService.ts:createOrder",
+      "type": "function",
+      "name": "createOrder",
+      "filePath": "features/orders/service/orderService.ts",
+      "lineRange": [
+        21,
+        41
+      ],
+      "summary": "Creates an order via Supabase RPC and returns order id and total.",
+      "tags": [
+        "orders",
+        "payment",
+        "supabase"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/orders/service/orderService.ts:completePayment",
+      "type": "function",
+      "name": "completePayment",
+      "filePath": "features/orders/service/orderService.ts",
+      "lineRange": [
+        43,
+        54
+      ],
+      "summary": "Completes payment for an order via Supabase RPC.",
+      "tags": [
+        "orders",
+        "payment",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/tickets/component/Ticket.tsx",
+      "type": "file",
+      "name": "Ticket.tsx",
+      "filePath": "features/tickets/component/Ticket.tsx",
+      "summary": "Legacy ticket display component currently commented out.",
+      "tags": [
+        "component",
+        "ticket",
+        "legacy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/tickets/service/ticketService.ts",
+      "type": "file",
+      "name": "ticketService.ts",
+      "filePath": "features/tickets/service/ticketService.ts",
+      "summary": "Fetches a ticket by order id from Supabase.",
+      "tags": [
+        "service",
+        "tickets",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/tickets/service/ticketService.ts:getTicketByOrderId",
+      "type": "function",
+      "name": "getTicketByOrderId",
+      "filePath": "features/tickets/service/ticketService.ts",
+      "lineRange": [
+        11,
+        28
+      ],
+      "summary": "Fetches a ticket by order id.",
+      "tags": [
+        "tickets",
+        "service",
+        "supabase"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/hooks/useUsers.ts",
+      "type": "file",
+      "name": "useUsers.ts",
+      "filePath": "features/users/hooks/useUsers.ts",
+      "summary": "Legacy hook for fetching users currently commented out.",
+      "tags": [
+        "hook",
+        "users",
+        "legacy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/page/RegisterForm.tsx",
+      "type": "file",
+      "name": "RegisterForm.tsx",
+      "filePath": "features/users/page/RegisterForm.tsx",
+      "summary": "Legacy registration form currently commented out.",
+      "tags": [
+        "page",
+        "users",
+        "legacy"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/users/service/userServices.ts",
+      "type": "file",
+      "name": "userServices.ts",
+      "filePath": "features/users/service/userServices.ts",
+      "summary": "Legacy user registration service currently commented out.",
+      "tags": [
+        "service",
+        "users",
+        "legacy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/types/userPayload.d.ts",
+      "type": "file",
+      "name": "userPayload.d.ts",
+      "filePath": "features/users/types/userPayload.d.ts",
+      "summary": "UserPayload interface for registration data.",
+      "tags": [
+        "type-definition",
+        "users",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:hooks/useCounter.ts",
+      "type": "file",
+      "name": "useCounter.ts",
+      "filePath": "hooks/useCounter.ts",
+      "summary": "React hook managing a counter state with increment and decrement helpers.",
+      "tags": [
+        "hook",
+        "state",
+        "counter",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:hooks/useCounter.ts:useCounter",
+      "type": "function",
+      "name": "useCounter",
+      "filePath": "hooks/useCounter.ts",
+      "lineRange": [
+        3,
+        15
+      ],
+      "summary": "Custom hook wrapping useState to provide a counter with increase and decrease actions.",
+      "tags": [
+        "hook",
+        "state",
+        "counter"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:hooks/useSession.ts",
+      "type": "file",
+      "name": "useSession.ts",
+      "filePath": "hooks/useSession.ts",
+      "summary": "React hook tracking the current Supabase auth session and loading state.",
+      "tags": [
+        "hook",
+        "auth",
+        "session",
+        "state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:hooks/useSession.ts:useSession",
+      "type": "function",
+      "name": "useSession",
+      "filePath": "hooks/useSession.ts",
+      "lineRange": [
+        9,
+        43
+      ],
+      "summary": "Subscribes to Supabase auth state changes and exposes session, user, and loading status.",
+      "tags": [
+        "hook",
+        "auth",
+        "session"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/supabase.ts",
+      "type": "file",
+      "name": "supabase.ts",
+      "filePath": "lib/supabase.ts",
+      "summary": "Creates and exports the shared Supabase client using Vite environment variables.",
+      "tags": [
+        "client",
+        "database",
+        "singleton",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/utiils.ts",
+      "type": "file",
+      "name": "utiils.ts",
+      "filePath": "lib/utiils.ts",
+      "summary": "Utility for merging Tailwind CSS classes using clsx and tailwind-merge.",
+      "tags": [
+        "utility",
+        "styling",
+        "tailwind",
+        "cn"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/utiils.ts:cn",
+      "type": "function",
+      "name": "cn",
+      "filePath": "lib/utiils.ts",
+      "lineRange": [
+        4,
+        6
+      ],
+      "summary": "Combines class values and resolves Tailwind conflicts into a single class string.",
+      "tags": [
+        "utility",
+        "styling",
+        "tailwind"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "main.tsx",
+      "summary": "Application entry point that mounts the root React component into the DOM.",
+      "tags": [
+        "entry-point",
+        "bootstrap",
+        "react"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:services/userService.ts",
+      "type": "file",
+      "name": "userService.ts",
+      "filePath": "services/userService.ts",
+      "summary": "Legacy file containing only commented-out user service hook implementations.",
+      "tags": [
+        "service",
+        "user",
+        "legacy",
+        "dead-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "vite-env.d.ts",
+      "summary": "TypeScript reference to Vite client types for import.meta.env support.",
+      "tags": [
+        "type-definition",
+        "vite",
+        "environment"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/TeamSection.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/matchesProps.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/service/matchService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/components/Card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/hooks/useMatchData.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/types/matchesPayload.ts",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "function:features/matches/components/Card.tsx:MatchScheduleCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "function:features/matches/components/Card.tsx:MatchScheduleCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "function:features/matches/components/TeamSection.tsx:TeamSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "function:features/matches/components/TeamSection.tsx:TeamSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "function:features/matches/page/Matches.tsx:Matches",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "function:features/matches/page/Matches.tsx:Matches",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "target": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/matches/page/Matches.tsx:Matches",
+      "target": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/matches/service/matchService.ts:getMatches",
+      "target": "function:features/events/service/eventService.ts:getEvents",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "function:App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "function:App.tsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/AuthCallbackPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/LoginPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/SignupPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/home/page/Home.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/matches/page/Matches.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/auth/page/AuthCallbackPage.tsx",
+      "target": "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/page/AuthCallbackPage.tsx",
+      "target": "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/AuthCallbackPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Alerts.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:features/auth/schema/authSchemas.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "target": "function:features/auth/service/authService.ts:signInWithEmail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "target": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "target": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Alerts.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:features/auth/schema/authSchemas.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "target": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "target": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "target": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "function:features/home/page/Home.tsx:HomePage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "function:features/home/page/Home.tsx:HomePage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Features.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Hero.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Navbar.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/SchedulePreview.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:features/home/page/Home.tsx:HomePage",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/payment/hooks/usePayment.ts",
+      "target": "file:features/payment/schemas/paymentSchema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:components/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:features/payment/components/PaymentMethods.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:features/payment/hooks/usePayment.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/payment/components/PaymentMethods.tsx",
+      "target": "function:features/payment/components/PaymentMethods.tsx:PaymentMethods",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/payment/hooks/usePayment.ts",
+      "target": "function:features/payment/hooks/usePayment.ts:PaymentFormValidation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "function:features/payment/page/Payment.tsx:Payment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:features/payment/page/Payment.tsx:Payment",
+      "target": "function:features/payment/components/PaymentMethods.tsx:PaymentMethods",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/payment/components/PaymentMethods.tsx",
+      "target": "function:features/payment/components/PaymentMethods.tsx:PaymentMethods",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/payment/hooks/usePayment.ts",
+      "target": "function:features/payment/hooks/usePayment.ts:PaymentFormValidation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "function:features/payment/page/Payment.tsx:Payment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/payment/page/Payment.tsx:Payment",
+      "target": "function:features/payment/hooks/usePayment.ts:PaymentFormValidation",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Alerts.tsx",
+      "target": "function:components/Alerts.tsx:Alerts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Alerts.tsx",
+      "target": "function:components/Alerts.tsx:Alerts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Button.tsx",
+      "target": "function:components/Button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Button.tsx",
+      "target": "function:components/Button.tsx:Button",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/CTABanner.tsx",
+      "target": "function:components/CTABanner.tsx:CTABanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/CTABanner.tsx",
+      "target": "function:components/CTABanner.tsx:CTABanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Dropdown.tsx",
+      "target": "function:components/Dropdown.tsx:Dropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Dropdown.tsx",
+      "target": "function:components/Dropdown.tsx:Dropdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/FeatureCard.tsx",
+      "target": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/FeatureCard.tsx",
+      "target": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "function:components/Features.tsx:Features",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "function:components/Features.tsx:Features",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "file:components/FeatureCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "function:components/Footer.tsx:Footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "function:components/Footer.tsx:Footer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "file:components/FooterLinks.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/FooterLinks.tsx",
+      "target": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/FooterLinks.tsx",
+      "target": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "function:components/Hero.tsx:Hero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "function:components/Hero.tsx:Hero",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/InputField.tsx",
+      "target": "function:components/InputField.tsx:InputField",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/InputField.tsx",
+      "target": "function:components/InputField.tsx:InputField",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Navbar.tsx",
+      "target": "function:components/Navbar.tsx:Navbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Navbar.tsx",
+      "target": "function:components/Navbar.tsx:Navbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/ScheduleCard.tsx",
+      "target": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/ScheduleCard.tsx",
+      "target": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "file:components/ScheduleCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithEmail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signOut",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signOut",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:mapEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:buildQuery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEvents",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEvents",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEventById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEventById",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:createOrder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:createOrder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:completePayment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:completePayment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/tickets/service/ticketService.ts",
+      "target": "function:features/tickets/service/ticketService.ts:getTicketByOrderId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/tickets/service/ticketService.ts",
+      "target": "function:features/tickets/service/ticketService.ts:getTicketByOrderId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:components/Features.tsx:Features",
+      "target": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/Footer.tsx:Footer",
+      "target": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/Hero.tsx:Hero",
+      "target": "function:components/Button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "target": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/Alerts.tsx:Alerts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:components/Button.tsx:Button",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:components/InputField.tsx:InputField",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/orders/service/orderService.ts:createOrder",
+      "target": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:hooks/useCounter.ts",
+      "target": "function:hooks/useCounter.ts:useCounter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:hooks/useCounter.ts",
+      "target": "function:hooks/useCounter.ts:useCounter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:hooks/useSession.ts:useSession",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:hooks/useSession.ts:useSession",
+      "target": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/utiils.ts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/utiils.ts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:App.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:app.css",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:ui",
+      "name": "UI Layer",
+      "description": "React components, pages, routing, and styling for the Tiket.ku interface.",
+      "nodeIds": [
+        "file:features/matches/components/Card.tsx",
+        "file:features/matches/components/TeamSection.tsx",
+        "file:features/matches/page/Matches.tsx",
+        "file:App.tsx",
+        "file:features/auth/page/AuthCallbackPage.tsx",
+        "file:features/auth/page/LoginPage.tsx",
+        "file:features/auth/page/SignupPage.tsx",
+        "file:features/home/page/Home.tsx",
+        "file:components/index.ts",
+        "file:features/payment/components/PaymentMethods.tsx",
+        "file:features/payment/page/Payment.tsx",
+        "file:features/users/components/TicketCard.tsx",
+        "file:app.css",
+        "file:components/Alerts.tsx",
+        "file:components/Button.tsx",
+        "file:components/CTABanner.tsx",
+        "file:components/Dropdown.tsx",
+        "file:components/FeatureCard.tsx",
+        "file:components/Features.tsx",
+        "file:components/Footer.tsx",
+        "file:components/FooterLinks.tsx",
+        "file:components/Hero.tsx",
+        "file:components/InputField.tsx",
+        "file:components/Navbar.tsx",
+        "file:components/ScheduleCard.tsx",
+        "file:components/SchedulePreview.tsx",
+        "file:features/tickets/component/Ticket.tsx",
+        "file:features/users/page/RegisterForm.tsx",
+        "file:main.tsx"
+      ],
+      "containerLabels": [
+        {
+          "name": "App shell and routing",
+          "nodeIds": [
+            "file:App.tsx",
+            "file:main.tsx"
+          ]
+        },
+        {
+          "name": "Shared UI primitives",
+          "nodeIds": [
+            "file:components/Alerts.tsx",
+            "file:components/Button.tsx",
+            "file:components/Dropdown.tsx",
+            "file:components/InputField.tsx",
+            "file:components/index.ts"
+          ]
+        },
+        {
+          "name": "Landing page sections",
+          "nodeIds": [
+            "file:features/home/page/Home.tsx",
+            "file:components/Hero.tsx",
+            "file:components/Features.tsx",
+            "file:components/FeatureCard.tsx",
+            "file:components/CTABanner.tsx",
+            "file:components/Navbar.tsx",
+            "file:components/Footer.tsx",
+            "file:components/FooterLinks.tsx"
+          ]
+        },
+        {
+          "name": "Landing schedule preview",
+          "nodeIds": [
+            "file:components/ScheduleCard.tsx",
+            "file:components/SchedulePreview.tsx"
+          ]
+        },
+        {
+          "name": "Match schedule",
+          "nodeIds": [
+            "file:features/matches/components/Card.tsx",
+            "file:features/matches/components/TeamSection.tsx",
+            "file:features/matches/page/Matches.tsx"
+          ]
+        },
+        {
+          "name": "Auth screens",
+          "nodeIds": [
+            "file:features/auth/page/AuthCallbackPage.tsx",
+            "file:features/auth/page/LoginPage.tsx",
+            "file:features/auth/page/SignupPage.tsx"
+          ]
+        },
+        {
+          "name": "Payment flow",
+          "nodeIds": [
+            "file:features/payment/components/PaymentMethods.tsx",
+            "file:features/payment/page/Payment.tsx"
+          ]
+        },
+        {
+          "name": "Ticket and registration",
+          "nodeIds": [
+            "file:features/users/components/TicketCard.tsx",
+            "file:features/users/page/RegisterForm.tsx",
+            "file:features/tickets/component/Ticket.tsx"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "layer:hooks",
+      "name": "Hooks Layer",
+      "description": "Custom React hooks for data fetching, form handling, and session state.",
+      "nodeIds": [
+        "file:features/matches/hooks/useMatchData.ts",
+        "file:features/payment/hooks/usePayment.ts",
+        "file:features/users/hooks/useUserRegister.ts",
+        "file:features/users/hooks/useUsers.ts",
+        "file:hooks/useCounter.ts",
+        "file:hooks/useSession.ts"
+      ],
+      "containerLabels": []
+    },
+    {
+      "id": "layer:service",
+      "name": "Service Layer",
+      "description": "Supabase-backed data access and business logic for events, orders, tickets, and auth.",
+      "nodeIds": [
+        "file:features/matches/service/matchService.ts",
+        "file:features/auth/service/authService.ts",
+        "file:features/events/service/eventService.ts",
+        "file:features/orders/service/orderService.ts",
+        "file:features/tickets/service/ticketService.ts",
+        "file:features/users/service/userServices.ts",
+        "file:lib/supabase.ts",
+        "file:services/userService.ts"
+      ],
+      "containerLabels": [
+        {
+          "name": "Auth and Supabase client",
+          "nodeIds": [
+            "file:features/auth/service/authService.ts",
+            "file:lib/supabase.ts"
+          ]
+        },
+        {
+          "name": "Event and match services",
+          "nodeIds": [
+            "file:features/matches/service/matchService.ts",
+            "file:features/events/service/eventService.ts"
+          ]
+        },
+        {
+          "name": "Order and ticket services",
+          "nodeIds": [
+            "file:features/orders/service/orderService.ts",
+            "file:features/tickets/service/ticketService.ts"
+          ]
+        },
+        {
+          "name": "User services",
+          "nodeIds": [
+            "file:features/users/service/userServices.ts",
+            "file:services/userService.ts"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "layer:types",
+      "name": "Types & Schemas",
+      "description": "TypeScript types, Zod validation schemas, and environment declarations.",
+      "nodeIds": [
+        "file:features/matches/components/matchesProps.ts",
+        "file:features/matches/types/matchesPayload.ts",
+        "file:features/matches/types/matchesPayload.types.ts",
+        "file:features/payment/schemas/paymentSchema.ts",
+        "file:features/users/schema/userSchema.ts",
+        "file:features/auth/schema/authSchemas.ts",
+        "file:features/events/types/event.types.ts",
+        "file:features/users/types/userPayload.d.ts",
+        "file:vite-env.d.ts"
+      ],
+      "containerLabels": [
+        {
+          "name": "Match payload types",
+          "nodeIds": [
+            "file:features/matches/components/matchesProps.ts",
+            "file:features/matches/types/matchesPayload.ts",
+            "file:features/matches/types/matchesPayload.types.ts"
+          ]
+        },
+        {
+          "name": "Validation schemas",
+          "nodeIds": [
+            "file:features/payment/schemas/paymentSchema.ts",
+            "file:features/users/schema/userSchema.ts",
+            "file:features/auth/schema/authSchemas.ts"
+          ]
+        },
+        {
+          "name": "Domain entity types",
+          "nodeIds": [
+            "file:features/events/types/event.types.ts",
+            "file:features/users/types/userPayload.d.ts"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "layer:utility",
+      "name": "Utility Layer",
+      "description": "Shared helpers such as Tailwind class merging.",
+      "nodeIds": [
+        "file:lib/utiils.ts"
+      ],
+      "containerLabels": []
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Application Entry & Routing",
+      "description": "main.tsx mounts the root React component into the DOM and imports App together with app.css. App.tsx configures React Router and declares the top-level routes for home, matches, login, signup, and the auth callback, giving a bird's-eye view of the runtime structure.",
+      "nodeIds": [
+        "file:main.tsx",
+        "file:App.tsx"
+      ],
+      "languageLesson": "React 19 uses createRoot to mount the app; BrowserRouter enables client-side routing without full page reloads."
+    },
+    {
+      "order": 2,
+      "title": "Design Tokens & Styling Utilities",
+      "description": "app.css defines the Tailwind CSS v4 theme tokens (colors, fonts, radius, spacing, shadows) for Tiket.ku. lib/utiils.ts exports the cn helper that merges clsx and tailwind-merge, and shared UI components depend on it to resolve conflicting utility classes.",
+      "nodeIds": [
+        "file:app.css",
+        "file:lib/utiils.ts"
+      ],
+      "languageLesson": "tailwind-merge resolves conflicting Tailwind utility classes so the last declared class wins."
+    },
+    {
+      "order": 3,
+      "title": "Shared UI Primitives",
+      "description": "components/index.ts is a barrel file that re-exports shared components for convenient single-path imports. Button, InputField, and Alerts provide loading spinners, floating labels, and animated toast alerts used across pages.",
+      "nodeIds": [
+        "file:components/index.ts",
+        "file:components/Button.tsx",
+        "file:components/InputField.tsx",
+        "file:components/Alerts.tsx"
+      ],
+      "languageLesson": "Barrel files (index.ts) re-export modules to simplify import paths across the codebase."
+    },
+    {
+      "order": 4,
+      "title": "Landing Page Composition",
+      "description": "Home.tsx composes the navbar, hero, features, schedule preview, and footer into the landing page. Hero and Features present the value proposition, while SchedulePreview surfaces upcoming events through a ScheduleCard grid.",
+      "nodeIds": [
+        "file:features/home/page/Home.tsx",
+        "file:components/Hero.tsx",
+        "file:components/Features.tsx",
+        "file:components/SchedulePreview.tsx"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Match Schedule UI",
+      "description": "The Matches page renders a grid of match cards and navigates to the match form with the selected match id. Card composes two TeamSection blocks with kickoff time, date, and stadium, while TeamSection renders a team name and logo.",
+      "nodeIds": [
+        "file:features/matches/page/Matches.tsx",
+        "file:features/matches/components/Card.tsx",
+        "file:features/matches/components/TeamSection.tsx"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Match Data Flow & Types",
+      "description": "useMatchData fetches matches on mount and exposes matches, loading, and error state. matchService adapts event records into the legacy MatchPayload shape, including derived team payloads and ticket category pricing. The payload type files define the MatchPayload and TeamPayload contracts used throughout.",
+      "nodeIds": [
+        "file:features/matches/hooks/useMatchData.ts",
+        "file:features/matches/service/matchService.ts",
+        "file:features/matches/types/matchesPayload.ts",
+        "file:features/matches/types/matchesPayload.types.ts"
+      ],
+      "languageLesson": "TypeScript interfaces establish the data contracts that connect services, hooks, and components."
+    },
+    {
+      "order": 7,
+      "title": "Event Service & Domain Types",
+      "description": "eventService queries Supabase for upcoming events with an optional type filter and maps database rows to EventRecord. event.types.ts defines the event, category, order, and ticket types shared across the service layer.",
+      "nodeIds": [
+        "file:features/events/service/eventService.ts",
+        "file:features/events/types/event.types.ts"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Supabase Client",
+      "description": "lib/supabase.ts creates and exports a singleton Supabase client from Vite environment variables. Centralizing the client keeps configuration consistent and gives every service a single shared entry point to the database and auth.",
+      "nodeIds": [
+        "file:lib/supabase.ts"
+      ],
+      "languageLesson": "Vite exposes env vars via import.meta.env, prefixed with VITE_ for client-side access."
+    },
+    {
+      "order": 9,
+      "title": "Authentication Service & Session",
+      "description": "authService wraps Supabase auth for session retrieval, email and Google sign-in, sign-up, sign-out, and error mapping to Indonesian messages. authSchemas validate login and signup forms with Zod, while useSession subscribes to auth state changes and exposes session, user, and loading status.",
+      "nodeIds": [
+        "file:features/auth/service/authService.ts",
+        "file:features/auth/schema/authSchemas.ts",
+        "file:hooks/useSession.ts"
+      ],
+      "languageLesson": "Zod schemas provide runtime validation that aligns with TypeScript types at compile time."
+    },
+    {
+      "order": 10,
+      "title": "Authentication Pages",
+      "description": "LoginPage and SignupPage render email/password and Google authentication flows with validation and redirect handling. AuthCallbackPage completes the OAuth redirect by checking the Supabase session and routing to the intended destination or back to login.",
+      "nodeIds": [
+        "file:features/auth/page/LoginPage.tsx",
+        "file:features/auth/page/SignupPage.tsx",
+        "file:features/auth/page/AuthCallbackPage.tsx"
+      ]
+    },
+    {
+      "order": 11,
+      "title": "Payment Form & Order Processing",
+      "description": "The Payment page manages the selected payment method and a card details form validated by paymentSchema through usePayment, navigating to the ticket route on submit. PaymentMethods renders selectable method buttons with pressed-state styling, and orderService creates and completes orders via Supabase RPCs while requiring an authenticated user.",
+      "nodeIds": [
+        "file:features/payment/page/Payment.tsx",
+        "file:features/payment/components/PaymentMethods.tsx",
+        "file:features/payment/hooks/usePayment.ts",
+        "file:features/payment/schemas/paymentSchema.ts",
+        "file:features/orders/service/orderService.ts"
+      ],
+      "languageLesson": "react-hook-form combined with zodResolver connects schema validation directly to form state."
+    },
+    {
+      "order": 12,
+      "title": "Buyer Registration & Tickets",
+      "description": "useUserRegister configures react-hook-form with userSchema to validate registration fields including identity number, email, and ticket quantities. TicketCard displays tribune pricing with quantity controls, and ticketService fetches a ticket by order id for e-ticket display.",
+      "nodeIds": [
+        "file:features/users/hooks/useUserRegister.ts",
+        "file:features/users/schema/userSchema.ts",
+        "file:features/users/components/TicketCard.tsx",
+        "file:features/tickets/service/ticketService.ts"
+      ]
+    }
+  ]
+}

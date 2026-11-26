@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-24T00:00:00.000Z",
+  "files": {
+    "App.tsx": {
+      "overview": "Top-level route definition for Tiket.ku. Wraps the app in BrowserRouter and maps five paths to their pages, giving the guided tour its bird's-eye view of runtime structure. The file also carries commented-out imports and routes for the ticket, registration, and payment flows that are not yet wired into this MVP build.",
+      "sections": [
+        {
+          "title": "Imports and route setup",
+          "lineRange": [1, 9],
+          "explanation": "Imports routing primitives from react-router-dom and the five active page components. The commented imports on lines 8-9 hint at the planned Ticket and RegisterForm routes; they are inert and should be read as roadmap notes, not live dependencies.",
+          "tourOrder": 1
+        },
+        {
+          "title": "App component and routes",
+          "lineRange": [11, 27],
+          "explanation": "Renders BrowserRouter containing a Routes switch with paths for home, '/matchs', login, signup, and the OAuth callback. Each Route uses an element prop rather than children, the React Router v6+ convention. Commented route placeholders on lines 20-22 mark future form, payment, and ticket destinations; they do not participate in routing.",
+          "tourOrder": 1
+        },
+        {
+          "title": "Default export",
+          "lineRange": [29, 29],
+          "explanation": "Default-exports App so main.tsx can mount it as the single root component.",
+          "tourOrder": 1
+        }
+      ]
+    },
+    "main.tsx": {
+      "overview": "Application entry point referenced by the first tour step. Imports global styles and App, then mounts the React tree into the DOM element with id 'root'. StrictMode is enabled to surface unsafe lifecycles and side effects during development.",
+      "sections": [
+        {
+          "title": "Global imports",
+          "lineRange": [1, 4],
+          "explanation": "Loads app.css first so Tailwind theme tokens and utility classes are available before components render. App is imported via the '@/' alias configured in tsconfig, while React APIs come from their packages. Order matters here only for readability; CSS is applied as a side effect regardless.",
+          "tourOrder": 1
+        },
+        {
+          "title": "Root mount",
+          "lineRange": [6, 10],
+          "explanation": "createRoot targets document.getElementById('root') with a non-null assertion, trusting the Vite index.html template to provide the element. render wraps App in StrictMode, which double-invokes certain functions in development to expose impure code. BrowserRouter itself lives inside App, not here.",
+          "tourOrder": 1
+        }
+      ]
+    },
+    "app.css": {
+      "overview": "Design-token source of truth for the project, highlighted in tour step 2. Uses Tailwind CSS v4's @theme block to declare brand, surface, ink, night, and semantic color tokens plus font, radius, spacing, and shadow scales. Additional @utility rules expose reusable typography classes, and the file ends with base styles for focus visibility and reduced motion.",
+      "sections": [
+        {
+          "title": "Font and Tailwind imports",
+          "lineRange": [1, 4],
+          "explanation": "Pulls Inter and Fira Code from Google Fonts as external @import rules, then loads Tailwind via @import \"tailwindcss\". In CSS, @import statements must precede other rules, which is why fonts and Tailwind appear before @theme. The fonts are later referenced by the --font-* tokens.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Theme color tokens",
+          "lineRange": [6, 54],
+          "explanation": "The @theme block defines custom CSS variables that Tailwind v4 turns into utility classes. Brand blues, neutral surface/ink/night palettes, line colors, and Tiket.ku semantic colors such as --color-primary and --color-danger all live here. Centralizing them means components can use classes like bg-brand-blue or text-danger without ad-hoc hex values.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Type, radius, spacing, shadows",
+          "lineRange": [56, 83],
+          "explanation": "Declares font stacks, radius scale, spacing scale, and shadow tokens inside the same @theme block. --font-heading aliases --font-sans so headings inherit the body family. Note that --radius-base/sm/lg are not a simple ascending scale (10px, 12px, 14px), so read each token by name rather than assuming ordering.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Typography utilities",
+          "lineRange": [85, 139],
+          "explanation": "Tailwind v4 @utility rules create named classes type-display, type-h1 through type-h3, type-body, type-small, type-caption, and type-code. Each bundles font family, size, line height, and weight so JSX can apply one class instead of four. type-code is the only one using --font-mono.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Base styles and accessibility",
+          "lineRange": [141, 159],
+          "explanation": "Applies the sans font stack to :root, gives every focusable element a visible brand-blue outline, and honors prefers-reduced-motion by collapsing animations and transitions. These are global safeguards: the focus ring supports keyboard navigation and the media query prevents motion sickness for users who opt out.",
+          "tourOrder": 2
+        }
+      ]
+    },
+    "lib/utiils.ts": {
+      "overview": "Tiny shared helper referenced in tour step 2. The cn function composes conditional class names with clsx then resolves conflicting Tailwind utilities with tailwind-merge. Nearly every shared UI primitive imports it to merge a caller's className with defaults. Note the directory name 'utiils' is misspelled consistently, so imports must match it exactly.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 2],
+          "explanation": "clsx provides the ClassValue type and flattens conditional/array/object class inputs. twMerge from tailwind-merge drops earlier conflicting utilities so the last one wins, for example 'p-2 p-4' becomes 'p-4'.",
+          "tourOrder": 2
+        },
+        {
+          "title": "cn helper",
+          "lineRange": [4, 6],
+          "explanation": "A single generic variadic function: clsx(inputs) builds the class string, twMerge normalizes it. Wrapping both in one helper keeps components free of merge details and is the standard shadcn/ui pattern for className props.",
+          "tourOrder": 2
+        }
+      ]
+    },
+    "components/Alerts.tsx": {
+      "overview": "Toast-style alert component introduced in tour step 3. Renders a fixed-position notification with a variant-driven color scheme, an animated entrance/exit via framer-motion, a countdown progress bar, and an optional onClose callback fired after the exit animation finishes. Variants map to design tokens from app.css.",
+      "sections": [
+        {
+          "title": "Imports and types",
+          "lineRange": [1, 12],
+          "explanation": "Imports cn, framer-motion primitives, and React hooks. AlertVariant is a string union of five supported styles; AlertProps makes variant and desc required while duration and onClose are optional. Keeping the union narrow means variantStyles can be exhaustively typed with Record.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Variant style map",
+          "lineRange": [14, 48],
+          "explanation": "variantStyles assigns four token-based classes per variant: text, border, background tint, and progress bar. Record<AlertVariant, ...> makes TypeScript require every variant, so adding a new one forces a style definition. The 'dark' variant uses ink/surface tokens instead of semantic status colors.",
+          "tourOrder": 3
+        },
+        {
+          "title": "State and auto-dismiss timer",
+          "lineRange": [50, 64],
+          "explanation": "Selects styles for the current variant and initializes isVisible to true. A useEffect starts a setTimeout that flips isVisible to false after duration ms (default 5000), and the cleanup clears the timer if duration changes or the alert unmounts. Flipping the flag triggers the exit animation rather than removing the node immediately.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Animated alert markup",
+          "lineRange": [66, 104],
+          "explanation": "AnimatePresence keeps the motion.div mounted until the exit transition completes, then calls onClose via onExitComplete. The div slides in from x:300 and out to the same side with a 0.4s duration, carries role='alert' for assistive tech, and combines variant classes through cn. Inside, an info icon, the description text, and a manual close button are laid out with flex; clicking the button repeats the same isVisible(false) path as the timer.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Countdown progress bar",
+          "lineRange": [106, 116],
+          "explanation": "A second motion.div animates width from 100% to 0% over duration/1000 seconds with linear easing, visually mirroring the auto-dismiss timer. Its bar color comes from the same variant map, so the accent stays consistent across all alert types.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Default export",
+          "lineRange": [119, 119],
+          "explanation": "Default-exports Alerts; the components barrel re-exports it with 'export *', so consumers can import it from the shared module path.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/Button.tsx": {
+      "overview": "Shared button primitive from tour step 3. Extends native button attributes with a required label and explicit type union, then folds a disabled-driven spinner and 'Loading...' text into the render. The cn helper merges caller classes and applies disabled styling, making it the standard submit/action button across pages.",
+      "sections": [
+        {
+          "title": "Imports and props",
+          "lineRange": [1, 7],
+          "explanation": "Imports cn and ButtonHTMLAttributes. ButtonProps extends the native attribute set, so onClick, disabled, aria-* props, and other button behavior pass through without manual forwarding. It adds a required label string and narrows type to button/submit/reset.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Component signature",
+          "lineRange": [8, 14],
+          "explanation": "Destructures label, onClick, className (default empty), and type (default 'button'), collecting everything else in props. The default type prevents accidental form submission when the button is used for navigation or toggles.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Rendered button",
+          "lineRange": [15, 32],
+          "explanation": "cn merges base classes, the caller's className, and conditional disabled styles. type and onClick are destructured out of props, so the later spread cannot override them; remaining native attributes pass straight through. When disabled is true, a CSS-only spinning border and the literal text 'Loading...' replace the label, coupling loading and disabled into one state.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/index.ts": {
+      "overview": "Barrel file described in tour step 3. Re-exports every shared UI component from a single module so pages can import several primitives in one statement. It contains no logic; adding a component to components/ requires adding a matching export line here for the barrel to stay complete.",
+      "sections": [
+        {
+          "title": "Alert and button exports",
+          "lineRange": [1, 3],
+          "explanation": "Re-exports Alerts (default export made available through export *) and Button. The blank lines are formatting only. These are the primitives most pages reach for first.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Remaining UI exports",
+          "lineRange": [4, 14],
+          "explanation": "One export * line per component module, covering banners, dropdowns, feature cards, hero, footer, navbar, input fields, and schedule sections. export * forwards named exports only, so this line does not re-export default exports; modules such as Alerts.tsx that only use export default must be imported directly from their own path. Worth noticing when a page imports a default-exported component elsewhere in the codebase.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/InputField.tsx": {
+      "overview": "Form input primitive covered by tour step 3. Combines a native input with a CSS-only floating label, inline error text, password visibility toggle, and an optional forgot-password link. It uses the same disabled-driven styling discipline as Button and relies on Tailwind peer-* classes instead of JavaScript for the label motion.",
+      "sections": [
+        {
+          "title": "Imports and props",
+          "lineRange": [1, 14],
+          "explanation": "Imports cn, lucide eye icons, React state, and router Link. InputFieldProps extends native input attributes and adds labelName, optional error, a narrowed type union, required boolean, and optional forgot-password controls. Extending native props means react-hook-form's register output can be spread onto the input unchanged.",
+          "tourOrder": 3
+        },
+        {
+          "title": "State setup",
+          "lineRange": [15, 26],
+          "explanation": "Destructures props with defaults: empty className, text type, and '#' for forgotPasswordPath. showPassword tracks the toggle state, and isPassword is derived from type so password-only UI is gated by a single boolean.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Input and floating label",
+          "lineRange": [27, 45],
+          "explanation": "The input's effective type switches between text and password based on showPassword. cn merges base styles, caller classes, error red border, and disabled cursor. The adjacent span is the label: peer-placeholder-shown and peer-focus utilities move it down or up, which is why the input needs placeholder support to trigger the collapsed state. A required asterisk is appended inline.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Password visibility toggle",
+          "lineRange": [46, 62],
+          "explanation": "Rendered only for password inputs. The button is type='button' to avoid submitting a surrounding form, and its onClick is dropped when disabled. Eye/EyeOff icons reflect state, and aria-label changes between 'Hide password' and 'show password' for screen readers.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Error slot and forgot-password link",
+          "lineRange": [64, 89],
+          "explanation": "A permanent <p> reserves vertical space for the error message, using a non-breaking space when there is no error so layout does not jump. For password fields only, a right-aligned area renders either a router Link to forgotPasswordPath or an empty placeholder paragraph. The Link's onClick prevents navigation when disabled, keeping the visual and functional disabled states consistent.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/Features.tsx": {
+      "overview": "Landing-page section highlighted in tour step 4. Holds a static array of four value propositions and renders each through FeatureCard inside a responsive grid. Copy is in Indonesian per project convention, and headings use ink tokens from the design system.",
+      "sections": [
+        {
+          "title": "Imports and feature data",
+          "lineRange": [1, 25],
+          "explanation": "Imports four Font Awesome icons and the local FeatureCard component. The features array stores icon elements plus title/description strings for schedule browsing, tribun selection, simulated payment, and QR e-tickets. Keeping content as data makes the JSX a simple map and would allow future localization without changing markup.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Section heading",
+          "lineRange": [27, 38],
+          "explanation": "The exported Features component renders a section with a subtle surface background, centered heading, and supporting paragraph. max-w-2xl keeps the text block readable while mx-auto centers it.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Feature card grid",
+          "lineRange": [39, 52],
+          "explanation": "A responsive grid goes from one column on mobile to two on sm and four on lg. Each item is mapped to FeatureCard with a stable key of f.title and explicit icon/title/description props; spreading the object could be shorter but naming props documents the card contract.",
+          "tourOrder": 4
+        }
+      ]
+    },
+    "components/Hero.tsx": {
+      "overview": "First visible landing section in tour step 4. Renders a dark gradient hero with the Tiket.ku headline and two call-to-action buttons whose behavior is supplied by the parent through callbacks. The component is purely presentational: no routing or auth logic lives here.",
+      "sections": [
+        {
+          "title": "Imports and props",
+          "lineRange": [1, 8],
+          "explanation": "Imports the shared Button and defines HeroProps with two callback functions: onPesanTiket and onLihatJadwal. Naming them in Indonesian matches UI copy while keeping the component decoupled from useNavigate. The parent decides where each action leads.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Hero section shell",
+          "lineRange": [10, 29],
+          "explanation": "The root section has id='main-content', the target of the skip link in Home.tsx. A decorative gradient overlay is marked aria-hidden so assistive tech ignores it. Content is centered with max-w-3xl; the eyebrow text names the venue, the h1 and subheading use display tokens, and the paragraph states the value proposition.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Call-to-action buttons",
+          "lineRange": [30, 46],
+          "explanation": "Two Buttons stack on small screens and sit side by side from sm upward. Each receives its label, the corresponding callback, and a className supplying colors, padding, and rounded corners. The secondary button uses line-on-dark plus a translucent hover, keeping visual hierarchy clear without another component variant.",
+          "tourOrder": 4
+        }
+      ]
+    },
+    "components/SchedulePreview.tsx": {
+      "overview": "Landing-page event preview from tour step 4. Defines three hard-coded upcoming events and renders them as ScheduleCard components in a responsive grid. A single onDetail callback is forwarded to every card, so the parent controls navigation while this file stays presentational.",
+      "sections": [
+        {
+          "title": "Imports and sample events",
+          "lineRange": [1, 28],
+          "explanation": "Imports ScheduleCard and declares a local events array of three objects with badge, title, subtitle, date, time, and venue. These are static marketing placeholders rather than Supabase data; the live match list lives in the Matches feature. Titles serve as React keys here, which is acceptable only because the sample list is fixed.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Props interface",
+          "lineRange": [30, 32],
+          "explanation": "SchedulePreviewProps exposes one required onDetail callback with no arguments. Because every card shares it, individual events cannot carry distinct destinations in this version.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Schedule section and card grid",
+          "lineRange": [34, 54],
+          "explanation": "Renders a white-background section with a centered heading and the same responsive grid pattern used by Features (1/2/3 columns). Each event object is spread into ScheduleCard and onDetail is passed through, keeping the preview free of layout duplication.",
+          "tourOrder": 4
+        }
+      ]
+    },
+    "features/home/page/Home.tsx": {
+      "overview": "Landing page composed in tour step 4. Reads login state from useSession, defines navigation handlers, and assembles Navbar, Hero, Features, SchedulePreview, and Footer. It also includes a skip link for keyboard users and gates the 'Pesan Tiket' action behind authentication.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 7],
+          "explanation": "Imports the five landing sections via the '@/components' barrel, useSession for auth state, and useNavigate for routing. Using the barrel here shows the payoff described in tour step 3: one import path instead of five relative ones.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Navigation handlers",
+          "lineRange": [9, 23],
+          "explanation": "HomePage pulls navigate and isLoggedIn. handlePesanTiket redirects unauthenticated users to '/login' and otherwise goes to '/matchs'; handleLihatJadwal always goes to '/matchs'. This is the tour's auth-gating example: the decision lives in the page, not in Hero.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Page composition",
+          "lineRange": [25, 39],
+          "explanation": "A main wrapper holds a visually hidden skip link that becomes visible on focus and jumps to the Hero's '#main-content' id. Navbar receives the login boolean, Hero gets both handlers, Features is static, SchedulePreview reuses handleLihatJadwal for its onDetail, and Footer closes the page.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Default export",
+          "lineRange": [41, 41],
+          "explanation": "Default-exports HomePage for the '/' route in App.tsx.",
+          "tourOrder": 4
+        }
+      ]
+    }
+  }
+}

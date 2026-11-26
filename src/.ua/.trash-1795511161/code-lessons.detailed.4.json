@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-24T00:00:00.000Z",
+  "files": {
+    "features/users/schema/userSchema.ts": {
+      "overview": "Zod validation schema for the buyer registration form. It defines reusable nonempty string rules, then constrains name, identity number, email, gender, and ticket quantities. It is reused by useUserRegister and TicketCard, and belongs to the buyer registration and tickets tour step.",
+      "sections": [
+        {
+          "title": "Validation building blocks",
+          "lineRange": [1, 4],
+          "explanation": "Imports z from zod and declares two shared nonempty string validators with distinct error messages. Splitting generic text and dropdown validation lets the object schema reuse rules while still giving field-appropriate messages.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Buyer object schema",
+          "lineRange": [6, 16],
+          "explanation": "Defines userSchema with field-level constraints: fullName allows letters and spaces only, identityNumber accepts digits only, email must be a valid address, gender uses the option validator, and tickets is a record of numeric quantities. Regex and built-in email checks encode the input contract before data reaches services, so invalid form values are caught at the UI boundary.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Inferred TypeScript type",
+          "lineRange": [18, 18],
+          "explanation": "Exports UserSchema via z.infer so TypeScript consumers derive their type from the runtime schema instead of maintaining a separate interface. This keeps validation rules and compile-time types in sync.",
+          "tourOrder": 12
+        }
+      ]
+    }
+  }
+}

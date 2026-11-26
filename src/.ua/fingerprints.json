@@ -1,0 +1,1685 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "f380ff666b3b2f38a3363d50f0dd6493bbba3328",
+  "generatedAt": "2026-11-24T09:05:37.061Z",
+  "files": {
+    "App.tsx": {
+      "filePath": "App.tsx",
+      "contentHash": "cc66207c01fb017a82a6a85e2a3f847845b45185d11915b6100ff42a77539ed9",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": false,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Route",
+            "Router",
+            "Routes"
+          ]
+        },
+        {
+          "source": "./features/home/page/Home",
+          "specifiers": [
+            "HomePage"
+          ]
+        },
+        {
+          "source": "./features/matches/page/Matches",
+          "specifiers": [
+            "Matches"
+          ]
+        },
+        {
+          "source": "./features/auth/page/LoginPage",
+          "specifiers": [
+            "LoginPage"
+          ]
+        },
+        {
+          "source": "./features/auth/page/SignupPage",
+          "specifiers": [
+            "SignupPage"
+          ]
+        },
+        {
+          "source": "./features/auth/page/AuthCallbackPage",
+          "specifiers": [
+            "AuthCallbackPage"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "app.css": {
+      "filePath": "app.css",
+      "contentHash": "cf31ca79e3d2525eb59465a13b80316bf604707dbea891b6e53e4921c369ccac",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 159,
+      "hasStructuralAnalysis": false
+    },
+    "components/Alerts.tsx": {
+      "filePath": "components/Alerts.tsx",
+      "contentHash": "cc3fd558d0f7803ed185df113625ba392e4c6fcf93d71c217fca4eafca08cb9f",
+      "functions": [
+        {
+          "name": "Alerts",
+          "params": [
+            "{\r\n  variant,\r\n  desc,\r\n  duration = 5000,\r\n  onClose,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 68
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "AnimatePresence",
+            "motion"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useEffect",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 120,
+      "hasStructuralAnalysis": true
+    },
+    "components/Button.tsx": {
+      "filePath": "components/Button.tsx",
+      "contentHash": "f1a0459b11d00602394f986227b2ae8bfc1760d033d9ee77f71664daf1d4da5f",
+      "functions": [
+        {
+          "name": "Button",
+          "params": [
+            "{\r\n  label,\r\n  onClick,\r\n  className = \"\",\r\n  type = \"button\",\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 25
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ButtonHTMLAttributes"
+          ]
+        }
+      ],
+      "exports": [
+        "Button"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "components/CTABanner.tsx": {
+      "filePath": "components/CTABanner.tsx",
+      "contentHash": "4b20298f21747fefc0a864ec7f55567527e1e1d756d554ee32e2f13f9652de98",
+      "functions": [
+        {
+          "name": "CTABanner",
+          "params": [
+            "{ onAction }"
+          ],
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "CTABanner"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "components/Dropdown.tsx": {
+      "filePath": "components/Dropdown.tsx",
+      "contentHash": "bbdc704148a44eea817f53b36d43227c49778b4900d41a3b805f41e7d40cf3dc",
+      "functions": [
+        {
+          "name": "Dropdown",
+          "params": [
+            "{\r\n  labelName,\r\n  defaultValue,\r\n  options,\r\n  register,\r\n  errorMessage,\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 37
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "UseFormRegisterReturn"
+          ]
+        }
+      ],
+      "exports": [
+        "Dropdown"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "components/FeatureCard.tsx": {
+      "filePath": "components/FeatureCard.tsx",
+      "contentHash": "d86f19cf1f4f09c6802739e5eec0d88ab07ea1e41c5887221f1acbab5ac2ed41",
+      "functions": [
+        {
+          "name": "FeatureCard",
+          "params": [
+            "{ icon, title, description }"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "FeatureCard"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "components/Features.tsx": {
+      "filePath": "components/Features.tsx",
+      "contentHash": "65c5239d1ac760978e1617354a0ddf2024a431892f6439d17bd1a344745dd3f1",
+      "functions": [
+        {
+          "name": "Features",
+          "params": [],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-icons/fa",
+          "specifiers": [
+            "FaCalendarAlt",
+            "FaTicketAlt",
+            "FaShieldAlt",
+            "FaQrcode"
+          ]
+        },
+        {
+          "source": "./FeatureCard",
+          "specifiers": [
+            "FeatureCard"
+          ]
+        }
+      ],
+      "exports": [
+        "Features"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "components/Footer.tsx": {
+      "filePath": "components/Footer.tsx",
+      "contentHash": "ad8ea7b17ffc4b964e3667d933beb7d4f4a5b048b4e0e1ab276e6443bcaf6d79",
+      "functions": [
+        {
+          "name": "Footer",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./FooterLinks",
+          "specifiers": [
+            "FooterLinks"
+          ]
+        }
+      ],
+      "exports": [
+        "Footer"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "components/FooterLinks.tsx": {
+      "filePath": "components/FooterLinks.tsx",
+      "contentHash": "93d42b9a02fa3bcf9effd9ce19a9af9d8a6ee1a21d01ec664965e9b9b3e40b05",
+      "functions": [
+        {
+          "name": "FooterLinks",
+          "params": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "FooterLinks"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "components/Hero.tsx": {
+      "filePath": "components/Hero.tsx",
+      "contentHash": "cbac123e665ee95b5087de45008f1c1a480fda3e4e6cde5743df3990259bce86",
+      "functions": [
+        {
+          "name": "Hero",
+          "params": [
+            "{ onPesanTiket, onLihatJadwal }"
+          ],
+          "exported": true,
+          "lineCount": 39
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./Button",
+          "specifiers": [
+            "Button"
+          ]
+        }
+      ],
+      "exports": [
+        "Hero"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "components/InputField.tsx": {
+      "filePath": "components/InputField.tsx",
+      "contentHash": "494d37e5fd57092d1cd568fdc241a7657bb8dec811ec1e8ea040c29a5b7ac859",
+      "functions": [
+        {
+          "name": "InputField",
+          "params": [
+            "{\r\n  className = \"\",\r\n  labelName,\r\n  error,\r\n  type = \"text\",\r\n  required,\r\n  showForgotPasswordLink,\r\n  forgotPasswordPath = \"#\",\r\n  ...props\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 75
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Eye",
+            "EyeOff"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "InputHTMLAttributes",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "InputField"
+      ],
+      "totalLines": 90,
+      "hasStructuralAnalysis": true
+    },
+    "components/Navbar.tsx": {
+      "filePath": "components/Navbar.tsx",
+      "contentHash": "61350aea6eb7e493228318d26e910c73e82b0bf0b186968731556ddf4becd1e0",
+      "functions": [
+        {
+          "name": "Navbar",
+          "params": [
+            "{ user }"
+          ],
+          "exported": true,
+          "lineCount": 58
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [
+        "Navbar"
+      ],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "components/ScheduleCard.tsx": {
+      "filePath": "components/ScheduleCard.tsx",
+      "contentHash": "714569b69a958e1fdcaed00c5c913a5395e922f76dd5707f767e1ccbe45fd9f8",
+      "functions": [
+        {
+          "name": "ScheduleCard",
+          "params": [
+            "{\n  badge,\n  title,\n  subtitle,\n  date,\n  time,\n  venue,\n  onDetail,\n}"
+          ],
+          "exported": true,
+          "lineCount": 30
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ScheduleCard"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "components/SchedulePreview.tsx": {
+      "filePath": "components/SchedulePreview.tsx",
+      "contentHash": "bcc47c094e163504d6a5e87d15ee0ee576ad11a110af7521193e0f6c84e3f8f4",
+      "functions": [
+        {
+          "name": "SchedulePreview",
+          "params": [
+            "{ onDetail }"
+          ],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./ScheduleCard",
+          "specifiers": [
+            "ScheduleCard"
+          ]
+        }
+      ],
+      "exports": [
+        "SchedulePreview"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "components/index.ts": {
+      "filePath": "components/index.ts",
+      "contentHash": "cb30cf03e6ff395f826737b318db5ba57f4877472e811971e27b6d8c2e9de325",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "features/auth/page/AuthCallbackPage.tsx": {
+      "filePath": "features/auth/page/AuthCallbackPage.tsx",
+      "contentHash": "f1ef18ab1e07d264983313a92a1a03217722d0bededb88ba1bb5347e6346cac6",
+      "functions": [
+        {
+          "name": "AuthCallbackPage",
+          "params": [],
+          "exported": false,
+          "lineCount": 30
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "@/features/auth/service/authService",
+          "specifiers": [
+            "getSession"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 37,
+      "hasStructuralAnalysis": true
+    },
+    "features/auth/page/LoginPage.tsx": {
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "contentHash": "c2b744e430b8b8b6e800c6c40d5bc9dfb2296a13ce49d344680e8dfb39b351c2",
+      "functions": [
+        {
+          "name": "LoginPage",
+          "params": [],
+          "exported": false,
+          "lineCount": 166
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-icons/fc",
+          "specifiers": [
+            "FcGoogle"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "@/components/Alerts",
+          "specifiers": [
+            "Alerts"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/hooks/useSession",
+          "specifiers": [
+            "useSession"
+          ]
+        },
+        {
+          "source": "@/features/auth/schema/authSchemas",
+          "specifiers": [
+            "loginSchema",
+            "LoginSchema"
+          ]
+        },
+        {
+          "source": "@/features/auth/service/authService",
+          "specifiers": [
+            "mapAuthError",
+            "signInWithEmail",
+            "signInWithGoogle"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 189,
+      "hasStructuralAnalysis": true
+    },
+    "features/auth/page/SignupPage.tsx": {
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "contentHash": "a8ff828918b10e1a91fb04a122526e47c72e4cc8b8d9a55c2d41d5555b2b8c74",
+      "functions": [
+        {
+          "name": "SignupPage",
+          "params": [],
+          "exported": false,
+          "lineCount": 215
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-icons/fc",
+          "specifiers": [
+            "FcGoogle"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "@/components/Alerts",
+          "specifiers": [
+            "Alerts"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/hooks/useSession",
+          "specifiers": [
+            "useSession"
+          ]
+        },
+        {
+          "source": "@/features/auth/schema/authSchemas",
+          "specifiers": [
+            "signupSchema",
+            "SignupSchema"
+          ]
+        },
+        {
+          "source": "@/features/auth/service/authService",
+          "specifiers": [
+            "getSession",
+            "mapAuthError",
+            "signUpWithEmail",
+            "signInWithGoogle"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 235,
+      "hasStructuralAnalysis": true
+    },
+    "features/auth/schema/authSchemas.ts": {
+      "filePath": "features/auth/schema/authSchemas.ts",
+      "contentHash": "582aa9e8e6c2372536b4bf368551de3adaf8568268e2e439446ec8f441c22c6a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        }
+      ],
+      "exports": [
+        "authSchema",
+        "loginSchema",
+        "signupSchema"
+      ],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "features/auth/service/authService.ts": {
+      "filePath": "features/auth/service/authService.ts",
+      "contentHash": "205de61f548a8ac464a0f8d432a2c207ad3427dd3fadf6336c6f22120224fddb",
+      "functions": [
+        {
+          "name": "getSession",
+          "params": [],
+          "exported": true,
+          "lineCount": 1
+        },
+        {
+          "name": "onAuthStateChange",
+          "params": [
+            "callback"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "requireUserId",
+          "params": [],
+          "returnType": "Promise<string>",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "signInWithEmail",
+          "params": [
+            "email",
+            "password"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "signUpWithEmail",
+          "params": [
+            "email",
+            "password",
+            "fullName"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "signInWithGoogle",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "signOut",
+          "params": [],
+          "exported": true,
+          "lineCount": 1
+        },
+        {
+          "name": "mapAuthError",
+          "params": [
+            "error"
+          ],
+          "returnType": "string | null",
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            "AuthError"
+          ]
+        },
+        {
+          "source": "@/lib/supabase",
+          "specifiers": [
+            "supabase"
+          ]
+        }
+      ],
+      "exports": [
+        "getSession",
+        "onAuthStateChange",
+        "requireUserId",
+        "signInWithEmail",
+        "signUpWithEmail",
+        "signInWithGoogle",
+        "signOut",
+        "mapAuthError"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "features/events/service/eventService.ts": {
+      "filePath": "features/events/service/eventService.ts",
+      "contentHash": "b547c40da642563ac89c1f9402caae2ebe1a13b46b55323053f68a88324ff3ee",
+      "functions": [
+        {
+          "name": "mapEvent",
+          "params": [
+            "row"
+          ],
+          "returnType": "EventRecord",
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "buildQuery",
+          "params": [
+            "type"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "getEvents",
+          "params": [
+            "type"
+          ],
+          "returnType": "Promise<EventRecord[]>",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "getEventById",
+          "params": [
+            "eventId"
+          ],
+          "returnType": "Promise<EventRecord | null>",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/features/events/types/event.types",
+          "specifiers": [
+            "EventRecord",
+            "EventType"
+          ]
+        },
+        {
+          "source": "@/lib/supabase",
+          "specifiers": [
+            "supabase"
+          ]
+        }
+      ],
+      "exports": [
+        "getEvents",
+        "getEventById"
+      ],
+      "totalLines": 75,
+      "hasStructuralAnalysis": true
+    },
+    "features/events/types/event.types.ts": {
+      "filePath": "features/events/types/event.types.ts",
+      "contentHash": "d3392be9db0d25fa93b89d4bd6da4076e9211c23425a3d4e6769f4ce904029b7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "features/home/page/Home.tsx": {
+      "filePath": "features/home/page/Home.tsx",
+      "contentHash": "ae8bddb1a484a0d1abf69fa1424f5160563cd70c2a95955a2ac6bf1cf2d73e3f",
+      "functions": [
+        {
+          "name": "HomePage",
+          "params": [],
+          "exported": false,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/Features",
+          "specifiers": [
+            "Features"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/Hero",
+          "specifiers": [
+            "Hero"
+          ]
+        },
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/components/SchedulePreview",
+          "specifiers": [
+            "SchedulePreview"
+          ]
+        },
+        {
+          "source": "@/hooks/useSession",
+          "specifiers": [
+            "useSession"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/components/Card.tsx": {
+      "filePath": "features/matches/components/Card.tsx",
+      "contentHash": "81e48d4f2041f730905af7b684d4f676e4736739aeb095963c80b2a06bf39950",
+      "functions": [
+        {
+          "name": "MatchScheduleCard",
+          "params": [
+            "{\r\n  team_home,\r\n  team_away,\r\n  match_time,\r\n  time_zone,\r\n  match_date,\r\n  stadium,\r\n  onClick,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types/matchesPayload",
+          "specifiers": [
+            "MatchPayload"
+          ]
+        },
+        {
+          "source": "./TeamSection",
+          "specifiers": [
+            "TeamSection"
+          ]
+        },
+        {
+          "source": "./matchesProps",
+          "specifiers": [
+            "MatchCardProps"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/components/TeamSection.tsx": {
+      "filePath": "features/matches/components/TeamSection.tsx",
+      "contentHash": "dd5eeb77d972f14ebc183c20ba5acf356ebc9a6200781f0dccf5d2ca5d433c38",
+      "functions": [
+        {
+          "name": "TeamSection",
+          "params": [
+            "{ name, logo }"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types/matchesPayload.types",
+          "specifiers": [
+            "TeamPayload"
+          ]
+        }
+      ],
+      "exports": [
+        "TeamSection"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/components/matchesProps.ts": {
+      "filePath": "features/matches/components/matchesProps.ts",
+      "contentHash": "a958084b4a55abcbfaa2a9acf6dd27141a5e1fa02ef2a59de36d6c5da8173be8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/hooks/useMatchData.ts": {
+      "filePath": "features/matches/hooks/useMatchData.ts",
+      "contentHash": "e68434479cadd66849e49107ee2406076c679d0853654ab40c03c19fa5aee6d8",
+      "functions": [
+        {
+          "name": "useMatchData",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "../service/matchService",
+          "specifiers": [
+            "getMatches"
+          ]
+        },
+        {
+          "source": "../types/matchesPayload",
+          "specifiers": [
+            "MatchPayload"
+          ]
+        }
+      ],
+      "exports": [
+        "useMatchData"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/page/Matches.tsx": {
+      "filePath": "features/matches/page/Matches.tsx",
+      "contentHash": "0acb82ec7683927ea39842c145cc887e51bf48590523f010df8d966645acdcfb",
+      "functions": [
+        {
+          "name": "Matches",
+          "params": [],
+          "exported": false,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "../components/Card",
+          "specifiers": [
+            "Card"
+          ]
+        },
+        {
+          "source": "../hooks/useMatchData",
+          "specifiers": [
+            "useMatchData"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/service/matchService.ts": {
+      "filePath": "features/matches/service/matchService.ts",
+      "contentHash": "0a7b72763a1a302bcbf469b82dff1bfb1bb0e1f2e3749e1622745b6b23b6369a",
+      "functions": [
+        {
+          "name": "getMatches",
+          "params": [],
+          "returnType": "Promise<MatchPayload[]>",
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/features/events/service/eventService",
+          "specifiers": [
+            "getEvents"
+          ]
+        },
+        {
+          "source": "../types/matchesPayload",
+          "specifiers": [
+            "MatchPayload"
+          ]
+        }
+      ],
+      "exports": [
+        "getMatches"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/types/matchesPayload.ts": {
+      "filePath": "features/matches/types/matchesPayload.ts",
+      "contentHash": "264249fe4c20959b968047a231b5a8fd5d4980bdd46c167db2e3b763b2b509c9",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./matchesPayload.types",
+          "specifiers": [
+            "TeamPayload"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "features/matches/types/matchesPayload.types.ts": {
+      "filePath": "features/matches/types/matchesPayload.types.ts",
+      "contentHash": "f47d15747eeb8cd33d7edfbe2eea28c4990cc8316e724744f445e271f62e25c5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 5,
+      "hasStructuralAnalysis": true
+    },
+    "features/orders/service/orderService.ts": {
+      "filePath": "features/orders/service/orderService.ts",
+      "contentHash": "7678eaef93cf0b6c8f107457789c6e8c094334702bc168ae8c1d4e3e656dc8c3",
+      "functions": [
+        {
+          "name": "createOrder",
+          "params": [
+            "{\r\n  eventId,\r\n  items,\r\n  buyer,\r\n}"
+          ],
+          "returnType": "Promise<{ orderId: string; totalAmount: number }>",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "completePayment",
+          "params": [
+            "{\r\n  orderId,\r\n  method,\r\n}"
+          ],
+          "returnType": "Promise<{ ticketId: string }>",
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/features/auth/service/authService",
+          "specifiers": [
+            "requireUserId"
+          ]
+        },
+        {
+          "source": "@/features/events/types/event.types",
+          "specifiers": [
+            "BuyerInput",
+            "OrderItemInput"
+          ]
+        },
+        {
+          "source": "@/lib/supabase",
+          "specifiers": [
+            "supabase"
+          ]
+        }
+      ],
+      "exports": [
+        "createOrder",
+        "completePayment"
+      ],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "features/payment/components/PaymentMethods.tsx": {
+      "filePath": "features/payment/components/PaymentMethods.tsx",
+      "contentHash": "086f88b6098a7d9fdfe82da3a56b6877949b6e35ba2c5a37302f74bed30cce34",
+      "functions": [
+        {
+          "name": "PaymentMethods",
+          "params": [
+            "{\r\n  label,\r\n  value,\r\n  selected,\r\n  onSelect,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 25
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 37,
+      "hasStructuralAnalysis": true
+    },
+    "features/payment/hooks/usePayment.ts": {
+      "filePath": "features/payment/hooks/usePayment.ts",
+      "contentHash": "26f8161751394e43e4c4067f11ce9564d132a08ae5a23b95b1a1d865982368ea",
+      "functions": [
+        {
+          "name": "PaymentFormValidation",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "../schemas/paymentSchema",
+          "specifiers": [
+            "paymentSchema",
+            "PaymentSchema"
+          ]
+        }
+      ],
+      "exports": [
+        "PaymentFormValidation"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "features/payment/page/Payment.tsx": {
+      "filePath": "features/payment/page/Payment.tsx",
+      "contentHash": "38a07874beb4f104b7b2614e5491f163e19ed4165309e1f08fe296edf94f78a4",
+      "functions": [
+        {
+          "name": "Payment",
+          "params": [],
+          "exported": false,
+          "lineCount": 65
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate",
+            "useParams"
+          ]
+        },
+        {
+          "source": "../../../components",
+          "specifiers": [
+            "Button",
+            "InputField"
+          ]
+        },
+        {
+          "source": "../components/PaymentMethods",
+          "specifiers": [
+            "PaymentMethods"
+          ]
+        },
+        {
+          "source": "../hooks/usePayment",
+          "specifiers": [
+            "PaymentFormValidation"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "features/payment/schemas/paymentSchema.ts": {
+      "filePath": "features/payment/schemas/paymentSchema.ts",
+      "contentHash": "2319f5a4f83b7b9f3f694833b2e5a540a68fbfb1f1c878f5a5cb44a96ffb118d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        }
+      ],
+      "exports": [
+        "paymentSchema"
+      ],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "features/tickets/component/Ticket.tsx": {
+      "filePath": "features/tickets/component/Ticket.tsx",
+      "contentHash": "91e5778e32e7082ca229c4a15d347066a80134c98e0c4a4f735ad1d6a232de29",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
+    "features/tickets/service/ticketService.ts": {
+      "filePath": "features/tickets/service/ticketService.ts",
+      "contentHash": "4bd8c2fb89d79042cf1c460ed5b096311454a47a8ba8e808c07241174a1fa096",
+      "functions": [
+        {
+          "name": "getTicketByOrderId",
+          "params": [
+            "orderId"
+          ],
+          "returnType": "Promise<OrderTicket | null>",
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/features/events/types/event.types",
+          "specifiers": [
+            "OrderTicket"
+          ]
+        },
+        {
+          "source": "@/lib/supabase",
+          "specifiers": [
+            "supabase"
+          ]
+        }
+      ],
+      "exports": [
+        "getTicketByOrderId"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "features/users/components/TicketCard.tsx": {
+      "filePath": "features/users/components/TicketCard.tsx",
+      "contentHash": "551702a253fce22218bf9e739a08bb3f2fe60e2feb8d5cfae9aa52a866cdbb06",
+      "functions": [
+        {
+          "name": "TicketCard",
+          "params": [
+            "{\r\n  tribune,\r\n  price,\r\n  count,\r\n  onCountChange,\r\n}"
+          ],
+          "exported": false,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "Control"
+          ]
+        },
+        {
+          "source": "../schema/userSchema",
+          "specifiers": [
+            "UserSchema"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "features/users/hooks/useUserRegister.ts": {
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "contentHash": "36c743b1a07f7ea3f373a8c6fa5b90e3cb91c35ca9f29a4980abb7d979a4dbd9",
+      "functions": [
+        {
+          "name": "useUserRegister",
+          "params": [],
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "../schema/userSchema",
+          "specifiers": [
+            "userSchema",
+            "UserSchema"
+          ]
+        }
+      ],
+      "exports": [
+        "useUserRegister"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "features/users/hooks/useUsers.ts": {
+      "filePath": "features/users/hooks/useUsers.ts",
+      "contentHash": "54de67f712a5245ae03611962f34428b54c3db355762d9425f438d2ecb1f576b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "features/users/page/RegisterForm.tsx": {
+      "filePath": "features/users/page/RegisterForm.tsx",
+      "contentHash": "1579a0d207203afcbad4411b9432798da7152d4212e95ab69448491f879d453a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 103,
+      "hasStructuralAnalysis": true
+    },
+    "features/users/schema/userSchema.ts": {
+      "filePath": "features/users/schema/userSchema.ts",
+      "contentHash": "eae12e924319531ee6bc8e72a620f15fbf77f4095056251ecec536a94c80ebc6",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        }
+      ],
+      "exports": [
+        "userSchema"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "features/users/service/userServices.ts": {
+      "filePath": "features/users/service/userServices.ts",
+      "contentHash": "a910fee8fc6c844def7aae1bf75cb59b95a717a2b67c874cb1754007e008d548",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "features/users/types/userPayload.d.ts": {
+      "filePath": "features/users/types/userPayload.d.ts",
+      "contentHash": "9a2d5fd0ee16ffafaea5b7db24d1ba1075a79693d85b689348fc6dee18a53c18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "hooks/useCounter.ts": {
+      "filePath": "hooks/useCounter.ts",
+      "contentHash": "2dffd46de5a6f652f94296d6f14028204c30748f79337899f7f05537430281d2",
+      "functions": [
+        {
+          "name": "useCounter",
+          "params": [
+            "defaultValue"
+          ],
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "useCounter"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "hooks/useSession.ts": {
+      "filePath": "hooks/useSession.ts",
+      "contentHash": "97cac8d331e9ea76d7da00d17566d060cb23880b15243beeedb2b97c22663103",
+      "functions": [
+        {
+          "name": "useSession",
+          "params": [],
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            "Session"
+          ]
+        },
+        {
+          "source": "@/features/auth/service/authService",
+          "specifiers": [
+            "getSession",
+            "onAuthStateChange"
+          ]
+        }
+      ],
+      "exports": [
+        "useSession"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "lib/supabase.ts": {
+      "filePath": "lib/supabase.ts",
+      "contentHash": "768073dac2027faf1e450d844909960ba206bbc2a174052d5438bedc3d109733",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            "createClient"
+          ]
+        }
+      ],
+      "exports": [
+        "supabase"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "lib/utiils.ts": {
+      "filePath": "lib/utiils.ts",
+      "contentHash": "c0adf27efbfa148d5abcf99e860f8e3e6c8fc77a1f99e023c08ef4f12e6ece29",
+      "functions": [
+        {
+          "name": "cn",
+          "params": [
+            "...inputs"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "clsx",
+          "specifiers": [
+            "clsx",
+            "ClassValue"
+          ]
+        },
+        {
+          "source": "tailwind-merge",
+          "specifiers": [
+            "twMerge"
+          ]
+        }
+      ],
+      "exports": [
+        "cn"
+      ],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "main.tsx": {
+      "filePath": "main.tsx",
+      "contentHash": "e8e3ea1ba3c3f634513cff5a6ca731942a391f1b8179e094b4b50916277a1012",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/app.css",
+          "specifiers": []
+        },
+        {
+          "source": "@/App.tsx",
+          "specifiers": [
+            "App"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "services/userService.ts": {
+      "filePath": "services/userService.ts",
+      "contentHash": "cf523a94ae7153e284504041e4c668e4e436bec3b54c72987ac6d9b85c80848f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "vite-env.d.ts": {
+      "filePath": "vite-env.d.ts",
+      "contentHash": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

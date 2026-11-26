@@ -1,0 +1,95 @@
+{
+  "nodes": [
+    {
+      "id": "file:features/users/components/TicketCard.tsx",
+      "type": "file",
+      "name": "TicketCard.tsx",
+      "filePath": "features/users/components/TicketCard.tsx",
+      "summary": "React component rendering a ticket tribune card with price display and quantity increase/decrease controls.",
+      "tags": ["component", "react", "ticket", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "function",
+      "name": "TicketCard",
+      "filePath": "features/users/components/TicketCard.tsx",
+      "lineRange": [15, 60],
+      "summary": "Functional component displaying tribune name, price, and quantity stepper that notifies parent via onCountChange.",
+      "tags": ["component", "react", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/users/hooks/useUserRegister.ts",
+      "type": "file",
+      "name": "useUserRegister.ts",
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "summary": "Custom hook wrapping react-hook-form with zod validation for user registration form state.",
+      "tags": ["hook", "form", "validation", "react-hook-form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "function",
+      "name": "useUserRegister",
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "lineRange": [5, 18],
+      "summary": "Initializes and returns a react-hook-form instance configured with userSchema zod resolver and default values.",
+      "tags": ["hook", "form", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/schema/userSchema.ts",
+      "type": "file",
+      "name": "userSchema.ts",
+      "filePath": "features/users/schema/userSchema.ts",
+      "summary": "Zod schema defining validation rules for user registration fields including name, identity number, email, gender, and ticket quantities.",
+      "tags": ["schema", "validation", "zod", "type-definition"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

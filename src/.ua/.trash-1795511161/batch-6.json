@@ -1,0 +1,176 @@
+{
+  "nodes": [
+    {
+      "id": "file:hooks/useCounter.ts",
+      "type": "file",
+      "name": "useCounter.ts",
+      "filePath": "hooks/useCounter.ts",
+      "summary": "React hook managing a counter state with increment and decrement helpers.",
+      "tags": ["hook", "state", "counter", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:hooks/useCounter.ts:useCounter",
+      "type": "function",
+      "name": "useCounter",
+      "filePath": "hooks/useCounter.ts",
+      "lineRange": [3, 15],
+      "summary": "Custom hook wrapping useState to provide a counter with increase and decrease actions.",
+      "tags": ["hook", "state", "counter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:hooks/useSession.ts",
+      "type": "file",
+      "name": "useSession.ts",
+      "filePath": "hooks/useSession.ts",
+      "summary": "React hook tracking the current Supabase auth session and loading state.",
+      "tags": ["hook", "auth", "session", "state"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:hooks/useSession.ts:useSession",
+      "type": "function",
+      "name": "useSession",
+      "filePath": "hooks/useSession.ts",
+      "lineRange": [9, 43],
+      "summary": "Subscribes to Supabase auth state changes and exposes session, user, and loading status.",
+      "tags": ["hook", "auth", "session"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/supabase.ts",
+      "type": "file",
+      "name": "supabase.ts",
+      "filePath": "lib/supabase.ts",
+      "summary": "Creates and exports the shared Supabase client using Vite environment variables.",
+      "tags": ["client", "database", "singleton", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/utiils.ts",
+      "type": "file",
+      "name": "utiils.ts",
+      "filePath": "lib/utiils.ts",
+      "summary": "Utility for merging Tailwind CSS classes using clsx and tailwind-merge.",
+      "tags": ["utility", "styling", "tailwind", "cn"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/utiils.ts:cn",
+      "type": "function",
+      "name": "cn",
+      "filePath": "lib/utiils.ts",
+      "lineRange": [4, 6],
+      "summary": "Combines class values and resolves Tailwind conflicts into a single class string.",
+      "tags": ["utility", "styling", "tailwind"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "main.tsx",
+      "summary": "Application entry point that mounts the root React component into the DOM.",
+      "tags": ["entry-point", "bootstrap", "react"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:services/userService.ts",
+      "type": "file",
+      "name": "userService.ts",
+      "filePath": "services/userService.ts",
+      "summary": "Legacy file containing only commented-out user service hook implementations.",
+      "tags": ["service", "user", "legacy", "dead-code"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "vite-env.d.ts",
+      "summary": "TypeScript reference to Vite client types for import.meta.env support.",
+      "tags": ["type-definition", "vite", "environment"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:hooks/useCounter.ts",
+      "target": "function:hooks/useCounter.ts:useCounter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:hooks/useCounter.ts",
+      "target": "function:hooks/useCounter.ts:useCounter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:hooks/useSession.ts:useSession",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:hooks/useSession.ts:useSession",
+      "target": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/utiils.ts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/utiils.ts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:App.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:app.css",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}
