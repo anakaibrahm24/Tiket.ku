@@ -149,3 +149,9 @@ Label default: needs-triage, needs-info, ready-for-agent, ready-for-human, wontf
 ### Domain docs
 
 Single-context: `GLOSSARY.md` + `docs/adr/` di root (dibuat lazily). Lihat `docs/agents/domain.md`.
+
+### Catatan
+
+- `npm run lint` wajib lulus tetapi 49 error pre-existing ada di `.agents/skills/**`.
+- `.md` dilarang di-commit tanpa izin tetapi plan di `docs/superpowers/` pernah di-commit.
+- branch per progress diwajibkan tetapi tracking terakhir di branch yang sudah ada.
