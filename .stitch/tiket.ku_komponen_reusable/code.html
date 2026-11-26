@@ -1,0 +1,756 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket.ku — Komponen Reusable</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'brand-blue': '#146DFC',
+        'brand-hover': '#006FFF',
+        'brand-deep': '#0056EC',
+        'brand-sky': '#BADFFF',
+        'brand-tint': '#DEF1FF',
+        'accent': '#F97316',
+        'success': '#16A34A',
+        'warning': '#F59E0B',
+        'danger': '#DC2626',
+        'light-primary': '#146DFC',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#006FFF',
+        'light-on-primary-container': '#070707',
+        'light-secondary': '#0891B2',
+        'light-on-secondary': '#1E1E1E',
+        'light-secondary-container': '#DEF1FF',
+        'light-on-secondary-container': '#0056EC',
+        'light-background': '#FFFFFF',
+        'light-on-background': '#27272A',
+        'light-surface': '#F7F8F7',
+        'light-surface-dim': '#EDEEF0',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F7F8F7',
+        'light-surface-container': '#F2F2F3',
+        'light-surface-container-high': '#EDEEF0',
+        'light-on-surface': '#27272A',
+        'light-surface-variant': '#F2F2F3',
+        'light-on-surface-variant': '#606169',
+        'light-outline': '#71717A',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#020918',
+        'light-inverse-on-surface': '#FFFFFF',
+        'dark-primary': '#BADFFF',
+        'dark-on-primary': '#020918',
+        'dark-primary-container': '#146DFC',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-background': '#020918',
+        'dark-on-background': '#FFFFFF',
+        'dark-surface': '#051027',
+        'dark-surface-container-lowest': '#020918',
+        'dark-surface-container-low': '#051027',
+        'dark-surface-container': '#27272A',
+        'dark-surface-container-high': '#3B3C3F',
+        'dark-on-surface': '#FFFFFF',
+        'dark-on-surface-variant': '#BADFFF',
+        'dark-outline': '#71717A',
+        'dark-outline-variant': '#434349',
+      },
+      borderRadius: {
+        'sm': '12px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '14px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '56px',
+        'page-margin': '64px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Inter"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['48px', { lineHeight: '52px', letterSpacing: '-1.5px', fontWeight: '600' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.75px', fontWeight: '600' }],
+        'headline-lg': ['38px', { lineHeight: '44px', letterSpacing: '-0.76px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.5px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '-0.16px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '220ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+
+  <div class="w-full max-w-[1280px] mx-auto p-8 flex flex-col gap-8">
+
+    <!-- Canvas Header -->
+    <header class="bg-light-inverse-surface text-light-inverse-on-surface rounded-xl p-8 md:p-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="flex flex-col gap-3 max-w-2xl">
+        <div class="inline-flex items-center gap-2 self-start bg-dark-surface border border-dark-outline-variant px-3.5 py-1.5 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-brand-sky"></span>
+          <span class="font-label text-label-md text-brand-sky tracking-wide uppercase">UI Kit · Tiket.ku</span>
+        </div>
+        <h1 class="font-headline text-display-lg-mobile md:text-display-lg text-light-inverse-on-surface">
+          Komponen Reusable
+        </h1>
+        <p class="font-body text-body-lg text-brand-sky">
+          Struktur dan varian komponen standar dalam bentuk placeholder tanpa konten dummy.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <span class="bg-dark-surface border border-dark-outline-variant text-light-inverse-on-surface px-4 py-2 rounded-full font-label text-label-md">7 Kategori</span>
+        <span class="bg-dark-surface border border-dark-outline-variant text-light-inverse-on-surface px-4 py-2 rounded-full font-label text-label-md">Token Terpadu</span>
+        <span class="bg-brand-blue text-light-on-primary px-4 py-2 rounded-full font-label text-label-md">Placeholder</span>
+      </div>
+    </header>
+
+    <!-- 01. Tombol & Aksi -->
+    <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-8 flex flex-col gap-6 shadow-sm">
+      <div class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+        <span class="font-label text-label-sm text-brand-deep uppercase tracking-wider">01 · Aksi &amp; Navigasi</span>
+        <h2 class="font-headline text-headline-md text-light-on-surface">Tombol &amp; OAuth</h2>
+        <p class="font-body text-body-md text-light-on-surface-variant">
+          Varian tombol utama, dengan ikon, status non-aktif, sekunder, tombol ikon, dan tombol OAuth.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-end gap-6">
+        <div class="flex flex-col items-start gap-2">
+          <span class="font-label text-label-md text-light-outline">Primary Default</span>
+          <button data-component-id="button-primary" data-component-type="button" data-component-variant="primary" type="button" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue cursor-pointer">
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Aksi Utama</span>
+          </button>
+        </div>
+
+        <div class="flex flex-col items-start gap-2">
+          <span class="font-label text-label-md text-light-outline">Primary + Ikon</span>
+          <button data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">add_circle</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Aksi + Ikon</span>
+          </button>
+        </div>
+
+        <div class="flex flex-col items-start gap-2">
+          <span class="font-label text-label-md text-light-outline">Primary Disabled</span>
+          <button data-component-id="button-primary-disabled" data-component-type="button" data-component-variant="primary" type="button" disabled class="inline-flex items-center justify-center gap-2 bg-light-surface-container text-light-outline px-6 py-3 rounded-lg cursor-not-allowed opacity-70">
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Non-aktif</span>
+          </button>
+        </div>
+
+        <div class="flex flex-col items-start gap-2">
+          <span class="font-label text-label-md text-light-outline">Secondary</span>
+          <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="inline-flex items-center justify-center gap-2 bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface border border-light-outline-variant px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Aksi Sekunder</span>
+          </button>
+        </div>
+
+        <div class="flex flex-col items-start gap-2">
+          <span class="font-label text-label-md text-light-outline">Icon Button</span>
+          <button data-component-id="button-icon" data-component-type="button" data-component-variant="icon" type="button" aria-label="Tutup" class="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-light-outline-variant bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span class="material-symbols-outlined text-title-lg" aria-hidden="true">close</span>
+          </button>
+        </div>
+
+        <div class="flex flex-col items-start gap-2">
+          <span class="font-label text-label-md text-light-outline">OAuth Provider</span>
+          <button data-component-id="button-oauth-google" data-component-type="button" data-component-variant="oauth" type="button" class="inline-flex items-center justify-center gap-3 bg-light-surface-container-lowest hover:bg-light-surface-container-low text-light-on-surface border border-light-outline-variant px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer shadow-sm">
+            <span class="material-symbols-outlined text-title-lg text-light-outline" aria-hidden="true">account_circle</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Lanjutkan dengan OAuth</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. Badge, Status & Banner -->
+    <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-8 flex flex-col gap-6 shadow-sm">
+      <div class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+        <span class="font-label text-label-sm text-brand-deep uppercase tracking-wider">02 · Label &amp; Umpan Balik</span>
+        <h2 class="font-headline text-headline-md text-light-on-surface">Badge, Status &amp; Banner Notifikasi</h2>
+        <p class="font-body text-body-md text-light-on-surface-variant">
+          Penanda kategori, status ketersediaan, indikator timer, dan banner informasi.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        <div class="flex flex-col gap-5 bg-light-surface rounded-lg p-5 border border-light-outline-variant">
+          <div class="flex flex-col gap-2">
+            <span class="font-label text-label-md text-light-outline">Badge Kategori</span>
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="bg-light-inverse-surface text-light-inverse-on-surface px-3.5 py-1.5 rounded-full font-label text-label-md">Kategori A</span>
+              <span class="bg-light-inverse-surface text-light-inverse-on-surface px-3.5 py-1.5 rounded-full font-label text-label-md">Kategori B</span>
+              <span class="bg-light-inverse-surface text-light-inverse-on-surface px-3.5 py-1.5 rounded-full font-label text-label-md">Kategori C</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <span class="font-label text-label-md text-light-outline">Badge Status &amp; Timer</span>
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="bg-brand-tint text-brand-deep px-3.5 py-1.5 rounded-full font-label text-label-md">Status Info</span>
+              <span class="inline-flex items-center gap-1.5 bg-light-surface-container-lowest border border-light-outline-variant text-success px-3.5 py-1.5 rounded-full font-label text-label-md">
+                <span class="w-2 h-2 rounded-full bg-success"></span>
+                Status Aktif
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-light-surface-container-lowest border border-light-outline-variant text-danger px-3.5 py-1.5 rounded-full font-label text-label-md">
+                <span class="w-2 h-2 rounded-full bg-danger"></span>
+                Status Non-aktif
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-brand-tint text-brand-deep px-3.5 py-1.5 rounded-full font-mono text-mono-sm tabular-nums">
+                <span class="material-symbols-outlined text-body-lg" aria-hidden="true">timer</span>
+                00:00 Timer
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="font-label text-label-md text-light-outline">Banner Notifikasi</span>
+          <div class="bg-light-surface border border-light-outline-variant rounded-xl p-5 flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-brand-tint text-brand-deep flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-title-lg" aria-hidden="true">verified</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-title text-title-md text-light-on-surface">Judul Notifikasi</span>
+                <span class="bg-light-surface-container-lowest border border-light-outline-variant text-light-on-surface-variant px-2.5 py-0.5 rounded-full font-mono text-mono-sm">KODE-REF</span>
+              </div>
+              <p class="font-body text-body-md text-light-on-surface-variant">
+                Deskripsi singkat status verifikasi atau informasi penting untuk pengguna.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Pencarian, Tab & Formulir -->
+    <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-8 flex flex-col gap-8 shadow-sm">
+      <div class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+        <span class="font-label text-label-sm text-brand-deep uppercase tracking-wider">03 · Pencarian, Navigasi &amp; Input</span>
+        <h2 class="font-headline text-headline-md text-light-on-surface">Searchbar, Tabs &amp; Kolom Formulir</h2>
+        <p class="font-body text-body-md text-light-on-surface-variant">
+          Komponen pencarian, tab filter dengan garis bawah aktif, dan variasi input formulir.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-2">
+            <span class="font-label text-label-md text-light-outline">Searchbar Standard</span>
+            <form data-component-id="searchbar-standard" data-component-type="searchbar" data-component-variant="standard" role="search" onsubmit="event.preventDefault()" class="flex items-center w-full bg-light-surface-container-lowest border border-light-outline-variant focus-within:border-brand-blue rounded-lg overflow-hidden p-1.5 shadow-sm">
+              <span class="pl-3 text-light-outline material-symbols-outlined text-title-lg" aria-hidden="true">search</span>
+              <input type="search" aria-label="Kolom pencarian" placeholder="Placeholder pencarian..." class="w-full border-0 bg-transparent px-3 py-2.5 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:ring-0">
+              <button type="submit" class="bg-brand-blue hover:bg-brand-deep text-light-on-primary px-5 py-2.5 rounded-md font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer shrink-0">
+                Cari
+              </button>
+            </form>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <span class="font-label text-label-md text-light-outline">Underline Tabs (Klik untuk mencoba)</span>
+            <div class="border-b border-light-outline-variant pt-2">
+              <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" role="tablist" aria-label="Navigasi tab" class="flex flex-wrap items-center gap-6">
+                <button type="button" role="tab" aria-selected="true" data-demo-tab class="inline-flex items-center gap-2 pb-3.5 border-b-2 border-brand-blue text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span class="material-symbols-outlined text-title-md" aria-hidden="true">grid_view</span>
+                  <span class="font-label text-label-lg">Tab Aktif</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-demo-tab class="inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span class="material-symbols-outlined text-title-md" aria-hidden="true">category</span>
+                  <span class="font-label text-label-lg">Tab 2</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-demo-tab class="inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span class="material-symbols-outlined text-title-md" aria-hidden="true">category</span>
+                  <span class="font-label text-label-lg">Tab 3</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-demo-tab class="inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span class="material-symbols-outlined text-title-md" aria-hidden="true">category</span>
+                  <span class="font-label text-label-lg">Tab 4</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label for="demo-text" class="font-label text-label-lg text-light-on-surface">Label Input Teks</label>
+            <input id="demo-text" type="text" placeholder="Placeholder teks..." class="w-full rounded-lg border border-light-outline-variant bg-light-surface-container-lowest px-4 py-3 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:border-brand-blue focus:ring-1 focus:ring-brand-blue">
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="demo-tel" class="font-label text-label-lg text-light-on-surface">Label Input Nomor</label>
+            <input id="demo-tel" type="tel" placeholder="Placeholder nomor..." class="w-full rounded-lg border border-light-outline-variant bg-light-surface-container-lowest px-4 py-3 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:border-brand-blue focus:ring-1 focus:ring-brand-blue">
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="demo-pass" class="font-label text-label-lg text-light-on-surface">Label Kata Sandi</label>
+            <div class="relative">
+              <input id="demo-pass" type="password" placeholder="••••••••" class="w-full rounded-lg border border-light-outline-variant bg-light-surface-container-lowest pl-4 pr-11 py-3 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:border-brand-blue focus:ring-1 focus:ring-brand-blue">
+              <button type="button" id="toggle-demo-pass" aria-label="Tampilkan kata sandi" class="absolute inset-y-0 right-0 px-3.5 flex items-center text-light-outline hover:text-light-on-surface cursor-pointer">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="demo-err" class="font-label text-label-lg text-light-on-surface">Label Input Error</label>
+            <input id="demo-err" type="text" placeholder="Nilai tidak valid" class="w-full rounded-lg border border-danger bg-light-surface-container-lowest px-4 py-3 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:border-danger focus:ring-1 focus:ring-danger">
+            <span class="font-label text-label-md text-danger">Pesan validasi error.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Kartu Acara (Ticket Card) -->
+    <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-8 flex flex-col gap-6 shadow-sm">
+      <div class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+        <span class="font-label text-label-sm text-brand-deep uppercase tracking-wider">04 · Katalog</span>
+        <h2 class="font-headline text-headline-md text-light-on-surface">Kartu Tiket (Card Action)</h2>
+        <p class="font-body text-body-md text-light-on-surface-variant">
+          Anatomi kartu dengan placeholder media 16:10, slot badge, slot metadata, dan footer harga + aksi.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card Default -->
+        <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl shadow-sm flex flex-col justify-between overflow-hidden transition-colors duration-state-change ease-state-change">
+          <div class="relative aspect-[16/10] bg-light-surface-container flex flex-col items-center justify-center gap-1.5 text-light-outline border-b border-light-outline-variant">
+            <span class="material-symbols-outlined text-headline-md" aria-hidden="true">image</span>
+            <span class="font-label text-label-md">Media 16:10</span>
+            <span class="absolute top-3 left-3 bg-light-inverse-surface text-light-inverse-on-surface px-3 py-1 rounded-full font-label text-label-md">Kategori</span>
+            <span class="absolute top-3 right-3 bg-brand-tint text-brand-deep px-3 py-1 rounded-full font-label text-label-md">Status Info</span>
+          </div>
+          <header class="p-5 flex flex-col gap-2">
+            <p class="font-label text-label-md text-brand-deep tabular-nums">Tanggal · Waktu</p>
+            <h3 class="font-title text-title-md text-light-on-surface text-balance">Judul Acara / Item</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-body-lg text-light-outline" aria-hidden="true">location_on</span>
+              <span>Lokasi / Venue</span>
+            </p>
+          </header>
+          <footer class="px-5 py-4 border-t border-light-outline-variant bg-light-surface-container-lowest flex items-center justify-between gap-3">
+            <div class="flex flex-col">
+              <span class="font-label text-label-md text-light-outline">Label Harga</span>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums">Rp 000.000</span>
+            </div>
+            <button type="button" class="inline-flex items-center justify-center bg-brand-blue hover:bg-brand-deep text-light-on-primary px-5 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+              Aksi Utama
+            </button>
+          </footer>
+        </article>
+
+        <!-- Card Active Status -->
+        <article data-component-id="card-action-active" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl shadow-sm flex flex-col justify-between overflow-hidden transition-colors duration-state-change ease-state-change">
+          <div class="relative aspect-[16/10] bg-light-surface-container flex flex-col items-center justify-center gap-1.5 text-light-outline border-b border-light-outline-variant">
+            <span class="material-symbols-outlined text-headline-md" aria-hidden="true">image</span>
+            <span class="font-label text-label-md">Media 16:10</span>
+            <span class="absolute top-3 left-3 bg-light-inverse-surface text-light-inverse-on-surface px-3 py-1 rounded-full font-label text-label-md">Kategori</span>
+            <span class="absolute top-3 right-3 bg-light-surface-container-lowest border border-light-outline-variant text-success px-3 py-1 rounded-full font-label text-label-md">Status Aktif</span>
+          </div>
+          <header class="p-5 flex flex-col gap-2">
+            <p class="font-label text-label-md text-brand-deep tabular-nums">Tanggal · Waktu</p>
+            <h3 class="font-title text-title-md text-light-on-surface text-balance">Judul Acara / Item</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-body-lg text-light-outline" aria-hidden="true">location_on</span>
+              <span>Lokasi / Venue</span>
+            </p>
+          </header>
+          <footer class="px-5 py-4 border-t border-light-outline-variant bg-light-surface-container-lowest flex items-center justify-between gap-3">
+            <div class="flex flex-col">
+              <span class="font-label text-label-md text-light-outline">Label Harga</span>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums">Rp 000.000</span>
+            </div>
+            <button type="button" class="inline-flex items-center justify-center bg-brand-blue hover:bg-brand-deep text-light-on-primary px-5 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+              Aksi Utama
+            </button>
+          </footer>
+        </article>
+
+        <!-- Card Disabled State -->
+        <article data-component-id="card-action-disabled" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl shadow-sm flex flex-col justify-between overflow-hidden opacity-80">
+          <div class="relative aspect-[16/10] bg-light-surface-container flex flex-col items-center justify-center gap-1.5 text-light-outline border-b border-light-outline-variant">
+            <span class="material-symbols-outlined text-headline-md" aria-hidden="true">hide_image</span>
+            <span class="font-label text-label-md">Media Non-aktif</span>
+            <span class="absolute top-3 left-3 bg-light-inverse-surface text-light-inverse-on-surface px-3 py-1 rounded-full font-label text-label-md">Kategori</span>
+            <span class="absolute top-3 right-3 bg-light-surface-container-lowest border border-light-outline-variant text-danger px-3 py-1 rounded-full font-label text-label-md">Status Non-aktif</span>
+          </div>
+          <header class="p-5 flex flex-col gap-2">
+            <p class="font-label text-label-md text-light-outline tabular-nums">Tanggal · Waktu</p>
+            <h3 class="font-title text-title-md text-light-on-surface text-balance">Judul Acara / Item</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-body-lg text-light-outline" aria-hidden="true">location_on</span>
+              <span>Lokasi / Venue</span>
+            </p>
+          </header>
+          <footer class="px-5 py-4 border-t border-light-outline-variant bg-light-surface-container-lowest flex items-center justify-between gap-3">
+            <div class="flex flex-col">
+              <span class="font-label text-label-md text-light-outline">Label Harga</span>
+              <span class="font-mono text-mono-md text-light-outline tabular-nums">Rp 000.000</span>
+            </div>
+            <button type="button" disabled class="inline-flex items-center justify-center bg-light-surface-container text-light-outline px-5 py-2.5 rounded-lg font-label text-label-lg cursor-not-allowed">
+              Non-aktif
+            </button>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- 05. Pemilih Opsi, Stepper & Pembayaran -->
+    <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-8 flex flex-col gap-6 shadow-sm">
+      <div class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+        <span class="font-label text-label-sm text-brand-deep uppercase tracking-wider">05 · Kontrol Pemesanan</span>
+        <h2 class="font-headline text-headline-md text-light-on-surface">Kartu Pilihan, Stepper &amp; Radio Selector</h2>
+        <p class="font-body text-body-md text-light-on-surface-variant">
+          Kartu pilihan dengan state aktif/default, kontrol jumlah (stepper), dan radio card selector.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <!-- Tier + Stepper -->
+        <div class="flex flex-col gap-3">
+          <span class="font-label text-label-md text-light-outline">Kartu Pilihan &amp; Stepper (Interaktif)</span>
+          <div class="flex flex-col gap-3">
+            <div class="border-2 border-brand-blue bg-brand-tint/30 rounded-xl p-4 flex items-center justify-between gap-4">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2">
+                  <span class="font-title text-title-md text-light-on-surface">Opsi Terpilih</span>
+                  <span class="bg-brand-tint text-brand-deep px-2.5 py-0.5 rounded-full font-label text-label-md">Tag</span>
+                </div>
+                <span class="font-body text-body-md text-light-on-surface-variant">Deskripsi singkat opsi</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="font-mono text-mono-md text-light-on-surface tabular-nums">Rp 000.000</span>
+                <div class="inline-flex items-center border border-light-outline-variant bg-light-surface-container-lowest rounded-lg p-1 gap-2">
+                  <button type="button" id="qty-minus" aria-label="Kurangi" class="w-8 h-8 rounded-md hover:bg-light-surface-container flex items-center justify-center text-light-on-surface cursor-pointer">
+                    <span class="material-symbols-outlined text-title-md" aria-hidden="true">remove</span>
+                  </button>
+                  <span id="qty-value" class="font-mono text-mono-md text-light-on-surface w-5 text-center tabular-nums">1</span>
+                  <button type="button" id="qty-plus" aria-label="Tambah" class="w-8 h-8 rounded-md hover:bg-light-surface-container flex items-center justify-center text-light-on-surface cursor-pointer">
+                    <span class="material-symbols-outlined text-title-md" aria-hidden="true">add</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-light-outline-variant bg-light-surface-container-lowest rounded-xl p-4 flex items-center justify-between gap-4">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2">
+                  <span class="font-title text-title-md text-light-on-surface">Opsi Default</span>
+                  <span class="bg-light-surface-container text-light-on-surface-variant px-2.5 py-0.5 rounded-full font-label text-label-md">Tag</span>
+                </div>
+                <span class="font-body text-body-md text-light-on-surface-variant">Deskripsi singkat opsi</span>
+              </div>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums">Rp 000.000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radio Selector -->
+        <div class="flex flex-col gap-3">
+          <span class="font-label text-label-md text-light-outline">Radio Card Selector (Interaktif)</span>
+          <div class="flex flex-col gap-3">
+            <label class="border-2 border-brand-blue bg-brand-tint/30 rounded-xl p-4 flex items-center justify-between gap-4 cursor-pointer">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="demo-pay" checked class="text-brand-blue focus:ring-brand-blue">
+                <div class="flex flex-col">
+                  <span class="font-title text-title-md text-light-on-surface">Pilihan Metode A</span>
+                  <span class="font-body text-body-md text-light-on-surface-variant">Keterangan singkat metode</span>
+                </div>
+              </div>
+              <span class="bg-brand-tint text-brand-deep px-3 py-1 rounded-full font-label text-label-md">Badge</span>
+            </label>
+
+            <label class="border border-light-outline-variant bg-light-surface-container-lowest hover:border-brand-blue rounded-xl p-4 flex items-center justify-between gap-4 cursor-pointer">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="demo-pay" class="text-brand-blue focus:ring-brand-blue">
+                <div class="flex flex-col">
+                  <span class="font-title text-title-md text-light-on-surface">Pilihan Metode B</span>
+                  <span class="font-body text-body-md text-light-on-surface-variant">Keterangan singkat metode</span>
+                </div>
+              </div>
+              <span class="font-label text-label-md text-light-outline">Label</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. Drawer, Ringkasan & Pass QR -->
+    <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-8 flex flex-col gap-6 shadow-sm">
+      <div class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+        <span class="font-label text-label-sm text-brand-deep uppercase tracking-wider">06 · Panel &amp; Pass Digital</span>
+        <h2 class="font-headline text-headline-md text-light-on-surface">Drawer Panel, Ringkasan &amp; Kartu Pass QR</h2>
+        <p class="font-body text-body-md text-light-on-surface-variant">
+          Wadah panel geser, kartu ringkasan transaksi, dan pass digital dengan slot placeholder QR.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        <!-- Drawer Preview -->
+        <div class="border border-light-outline-variant rounded-xl bg-light-surface-container-lowest overflow-hidden shadow-sm">
+          <header class="flex items-center justify-between px-5 py-4 border-b border-light-outline-variant">
+            <h3 class="font-title text-title-lg text-light-on-surface">Judul Drawer</h3>
+            <button type="button" aria-label="Tutup panel" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-light-outline-variant hover:bg-light-surface-container-high text-light-on-surface cursor-pointer">
+              <span class="material-symbols-outlined text-title-lg" aria-hidden="true">close</span>
+            </button>
+          </header>
+          <div class="p-5 flex flex-col gap-4">
+            <p class="font-body text-body-md text-light-on-surface-variant">
+              Area konten utama di dalam panel geser untuk menampilkan opsi atau detail item.
+            </p>
+            <div class="bg-light-surface rounded-lg p-3.5 flex items-center justify-between">
+              <span class="font-label text-label-md text-light-on-surface-variant">Label Subtotal</span>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums">Rp 000.000</span>
+            </div>
+            <button type="button" class="w-full bg-brand-blue hover:bg-brand-deep text-light-on-primary py-3 rounded-lg font-label text-label-lg transition-colors duration-state-change cursor-pointer">
+              Aksi Utama
+            </button>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="border border-light-outline-variant rounded-xl bg-light-surface-container-lowest p-5 flex flex-col gap-4 shadow-sm">
+          <div class="flex items-center justify-between border-b border-light-outline-variant pb-3">
+            <h3 class="font-title text-title-lg text-light-on-surface">Ringkasan</h3>
+            <span class="bg-brand-tint text-brand-deep px-2.5 py-0.5 rounded-full font-label text-label-md">N Item</span>
+          </div>
+          <div class="flex flex-col gap-2.5 text-body-md">
+            <div class="flex items-center justify-between">
+              <span class="text-light-on-surface-variant">Item Utama</span>
+              <span class="font-mono text-mono-sm text-light-on-surface tabular-nums">Rp 000.000</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-light-on-surface-variant">Biaya Tambahan</span>
+              <span class="font-mono text-mono-sm text-light-on-surface tabular-nums">Rp 000.000</span>
+            </div>
+            <div class="border-t border-light-outline-variant pt-3 mt-1 flex items-center justify-between">
+              <span class="font-title text-title-md text-light-on-surface">Total</span>
+              <span class="font-mono text-mono-md text-brand-deep tabular-nums">Rp 000.000</span>
+            </div>
+          </div>
+          <button type="button" class="w-full bg-brand-blue hover:bg-brand-deep text-light-on-primary py-3 rounded-lg font-label text-label-lg transition-colors duration-state-change cursor-pointer">
+            Aksi Lanjut
+          </button>
+        </div>
+
+        <!-- QR Pass Placeholder -->
+        <div class="border border-light-outline-variant rounded-xl bg-light-surface-container-lowest overflow-hidden shadow-sm">
+          <div class="bg-light-inverse-surface text-light-inverse-on-surface px-5 py-4 flex items-center justify-between">
+            <div class="flex flex-col">
+              <span class="font-label text-label-md text-brand-sky">Label Pass</span>
+              <span class="font-title text-title-md">Kategori · Posisi</span>
+            </div>
+            <span class="bg-brand-blue text-light-on-primary px-3 py-1 rounded-full font-label text-label-md">Tag Akses</span>
+          </div>
+          <div class="p-5 flex items-center gap-5">
+            <div class="w-24 h-24 bg-light-surface-container border border-light-outline-variant rounded-lg flex flex-col items-center justify-center gap-1 text-light-outline shrink-0">
+              <span class="material-symbols-outlined text-headline-md" aria-hidden="true">qr_code_2</span>
+              <span class="font-label text-label-md">Slot QR</span>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <span class="font-mono text-mono-sm text-light-outline">ID-TIKET-000</span>
+              <span class="font-title text-title-md text-light-on-surface">Judul Acara</span>
+              <span class="font-body text-body-md text-light-on-surface-variant">Tanggal · Waktu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. Riwayat Pemesanan & Statistik Ringkas -->
+    <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-8 flex flex-col gap-6 shadow-sm">
+      <div class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+        <span class="font-label text-label-sm text-brand-deep uppercase tracking-wider">07 · Riwayat Transaksi</span>
+        <h2 class="font-headline text-headline-md text-light-on-surface">Kartu Riwayat Pesanan &amp; Statistik Ringkas</h2>
+        <p class="font-body text-body-md text-light-on-surface-variant">
+          Anatomi baris transaksi untuk halaman riwayat pemesanan serta kartu ringkasan angka pada header gelap.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-6">
+        <!-- Stat Counter Placeholder -->
+        <div class="flex flex-col gap-2">
+          <span class="font-label text-label-md text-light-outline">Kartu Statistik Header (Dark Surface)</span>
+          <div class="bg-light-inverse-surface rounded-xl p-5 flex flex-wrap items-center gap-3">
+            <div class="bg-dark-surface border border-dark-outline-variant rounded-lg px-5 py-3 flex flex-col gap-0.5 min-w-[120px]">
+              <span class="font-mono text-mono-md text-light-inverse-on-surface tabular-nums">0</span>
+              <span class="font-label text-label-md text-brand-sky">Label Status A</span>
+            </div>
+            <div class="bg-dark-surface border border-dark-outline-variant rounded-lg px-5 py-3 flex flex-col gap-0.5 min-w-[120px]">
+              <span class="font-mono text-mono-md text-light-inverse-on-surface tabular-nums">0</span>
+              <span class="font-label text-label-md text-brand-sky">Label Status B</span>
+            </div>
+            <div class="bg-dark-surface border border-dark-outline-variant rounded-lg px-5 py-3 flex flex-col gap-0.5 min-w-[120px]">
+              <span class="font-mono text-mono-md text-light-inverse-on-surface tabular-nums">0</span>
+              <span class="font-label text-label-md text-brand-sky">Label Status C</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order History Row Card Placeholder -->
+        <div class="flex flex-col gap-2">
+          <span class="font-label text-label-md text-light-outline">Kartu Baris Riwayat Pesanan (Order Row Card)</span>
+          <article data-component-id="card-order-history" data-component-type="card" data-component-variant="order-row" class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-5 md:p-6 shadow-sm flex flex-col gap-5">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-light-outline-variant pb-4">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="font-mono text-mono-sm text-light-on-surface bg-light-surface px-3 py-1 rounded-full border border-light-outline-variant">KODE-PESANAN-000</span>
+                <span class="font-label text-label-md text-light-outline tabular-nums">Tanggal · Waktu Transaksi</span>
+              </div>
+              <span class="inline-flex items-center gap-1.5 bg-light-surface-container-lowest border border-light-outline-variant text-success px-3 py-1 rounded-full font-label text-label-md">
+                <span class="w-2 h-2 rounded-full bg-success"></span>
+                Status Pesanan
+              </span>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+              <div class="flex items-start sm:items-center gap-4">
+                <div class="w-24 h-20 sm:w-28 sm:h-20 rounded-lg bg-light-surface-container border border-light-outline-variant flex items-center justify-center text-light-outline shrink-0">
+                  <span class="material-symbols-outlined text-title-lg" aria-hidden="true">image</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-label text-label-md text-brand-deep tabular-nums">Tanggal · Waktu Acara</span>
+                  <h3 class="font-title text-title-lg text-light-on-surface">Judul Acara / Item</h3>
+                  <p class="font-body text-body-md text-light-on-surface-variant">Lokasi / Venue · N x Kategori</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between md:justify-end gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-light-outline-variant shrink-0">
+                <div class="flex flex-col md:items-end">
+                  <span class="font-label text-label-md text-light-outline">Label Total</span>
+                  <span class="font-mono text-mono-md text-light-on-surface tabular-nums">Rp 000.000</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <button type="button" class="inline-flex items-center justify-center bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface border border-light-outline-variant px-4 py-2.5 rounded-lg font-label text-label-lg cursor-pointer">
+                    Aksi Sekunder
+                  </button>
+                  <button type="button" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-5 py-2.5 rounded-lg font-label text-label-lg cursor-pointer">
+                    Aksi Utama
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Interactive Tabs
+    document.querySelectorAll('[data-demo-tab]').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('[data-demo-tab]').forEach((t) => {
+          t.setAttribute('aria-selected', 'false');
+          t.classList.remove('border-brand-blue', 'text-light-on-surface');
+          t.classList.add('border-transparent', 'text-light-outline');
+        });
+        tab.setAttribute('aria-selected', 'true');
+        tab.classList.remove('border-transparent', 'text-light-outline');
+        tab.classList.add('border-brand-blue', 'text-light-on-surface');
+      });
+    });
+
+    // Interactive Password Toggle
+    const passInput = document.getElementById('demo-pass');
+    const toggleBtn = document.getElementById('toggle-demo-pass');
+    if (passInput && toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const isPass = passInput.type === 'password';
+        passInput.type = isPass ? 'text' : 'password';
+        const icon = toggleBtn.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = isPass ? 'visibility_off' : 'visibility';
+      });
+    }
+
+    // Interactive Stepper
+    let qty = 1;
+    const qtyEl = document.getElementById('qty-value');
+    document.getElementById('qty-minus')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (qty > 1) {
+        qty--;
+        qtyEl.textContent = String(qty);
+      }
+    });
+    document.getElementById('qty-plus')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (qty < 6) {
+        qty++;
+        qtyEl.textContent = String(qty);
+      }
+    });
+
+    // Interactive Payment Radio Highlight
+    document.querySelectorAll('input[name="demo-pay"]').forEach((radio) => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('input[name="demo-pay"]').forEach((r) => {
+          const card = r.closest('label');
+          if (!card) return;
+          if (r.checked) {
+            card.classList.remove('border', 'border-light-outline-variant', 'bg-light-surface-container-lowest');
+            card.classList.add('border-2', 'border-brand-blue', 'bg-brand-tint/30');
+          } else {
+            card.classList.remove('border-2', 'border-brand-blue', 'bg-brand-tint/30');
+            card.classList.add('border', 'border-light-outline-variant', 'bg-light-surface-container-lowest');
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body></html>

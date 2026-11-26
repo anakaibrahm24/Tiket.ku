@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket.ku — Masuk ke Akun</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'brand-blue': '#146DFC',
+        'brand-hover': '#006FFF',
+        'brand-deep': '#0056EC',
+        'brand-sky': '#BADFFF',
+        'brand-tint': '#DEF1FF',
+        'accent': '#F97316',
+        'success': '#16A34A',
+        'warning': '#F59E0B',
+        'danger': '#DC2626',
+        'light-primary': '#146DFC',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#006FFF',
+        'light-on-primary-container': '#070707',
+        'light-secondary': '#0891B2',
+        'light-on-secondary': '#1E1E1E',
+        'light-secondary-container': '#DEF1FF',
+        'light-on-secondary-container': '#0056EC',
+        'light-background': '#FFFFFF',
+        'light-on-background': '#27272A',
+        'light-surface': '#F7F8F7',
+        'light-surface-dim': '#EDEEF0',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F7F8F7',
+        'light-surface-container': '#F2F2F3',
+        'light-surface-container-high': '#EDEEF0',
+        'light-on-surface': '#27272A',
+        'light-surface-variant': '#F2F2F3',
+        'light-on-surface-variant': '#606169',
+        'light-outline': '#71717A',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#020918',
+        'light-inverse-on-surface': '#FFFFFF',
+        'dark-primary': '#BADFFF',
+        'dark-on-primary': '#020918',
+        'dark-primary-container': '#146DFC',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-background': '#020918',
+        'dark-on-background': '#FFFFFF',
+        'dark-surface': '#051027',
+        'dark-surface-container-lowest': '#020918',
+        'dark-surface-container-low': '#051027',
+        'dark-surface-container': '#27272A',
+        'dark-surface-container-high': '#3B3C3F',
+        'dark-on-surface': '#FFFFFF',
+        'dark-on-surface-variant': '#BADFFF',
+        'dark-outline': '#71717A',
+        'dark-outline-variant': '#434349',
+      },
+      borderRadius: {
+        'sm': '12px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '14px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '56px',
+        'page-margin': '64px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Inter"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['48px', { lineHeight: '52px', letterSpacing: '-1.5px', fontWeight: '600' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.75px', fontWeight: '600' }],
+        'headline-lg': ['38px', { lineHeight: '44px', letterSpacing: '-0.76px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.5px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '-0.16px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '220ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex flex-col justify-center items-center px-6 py-12 bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <main class="w-full max-w-md flex flex-col gap-6">
+      <!-- Brand Header -->
+      <div class="flex flex-col items-center gap-3 text-center">
+        <a href="../landing-gbk/LandingGBK.html" class="inline-flex items-center gap-2.5 text-light-on-surface">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-blue text-light-on-primary">
+            <span class="material-symbols-outlined text-headline-md" aria-hidden="true">confirmation_number</span>
+          </span>
+          <span class="font-display text-headline-md text-light-on-surface" data-design-text-token="headline-md">Tiket.ku</span>
+        </a>
+        <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+          Portal resmi pemesanan tiket Stadion Gelora Bung Karno
+        </p>
+      </div>
+
+      <!-- Auth Card -->
+      <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl shadow-sm p-8 flex flex-col gap-6">
+        <header class="flex flex-col gap-1.5">
+          <h1 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Masuk ke akun Anda</h1>
+          <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+            Kelola e-tiket GBK dan lanjutkan pemesanan kursi lebih cepat.
+          </p>
+        </header>
+
+        <!-- Google OAuth Button -->
+        <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" onclick="handleGoogleOAuth()" class="w-full inline-flex items-center justify-center gap-3 bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface border border-light-outline-variant px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" class="shrink-0">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"></path>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"></path>
+            <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"></path>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"></path>
+          </svg>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Masuk dengan Google</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3">
+          <div class="h-px flex-1 bg-light-outline-variant"></div>
+          <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">atau masuk dengan email</span>
+          <div class="h-px flex-1 bg-light-outline-variant"></div>
+        </div>
+
+        <!-- Email & Password Form -->
+        <form onsubmit="handleLoginSubmit(event)" class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label for="login-email" class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Email</label>
+            <input id="login-email" type="email" required placeholder="nama@email.com" class="w-full h-11 px-3.5 bg-light-surface-container-lowest border border-light-outline-variant focus:border-brand-blue focus:ring-0 rounded-lg font-body text-body-md text-light-on-surface placeholder:text-light-outline">
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center justify-between gap-2">
+              <label for="login-password" class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Kata Sandi</label>
+              <a href="#lupa-sandi" class="font-label text-label-md text-brand-deep hover:text-brand-blue transition-colors duration-state-change ease-state-change" data-design-text-token="label-md">Lupa kata sandi?</a>
+            </div>
+            <div class="relative flex items-center">
+              <input id="login-password" type="password" required placeholder="Masukkan kata sandi" class="w-full h-11 pl-3.5 pr-11 bg-light-surface-container-lowest border border-light-outline-variant focus:border-brand-blue focus:ring-0 rounded-lg font-body text-body-md text-light-on-surface placeholder:text-light-outline">
+              <button type="button" onclick="togglePassword(&#39;login-password&#39;, &#39;login-eye&#39;)" aria-label="Tampilkan atau sembunyikan kata sandi" class="absolute right-2.5 inline-flex items-center justify-center w-8 h-8 rounded-md text-light-outline hover:text-light-on-surface cursor-pointer">
+                <span id="login-eye" class="material-symbols-outlined text-title-lg" aria-hidden="true">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <label class="inline-flex items-center gap-2.5 cursor-pointer select-none pt-1">
+            <input type="checkbox" checked class="w-4 h-4 rounded-sm border-light-outline-variant text-brand-blue focus:ring-brand-blue">
+            <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Biarkan saya tetap masuk di perangkat ini</span>
+          </label>
+
+          <!-- Feedback Banner -->
+          <div id="login-status" class="hidden bg-brand-tint text-brand-deep border border-brand-sky rounded-lg p-3.5 flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-title-md shrink-0" aria-hidden="true">check_circle</span>
+            <p id="login-status-text" class="font-body text-body-md" data-design-text-token="body-md"></p>
+          </div>
+
+          <button data-component-id="button-primary" data-component-type="button" data-component-variant="primary" type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer mt-1">
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Masuk ke Tiket.ku</span>
+          </button>
+        </form>
+
+        <footer class="pt-4 border-t border-light-outline-variant text-center">
+          <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+            Belum punya akun Tiket.ku?
+            <a href="../signup/Signup.html" class="font-label text-label-lg text-brand-deep hover:text-brand-blue ml-1" data-design-text-token="label-lg">Daftar sekarang</a>
+          </p>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function togglePassword(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
+
+    function showStatus(message) {
+      const box = document.getElementById('login-status');
+      document.getElementById('login-status-text').textContent = message;
+      box.classList.remove('hidden');
+    }
+
+    function handleGoogleOAuth() {
+      showStatus('Menghubungkan ke akun Google Anda untuk akses Tiket.ku...');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      showStatus('Berhasil masuk sebagai ' + email + '. Mengarahkan ke katalog GBK...');
+    }
+  </script>
+
+
+</body></html>

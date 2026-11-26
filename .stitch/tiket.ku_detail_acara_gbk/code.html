@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket.ku — Detail Acara GBK</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'brand-blue': '#146DFC',
+        'brand-hover': '#006FFF',
+        'brand-deep': '#0056EC',
+        'brand-sky': '#BADFFF',
+        'brand-tint': '#DEF1FF',
+        'accent': '#F97316',
+        'success': '#16A34A',
+        'warning': '#F59E0B',
+        'danger': '#DC2626',
+        'light-primary': '#146DFC',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#006FFF',
+        'light-on-primary-container': '#070707',
+        'light-secondary': '#0891B2',
+        'light-on-secondary': '#1E1E1E',
+        'light-secondary-container': '#DEF1FF',
+        'light-on-secondary-container': '#0056EC',
+        'light-background': '#FFFFFF',
+        'light-on-background': '#27272A',
+        'light-surface': '#F7F8F7',
+        'light-surface-dim': '#EDEEF0',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F7F8F7',
+        'light-surface-container': '#F2F2F3',
+        'light-surface-container-high': '#EDEEF0',
+        'light-on-surface': '#27272A',
+        'light-surface-variant': '#F2F2F3',
+        'light-on-surface-variant': '#606169',
+        'light-outline': '#71717A',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#020918',
+        'light-inverse-on-surface': '#FFFFFF',
+        'dark-primary': '#BADFFF',
+        'dark-on-primary': '#020918',
+        'dark-primary-container': '#146DFC',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-background': '#020918',
+        'dark-on-background': '#FFFFFF',
+        'dark-surface': '#051027',
+        'dark-surface-container-lowest': '#020918',
+        'dark-surface-container-low': '#051027',
+        'dark-surface-container': '#27272A',
+        'dark-surface-container-high': '#3B3C3F',
+        'dark-on-surface': '#FFFFFF',
+        'dark-on-surface-variant': '#BADFFF',
+        'dark-outline': '#71717A',
+        'dark-outline-variant': '#434349',
+      },
+      borderRadius: {
+        'sm': '12px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '14px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '56px',
+        'page-margin': '64px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Inter"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['48px', { lineHeight: '52px', letterSpacing: '-1.5px', fontWeight: '600' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.75px', fontWeight: '600' }],
+        'headline-lg': ['38px', { lineHeight: '44px', letterSpacing: '-0.76px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.5px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '-0.16px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '220ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex flex-col bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-6 lg:px-16 py-10 flex flex-col gap-8">
+      <!-- Contextual Back Link & Breadcrumb -->
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <a href="../katalog-tiket/KatalogTiket.html" class="inline-flex items-center gap-2 font-label text-label-lg text-brand-deep hover:text-brand-blue transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_back</span>
+          <span data-design-text-token="label-lg">Kembali ke Katalog GBK</span>
+        </a>
+
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label text-label-md text-light-outline">
+          <span data-design-text-token="label-md">Katalog GBK</span>
+          <span aria-hidden="true">/</span>
+          <span data-design-text-token="label-md">Sepak Bola</span>
+          <span aria-hidden="true">/</span>
+          <span class="text-light-on-surface" data-design-text-token="label-md">Persija vs Persib</span>
+        </nav>
+      </div>
+
+      <!-- Main 12-Column Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left Column: Event Info, Stadium Zone Map, & Seat Categories -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+
+          <!-- Event Overview Card -->
+          <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl shadow-sm overflow-hidden">
+            <div class="relative aspect-[16/9] bg-light-surface-container overflow-hidden">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrBMiILm9Zwh5M72qc8bJXr1BTUjJJEv3GYph5Xi4ynEq9rOjtWL1ouyTVmDBrue4fcL2SGE_Jyk3Ays8mODbdebfcCCLNS7X3fHuLndWsvoRy8sxsJXpEs-N2Hq8B6-WX7lYdt0hv5rd8OURJXnGn7AQml97h57ZdFMpoYLcro7RT5Bh2wglDf0-y6-nkJdCdj4OuzTEa6aCCoXJE5IIpLD_BBxUyZ5mc2npjcDM1Vu1FmvcSq2OfGgbK0cSb0v" alt="Persija Jakarta vs Persib Bandung di Stadion Utama GBK" class="w-full h-full object-cover">
+              <span class="absolute top-4 left-4 bg-light-inverse-surface text-light-inverse-on-surface px-3.5 py-1.5 rounded-full font-label text-label-md" data-design-text-token="label-md">Sepak Bola</span>
+              <span class="absolute top-4 right-4 bg-brand-tint text-brand-deep px-3.5 py-1.5 rounded-full font-label text-label-md" data-design-text-token="label-md">Terbatas</span>
+            </div>
+
+            <div class="p-6 lg:p-8 flex flex-col gap-4">
+              <div class="flex flex-wrap items-center gap-4">
+                <span class="inline-flex items-center gap-1.5 font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">
+                  <span class="material-symbols-outlined text-body-lg" aria-hidden="true">calendar_today</span>
+                  <span>Sab, 14 Des · 19:30 WIB</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5 font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">
+                  <span class="material-symbols-outlined text-body-lg text-light-outline" aria-hidden="true">location_on</span>
+                  <span>Stadion Utama GBK, Senayan</span>
+                </span>
+              </div>
+
+              <h1 class="font-display text-headline-lg-mobile lg:text-headline-lg text-light-on-surface text-balance" data-design-text-token="headline-lg">
+                Persija Jakarta vs Persib Bandung
+              </h1>
+
+              <p class="font-body text-body-lg text-light-on-surface-variant text-pretty max-w-prose" data-design-text-token="body-lg">
+                Duel klasik Liga 1 pekan ke-18 di Stadion Utama Gelora Bung Karno. Gerbang penonton dibuka pukul 16:30 WIB dengan pemeriksaan e-tiket QR dan kartu identitas resmi.
+              </p>
+            </div>
+          </article>
+
+          <!-- Interactive Stadium Zone Map + Tier List -->
+          <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl shadow-sm p-6 lg:p-8 flex flex-col gap-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div class="flex flex-col gap-1">
+                <h2 class="font-title text-headline-md text-light-on-surface" data-design-text-token="headline-md">Pilih Zona &amp; Kategori Kursi</h2>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Klik zona pada denah stadion atau pilih kategori di bawah ini.</p>
+              </div>
+              <span class="font-label text-label-md text-brand-deep bg-brand-tint px-3 py-1 rounded-full self-start sm:self-center" data-design-text-token="label-md">Maks. 4 tiket/akun</span>
+            </div>
+
+            <!-- Interactive GBK Zone Schematic -->
+            <div class="bg-light-surface border border-light-outline-variant rounded-lg p-5 flex flex-col items-center gap-4">
+              <div class="grid grid-cols-3 gap-3 w-full max-w-md items-center">
+                <div></div>
+                <button type="button" onclick="selectZone(&#39;utara&#39;)" id="map-utara" class="zone-map-btn py-2.5 px-3 rounded-lg border border-light-outline-variant bg-light-surface-container-lowest hover:border-brand-blue font-label text-label-md text-light-on-surface text-center transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span data-design-text-token="label-md">Tribun Utara</span>
+                </button>
+                <div></div>
+
+                <button type="button" onclick="selectZone(&#39;vip&#39;)" id="map-vip" class="zone-map-btn py-10 px-3 rounded-lg border border-light-outline-variant bg-light-surface-container-lowest hover:border-brand-blue font-label text-label-md text-light-on-surface text-center transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span data-design-text-token="label-md">VIP Barat</span>
+                </button>
+                <div class="h-28 rounded-lg bg-light-inverse-surface text-light-inverse-on-surface flex flex-col items-center justify-center p-3 text-center">
+                  <span class="material-symbols-outlined text-title-lg text-brand-sky" aria-hidden="true">stadium</span>
+                  <span class="font-label text-label-md mt-1" data-design-text-token="label-md">Lapangan GBK</span>
+                </div>
+                <button type="button" onclick="selectZone(&#39;timur&#39;)" id="map-timur" class="zone-map-btn py-10 px-3 rounded-lg border-2 border-brand-blue bg-brand-tint/50 font-label text-label-md text-brand-deep text-center transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span data-design-text-token="label-md">Tribun Timur</span>
+                </button>
+
+                <div></div>
+                <button type="button" onclick="selectZone(&#39;selatan&#39;)" id="map-selatan" class="zone-map-btn py-2.5 px-3 rounded-lg border border-light-outline-variant bg-light-surface-container-lowest hover:border-brand-blue font-label text-label-md text-light-on-surface text-center transition-colors duration-state-change ease-state-change cursor-pointer">
+                  <span data-design-text-token="label-md">Tribun Selatan</span>
+                </button>
+                <div></div>
+              </div>
+            </div>
+
+            <!-- Seat Category Cards -->
+            <div id="zone-list" class="flex flex-col gap-3">
+              <button type="button" onclick="selectZone(&#39;utara&#39;)" data-zone="utara" class="zone-card w-full text-left p-4 rounded-lg border border-light-outline-variant bg-light-surface-container-lowest hover:border-brand-blue flex items-center justify-between gap-4 transition-colors duration-state-change ease-state-change cursor-pointer">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <span class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Tribun Utara (Gate 3)</span>
+                    <span class="bg-light-surface-container text-light-on-surface-variant px-2.5 py-0.5 rounded-full font-label text-label-md" data-design-text-token="label-md">Sisa 42</span>
+                  </div>
+                  <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Posisi di belakang gawang utara dengan akses pintu 3.</span>
+                </div>
+                <span class="font-mono text-mono-md text-brand-deep tabular-nums shrink-0" data-design-text-token="mono-md">Rp 150.000</span>
+              </button>
+
+              <button type="button" onclick="selectZone(&#39;selatan&#39;)" data-zone="selatan" class="zone-card w-full text-left p-4 rounded-lg border border-light-outline-variant bg-light-surface-container-lowest hover:border-brand-blue flex items-center justify-between gap-4 transition-colors duration-state-change ease-state-change cursor-pointer">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <span class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Tribun Selatan (Gate 9)</span>
+                    <span class="bg-light-surface-container text-light-on-surface-variant px-2.5 py-0.5 rounded-full font-label text-label-md" data-design-text-token="label-md">Sisa 31</span>
+                  </div>
+                  <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Posisi di belakang gawang selatan dengan akses pintu 9.</span>
+                </div>
+                <span class="font-mono text-mono-md text-brand-deep tabular-nums shrink-0" data-design-text-token="mono-md">Rp 150.000</span>
+              </button>
+
+              <button type="button" onclick="selectZone(&#39;timur&#39;)" data-zone="timur" class="zone-card w-full text-left p-4 rounded-lg border-2 border-brand-blue bg-brand-tint/40 flex items-center justify-between gap-4 transition-colors duration-state-change ease-state-change cursor-pointer">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <span class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Tribun Timur (Gate 5–8)</span>
+                    <span class="bg-brand-tint text-brand-deep px-2.5 py-0.5 rounded-full font-label text-label-md" data-design-text-token="label-md">Sisa 18</span>
+                  </div>
+                  <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Pandangan sejajar garis tengah lapangan, tempat duduk bernomor.</span>
+                </div>
+                <span class="font-mono text-mono-md text-brand-deep tabular-nums shrink-0" data-design-text-token="mono-md">Rp 250.000</span>
+              </button>
+
+              <button type="button" onclick="selectZone(&#39;vip&#39;)" data-zone="vip" class="zone-card w-full text-left p-4 rounded-lg border border-light-outline-variant bg-light-surface-container-lowest hover:border-brand-blue flex items-center justify-between gap-4 transition-colors duration-state-change ease-state-change cursor-pointer">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <span class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">VIP Barat (Gate 1–2)</span>
+                    <span class="bg-danger text-light-on-primary px-2.5 py-0.5 rounded-full font-label text-label-md" data-design-text-token="label-md">Sisa 9</span>
+                  </div>
+                  <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Kursi premium terlindung atap, akses lounge &amp; jalur prioritas.</span>
+                </div>
+                <span class="font-mono text-mono-md text-brand-deep tabular-nums shrink-0" data-design-text-token="mono-md">Rp 450.000</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Rules & Entry Info -->
+          <section class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 flex flex-col gap-4">
+            <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Ketentuan Masuk Stadion GBK</h2>
+            <ul class="flex flex-col gap-2.5">
+              <li class="flex items-start gap-2.5 font-body text-body-md text-light-on-surface-variant">
+                <span class="material-symbols-outlined text-title-md text-brand-deep shrink-0" aria-hidden="true">badge</span>
+                <span data-design-text-token="body-md">Wajib membawa KTP/identitas asli yang sesuai dengan nama pemegang tiket.</span>
+              </li>
+              <li class="flex items-start gap-2.5 font-body text-body-md text-light-on-surface-variant">
+                <span class="material-symbols-outlined text-title-md text-brand-deep shrink-0" aria-hidden="true">schedule</span>
+                <span data-design-text-token="body-md">Gerbang elektronik GBK dibuka mulai pukul 16:30 WIB (3 jam sebelum kick-off).</span>
+              </li>
+              <li class="flex items-start gap-2.5 font-body text-body-md text-light-on-surface-variant">
+                <span class="material-symbols-outlined text-title-md text-brand-deep shrink-0" aria-hidden="true">qr_code_2</span>
+                <span data-design-text-token="body-md">Satu kode QR e-tiket hanya berlaku untuk satu kali pemindaian di gerbang masuk.</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Right Column: Sticky Order Summary -->
+        <aside class="lg:col-span-5 lg:sticky lg:top-8">
+          <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl shadow-sm p-6 lg:p-8 flex flex-col gap-6">
+            <header class="flex flex-col gap-1 border-b border-light-outline-variant pb-4">
+              <span class="font-label text-label-md text-brand-deep" data-design-text-token="label-md">Ringkasan Pesanan</span>
+              <h2 class="font-title text-headline-md text-light-on-surface" data-design-text-token="headline-md">Persija vs Persib</h2>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Sab, 14 Des · Stadion Utama GBK</p>
+            </header>
+
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex flex-col">
+                  <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Kategori Kursi</span>
+                  <span id="summary-zone-name" class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Tribun Timur (Gate 5–8)</span>
+                </div>
+                <span id="summary-zone-price" class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 250.000</span>
+              </div>
+
+              <div class="flex items-center justify-between gap-4 py-3 border-y border-light-outline-variant">
+                <span class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Jumlah Tiket</span>
+                <div class="flex items-center border border-light-outline-variant bg-light-surface rounded-lg overflow-hidden">
+                  <button type="button" onclick="updateQty(-1)" aria-label="Kurangi jumlah tiket" class="w-9 h-9 flex items-center justify-center hover:bg-light-surface-container-high text-light-on-surface cursor-pointer">
+                    <span class="material-symbols-outlined text-title-md" aria-hidden="true">remove</span>
+                  </button>
+                  <span id="summary-qty" class="w-10 text-center font-mono text-mono-md tabular-nums" data-design-text-token="mono-md">2</span>
+                  <button type="button" onclick="updateQty(1)" aria-label="Tambah jumlah tiket" class="w-9 h-9 flex items-center justify-center hover:bg-light-surface-container-high text-light-on-surface cursor-pointer">
+                    <span class="material-symbols-outlined text-title-md" aria-hidden="true">add</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between font-body text-body-md text-light-on-surface-variant">
+                  <span id="summary-subtotal-label" data-design-text-token="body-md">Subtotal (2 tiket)</span>
+                  <span id="summary-subtotal" class="font-mono text-mono-sm text-light-on-surface tabular-nums" data-design-text-token="mono-sm">Rp 500.000</span>
+                </div>
+                <div class="flex items-center justify-between font-body text-body-md text-light-on-surface-variant">
+                  <span data-design-text-token="body-md">Biaya Layanan GBK</span>
+                  <span id="summary-fee" class="font-mono text-mono-sm text-light-on-surface tabular-nums" data-design-text-token="mono-sm">Rp 15.000</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-3 border-t border-light-outline-variant">
+                <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Total Bayar</span>
+                <span id="summary-total" class="font-headline text-headline-md text-brand-deep tabular-nums" data-design-text-token="headline-md">Rp 515.000</span>
+              </div>
+            </div>
+
+            <!-- Inline Checkout Confirmation -->
+            <div id="checkout-feedback" class="hidden bg-brand-tint text-brand-deep border border-brand-sky rounded-lg p-4 flex items-start gap-2.5">
+              <span class="material-symbols-outlined text-title-md shrink-0" aria-hidden="true">check_circle</span>
+              <p id="checkout-feedback-text" class="font-body text-body-md" data-design-text-token="body-md"></p>
+            </div>
+
+            <button data-component-id="button-primary" data-component-type="button" data-component-variant="primary" type="button" onclick="proceedToCheckout()" class="w-full inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+              <span class="font-label text-label-lg" data-design-text-token="label-lg">Lanjut ke Pembayaran</span>
+              <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_forward</span>
+            </button>
+
+            <p class="font-label text-label-md text-light-outline text-center" data-design-text-token="label-md">
+              E-tiket QR terbit instan setelah pembayaran terkonfirmasi.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-light-outline-variant bg-light-surface-container-lowest mt-8">
+      <div class="max-w-7xl mx-auto px-6 lg:px-16 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-brand-blue text-light-on-primary">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">confirmation_number</span>
+          </span>
+          <span class="font-display text-title-md text-light-on-surface" data-design-text-token="title-md">Tiket.ku</span>
+          <span class="font-body text-body-md text-light-on-surface-variant ml-2" data-design-text-token="body-md">Platform resmi pemesanan tiket kawasan Stadion GBK.</span>
+        </div>
+        <p class="font-label text-label-md text-light-outline tabular-nums" data-design-text-token="label-md">
+          Layanan Pelanggan 24/7 · E-Tiket Terverifikasi
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const ZONES = {
+      utara: { name: 'Tribun Utara (Gate 3)', price: 150000 },
+      selatan: { name: 'Tribun Selatan (Gate 9)', price: 150000 },
+      timur: { name: 'Tribun Timur (Gate 5–8)', price: 250000 },
+      vip: { name: 'VIP Barat (Gate 1–2)', price: 450000 }
+    };
+
+    let currentZone = 'timur';
+    let currentQty = 2;
+    const SERVICE_FEE = 15000;
+
+    function formatRp(val) {
+      return 'Rp ' + val.toLocaleString('id-ID');
+    }
+
+    function selectZone(zoneKey) {
+      currentZone = zoneKey;
+      document.getElementById('checkout-feedback').classList.add('hidden');
+
+      document.querySelectorAll('.zone-map-btn').forEach((btn) => {
+        const active = btn.id === 'map-' + zoneKey;
+        btn.classList.toggle('border-2', active);
+        btn.classList.toggle('border-brand-blue', active);
+        btn.classList.toggle('bg-brand-tint/50', active);
+        btn.classList.toggle('text-brand-deep', active);
+        btn.classList.toggle('border', !active);
+        btn.classList.toggle('border-light-outline-variant', !active);
+        btn.classList.toggle('bg-light-surface-container-lowest', !active);
+        btn.classList.toggle('text-light-on-surface', !active);
+      });
+
+      document.querySelectorAll('.zone-card').forEach((card) => {
+        const active = card.getAttribute('data-zone') === zoneKey;
+        card.classList.toggle('border-2', active);
+        card.classList.toggle('border-brand-blue', active);
+        card.classList.toggle('bg-brand-tint/40', active);
+        card.classList.toggle('border', !active);
+        card.classList.toggle('border-light-outline-variant', !active);
+        card.classList.toggle('bg-light-surface-container-lowest', !active);
+      });
+
+      renderSummary();
+    }
+
+    function updateQty(delta) {
+      const next = currentQty + delta;
+      if (next < 1 || next > 4) return;
+      currentQty = next;
+      document.getElementById('checkout-feedback').classList.add('hidden');
+      renderSummary();
+    }
+
+    function renderSummary() {
+      const z = ZONES[currentZone];
+      const subtotal = z.price * currentQty;
+      const total = subtotal + SERVICE_FEE;
+
+      document.getElementById('summary-zone-name').textContent = z.name;
+      document.getElementById('summary-zone-price').textContent = formatRp(z.price);
+      document.getElementById('summary-qty').textContent = currentQty;
+      document.getElementById('summary-subtotal-label').textContent = 'Subtotal (' + currentQty + ' tiket)';
+      document.getElementById('summary-subtotal').textContent = formatRp(subtotal);
+      document.getElementById('summary-total').textContent = formatRp(total);
+    }
+
+    function proceedToCheckout() {
+      const z = ZONES[currentZone];
+      const total = z.price * currentQty + SERVICE_FEE;
+      const box = document.getElementById('checkout-feedback');
+      document.getElementById('checkout-feedback-text').textContent =
+        currentQty + 'x tiket ' + z.name + ' (' + formatRp(total) + ') berhasil dikunci selama 10 menit.';
+      box.classList.remove('hidden');
+    }
+  </script>
+
+
+</body></html>
