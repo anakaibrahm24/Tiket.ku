@@ -267,7 +267,7 @@ const HomePage = () => {
                     {venue.capacity}
                   </span>
                   <h3 className="font-title text-title-md text-ink-900">{venue.name}</h3>
-                  <p className="font-body text-body-md text-ink-600">{venue.desc}</p>
+                  <p className="font-body text-body-md text-ink-600 text-pretty">{venue.desc}</p>
                 </div>
               </div>
             ))}
@@ -280,7 +280,7 @@ const HomePage = () => {
               <h2 className="font-headline text-headline-lg-mobile text-balance text-surface-white lg:text-headline-lg">
                 Siap mengamankan kursi Anda di GBK?
               </h2>
-              <p className="font-body text-body-lg text-brand-sky">
+              <p className="font-body text-body-lg text-brand-sky text-pretty">
                 Buka katalog jadwal lengkap dan pilih kategori tribun yang sesuai sebelum kuota habis.
               </p>
             </div>
