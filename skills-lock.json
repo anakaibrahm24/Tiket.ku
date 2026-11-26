@@ -101,12 +101,28 @@
       "computedHash": "0bcb2b31a45a3d176daa07c16d6532ee7819b802de081090c3fa856702767b13",
       "installMode": "copy"
     },
+    "uxui-principles": {
+      "source": "sickn33/agentic-awesome-skills",
+      "commit": "166f581cfdc37d94cf56efe4454fb06a5759776c",
+      "sourceType": "github",
+      "skillPath": "skills/uxui-principles/SKILL.md",
+      "computedHash": "0c7cc72e2b649159bdfc245f17a3e91cead5f2b5f75f8d349cdc7e1cbe131f3d",
+      "installMode": "copy"
+    },
     "wait-what": {
       "source": "mattpocock/skills",
       "commit": "6f7f7831a625f040a8e06a0e7954826b87ce775a",
       "sourceType": "github",
       "skillPath": "skills/productivity/wait-what/SKILL.md",
       "computedHash": "70c9bf9f5a84b6849760f9492f569d5aa12307a0310323fde5f583144730c26c",
+      "installMode": "copy"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "5994e4cfd86144903d2ba750f862b9e36af15e3297aac983679e347b99f6cb71",
       "installMode": "copy"
     },
     "writing-for-agents": {
