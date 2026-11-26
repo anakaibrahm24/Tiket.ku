@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Alerts from "@/components/Alerts";
-import { Footer } from "@/components/Footer";
+import { Banner } from "@/components/Banner";
 import { Button } from "@/components/Button";
+import { Footer } from "@/components/Footer";
+import { InputField } from "@/components/InputField";
 import { useSession } from "@/hooks/useSession";
 import { signupSchema, type SignupSchema } from "@/features/auth/schema/authSchemas";
 import {
@@ -26,6 +28,7 @@ const SignupPage = () => {
     message: string;
   } | null>(null);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   const {
     register,
@@ -65,12 +68,14 @@ const SignupPage = () => {
 
   const handleGoogle = async () => {
     setIsGoogleLoading(true);
+    setStatusMessage("Menghubungkan ke akun Google Anda untuk pendaftaran Tiket.ku...");
     const { error } = await signInWithGoogle();
     if (error) {
       setAlert({
         variant: "danger",
         message: mapAuthError(error) ?? "Gagal daftar dengan Google. Coba lagi.",
       });
+      setStatusMessage(null);
       setIsGoogleLoading(false);
     }
   };
@@ -85,143 +90,137 @@ const SignupPage = () => {
           onClose={() => setAlert(null)}
         />
       )}
-      <section className="relative flex min-h-[75vh] flex-col items-center justify-center bg-gradient-to-b from-night-950 via-brand-deep via-brand-blue to-surface-white px-6 py-16">
+      <section className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-night-950 via-brand-deep via-brand-blue to-surface-white px-6 py-16">
         <button
           type="button"
           onClick={() => navigate("/")}
           className="absolute left-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-line-on-dark bg-line-on-dark text-surface-white"
           aria-label="Kembali"
         >
-          ←
+          <span className="material-symbols-outlined" aria-hidden="true">
+            arrow_back
+          </span>
         </button>
-        <div className="w-full max-w-[440px] rounded-lg border border-line-soft bg-surface-white p-8 shadow-md">
-          <h1 className="text-center text-2xl font-semibold text-ink-900">
-            Daftar
-          </h1>
-          <p className="mt-2 text-center text-sm text-ink-600 text-pretty">
-            Isi data Anda untuk membuat akun Tiket.ku.
-          </p>
 
-          <button
-            type="button"
-            onClick={handleGoogle}
-            disabled={isSubmitting || isGoogleLoading}
-            className="mt-6 flex w-full items-center justify-center gap-3 rounded-lg border border-line-soft bg-surface-white px-6 py-3.5 text-sm font-semibold text-ink-900 transition-colors hover:bg-surface-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {isGoogleLoading ? (
-              <div className="h-5 w-5 animate-spin rounded-full border-2 border-ink-300 border-t-brand-blue" />
-            ) : (
-              <FcGoogle size={20} />
-            )}
-            {isGoogleLoading ? "Memproses..." : "Daftar dengan Google"}
-          </button>
+        <div className="w-full max-w-[440px] rounded-xl border border-line-soft bg-surface-white p-8 shadow-sm">
+          <header className="flex flex-col gap-1.5">
+            <h1 className="font-headline text-headline-md text-ink-900">
+              Buat akun Tiket.ku
+            </h1>
+            <p className="font-body text-body-md text-ink-600">
+              Daftar sekali untuk pesan tiket laga timnas, Liga 1, dan konser GBK.
+            </p>
+          </header>
+
+          <div className="mt-6">
+            <Button
+              type="button"
+              variant="oauth"
+              disabled={isSubmitting || isGoogleLoading}
+              onClick={handleGoogle}
+            >
+              {isGoogleLoading ? (
+                <div className="h-5 w-5 animate-spin rounded-full border-2 border-ink-300 border-t-brand-blue" />
+              ) : (
+                <FcGoogle size={20} />
+              )}
+              {isGoogleLoading ? "Memproses..." : "Daftar dengan Google"}
+            </Button>
+          </div>
 
           <div className="my-5 flex items-center gap-3">
             <div className="h-px flex-1 bg-line-soft" />
-            <span className="text-xs text-ink-500">atau</span>
+            <span className="font-label text-label-md text-ink-500">
+              atau daftar dengan email
+            </span>
             <div className="h-px flex-1 bg-line-soft" />
           </div>
 
-          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-            <div className="space-y-1.5">
-              <label htmlFor="name" className="text-sm font-medium text-ink-900">Nama</label>
-              <input
-                id="name"
-                type="text"
-                autoComplete="name"
-                aria-invalid={!!errors.name}
-                aria-describedby={errors.name ? "name-error" : undefined}
-                {...register("name")}
-                disabled={isSubmitting || isGoogleLoading}
-                className="h-11 w-full rounded-lg border border-line-soft bg-surface-white px-3.5 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-500 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="Nama lengkap Anda"
-              />
-              {errors.name?.message && (
-                <p id="name-error" className="text-xs text-danger">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+            <InputField
+              id="name"
+              labelName="Nama Lengkap (sesuai KTP)"
+              type="text"
+              autoComplete="name"
+              placeholder="Budi Santoso"
+              required
+              disabled={isSubmitting || isGoogleLoading}
+              error={errors.name?.message}
+              {...register("name")}
+            />
 
-            <div className="space-y-1.5">
-              <label htmlFor="email" className="text-sm font-medium text-ink-900">Email</label>
-              <input
-                id="email"
-                type="email"
-                autoComplete="email"
-                aria-invalid={!!errors.email}
-                aria-describedby={errors.email ? "email-error" : undefined}
-                {...register("email")}
-                disabled={isSubmitting || isGoogleLoading}
-                className="h-11 w-full rounded-lg border border-line-soft bg-surface-white px-3.5 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-500 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="nama@email.com"
-              />
-              {errors.email?.message && (
-                <p id="email-error" className="text-xs text-danger">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
+            <InputField
+              id="email"
+              labelName="Email"
+              type="email"
+              autoComplete="email"
+              placeholder="nama@email.com"
+              required
+              disabled={isSubmitting || isGoogleLoading}
+              error={errors.email?.message}
+              {...register("email")}
+            />
 
-            <div className="space-y-1.5">
-              <label htmlFor="password" className="text-sm font-medium text-ink-900">
-                Kata Sandi
-              </label>
-              <input
-                id="password"
-                type="password"
-                autoComplete="new-password"
-                aria-invalid={!!errors.password}
-                aria-describedby={errors.password ? "password-error" : undefined}
-                {...register("password")}
-                disabled={isSubmitting || isGoogleLoading}
-                className="h-11 w-full rounded-lg border border-line-soft bg-surface-white px-3.5 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-500 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="Buat kata sandi"
-              />
-              {errors.password?.message && (
-                <p id="password-error" className="text-xs text-danger">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
+            <InputField
+              id="password"
+              labelName="Kata Sandi"
+              type="password"
+              autoComplete="new-password"
+              placeholder="Minimal 8 karakter"
+              required
+              disabled={isSubmitting || isGoogleLoading}
+              error={errors.password?.message}
+              {...register("password")}
+            />
 
-            <div className="space-y-1.5">
-              <label htmlFor="confirmPassword" className="text-sm font-medium text-ink-900">
-                Konfirmasi Kata Sandi
-              </label>
+            <InputField
+              id="confirmPassword"
+              labelName="Konfirmasi Kata Sandi"
+              type="password"
+              autoComplete="new-password"
+              placeholder="Ulangi kata sandi"
+              required
+              disabled={isSubmitting || isGoogleLoading}
+              error={errors.confirmPassword?.message}
+              {...register("confirmPassword")}
+            />
+
+            <label className="inline-flex cursor-pointer select-none items-start gap-2.5 pt-1">
               <input
-                id="confirmPassword"
-                type="password"
-                autoComplete="new-password"
-                aria-invalid={!!errors.confirmPassword}
-                aria-describedby={errors.confirmPassword ? "confirmPassword-error" : undefined}
-                {...register("confirmPassword")}
-                disabled={isSubmitting || isGoogleLoading}
-                className="h-11 w-full rounded-lg border border-line-soft bg-surface-white px-3.5 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-500 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="Ulangi kata sandi"
+                type="checkbox"
+                required
+                className="mt-0.5 h-4 w-4 rounded-sm border-line-soft text-brand-blue focus:ring-brand-blue"
               />
-              {errors.confirmPassword?.message && (
-                <p id="confirmPassword-error" className="text-xs text-danger">
-                  {errors.confirmPassword.message}
-                </p>
-              )}
-            </div>
+              <span className="font-body text-body-md text-ink-600">
+                Saya menyetujui Syarat & Ketentuan serta verifikasi identitas
+                e-tiket GBK.
+              </span>
+            </label>
+
+            {statusMessage ? (
+              <Banner
+                title="Status"
+                description={statusMessage}
+                icon="check_circle"
+              />
+            ) : null}
 
             <Button
               type="submit"
-              label="Daftar"
+              label="Buat Akun Tiket.ku"
+              variant="primary"
               disabled={isSubmitting || isGoogleLoading}
-              className="w-full rounded-lg bg-brand-blue px-6 py-3.5 text-sm font-semibold text-surface-white transition-colors hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
+              className="mt-1 w-full"
             />
 
-            <p className="text-center text-sm text-ink-600">
-              Sudah punya akun?{" "}
+            <p className="text-center font-body text-body-md text-ink-600">
+              Sudah punya akun Tiket.ku?{" "}
               <button
                 type="button"
                 onClick={() => navigate("/login")}
-                className="font-semibold text-brand-blue hover:underline"
+                className="font-label text-label-lg text-brand-deep hover:text-brand-blue"
               >
-                Masuk
+                Masuk sekarang
               </button>
             </p>
           </form>
