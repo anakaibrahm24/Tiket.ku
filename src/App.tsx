@@ -20,7 +20,6 @@ function App() {
         {/* <Route path="/matchs/:matchId/form" element={<RegisterForm />} /> */}
         {/* <Route path="/matchs/:matchId/payment/:userId" element={<Payment />} /> */}
         {/* <Route path="/user/:userId/ticket" element={<Ticket />} /> */}
-
       </Routes>
     </Router>
   );

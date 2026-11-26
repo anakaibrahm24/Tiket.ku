@@ -35,3 +35,9 @@ docs/superpowers/
 
 # Local Pencil design workspace
 .pencil/
+
+src/.ua
+
+agent/skills
+skills
+docs
