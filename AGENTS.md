@@ -58,8 +58,8 @@ supabase/
 - **Package manager:** npm (lockfile: `package-lock.json`). Jangan perkenalkan lockfile pnpm/yarn.
 - **Instal dependensi:** `npm install`
 - **Jalankan dev server (Vite):** `npm run dev` (port default 5173)
-- **Build (bundle):** `npm run build` (Vite bundle). Type-check terpisah: `npx tsc -b`; di lingkungan ini gunakan `NODE_OPTIONS=--max-old-space-size=4096`.
-- **Lint:** `npm run lint` (ESLint terhadap `.`). Warning pre-existing di `.agents/skills/...` bukan scope task.
+- **Build (bundle):** `npm run build` (Vite bundle). Type-check terpisah memakai tsc; di lingkungan ini gunakan `NODE_OPTIONS=--max-old-space-size=4096`.
+- **Lint:** ESLint terhadap `.`. Warning pre-existing di `.agents/skills/...` bukan scope task.
 - **Preview build produksi:** `npm run preview`
 - **Variabel lingkungan:** buat `.env.local` dari `.env.example` dengan:
   - `VITE_SUPABASE_URL`
@@ -80,15 +80,11 @@ supabase/
 - **Scope task:** jangan keluar dari scope task. Jika ada yang membingungkan, interview pengguna sebelum bertindak.
 
 - Test otomatis belum dikonfigurasi. Sampai Vitest disiapkan, validasi perubahan secara manual via dev server.
-- Sebelum commit, selalu jalankan:
-  - `npm run lint`
-  - `npm run build`
-  - `npx tsc -b` (heap 4096 di lingkungan ini)
 - Saat test ditambahkan (v1.1), jalankan `npm test` dan pastikan suite hijau.
 - Tambah atau perbarui test untuk setiap perubahan kode setelah harness test tersedia.
 - Status QA MVP dicatat di `README.md`: verifikasi statis selesai; QA live owner-side pending. Agen tidak menjalankan SQL live atau memakai kredensial.
 
-- **Branch:** buat branch baru sesuai progress (mis. `feat/<nama-fitur>`, `fix/<nama-bug>`) sebelum mulai bekerja. Jangan commit langsung ke `main`/`master`.
+- **Branch:** buat branch baru sesuai progress sebelum mulai bekerja. Jangan commit langsung ke `main`/`master`.
 - **Format judul:** `[tiket.ku] <deskripsi singkat>`
 - **Sebelum commit:** jalankan `npm run lint`, `npm run build`, dan `npx tsc -b`; keduanya harus lulus.
 - **Scope:** PR fokus pada satu fitur/perbaikan. Referensikan bagian `PRD.md` jika relevan.
@@ -114,7 +110,7 @@ supabase/
 ## Standar kode
 
 - **TypeScript strict mode** aktif (`strict`, `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`). Jangan nonaktifkan. Perbaiki error tipe, jangan gunakan `any` atau `@ts-ignore`.
-- **Tanpa dead code:** hapus blok yang dikomentari, jangan dibiarkan. Gunakan riwayat git untuk referensi.
+- **Tanpa dead code:** hapus blok yang dikomentari dan kode mati saat menyentuh file, jangan dibiarkan. Gunakan riwayat git untuk referensi.
 - **Penamaan konsisten:** gunakan `eventId` (bukan `matchId`/`match_id`) dan `orderId` (bukan `userId` untuk order) untuk fitur baru. Standarkan camelCase untuk kolom DB jika memungkinkan, atau petakan eksplisit di service layer.
 - **Teks UI dalam Bahasa Indonesia.**
 - **Ikuti `DESIGN.md`** untuk warna, tipografi, spacing, radius, dan styling komponen. Jangan perkenalkan nilai ad-hoc.
@@ -133,8 +129,6 @@ supabase/
 - Jangan ubah migration yang sudah diapply.
 - QA live owner-side; jangan jalankan SQL live atau gunakan kredensial.
 - Type-check membutuhkan heap 4096 MB di lingkungan ini.
-- Bersihkan dead code dan blok komentar saat menyentuh file.
-- Semua file `.md` yang digenerate harus berbahasa Indonesia.
 
 ## Dokumentasi & referensi
 
