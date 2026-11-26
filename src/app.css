@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap");
 
 @import "tailwindcss";
 
 @theme {
-  /* Brand & Aksen (mindcloud) */
+  /* Brand & Aksen */
   --color-brand-blue: #146DFC;
   --color-brand-hover: #006FFF;
   --color-brand-deep: #0056EC;
@@ -55,16 +55,18 @@
 
   /* Fonts */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Fira Code", "SF Mono", "Fira Mono", monospace;
-  --font-display: "Roobert", "Inter", system-ui, sans-serif;
+  --font-mono: "Inter", "SF Mono", "Fira Mono", monospace;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-display);
 
   /* Radius */
   --radius: 10px;
   --radius-base: 10px;
   --radius-sm: 12px;
+  --radius-md: 12px;
   --radius-lg: 14px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
   /* Spacing */
@@ -74,30 +76,40 @@
   --spacing-lg: 24px;
   --spacing-xl: 32px;
   --spacing-xxl: 48px;
+  --spacing-section: 56px;
+  --spacing-page-margin: 64px;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+  /* Motion */
+  --transition-duration-state-change: 150ms;
+  --transition-duration-surface-enter: 220ms;
+  --transition-timing-state-change: ease-out;
+  --transition-timing-surface-enter: cubic-bezier(0.2, 0, 0, 1);
 }
 
 @utility type-display {
-  font-family: var(--font-sans);
-  font-size: 36px;
-  line-height: 40px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
 }
 
 @utility type-h1 {
-  font-family: var(--font-sans);
-  font-size: 30px;
-  line-height: 36px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: 600;
+  letter-spacing: -0.76px;
 }
 
 @utility type-h2 {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
@@ -157,3 +169,5 @@
     scroll-behavior: auto !important;
   }
 }
+
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; line-height: 1; }
