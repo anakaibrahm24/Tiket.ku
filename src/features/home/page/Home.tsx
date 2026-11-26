@@ -118,21 +118,21 @@ const HomePage = () => {
             </div>
 
             <div className="lg:col-span-5">
-              <article className="overflow-hidden rounded-xl border border-line-on-dark bg-dark-900 shadow-lg">
+              <article className="overflow-hidden rounded-xl border border-dark-700 bg-night-800 shadow-lg">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                <div
-                  aria-hidden="true"
-                  className="flex h-full w-full items-center justify-center bg-surface-subtle"
-                >
-                  <span className="material-symbols-outlined text-5xl text-ink-300">
-                    image
-                  </span>
-                </div>
+                  <div
+                    aria-hidden="true"
+                    className="flex h-full w-full items-center justify-center bg-surface-subtle"
+                  >
+                    <span className="material-symbols-outlined text-5xl text-ink-300">
+                      image
+                    </span>
+                  </div>
                   <span className="absolute left-3 top-3 rounded-full bg-brand-blue px-3 py-1 font-label text-label-md text-surface-white">
                     Sorotan Utama
                   </span>
-                  <span className="absolute right-3 top-3 rounded-full bg-surface-muted px-3 py-1 font-label text-label-md text-ink-700">
-                    Status
+                  <span className="absolute right-3 top-3 rounded-full bg-danger px-3 py-1 font-label text-label-md text-surface-white">
+                    Hampir Habis
                   </span>
                 </div>
                 <div className="flex flex-col gap-3 p-6">
@@ -149,7 +149,7 @@ const HomePage = () => {
                       <span className="font-label text-label-md text-brand-sky">Mulai dari</span>
                       <span className="font-mono text-mono-md tabular-nums text-surface-white">Rp ---</span>
                     </div>
-                    <Button type="button" label="Pilih Kursi" variant="primary" onClick={handleLihatJadwal} />
+                    <Button type="button" label="Pilih Kursi" variant="primary" size="sm" onClick={handleLihatJadwal} />
                   </div>
                 </div>
               </article>
@@ -205,7 +205,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="keunggulan" className="border-y border-line-soft bg-surface-subtle">
+        <section id="keunggulan" className="border-y border-border bg-surface-white">
           <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-14 lg:px-16">
             <div className="max-w-2xl flex flex-col gap-2">
               <span className="font-label text-label-md text-brand-deep">Kenapa Tiket.ku</span>
@@ -234,7 +234,7 @@ const HomePage = () => {
               ].map((feature) => (
                 <div
                   key={feature.title}
-                  className="flex flex-col gap-3 rounded-xl border border-line-soft bg-surface-white p-6"
+                  className="flex flex-col gap-3 rounded-xl border border-border bg-surface-white p-6"
                 >
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-tint text-brand-deep">
                     <span className="material-symbols-outlined text-headline-md" aria-hidden="true">
@@ -261,7 +261,7 @@ const HomePage = () => {
             {venues.map((venue) => (
               <div
                 key={venue.name}
-                className="flex flex-col justify-between gap-4 rounded-xl border border-line-soft bg-surface-white p-6 shadow-sm"
+                className="flex flex-col justify-between gap-4 rounded-xl border border-border bg-surface-white p-6 shadow-sm"
               >
                 <div className="flex flex-col gap-1.5">
                   <span className="font-label text-label-md tabular-nums text-brand-deep">
@@ -276,7 +276,7 @@ const HomePage = () => {
         </section>
 
         <section id="cta-gbk" className="mx-auto max-w-7xl px-6 pb-14 lg:px-16">
-          <div className="flex flex-col items-start justify-between gap-6 rounded-xl border border-line-on-dark bg-night-950 p-8 lg:flex-row lg:items-center lg:p-12">
+          <div className="flex flex-col items-start justify-between gap-6 rounded-xl border border-dark-700 bg-night-950 p-8 lg:flex-row lg:items-center lg:p-12">
             <div className="max-w-xl flex flex-col gap-2">
               <h2 className="font-headline text-headline-lg-mobile text-balance text-surface-white lg:text-headline-lg">
                 Siap mengamankan kursi Anda di GBK?

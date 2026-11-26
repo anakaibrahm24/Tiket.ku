@@ -29,23 +29,42 @@ export const CardAction = ({
   disabled = false,
   className = "",
 }: CardActionProps) => {
+  const statusClassName =
+    status === "Hampir Habis"
+      ? "bg-danger text-surface-white"
+      : status === "Tersedia"
+        ? "bg-surface-muted text-ink-600"
+        : "bg-brand-tint text-brand-deep";
+
   return (
     <article
       className={cn(
-        "flex flex-col justify-between overflow-hidden rounded-xl border border-line-soft bg-surface-white shadow-sm transition-colors duration-150",
+        "flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-surface-white shadow-sm transition-colors duration-150",
         disabled ? "opacity-80" : "hover:border-brand-blue",
         className
       )}
     >
-      <div className="relative aspect-[16/10] flex flex-col items-center justify-center gap-1.5 border-b border-line-soft bg-surface-subtle text-ink-500">
-        {media ?? <span className="material-symbols-outlined text-headline-md">image</span>}
+      <div className="relative aspect-[16/10] overflow-hidden bg-surface-muted">
+        {media ?? (
+          <div
+            aria-hidden="true"
+            className="flex h-full w-full items-center justify-center bg-surface-muted"
+          >
+            <span className="material-symbols-outlined text-4xl text-ink-300">image</span>
+          </div>
+        )}
         {category ? (
           <span className="absolute left-3 top-3 rounded-full bg-night-950 px-3 py-1 font-label text-label-md text-surface-white">
             {category}
           </span>
         ) : null}
         {status ? (
-          <span className="absolute right-3 top-3 rounded-full bg-brand-tint px-3 py-1 font-label text-label-md text-brand-deep">
+          <span
+            className={cn(
+              "absolute right-3 top-3 rounded-full px-3 py-1 font-label text-label-md",
+              statusClassName
+            )}
+          >
             {status}
           </span>
         ) : null}
@@ -63,7 +82,7 @@ export const CardAction = ({
         ) : null}
       </div>
       {price || actionLabel ? (
-        <div className="flex items-center justify-between gap-4 border-t border-line-soft p-5">
+        <div className="flex items-center justify-between gap-3 border-t border-border px-5 py-4">
           {price ? (
             <div className="flex flex-col">
               <span className="font-label text-label-md text-ink-500">Mulai dari</span>
@@ -74,6 +93,7 @@ export const CardAction = ({
             type="button"
             label={actionLabel}
             variant={disabled ? "disabled" : "primary"}
+            size="sm"
             onClick={onAction}
             disabled={disabled}
           />
