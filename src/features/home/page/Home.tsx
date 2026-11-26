@@ -7,34 +7,28 @@ import { useNavigate } from "react-router-dom";
 
 const events = [
   {
-    category: "Sepak Bola",
-    status: "Terbatas",
-    date: "Sab, 14 Des · 19:30 WIB",
-    title: "Persija vs Persib",
-    location: "Stadion Utama GBK",
-    price: "Rp 150.000",
-    image:
-      "https://lh3.googleusercontent.com/aida/ALJJyrBMiILm9Zwh5M72qc8bJXr1BTUjJJEv3GYph5Xi4ynEq9rOjtWL1ouyTVmDBrue4fcL2SGE_Jyk3Ays8mODbdebfcCCLNS7X3fHuLndWsvoRy8sxsJXpEs-N2Hq8B6-WX7lYdt0hv5rd8OURJXnGn7AQml97h57ZdFMpoYLcro7RT5Bh2wglDf0-y6-nkJdCdj4OuzTEa6aCCoXJE5IIpLD_BBxUyZ5mc2npjcDM1Vu1FmvcSq2OfGgbK0cSb0v",
+    category: "Kategori",
+    status: "Status",
+    date: "Tanggal & Waktu",
+    title: "Judul Acara",
+    location: "Lokasi",
+    price: "Rp ---",
   },
   {
-    category: "Konser",
-    status: "Hampir Habis",
-    date: "Min, 22 Des · 20:00 WIB",
-    title: "Konser Sheila on 7",
-    location: "Stadion Utama GBK",
-    price: "Rp 350.000",
-    image:
-      "https://lh3.googleusercontent.com/aida/ALJJyrCoFVIvKzDDiOtciK3KakEnC58uJXy0OpEmCPQSvSof2imS9GR19bHFgNoGJRw-Z3OUeEN37B_a2uy7SxW2ciF68UamDDuFzNFO674mtyKxPGXQbxYMXKq0bjYAx2zoxGlOiuTcR21MUeFSrv8rPj9AV0MUFVg0bsysLrRKZ-IfE3GXfnNcEDStBU0LVR077Ns8QHaC31MihpyZH3WtvCgJbiPYOgOhMtNFps3dZGqHD74EECZRnlqMRHWQ",
+    category: "Kategori",
+    status: "Status",
+    date: "Tanggal & Waktu",
+    title: "Judul Acara",
+    location: "Lokasi",
+    price: "Rp ---",
   },
   {
-    category: "Olahraga",
-    status: "Tersedia",
-    date: "Min, 29 Des · 13:00 WIB",
-    title: "Indonesia Open Final",
-    location: "Istora Senayan GBK",
-    price: "Rp 175.000",
-    image:
-      "https://lh3.googleusercontent.com/aida/ALJJyrB1Km0aKZmEZyj_CtafvGI0PwrzpzMzT5vZEMHGtwrnYuoxbrezJlnVwQL0R_eFswUM7RegVEP950WvXtfJm7-jK8S1OC_Rzf-Alg0emQf1MCryBQeAahJP78mGB6YoD9ZuUGQZ9DHVIdxVyz-xdSDd4QiAiCkQnParfg44vv2VXoVgKi5Tqrnm5pj_DpaGT6GhVdo2p_EBsIC6sK7Jnj3mxrZPv0jAJXXKa-pI4bgUeKHV1C55BAjXFfPZVMLQ",
+    category: "Kategori",
+    status: "Status",
+    date: "Tanggal & Waktu",
+    title: "Judul Acara",
+    location: "Lokasi",
+    price: "Rp ---",
   },
 ];
 
@@ -137,23 +131,23 @@ const HomePage = () => {
                   <span className="absolute left-3 top-3 rounded-full bg-brand-blue px-3 py-1 font-label text-label-md text-surface-white">
                     Sorotan Utama
                   </span>
-                  <span className="absolute right-3 top-3 rounded-full bg-danger px-3 py-1 font-label text-label-md text-surface-white">
-                    Hampir Habis
+                  <span className="absolute right-3 top-3 rounded-full bg-surface-muted px-3 py-1 font-label text-label-md text-ink-700">
+                    Status
                   </span>
                 </div>
                 <div className="flex flex-col gap-3 p-6">
-                  <p className="font-label text-label-md tabular-nums text-brand-sky">Kam, 19 Des · 19:00 WIB</p>
-                  <h2 className="font-title text-headline-md text-surface-white">Indonesia vs Jepang</h2>
+                  <p className="font-label text-label-md tabular-nums text-brand-sky">Tanggal & Waktu</p>
+                  <h2 className="font-title text-headline-md text-surface-white">Judul Acara</h2>
                   <p className="flex items-center gap-1.5 font-body text-body-md text-brand-sky">
                     <span className="material-symbols-outlined text-body-lg" aria-hidden="true">
                       location_on
                     </span>
-                    <span>Stadion Utama GBK, Senayan</span>
+                    <span>Lokasi</span>
                   </p>
                   <div className="mt-1 flex items-center justify-between gap-4 border-t border-line-on-dark pt-3">
                     <div className="flex flex-col">
                       <span className="font-label text-label-md text-brand-sky">Mulai dari</span>
-                      <span className="font-mono text-mono-md tabular-nums text-surface-white">Rp 250.000</span>
+                      <span className="font-mono text-mono-md tabular-nums text-surface-white">Rp ---</span>
                     </div>
                     <Button type="button" label="Pilih Kursi" variant="primary" onClick={handleLihatJadwal} />
                   </div>
@@ -188,7 +182,14 @@ const HomePage = () => {
               <CardAction
                 key={event.title}
                 media={
-                  <img src={event.image} alt={event.title} className="h-full w-full object-cover" />
+                  <div
+                    aria-hidden="true"
+                    className="flex h-full w-full items-center justify-center bg-surface-subtle"
+                  >
+                    <span className="material-symbols-outlined text-4xl text-ink-300">
+                      image
+                    </span>
+                  </div>
                 }
                 category={event.category}
                 status={event.status}
