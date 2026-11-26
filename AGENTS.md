@@ -104,6 +104,9 @@ supabase/
 - Setiap task yang selesai dan lulus verifikasi dibuat commit terpisah (satu task = satu commit). Jangan gabungkan beberapa task dalam satu commit.
 - Setelah task selesai, centang checklist task di plan (`- [ ]` → `- [x]`).
 - Plan selalu mencerminkan progress aktual.
+- **Plan progress atas permintaan pengguna:** saat pengguna meminta membuat plan progress, buat plan dengan format superpowers terlebih dahulu, lalu minta persetujuan pengguna sebelum eksekusi. Jangan implementasi sebelum ACC.
+- **Header branch wajib:** setiap file plan harus memiliki header branch yang akan digunakan, mis. `Branch: feat/<nama-progress>`.
+- **Commit per task di plan:** setelah semua checklist pada suatu task selesai dan lulus verifikasi, tambahkan commit hash dan commit message di bawah task tersebut pada file plan.
 - Semua file `.md` di `docs/superpowers/` ditulis dalam Bahasa Indonesia dan tidak di-commit tanpa persetujuan pengguna.
 
 ## Instruksi testing
