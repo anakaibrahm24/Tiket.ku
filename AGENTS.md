@@ -86,9 +86,9 @@ supabase/
 - Tambah atau perbarui test untuk setiap perubahan kode setelah harness test tersedia.
 - Status QA MVP dicatat di `README.md`: verifikasi statis selesai; QA live owner-side pending. Agen tidak menjalankan SQL live atau memakai kredensial.
 
-- **Branch:** buat branch baru sesuai progress sebelum mulai bekerja. Jangan commit langsung ke `main`/`master`.
+- **Branch:** buat branch baru sesuai progress sebelum mulai bekerja.
 - **Format judul:** `[tiket.ku] <deskripsi singkat>`
-- **Sebelum commit:** jalankan `npm run lint`, `npm run build`, dan `npx tsc -b`; keduanya harus lulus.
+- **Sebelum commit:** jalankan `npm run lint`, `npm run build`, dan `npx tsc -b`; ketiganya harus lulus.
 - **Scope:** PR fokus pada satu fitur/perbaikan. Referensikan bagian `PRD.md` jika relevan.
 - **Commit per task:** setiap task selesai dan lulus verifikasi dibuat commit terpisah.
 - **Jangan commit** `.env.local`, artefak build, atau `node_modules`.
@@ -123,14 +123,11 @@ supabase/
 - **Migration:** file gabungan final diapply sekali. Jangan edit migration yang sudah diapply.
 - **Error handling:** tampilkan error ke pengguna via komponen `Alerts` atau inline field error. Hindari `alert()`.
 - **Loading state:** nonaktifkan tombol submit dan tampilkan spinner saat operasi async berlangsung.
-- **Komponen reusable:** jika komponen bukan dari shadcn/ui, buat file khusus di `src/components/` agar dapat digunakan ulang. Jangan duplikasi komponen.
+- **Komponen reusable:** jika komponen bukan dari shadcn/ui, buat file khusus di `src/components/` agar dapat digunakan ulang. Lebih baik edit file yang ada daripada membuat baru; jangan duplikasi komponen.
 
 - Saat mengubah rute, perbarui `src/App.tsx` dan alur pengguna di `PRD.md` jika perlu.
 - Saat menambah fitur, buat folder di `src/features/<fitur>/` dengan `page`, `components`, `hooks`, `service`, `schema`/`schemas`, dan `types` sesuai kebutuhan.
-- Lebih baik edit file yang ada daripada membuat baru; hindari duplikasi komponen.
 - Jika ragu tentang skema backend (events/ticket_categories/orders/tickets), cek `PRD.md` §6.3 dan konfirmasi ke pemilik proyek sebelum migrasi.
-- Jangan ubah migration yang sudah diapply.
-- QA live owner-side; jangan jalankan SQL live atau gunakan kredensial.
 - Type-check membutuhkan heap 4096 MB di lingkungan ini.
 
 ## Dokumentasi & referensi
