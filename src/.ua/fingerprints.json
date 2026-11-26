@@ -1,17 +1,17 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "f380ff666b3b2f38a3363d50f0dd6493bbba3328",
-  "generatedAt": "2026-11-24T09:05:37.061Z",
+  "gitCommitHash": "9cb949b672fe4c04e42f752ef5e51820da75bf07",
+  "generatedAt": "2026-11-26T15:46:03.763Z",
   "files": {
     "App.tsx": {
       "filePath": "App.tsx",
-      "contentHash": "cc66207c01fb017a82a6a85e2a3f847845b45185d11915b6100ff42a77539ed9",
+      "contentHash": "59da5a0dd1026846df7ede7806adfefd5551bffbba1b21dee94ee17a14092251",
       "functions": [
         {
           "name": "App",
           "params": [],
           "exported": false,
-          "lineCount": 17
+          "lineCount": 16
         }
       ],
       "classes": [],
@@ -56,17 +56,17 @@
         }
       ],
       "exports": [],
-      "totalLines": 30,
+      "totalLines": 29,
       "hasStructuralAnalysis": true
     },
     "app.css": {
       "filePath": "app.css",
-      "contentHash": "cf31ca79e3d2525eb59465a13b80316bf604707dbea891b6e53e4921c369ccac",
+      "contentHash": "86e1673367bd9be18aafa6d510c0899ee3befc5d64b9f61390b4817c3949dd04",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 159,
+      "totalLines": 224,
       "hasStructuralAnalysis": false
     },
     "components/Alerts.tsx": {
@@ -110,17 +110,45 @@
       "totalLines": 120,
       "hasStructuralAnalysis": true
     },
-    "components/Button.tsx": {
-      "filePath": "components/Button.tsx",
-      "contentHash": "f1a0459b11d00602394f986227b2ae8bfc1760d033d9ee77f71664daf1d4da5f",
+    "components/Badge.tsx": {
+      "filePath": "components/Badge.tsx",
+      "contentHash": "4b3c2aa039f61f4806e29782027f4f037662b01d046fa64fec306fdbb33e38fa",
       "functions": [
         {
-          "name": "Button",
+          "name": "Badge",
           "params": [
-            "{\r\n  label,\r\n  onClick,\r\n  className = \"\",\r\n  type = \"button\",\r\n  ...props\r\n}"
+            "{ children, variant = \"neutral\", className = \"\" }"
           ],
           "exported": true,
-          "lineCount": 25
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Badge"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "components/Banner.tsx": {
+      "filePath": "components/Banner.tsx",
+      "contentHash": "bc782a286cfd097709077abe866b225ed0dd3f641a69139f4325a24a50d8acbf",
+      "functions": [
+        {
+          "name": "Banner",
+          "params": [
+            "{\n  title,\n  description,\n  code,\n  icon = \"verified\",\n  className = \"\",\n  children,\n}"
+          ],
+          "exported": true,
+          "lineCount": 37
         }
       ],
       "classes": [],
@@ -134,80 +162,78 @@
         {
           "source": "react",
           "specifiers": [
-            "ButtonHTMLAttributes"
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "Banner"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "components/Button.tsx": {
+      "filePath": "components/Button.tsx",
+      "contentHash": "0edd6714e79a7edc11c7c34797f46f3d1d376ca725cfeb5e8a6772b6e992c366",
+      "functions": [
+        {
+          "name": "Button",
+          "params": [
+            "{\n  label,\n  children,\n  variant = \"primary\",\n  icon,\n  className = \"\",\n  type = \"button\",\n  size = \"md\",\n  ...props\n}"
+          ],
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ButtonHTMLAttributes",
+            "ReactNode"
           ]
         }
       ],
       "exports": [
         "Button"
       ],
-      "totalLines": 33,
+      "totalLines": 59,
       "hasStructuralAnalysis": true
     },
-    "components/CTABanner.tsx": {
-      "filePath": "components/CTABanner.tsx",
-      "contentHash": "4b20298f21747fefc0a864ec7f55567527e1e1d756d554ee32e2f13f9652de98",
+    "components/CardAction.tsx": {
+      "filePath": "components/CardAction.tsx",
+      "contentHash": "7b1f55016bbd34e85145d3796d533152317e2b40b40552d2f4d1ae6f339992e8",
       "functions": [
         {
-          "name": "CTABanner",
+          "name": "CardAction",
           "params": [
-            "{ onAction }"
+            "{\r\n  media,\r\n  category,\r\n  status,\r\n  date,\r\n  title,\r\n  location,\r\n  price,\r\n  actionLabel = \"Pilih Kursi\",\r\n  onAction,\r\n  disabled = false,\r\n  className = \"\",\r\n}"
           ],
           "exported": true,
-          "lineCount": 20
-        }
-      ],
-      "classes": [],
-      "imports": [],
-      "exports": [
-        "CTABanner"
-      ],
-      "totalLines": 25,
-      "hasStructuralAnalysis": true
-    },
-    "components/Dropdown.tsx": {
-      "filePath": "components/Dropdown.tsx",
-      "contentHash": "bbdc704148a44eea817f53b36d43227c49778b4900d41a3b805f41e7d40cf3dc",
-      "functions": [
-        {
-          "name": "Dropdown",
-          "params": [
-            "{\r\n  labelName,\r\n  defaultValue,\r\n  options,\r\n  register,\r\n  errorMessage,\r\n}"
-          ],
-          "exported": true,
-          "lineCount": 37
+          "lineCount": 86
         }
       ],
       "classes": [],
       "imports": [
         {
-          "source": "react-hook-form",
+          "source": "@/lib/utiils",
           "specifiers": [
-            "UseFormRegisterReturn"
+            "cn"
           ]
-        }
-      ],
-      "exports": [
-        "Dropdown"
-      ],
-      "totalLines": 48,
-      "hasStructuralAnalysis": true
-    },
-    "components/FeatureCard.tsx": {
-      "filePath": "components/FeatureCard.tsx",
-      "contentHash": "d86f19cf1f4f09c6802739e5eec0d88ab07ea1e41c5887221f1acbab5ac2ed41",
-      "functions": [
+        },
         {
-          "name": "FeatureCard",
-          "params": [
-            "{ icon, title, description }"
-          ],
-          "exported": true,
-          "lineCount": 11
-        }
-      ],
-      "classes": [],
-      "imports": [
+          "source": "./Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
         {
           "source": "react",
           "specifiers": [
@@ -216,75 +242,67 @@
         }
       ],
       "exports": [
-        "FeatureCard"
+        "CardAction"
       ],
-      "totalLines": 19,
+      "totalLines": 107,
       "hasStructuralAnalysis": true
     },
-    "components/Features.tsx": {
-      "filePath": "components/Features.tsx",
-      "contentHash": "65c5239d1ac760978e1617354a0ddf2024a431892f6439d17bd1a344745dd3f1",
+    "components/Drawer.tsx": {
+      "filePath": "components/Drawer.tsx",
+      "contentHash": "6e38ed2b5740d04b2d5932d3c8a69c0b1a286e999c3d56dfd99560fef8d5666c",
       "functions": [
         {
-          "name": "Features",
-          "params": [],
+          "name": "Drawer",
+          "params": [
+            "{ open, title, children, onClose, className = \"\" }"
+          ],
           "exported": true,
-          "lineCount": 26
+          "lineCount": 27
         }
       ],
       "classes": [],
       "imports": [
         {
-          "source": "react-icons/fa",
+          "source": "@/lib/utiils",
           "specifiers": [
-            "FaCalendarAlt",
-            "FaTicketAlt",
-            "FaShieldAlt",
-            "FaQrcode"
+            "cn"
           ]
         },
         {
-          "source": "./FeatureCard",
+          "source": "react",
           "specifiers": [
-            "FeatureCard"
+            "ReactNode"
           ]
         }
       ],
       "exports": [
-        "Features"
+        "Drawer"
       ],
-      "totalLines": 52,
+      "totalLines": 41,
       "hasStructuralAnalysis": true
     },
     "components/Footer.tsx": {
       "filePath": "components/Footer.tsx",
-      "contentHash": "ad8ea7b17ffc4b964e3667d933beb7d4f4a5b048b4e0e1ab276e6443bcaf6d79",
+      "contentHash": "59e6b635ec1b4574bb5d4e7d5cf06a2cf50b07d9b8fd6c301d6c190c7951a75f",
       "functions": [
         {
           "name": "Footer",
           "params": [],
           "exported": true,
-          "lineCount": 12
+          "lineCount": 22
         }
       ],
       "classes": [],
-      "imports": [
-        {
-          "source": "./FooterLinks",
-          "specifiers": [
-            "FooterLinks"
-          ]
-        }
-      ],
+      "imports": [],
       "exports": [
         "Footer"
       ],
-      "totalLines": 14,
+      "totalLines": 25,
       "hasStructuralAnalysis": true
     },
     "components/FooterLinks.tsx": {
       "filePath": "components/FooterLinks.tsx",
-      "contentHash": "93d42b9a02fa3bcf9effd9ce19a9af9d8a6ee1a21d01ec664965e9b9b3e40b05",
+      "contentHash": "3dbcd02cb020cb5ebfec11137677bbb74efd0c71822065dca5984a7e2dbc7833",
       "functions": [
         {
           "name": "FooterLinks",
@@ -301,45 +319,17 @@
       "totalLines": 17,
       "hasStructuralAnalysis": true
     },
-    "components/Hero.tsx": {
-      "filePath": "components/Hero.tsx",
-      "contentHash": "cbac123e665ee95b5087de45008f1c1a480fda3e4e6cde5743df3990259bce86",
-      "functions": [
-        {
-          "name": "Hero",
-          "params": [
-            "{ onPesanTiket, onLihatJadwal }"
-          ],
-          "exported": true,
-          "lineCount": 39
-        }
-      ],
-      "classes": [],
-      "imports": [
-        {
-          "source": "./Button",
-          "specifiers": [
-            "Button"
-          ]
-        }
-      ],
-      "exports": [
-        "Hero"
-      ],
-      "totalLines": 46,
-      "hasStructuralAnalysis": true
-    },
     "components/InputField.tsx": {
       "filePath": "components/InputField.tsx",
-      "contentHash": "494d37e5fd57092d1cd568fdc241a7657bb8dec811ec1e8ea040c29a5b7ac859",
+      "contentHash": "745d3bc1576b08b4d47fe8a62b1892872cb308bddda63314b0632367ef0d303f",
       "functions": [
         {
           "name": "InputField",
           "params": [
-            "{\r\n  className = \"\",\r\n  labelName,\r\n  error,\r\n  type = \"text\",\r\n  required,\r\n  showForgotPasswordLink,\r\n  forgotPasswordPath = \"#\",\r\n  ...props\r\n}"
+            "{\n  className = \"\",\n  labelName,\n  error,\n  required = false,\n  showForgotPasswordLink = false,\n  forgotPasswordPath = \"#\",\n  type = \"text\",\n  ...props\n}"
           ],
           "exported": true,
-          "lineCount": 75
+          "lineCount": 63
         }
       ],
       "classes": [],
@@ -374,12 +364,12 @@
       "exports": [
         "InputField"
       ],
-      "totalLines": 90,
+      "totalLines": 80,
       "hasStructuralAnalysis": true
     },
     "components/Navbar.tsx": {
       "filePath": "components/Navbar.tsx",
-      "contentHash": "61350aea6eb7e493228318d26e910c73e82b0bf0b186968731556ddf4becd1e0",
+      "contentHash": "dd933a5d6cb12b223a34920c88e6435bfdeaedac550fce05336e82c6f9676a2c",
       "functions": [
         {
           "name": "Navbar",
@@ -387,11 +377,17 @@
             "{ user }"
           ],
           "exported": true,
-          "lineCount": 58
+          "lineCount": 63
         }
       ],
       "classes": [],
       "imports": [
+        {
+          "source": "./Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
         {
           "source": "react-router-dom",
           "specifiers": [
@@ -402,66 +398,197 @@
       "exports": [
         "Navbar"
       ],
-      "totalLines": 64,
+      "totalLines": 71,
       "hasStructuralAnalysis": true
     },
-    "components/ScheduleCard.tsx": {
-      "filePath": "components/ScheduleCard.tsx",
-      "contentHash": "714569b69a958e1fdcaed00c5c913a5395e922f76dd5707f767e1ccbe45fd9f8",
+    "components/QrPassCard.tsx": {
+      "filePath": "components/QrPassCard.tsx",
+      "contentHash": "5d008cf4169154662b473601b586fa1bee334661d75c69028c5e6ff14b1883cd",
       "functions": [
         {
-          "name": "ScheduleCard",
+          "name": "QrPassCard",
           "params": [
-            "{\n  badge,\n  title,\n  subtitle,\n  date,\n  time,\n  venue,\n  onDetail,\n}"
+            "{\n  title,\n  subtitle,\n  code,\n  status,\n  className = \"\",\n}"
           ],
           "exported": true,
-          "lineCount": 30
-        }
-      ],
-      "classes": [],
-      "imports": [],
-      "exports": [
-        "ScheduleCard"
-      ],
-      "totalLines": 40,
-      "hasStructuralAnalysis": true
-    },
-    "components/SchedulePreview.tsx": {
-      "filePath": "components/SchedulePreview.tsx",
-      "contentHash": "bcc47c094e163504d6a5e87d15ee0ee576ad11a110af7521193e0f6c84e3f8f4",
-      "functions": [
-        {
-          "name": "SchedulePreview",
-          "params": [
-            "{ onDetail }"
-          ],
-          "exported": true,
-          "lineCount": 21
+          "lineCount": 23
         }
       ],
       "classes": [],
       "imports": [
         {
-          "source": "./ScheduleCard",
+          "source": "@/lib/utiils",
           "specifiers": [
-            "ScheduleCard"
+            "cn"
           ]
         }
       ],
       "exports": [
-        "SchedulePreview"
+        "QrPassCard"
       ],
-      "totalLines": 54,
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "components/RadioSelector.tsx": {
+      "filePath": "components/RadioSelector.tsx",
+      "contentHash": "7061d559681483d3785240360af270ef0d45d250b13569d7366f07f3d871b8e6",
+      "functions": [
+        {
+          "name": "RadioSelector",
+          "params": [
+            "{\n  options,\n  value,\n  onChange,\n  className = \"\",\n}"
+          ],
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "RadioSelector"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "components/Searchbar.tsx": {
+      "filePath": "components/Searchbar.tsx",
+      "contentHash": "89de359989892ec8198cf50453cd65b425775a4410392d873b1aa19a9abdf704",
+      "functions": [
+        {
+          "name": "Searchbar",
+          "params": [
+            "{\n  placeholder = \"Placeholder pencarian...\",\n  onSearch,\n  className = \"\",\n}"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./Button",
+          "specifiers": [
+            "Button"
+          ]
+        }
+      ],
+      "exports": [
+        "Searchbar"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "components/Stepper.tsx": {
+      "filePath": "components/Stepper.tsx",
+      "contentHash": "9f8990c4acd27bc5662e31f1b4da29c06bebb38aad3cda27fe7b9d428224ca6a",
+      "functions": [
+        {
+          "name": "Stepper",
+          "params": [
+            "{ steps, activeIndex, className = \"\" }"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Stepper"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "components/SummaryCard.tsx": {
+      "filePath": "components/SummaryCard.tsx",
+      "contentHash": "d131dcd58a9a543667d8eb2288d75ce366dee56b42d0e5b893595ea73c511ed9",
+      "functions": [
+        {
+          "name": "SummaryCard",
+          "params": [
+            "{\n  title = \"Ringkasan\",\n  children,\n  totalLabel = \"Total\",\n  totalValue,\n  actionLabel,\n  onAction,\n  className = \"\",\n}"
+          ],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "SummaryCard"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "components/Tabs.tsx": {
+      "filePath": "components/Tabs.tsx",
+      "contentHash": "09e53aec57767fa0ab9842b54a7bb93283bb5e85457e784495ee64c4a9c0979d",
+      "functions": [
+        {
+          "name": "Tabs",
+          "params": [
+            "{ items, activeId, onChange, className = \"\" }"
+          ],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Tabs"
+      ],
+      "totalLines": 49,
       "hasStructuralAnalysis": true
     },
     "components/index.ts": {
       "filePath": "components/index.ts",
-      "contentHash": "cb30cf03e6ff395f826737b318db5ba57f4877472e811971e27b6d8c2e9de325",
+      "contentHash": "5ee501585aee5109fedd30c62952ba7410f653323f8b7c8e9c6215cb336c6867",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 14,
+      "totalLines": 17,
       "hasStructuralAnalysis": true
     },
     "features/auth/page/AuthCallbackPage.tsx": {
@@ -503,13 +630,13 @@
     },
     "features/auth/page/LoginPage.tsx": {
       "filePath": "features/auth/page/LoginPage.tsx",
-      "contentHash": "c2b744e430b8b8b6e800c6c40d5bc9dfb2296a13ce49d344680e8dfb39b351c2",
+      "contentHash": "71857809ac586d5ed32d6b9957bc241f41bc5f640eeba33bde806112e6b2d23c",
       "functions": [
         {
           "name": "LoginPage",
           "params": [],
           "exported": false,
-          "lineCount": 166
+          "lineCount": 175
         }
       ],
       "classes": [],
@@ -553,15 +680,27 @@
           ]
         },
         {
-          "source": "@/components/Footer",
+          "source": "@/components/Banner",
           "specifiers": [
-            "Footer"
+            "Banner"
           ]
         },
         {
           "source": "@/components/Button",
           "specifiers": [
             "Button"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/InputField",
+          "specifiers": [
+            "InputField"
           ]
         },
         {
@@ -587,18 +726,18 @@
         }
       ],
       "exports": [],
-      "totalLines": 189,
+      "totalLines": 200,
       "hasStructuralAnalysis": true
     },
     "features/auth/page/SignupPage.tsx": {
       "filePath": "features/auth/page/SignupPage.tsx",
-      "contentHash": "a8ff828918b10e1a91fb04a122526e47c72e4cc8b8d9a55c2d41d5555b2b8c74",
+      "contentHash": "9b565694626ba830392b101dc8fb90ba0e4a824ebd0f4d725d059453bb6c9085",
       "functions": [
         {
           "name": "SignupPage",
           "params": [],
           "exported": false,
-          "lineCount": 215
+          "lineCount": 212
         }
       ],
       "classes": [],
@@ -642,15 +781,27 @@
           ]
         },
         {
-          "source": "@/components/Footer",
+          "source": "@/components/Banner",
           "specifiers": [
-            "Footer"
+            "Banner"
           ]
         },
         {
           "source": "@/components/Button",
           "specifiers": [
             "Button"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/InputField",
+          "specifiers": [
+            "InputField"
           ]
         },
         {
@@ -870,21 +1021,27 @@
     },
     "features/home/page/Home.tsx": {
       "filePath": "features/home/page/Home.tsx",
-      "contentHash": "ae8bddb1a484a0d1abf69fa1424f5160563cd70c2a95955a2ac6bf1cf2d73e3f",
+      "contentHash": "d65b31b68786fda5ffe0129d2ac41abdb33eff1b416a6d3e01d440969cb86a47",
       "functions": [
         {
           "name": "HomePage",
           "params": [],
           "exported": false,
-          "lineCount": 31
+          "lineCount": 309
         }
       ],
       "classes": [],
       "imports": [
         {
-          "source": "@/components/Features",
+          "source": "@/components/Button",
           "specifiers": [
-            "Features"
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/CardAction",
+          "specifiers": [
+            "CardAction"
           ]
         },
         {
@@ -894,21 +1051,9 @@
           ]
         },
         {
-          "source": "@/components/Hero",
-          "specifiers": [
-            "Hero"
-          ]
-        },
-        {
           "source": "@/components/Navbar",
           "specifiers": [
             "Navbar"
-          ]
-        },
-        {
-          "source": "@/components/SchedulePreview",
-          "specifiers": [
-            "SchedulePreview"
           ]
         },
         {
@@ -925,7 +1070,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 42,
+      "totalLines": 369,
       "hasStructuralAnalysis": true
     },
     "features/matches/components/Card.tsx": {

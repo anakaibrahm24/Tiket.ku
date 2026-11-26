@@ -1,0 +1,640 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 56,
+  "totalBatches": 7,
+  "exportsByPath": {
+    "App.tsx": [],
+    "components/Alerts.tsx": [],
+    "components/Badge.tsx": [
+      "Badge"
+    ],
+    "components/Banner.tsx": [
+      "Banner"
+    ],
+    "components/Button.tsx": [
+      "Button"
+    ],
+    "components/CardAction.tsx": [
+      "CardAction"
+    ],
+    "components/Drawer.tsx": [
+      "Drawer"
+    ],
+    "components/Footer.tsx": [
+      "Footer"
+    ],
+    "components/FooterLinks.tsx": [
+      "FooterLinks"
+    ],
+    "components/InputField.tsx": [
+      "InputField"
+    ],
+    "components/Navbar.tsx": [
+      "Navbar"
+    ],
+    "components/QrPassCard.tsx": [
+      "QrPassCard"
+    ],
+    "components/RadioSelector.tsx": [
+      "RadioSelector"
+    ],
+    "components/Searchbar.tsx": [
+      "Searchbar"
+    ],
+    "components/Stepper.tsx": [
+      "Stepper"
+    ],
+    "components/SummaryCard.tsx": [
+      "SummaryCard"
+    ],
+    "components/Tabs.tsx": [
+      "Tabs"
+    ],
+    "components/index.ts": [],
+    "features/auth/page/AuthCallbackPage.tsx": [],
+    "features/auth/page/LoginPage.tsx": [],
+    "features/auth/page/SignupPage.tsx": [],
+    "features/auth/schema/authSchemas.ts": [
+      "authSchema",
+      "loginSchema",
+      "signupSchema"
+    ],
+    "features/auth/service/authService.ts": [
+      "getSession",
+      "onAuthStateChange",
+      "requireUserId",
+      "signInWithEmail",
+      "signUpWithEmail",
+      "signInWithGoogle",
+      "signOut",
+      "mapAuthError"
+    ],
+    "features/events/service/eventService.ts": [
+      "getEvents",
+      "getEventById"
+    ],
+    "features/events/types/event.types.ts": [],
+    "features/home/page/Home.tsx": [],
+    "features/matches/components/Card.tsx": [],
+    "features/matches/components/TeamSection.tsx": [
+      "TeamSection"
+    ],
+    "features/matches/components/matchesProps.ts": [],
+    "features/matches/hooks/useMatchData.ts": [
+      "useMatchData"
+    ],
+    "features/matches/page/Matches.tsx": [],
+    "features/matches/service/matchService.ts": [
+      "getMatches"
+    ],
+    "features/matches/types/matchesPayload.ts": [],
+    "features/matches/types/matchesPayload.types.ts": [],
+    "features/orders/service/orderService.ts": [
+      "createOrder",
+      "completePayment"
+    ],
+    "features/payment/components/PaymentMethods.tsx": [],
+    "features/payment/hooks/usePayment.ts": [
+      "PaymentFormValidation"
+    ],
+    "features/payment/page/Payment.tsx": [],
+    "features/payment/schemas/paymentSchema.ts": [
+      "paymentSchema"
+    ],
+    "features/tickets/component/Ticket.tsx": [],
+    "features/tickets/service/ticketService.ts": [
+      "getTicketByOrderId"
+    ],
+    "features/users/components/TicketCard.tsx": [],
+    "features/users/hooks/useUserRegister.ts": [
+      "useUserRegister"
+    ],
+    "features/users/hooks/useUsers.ts": [],
+    "features/users/page/RegisterForm.tsx": [],
+    "features/users/schema/userSchema.ts": [
+      "userSchema"
+    ],
+    "features/users/service/userServices.ts": [],
+    "features/users/types/userPayload.d.ts": [],
+    "hooks/useCounter.ts": [
+      "useCounter"
+    ],
+    "hooks/useSession.ts": [
+      "useSession"
+    ],
+    "lib/supabase.ts": [
+      "supabase"
+    ],
+    "lib/utiils.ts": [
+      "cn"
+    ],
+    "main.tsx": [],
+    "services/userService.ts": [],
+    "vite-env.d.ts": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "features/matches/components/Card.tsx",
+          "language": "typescript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/matches/components/TeamSection.tsx",
+          "language": "typescript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/matches/components/matchesProps.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/matches/hooks/useMatchData.ts",
+          "language": "typescript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/matches/page/Matches.tsx",
+          "language": "typescript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/matches/service/matchService.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/matches/types/matchesPayload.ts",
+          "language": "typescript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/matches/types/matchesPayload.types.ts",
+          "language": "typescript",
+          "sizeLines": 4,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "features/matches/components/Card.tsx": [
+          "features/matches/components/TeamSection.tsx",
+          "features/matches/components/matchesProps.ts",
+          "features/matches/types/matchesPayload.ts"
+        ],
+        "features/matches/components/TeamSection.tsx": [
+          "features/matches/types/matchesPayload.types.ts"
+        ],
+        "features/matches/components/matchesProps.ts": [],
+        "features/matches/hooks/useMatchData.ts": [
+          "features/matches/service/matchService.ts",
+          "features/matches/types/matchesPayload.ts"
+        ],
+        "features/matches/page/Matches.tsx": [
+          "features/matches/components/Card.tsx",
+          "features/matches/hooks/useMatchData.ts"
+        ],
+        "features/matches/service/matchService.ts": [
+          "features/matches/types/matchesPayload.ts"
+        ],
+        "features/matches/types/matchesPayload.ts": [
+          "features/matches/types/matchesPayload.types.ts"
+        ],
+        "features/matches/types/matchesPayload.types.ts": []
+      },
+      "neighborMap": {
+        "features/matches/page/Matches.tsx": [
+          {
+            "path": "App.tsx",
+            "batchIndex": 2,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "App.tsx",
+          "language": "typescript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/auth/page/AuthCallbackPage.tsx",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/auth/page/LoginPage.tsx",
+          "language": "typescript",
+          "sizeLines": 199,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/auth/page/SignupPage.tsx",
+          "language": "typescript",
+          "sizeLines": 234,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/home/page/Home.tsx",
+          "language": "typescript",
+          "sizeLines": 368,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "App.tsx": [
+          "features/auth/page/AuthCallbackPage.tsx",
+          "features/auth/page/LoginPage.tsx",
+          "features/auth/page/SignupPage.tsx",
+          "features/home/page/Home.tsx",
+          "features/matches/page/Matches.tsx"
+        ],
+        "features/auth/page/AuthCallbackPage.tsx": [],
+        "features/auth/page/LoginPage.tsx": [],
+        "features/auth/page/SignupPage.tsx": [],
+        "features/home/page/Home.tsx": []
+      },
+      "neighborMap": {
+        "App.tsx": [
+          {
+            "path": "features/matches/page/Matches.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "components/index.ts",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/payment/components/PaymentMethods.tsx",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/payment/hooks/usePayment.ts",
+          "language": "typescript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/payment/page/Payment.tsx",
+          "language": "typescript",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/payment/schemas/paymentSchema.ts",
+          "language": "typescript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "components/index.ts": [],
+        "features/payment/components/PaymentMethods.tsx": [],
+        "features/payment/hooks/usePayment.ts": [
+          "features/payment/schemas/paymentSchema.ts"
+        ],
+        "features/payment/page/Payment.tsx": [
+          "components/index.ts",
+          "features/payment/components/PaymentMethods.tsx",
+          "features/payment/hooks/usePayment.ts"
+        ],
+        "features/payment/schemas/paymentSchema.ts": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "components/Button.tsx",
+          "language": "typescript",
+          "sizeLines": 58,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/CardAction.tsx",
+          "language": "typescript",
+          "sizeLines": 106,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Navbar.tsx",
+          "language": "typescript",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Searchbar.tsx",
+          "language": "typescript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "components/Button.tsx": [],
+        "components/CardAction.tsx": [
+          "components/Button.tsx"
+        ],
+        "components/Navbar.tsx": [
+          "components/Button.tsx"
+        ],
+        "components/Searchbar.tsx": [
+          "components/Button.tsx"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "features/users/components/TicketCard.tsx",
+          "language": "typescript",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/users/hooks/useUserRegister.ts",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/users/schema/userSchema.ts",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "features/users/components/TicketCard.tsx": [
+          "features/users/schema/userSchema.ts"
+        ],
+        "features/users/hooks/useUserRegister.ts": [
+          "features/users/schema/userSchema.ts"
+        ],
+        "features/users/schema/userSchema.ts": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "app.css",
+          "language": "css",
+          "sizeLines": 223,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "components/Alerts.tsx",
+          "language": "typescript",
+          "sizeLines": 119,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Badge.tsx",
+          "language": "typescript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Banner.tsx",
+          "language": "typescript",
+          "sizeLines": 51,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Drawer.tsx",
+          "language": "typescript",
+          "sizeLines": 40,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Footer.tsx",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/FooterLinks.tsx",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/InputField.tsx",
+          "language": "typescript",
+          "sizeLines": 79,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/QrPassCard.tsx",
+          "language": "typescript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/RadioSelector.tsx",
+          "language": "typescript",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Stepper.tsx",
+          "language": "typescript",
+          "sizeLines": 42,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/SummaryCard.tsx",
+          "language": "typescript",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "components/Tabs.tsx",
+          "language": "typescript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/auth/schema/authSchemas.ts",
+          "language": "typescript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/auth/service/authService.ts",
+          "language": "typescript",
+          "sizeLines": 59,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/events/service/eventService.ts",
+          "language": "typescript",
+          "sizeLines": 74,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/events/types/event.types.ts",
+          "language": "typescript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/orders/service/orderService.ts",
+          "language": "typescript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/tickets/component/Ticket.tsx",
+          "language": "typescript",
+          "sizeLines": 82,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/tickets/service/ticketService.ts",
+          "language": "typescript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/users/hooks/useUsers.ts",
+          "language": "typescript",
+          "sizeLines": 21,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/users/page/RegisterForm.tsx",
+          "language": "typescript",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/users/service/userServices.ts",
+          "language": "typescript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/users/types/userPayload.d.ts",
+          "language": "typescript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "hooks/useCounter.ts",
+          "language": "typescript",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "app.css": [],
+        "components/Alerts.tsx": [],
+        "components/Badge.tsx": [],
+        "components/Banner.tsx": [],
+        "components/Drawer.tsx": [],
+        "components/Footer.tsx": [],
+        "components/FooterLinks.tsx": [],
+        "components/InputField.tsx": [],
+        "components/QrPassCard.tsx": [],
+        "components/RadioSelector.tsx": [],
+        "components/Stepper.tsx": [],
+        "components/SummaryCard.tsx": [],
+        "components/Tabs.tsx": [],
+        "features/auth/schema/authSchemas.ts": [],
+        "features/auth/service/authService.ts": [],
+        "features/events/service/eventService.ts": [],
+        "features/events/types/event.types.ts": [],
+        "features/orders/service/orderService.ts": [],
+        "features/tickets/component/Ticket.tsx": [],
+        "features/tickets/service/ticketService.ts": [],
+        "features/users/hooks/useUsers.ts": [],
+        "features/users/page/RegisterForm.tsx": [],
+        "features/users/service/userServices.ts": [],
+        "features/users/types/userPayload.d.ts": [],
+        "hooks/useCounter.ts": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "hooks/useSession.ts",
+          "language": "typescript",
+          "sizeLines": 42,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/supabase.ts",
+          "language": "typescript",
+          "sizeLines": 12,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/utiils.ts",
+          "language": "typescript",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "main.tsx",
+          "language": "typescript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "services/userService.ts",
+          "language": "typescript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "vite-env.d.ts",
+          "language": "typescript",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "hooks/useSession.ts": [],
+        "lib/supabase.ts": [],
+        "lib/utiils.ts": [],
+        "main.tsx": [],
+        "services/userService.ts": [],
+        "vite-env.d.ts": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

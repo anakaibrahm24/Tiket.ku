@@ -1,0 +1,84 @@
+{
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "batchFiles": [
+    {
+      "path": "app.css",
+      "language": "css",
+      "sizeLines": 223,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "components/Badge.tsx",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Banner.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Drawer.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/InputField.tsx",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/QrPassCard.tsx",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/RadioSelector.tsx",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Stepper.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/SummaryCard.tsx",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Tabs.tsx",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "app.css": [],
+    "components/Badge.tsx": [],
+    "components/Banner.tsx": [],
+    "components/Drawer.tsx": [],
+    "components/Footer.tsx": [],
+    "components/InputField.tsx": [],
+    "components/QrPassCard.tsx": [],
+    "components/RadioSelector.tsx": [],
+    "components/Stepper.tsx": [],
+    "components/SummaryCard.tsx": [],
+    "components/Tabs.tsx": []
+  }
+}

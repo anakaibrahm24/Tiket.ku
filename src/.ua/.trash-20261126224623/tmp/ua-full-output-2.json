@@ -1,0 +1,532 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "App.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "App",
+          "startLine": 11,
+          "endLine": 26,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/page/AuthCallbackPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "AuthCallbackPage",
+          "startLine": 6,
+          "endLine": 35,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "useNavigate",
+          "lineNumber": 7
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "useLocation",
+          "lineNumber": 8
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "useEffect",
+          "lineNumber": 11
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "getSession()\r\n      .then(({ data: { session }, error }) => {\r\n        if (!mounted) return;\r\n        if (error || !session) {\r\n          navigate(\"/login\", { replace: true });\r\n        } else {\r\n          navigate(from, { replace: true });\r\n        }\r\n      })\r\n      .catch",
+          "lineNumber": 13
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "getSession()\r\n      .then",
+          "lineNumber": 13
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "getSession",
+          "lineNumber": 13
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "navigate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "navigate",
+          "lineNumber": 19
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "navigate",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/page/LoginPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 199,
+      "nonEmptyLines": 182,
+      "functions": [
+        {
+          "name": "LoginPage",
+          "startLine": 23,
+          "endLine": 197,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "LoginPage",
+          "callee": "useNavigate",
+          "lineNumber": 24
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useLocation",
+          "lineNumber": 25
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useSession",
+          "lineNumber": 27
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useState",
+          "lineNumber": 28
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useState",
+          "lineNumber": 32
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useState",
+          "lineNumber": 33
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useForm",
+          "lineNumber": 39
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "zodResolver",
+          "lineNumber": 39
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useEffect",
+          "lineNumber": 41
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "navigate",
+          "lineNumber": 43
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "signInWithEmail",
+          "lineNumber": 48
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 50
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "mapAuthError",
+          "lineNumber": 52
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "navigate",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setStatusMessage",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "signInWithGoogle",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setAlert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "mapAuthError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setStatusMessage",
+          "lineNumber": 68
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 69
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "setAlert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "navigate",
+          "lineNumber": 86
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "handleSubmit",
+          "lineNumber": 129
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "register",
+          "lineNumber": 139
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "register",
+          "lineNumber": 152
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "navigate",
+          "lineNumber": 185
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/page/SignupPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 234,
+      "nonEmptyLines": 215,
+      "functions": [
+        {
+          "name": "SignupPage",
+          "startLine": 21,
+          "endLine": 232,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SignupPage",
+          "callee": "useNavigate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useLocation",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useSession",
+          "lineNumber": 25
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 30
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 31
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useForm",
+          "lineNumber": 37
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "zodResolver",
+          "lineNumber": 37
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useEffect",
+          "lineNumber": 39
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 41
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "signUpWithEmail",
+          "lineNumber": 46
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "mapAuthError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "getSession",
+          "lineNumber": 58
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "navigate",
+          "lineNumber": 60
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setStatusMessage",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "signInWithGoogle",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setAlert",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "mapAuthError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setStatusMessage",
+          "lineNumber": 78
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 79
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "setAlert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 96
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "handleSubmit",
+          "lineNumber": 139
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 149
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 161
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 185
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 220
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/home/page/Home.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 368,
+      "nonEmptyLines": 349,
+      "functions": [
+        {
+          "name": "HomePage",
+          "startLine": 58,
+          "endLine": 366,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "HomePage",
+          "callee": "useNavigate",
+          "lineNumber": 59
+        },
+        {
+          "caller": "HomePage",
+          "callee": "useSession",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handlePesanTiket",
+          "callee": "navigate",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handlePesanTiket",
+          "callee": "navigate",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handleLihatJadwal",
+          "callee": "navigate",
+          "lineNumber": 71
+        },
+        {
+          "caller": "scrollTo",
+          "callee": "document.getElementById(id)?.scrollIntoView",
+          "lineNumber": 75
+        },
+        {
+          "caller": "scrollTo",
+          "callee": "document.getElementById",
+          "lineNumber": 75
+        },
+        {
+          "caller": "HomePage",
+          "callee": "scrollTo",
+          "lineNumber": 130
+        },
+        {
+          "caller": "HomePage",
+          "callee": "scrollTo",
+          "lineNumber": 136
+        },
+        {
+          "caller": "HomePage",
+          "callee": "scrollTo",
+          "lineNumber": 210
+        },
+        {
+          "caller": "HomePage",
+          "callee": "events.map",
+          "lineNumber": 223
+        },
+        {
+          "caller": "HomePage",
+          "callee": "[\n                {\n                  icon: \"qr_code_scanner\",\n                  title: \"E-Tiket QR Pintu Resmi\",\n                  desc: \"Pindai langsung di gerbang elektronik GBK tanpa perlu menukar tiket fisik di loket stadion.\",\n                },\n                {\n                  icon: \"event_seat\",\n                  title: \"Pilihan Zona Tribun Jelas\",\n                  desc: \"Bandingkan ketersediaan kursi dari Tribun Utara, Timur, hingga VIP Barat secara real-time.\",\n                },\n                {\n                  icon: \"verified_user\",\n                  title: \"Transaksi Aman & Instan\",\n                  desc: \"Bayar lewat QRIS, transfer bank, atau kartu debit dengan konfirmasi e-tiket instan.\",\n                },\n              ].map",
+          "lineNumber": 262
+        },
+        {
+          "caller": "HomePage",
+          "callee": "venues.map",
+          "lineNumber": 314
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

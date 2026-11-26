@@ -1,0 +1,98 @@
+{
+  "nodes": [
+    {
+      "id": "file:features/users/components/TicketCard.tsx",
+      "type": "file",
+      "name": "TicketCard.tsx",
+      "filePath": "features/users/components/TicketCard.tsx",
+      "summary": "Komponen kartu tribun tiket yang menampilkan nama tribun dan harga, dengan tombol +/- untuk mengubah jumlah tiket melalui callback onCountChange.",
+      "tags": ["component", "ticket", "counter", "ui"],
+      "complexity": "moderate",
+      "languageNotes": "Komponen React bertipe React.FC dengan prop bertipe Control<UserSchema>; jumlah tiket dikelola oleh komponen induk via callback."
+    },
+    {
+      "id": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "function",
+      "name": "TicketCard",
+      "filePath": "features/users/components/TicketCard.tsx",
+      "lineRange": [15, 60],
+      "summary": "Merender kartu tribun beserta harga dan kontrol jumlah tiket; handler penurunan menolak nilai di bawah nol sementara handler kenaikan menambah satu tiket.",
+      "tags": ["component", "event-handler", "ticket"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/users/hooks/useUserRegister.ts",
+      "type": "file",
+      "name": "useUserRegister.ts",
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "summary": "Hook pendaftaran pengguna yang menyiapkan React Hook Form dengan resolver Zod serta nilai awal data diri dan tiket.",
+      "tags": ["hook", "form", "validation", "registration"],
+      "complexity": "simple",
+      "languageNotes": "Memadukan useForm dari react-hook-form dengan zodResolver yang memakai skema userSchema."
+    },
+    {
+      "id": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "function",
+      "name": "useUserRegister",
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "lineRange": [5, 18],
+      "summary": "Menginisialisasi useForm dengan zodResolver(userSchema) dan nilai default registrasi, lalu mengembalikan seluruh method form.",
+      "tags": ["hook", "form", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/schema/userSchema.ts",
+      "type": "file",
+      "name": "userSchema.ts",
+      "filePath": "features/users/schema/userSchema.ts",
+      "summary": "Skema validasi Zod untuk pendaftaran pengguna yang memeriksa nama, nomor identitas, email, jenis kelamin, dan peta jumlah tiket, beserta tipe turunannya.",
+      "tags": ["validation", "schema", "zod", "type-definition"],
+      "complexity": "simple",
+      "languageNotes": "Tipe UserSchema diturunkan dari skema melalui z.infer sehingga validasi dan tipe tetap selaras."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "function:features/users/components/TicketCard.tsx:TicketCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "function:features/users/hooks/useUserRegister.ts:useUserRegister",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

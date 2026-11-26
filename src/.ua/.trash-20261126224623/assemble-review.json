@@ -1,0 +1,14 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 2,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Laporan stderr tidak memuat bagian 'Fixed'; sanity-check diganti dengan memindai 7 batch (105 node): semua tipe (file/function) dan complexity (simple/moderate/complex) valid, tidak ada node tanpa id.",
+    "Dua edge calls dari function:hooks/useSession.ts:useSession gugur karena target ditulis tanpa ekstensi .ts. Fungsi getSession dan onAuthStateChange memang ada di source features/auth/service/authService.ts (baris 5 dan 7) dan node dengan ID function:features/auth/service/authService.ts:<nama> sudah ada di graf. Kedua edge dipulihkan dengan target ID benar; tidak perlu membuat node baru.",
+    "importMap memuat 24 pasangan import dan semuanya sudah memiliki edge imports di graf, sehingga tidak ada edge cross-batch yang ditambahkan.",
+    "Graf akhir: 105 node, 128 edge, 0 edge duplikat, 0 edge menggantung."
+  ]
+}

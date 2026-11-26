@@ -1,0 +1,382 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-26T15:42:59.269Z",
+  "files": {
+    "components/InputField.tsx": {
+      "overview": "Komponen input formulir bersama yang dipakai halaman autentikasi dan alur lain di proyek. InputField merangkum label, penanda wajib, pesan error, tautan lupa kata sandi, serta tombol tampil/sembunyikan kata sandi dalam satu tempat. Komponen ini merupakan bagian dari Pustaka Komponen Bersama pada tour langkah 4, dan memperlihatkan bagaimana token gaya dari `app.css` dipakai lewat kelas Tailwind. Propsnya mewarisi `InputHTMLAttributes`, sehingga pemanggil bisa mengirim `register` dari React Hook Form langsung ke komponen ini.",
+      "sections": [
+        {
+          "title": "Impor dan kontrak props",
+          "lineRange": [1, 13],
+          "explanation": "Bagian ini mengimpor helper `cn`, ikon mata dari `lucide-react`, tipe atribut input, `useState`, dan `Link` dari React Router. Antarmuka `InputFieldProps` memperpanjang `InputHTMLAttributes<HTMLInputElement>` sehingga semua atribut input standar tetap tersedia, lalu menambahkan `labelName`, `error`, `required`, `showForgotPasswordLink`, dan `forgotPasswordPath`. Pendekatan ini menghindari duplikasi prop: komponen hanya mendefinisikan tambahan yang benar-benar spesifik untuk formulir aplikasi. Perhatikan bahwa helper yang diimpor berada di `@/lib/utiils`, bukan `@/lib/utils`.",
+          "tourOrder": 4
+        },
+        {
+          "title": "State dan deteksi sandi",
+          "lineRange": [15, 26],
+          "explanation": "Fungsi komponen mendestrukturisasi props dengan nilai default: `className` kosong, `required` false, tautan lupa sandi nonaktif, path `#`, dan tipe `text`. Sisa props dikumpulkan lewat `...props` agar diteruskan apa adanya ke elemen `<input>`. `useState` menyimpan status tampilnya kata sandi, sementara `isPassword` ditentukan dari `type === \"password\"` supaya perilaku khusus hanya aktif pada input sandi.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Label dan tautan lupa sandi",
+          "lineRange": [28, 43],
+          "explanation": "Wrapper utama memakai `flex flex-col gap-1.5` untuk menyusun label, input, dan pesan error secara vertikal. Label memakai token `font-label`, `text-label-lg`, dan `text-ink-900`, dengan tanda bintang merah ketika `required` bernilai true. Tautan `Lupa kata sandi?` hanya dirender ketika input bertipe password dan `showForgotPasswordLink` aktif; jika input sedang `disabled`, tautan diarahkan ke `#` agar tidak membawa pengguna ke halaman lupa sandi saat form terkunci.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Input dan toggle sandi",
+          "lineRange": [45, 71],
+          "explanation": "Elemen `<input>` mengubah `type` antara `text` dan `password` mengikuti `showPassword`, sehingga pengguna bisa memeriksa ketikan sandinya. Fungsi `cn()` menggabungkan kelas dasar dengan kelas kondisional untuk error (border merah) dan disabled (kursor terlarang plus opacitas), lalu `className` dari pemanggil ditempatkan terakhir agar menang dalam konflik Tailwind. Tombol mata berada di posisi absolut di dalam wrapper relatif, memakai `aria-label` dinamis sesuai keadaan, dan tidak mengubah state ketika input disabled. Tombol diberi `type=\"button\"` supaya tidak mengirimkan formulir saat diklik.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Pesan error dan ekspor",
+          "lineRange": [72, 79],
+          "explanation": "Paragraf error selalu dirender, tetapi memakai `error ?? \"\\u00A0\"` agar tinggi area pesan tetap stabil walau tidak ada error; transisi layout jadi lebih halus. Warna teks memakai token `text-danger` sesuai konvensi token desain proyek. Komponen diekspor dua kali, sebagai named export dan default export, sehingga pemanggil bisa memilih gaya impor yang sesuai."
+        }
+      ]
+    },
+    "components/Stepper.tsx": {
+      "overview": "Komponen kecil untuk menampilkan langkah-langkah alur pemesanan secara visual. Stepper menerima daftar nama langkah dan indeks langkah aktif, lalu menandai langkah sebelumnya sebagai selesai dengan warna brand. Komponen ini disebut dalam tour langkah 4 sebagai bagian dari Pustaka Komponen Bersama, dan sepenuhnya berbasis kelas token dari sistem desain tanpa logika bisnis.",
+      "sections": [
+        {
+          "title": "Impor dan props langkah",
+          "lineRange": [1, 7],
+          "explanation": "Stepper hanya mengimpor `cn` dari `@/lib/utiils`, menandakan komponen ini murni presentasional. Antarmuka `StepperProps` meminta `steps: string[]`, `activeIndex: number`, dan `className` opsional. Kontrak yang kecil ini membuat komponen bisa dipakai ulang di alur mana pun selama urutan langkah dapat dinyatakan sebagai array nama.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Status aktif dan selesai",
+          "lineRange": [9, 14],
+          "explanation": "Komponen merender kontainer fleksibel dengan `gap-4` dan menggabungkan `className` dari pemanggil lewat `cn()`. Setiap entri `steps` dipetakan ke elemen dengan `key={step}`, jadi nama langkah dianggap unik. Dua flag sederhana menentukan tampilan: `active` bila indeks sama dengan `activeIndex`, dan `done` bila indeks lebih kecil; keduanya berasal dari satu sumber kebenaran berupa indeks.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Render penanda dan label",
+          "lineRange": [15, 40],
+          "explanation": "Lingkaran nomor memakai `bg-brand-blue` dan teks putih untuk langkah aktif maupun selesai, sementara langkah yang belum dicapai memakai `bg-surface-muted` dan `text-ink-500`. Nomor ditampilkan sebagai `index + 1` karena indeks array dimulai dari nol. Label di sampingnya hanya dipertebal secara visual pada langkah aktif lewat `text-ink-900`; tidak ada state lain seperti klik atau navigasi, sehingga Stepper benar-benar hanya indikator progres.",
+          "tourOrder": 4
+        }
+      ]
+    },
+    "features/events/types/event.types.ts": {
+      "overview": "Berisi kontrak tipe inti untuk domain acara dan pemesanan pada arsitektur feature-first proyek. File ini mendefinisikan bentuk data acara beserta kategori tiketnya, input item order, data pembeli, dan tiket yang dihasilkan. Tipe-tipe ini menjadi jembatan antara baris database Supabase dan objek yang dikonsumsi UI, sesuai dengan tour langkah 5 tentang Kontrak Tipe Domain. Penamaan memakai camelCase (`eventId`, `orderId`, `imageUrl`) sesuai konvensi proyek untuk kode baru.",
+      "sections": [
+        {
+          "title": "Tipe acara dan kategori",
+          "lineRange": [1, 11],
+          "explanation": "`EventType` adalah union literal `\"football\" | \"concert\"`, sehingga nilai selain dua jenis itu ditolak saat compile time. `EventCategoryRecord` merepresentasikan tribun atau kategori tiket dengan `id`, `eventId`, harga, kuota, dan jumlah terjual. Field `remaining` juga dinyatakan di sini sebagai bagian dari model kategori, walaupun nilainya nantinya dihitung oleh service, bukan diambil langsung dari database.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Rekam data acara",
+          "lineRange": [13, 26],
+          "explanation": "`EventRecord` menggabungkan identitas acara, judul, subtitle, tanggal, jam, zona waktu, venue, deskripsi, dan waktu pembuatan. `imageUrl` bertipe `string | null` karena gambar acara boleh kosong, sehingga komponen pemakai harus siap dengan fallback visual. Properti `categories` berupa array `EventCategoryRecord` menaruh data relasi di dalam satu objek acara, mirip hasil join dari tabel `ticket_categories`.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Input order dan pembeli",
+          "lineRange": [28, 38],
+          "explanation": "`OrderItemInput` hanya berisi `categoryId` dan `qty`, artinya klien mengirim referensi kategori dan jumlah, bukan harga; harga sebaiknya dihitung sisi database. `BuyerInput` memuat identitas pembeli yang dibutuhkan untuk e-tiket. Gender dibatasi pada dua literal `\"Laki-laki\" | \"Perempuan\"` agar nilainya konsisten dengan teks yang dipakai UI dan backend.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Tiket hasil pemesanan",
+          "lineRange": [40, 45],
+          "explanation": "`OrderTicket` menggambarkan tiket digital yang dikaitkan ke `orderId` melalui `qrCode` dan `issuedAt`. Tidak ada field pembeli di sini karena data pembeli sudah berada di order; tiket hanya menyimpan hasil penerbitan. Tipe ini dipakai lapisan service tiket pada tour langkah 10 saat mengambil e-ticket untuk ditampilkan.",
+          "tourOrder": 5
+        }
+      ]
+    },
+    "features/matches/types/matchesPayload.ts": {
+      "overview": "Kontrak tipe untuk payload pertandingan pada fitur `matches` yang masih berstatus legacy. File ini menentukan bentuk objek `MatchPayload` yang dikonsumsi komponen, hook, dan service pertandingan sebelum alur berpindah ke model `EventRecord`. Sesuai tour langkah 5, file ini menjadi simpul kontrak dengan fan-in tinggi, tetapi memakai penamaan `snake_case` dan `matchId` yang kini dianggap legacy. Memahaminya membantu membaca halaman jadwal pertandingan tanpa tertukar dengan tipe acara baru.",
+      "sections": [
+        {
+          "title": "Impor tipe tim",
+          "lineRange": [1, 2],
+          "explanation": "Baris pertama memakai `import type` untuk mengambil `TeamPayload` dari `matchesPayload.types`. Bentuk `import type` memastikan impor ini hilang saat transpilasi karena hanya dipakai untuk pemeriksaan tipe. Pemisahan tipe tim ke file sendiri menjadikan kontrak tersebut bisa dipakai ulang oleh dua sisi pertandingan.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Kontrak payload pertandingan",
+          "lineRange": [3, 13],
+          "explanation": "`MatchPayload` memuat `id` internal dan `matchId` sebagai pengenal legacy, lalu dua tim `team_home` dan `team_away` bertipe `TeamPayload`. Waktu, zona waktu, tanggal, dan stadion juga memakai `snake_case`, mencerminkan bentuk data lama yang belum dipetakan ke konvensi camelCase proyek. Field `tickets` bertipe `Record<string, { price: number; quota: number }>`, jadi kategori tiket disimpan sebagai objek dinamis yang diindeks oleh kunci tertentu, bukan array seperti pada `EventCategoryRecord`. Perbedaan bentuk ini penting ketika membaca `matchService.ts` yang menjadi jembatan ke UI.",
+          "tourOrder": 5
+        }
+      ]
+    },
+    "features/matches/types/matchesPayload.types.ts": {
+      "overview": "File tipe minimal yang mendefinisikan bentuk data tim untuk payload pertandingan legacy. Tipe `TeamPayload` dipakai oleh `MatchPayload` pada file bersebelahan sebagai tipe untuk `team_home` dan `team_away`. Meskipun isinya sangat kecil, file ini termasuk Kontrak Tipe Domain pada tour langkah 5 karena menjadi acuan bersama bagi komponen dan service fitur `matches`. Tidak ada logika runtime di dalamnya.",
+      "sections": [
+        {
+          "title": "Deklarasi antarmuka tim",
+          "lineRange": [1, 1],
+          "explanation": "Baris pertama membuka deklarasi `TeamPayload` sebagai `interface`, bukan `type`. Pemilihan `interface` di sini konsisten dengan gaya file tipe lain di proyek dan memungkinkan pengembangan tipe jika suatu hari diperlukan. Tidak ada generic atau relasi lain yang didefinisikan pada baris ini.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Field nama dan logo",
+          "lineRange": [2, 4],
+          "explanation": "Antarmuka hanya berisi dua field wajib: `name` dan `logo`, keduanya bertipe `string`. Keduanya langsung dipakai komponen tim untuk menampilkan identitas klub dan gambar logo, sehingga tidak ada nilai opsional yang perlu ditangani. Karena file ini hanya berisi tipe, perubahan pada field akan langsung terasa di semua pemakai saat type-check tanpa perubahan runtime.",
+          "tourOrder": 5
+        }
+      ]
+    },
+    "lib/supabase.ts": {
+      "overview": "Titik inisialisasi klien Supabase untuk seluruh aplikasi. Modul ini membaca dua variabel lingkungan, menolak konfigurasi yang kosong lebih awal, lalu mengekspor satu instance `supabase` yang dipakai semua lapisan service. Tour langkah 6 menempatkan file ini sebagai awal dari Klien dan Service Supabase, sebelum membaca `authService.ts` dan `eventService.ts`. Guard di sini mencegah aplikasi berjalan dengan koneksi database yang diam-diam rusak.",
+      "sections": [
+        {
+          "title": "Impor dan variabel lingkungan",
+          "lineRange": [1, 4],
+          "explanation": "Baris pertama mengimpor `createClient` dari `@supabase/supabase-js`. Dua konstanta dibaca dari `import.meta.env`, yaitu `VITE_SUPABASE_URL` dan `VITE_SUPABASE_PUBLISHABLE_KEY`, sesuai pola Vite untuk variabel yang diekspos ke browser. Memakai publishable key berarti kredensial ini memang ditujukan untuk sisi klien dan tetap harus dikombinasikan dengan RLS di database.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Guard konfigurasi kosong",
+          "lineRange": [6, 10],
+          "explanation": "Blok `if` melempar error ketika salah satu variabel tidak ada, sehingga kegagalan konfigurasi terlihat segera saat modul dimuat. Pesan errornya sudah Bahasa Indonesia dan memberi petunjuk konkret: salin `.env.example` ke `.env.local`. Strategi fail-fast ini lebih baik daripada membiarkan `createClient` menerima nilai `undefined` dan menimbulkan error yang sulit dilacak di komponen.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Ekspor instance klien",
+          "lineRange": [12, 12],
+          "explanation": "Satu instance klien dibuat sekali lalu diekspor, sehingga seluruh service berbagi konfigurasi dan sesi auth yang sama. Pola singleton sederhana ini menghindari inisialisasi berulang yang bisa memicu beberapa subscription auth. Service lain cukup mengimpor `supabase` dari modul ini tanpa tahu detail env atau URL.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "features/auth/service/authService.ts": {
+      "overview": "Lapisan service yang membungkus seluruh operasi Supabase Auth untuk aplikasi. Modul ini menyediakan pembacaan sesi, subscription perubahan auth, penjaga ID pengguna, login dan daftar email, login Google, logout, serta penerjemah error ke Bahasa Indonesia. Tour langkah 6 memperkenalkan file ini sebagai contoh pemisahan akses data dari komponen. Hasilnya, halaman `LoginPage` dan `SignupPage` cukup memanggil fungsi-fungsi di sini tanpa berinteraksi langsung dengan klien Supabase.",
+      "sections": [
+        {
+          "title": "Impor dan pembungkus sesi",
+          "lineRange": [1, 9],
+          "explanation": "File mengimpor tipe `AuthError` dan klien `supabase` yang sudah disiapkan di `@/lib/supabase`. `getSession` dan `onAuthStateChange` adalah pembungkus tipis di atas API Supabase, sehingga seluruh aplikasi punya satu jalur untuk membaca sesi dan mendengarkan perubahan auth. Tipe callback `onAuthStateChange` diambil memakai `Parameters<typeof supabase.auth.onAuthStateChange>[0]` agar selalu mengikuti tanda tangan resmi library tanpa duplikasi manual.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Penjaga ID pengguna",
+          "lineRange": [11, 17],
+          "explanation": "`requireUserId` memanggil `getUser()` dan melempar error berbahasa Indonesia bila gagal atau tidak ada pengguna. Fungsi async ini mengembalikan `data.user.id`, yang dipakai alur pemesanan untuk memastikan hanya pengguna masuk yang bisa membuat order. Melempar error di service memungkinkan pemanggil menangani satu kegagalan konsisten, misalnya dengan menampilkan `Alerts` atau mengalihkan ke halaman login.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Autentikasi email",
+          "lineRange": [19, 27],
+          "explanation": "`signInWithEmail` meneruskan email dan password ke `supabase.auth.signInWithPassword`. `signUpWithEmail` memanggil `signUp` dan menyimpan `fullName` ke dalam `options.data` dengan kunci `full_name`, sehingga nama pengguna ikut tersimpan sebagai metadata saat pendaftaran. Kedua fungsi mengembalikan hasil Supabase apa adanya agar halaman bisa memeriksa `error` atau `data` sesuai kebutuhan.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Google dan logout",
+          "lineRange": [29, 35],
+          "explanation": "`signInWithGoogle` memakai `signInWithOAuth` dengan provider `google` dan menentukan `redirectTo` ke `${window.location.origin}/auth/callback`. Penggunaan `window.location.origin` membuat alur OAuth tetap benar baik di lokal maupun saat deploy, karena URL callback mengikuti asal halaman saat ini. `signOut` membungkus `supabase.auth.signOut()` tanpa logika tambahan.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Terjemahan error auth",
+          "lineRange": [37, 60],
+          "explanation": "`mapAuthError` mengubah pesan error Supabase menjadi teks yang ramah pengguna; bila error null, fungsi langsung mengembalikan null. Beberapa pesan seperti `Invalid login credentials`, `User already registered`, dan `Email not confirmed` dicocokkan dengan `includes` memakai teks asli, sedangkan `weak password`, `oauth`, `network`, dan `fetch` dicocokkan terhadap versi lowercase. Urutan pemeriksaan penting karena pesan yang lebih spesifik ditempatkan lebih dulu, dengan fallback umum di akhir. Pendekatan ini menjaga teks UI Bahasa Indonesia tanpa mengubah lapisan service yang lain.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "features/events/service/eventService.ts": {
+      "overview": "Service untuk mengambil data acara dari Supabase dan mengubahnya menjadi model `EventRecord` yang dipakai UI. File ini mendefinisikan tipe baris database dengan `snake_case`, memetakannya ke model camelCase, dan menghitung jumlah tiket tersisa. Kuerinya hanya mengambil acara hari ini ke depan, mengikuti urutan tanggal dan jam, serta bisa difilter berdasarkan `EventType`. Tour langkah 6 memakai file ini untuk menunjukkan bahwa transformasi data dan penanganan error berada di service, bukan di komponen.",
+      "sections": [
+        {
+          "title": "Impor dan tipe baris",
+          "lineRange": [1, 2],
+          "explanation": "Bagian atas mengimpor `EventRecord` dan `EventType` dari modul tipe acara serta klien `supabase`. Tipe `EventRow` dan `CategoryRow` didefinisikan secara lokal karena merepresentasikan bentuk mentah hasil kueri, bukan bentuk yang dipakai komponen. Menyimpan kedua bentuk ini secara terpisah membuat titik konversi jelas dan tidak mencampurkan skema database ke UI.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Bentuk baris database",
+          "lineRange": [4, 26],
+          "explanation": "`CategoryRow` memuat kolom kategori seperti `event_id`, `price`, `quota`, dan `sold`, tanpa field `remaining` yang ada di model aplikasi. `EventRow` memakai `event_date`, `event_time`, `image_url`, dan `created_at`, lalu menambahkan `ticket_categories: CategoryRow[] | null` untuk hasil join. Nullable pada `ticket_categories` mengingatkan bahwa join bisa kembali kosong, sehingga pemetaan harus punya fallback.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Pemetaan baris ke model",
+          "lineRange": [28, 49],
+          "explanation": "Fungsi `mapEvent` menerjemahkan setiap field `snake_case` menjadi nama camelCase di `EventRecord`, termasuk `eventDate`, `imageUrl`, dan `createdAt`. Nilai `remaining` dihitung sebagai `quota - sold` di sini, jadi UI tidak perlu mengulang perhitungan yang sama. Ekspresi `(row.ticket_categories ?? [])` mengubah hasil join yang null menjadi array kosong, mencegah error saat memanggil `.map()`.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Penyusunan kueri acara",
+          "lineRange": [51, 61],
+          "explanation": "`buildQuery` memulai kueri dari tabel `events` dengan `select(\"*, ticket_categories(*)\")` untuk mengambil kategori sekaligus. Filter `.gte(\"event_date\", new Date().toISOString().slice(0, 10))` membatasi hasil pada tanggal hari ini atau setelahnya; `slice(0, 10)` mengambil bagian `YYYY-MM-DD` dari ISO timestamp. Kueri diurutkan berdasarkan tanggal lalu jam secara ascending, dan filter tipe ditambahkan hanya bila argumen `type` diberikan. Pola builder ini memungkinkan dua fungsi ekspor memakai kueri dasar yang sama.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Fungsi ambil acara",
+          "lineRange": [63, 74],
+          "explanation": "`getEvents` menjalankan kueri, melempar error bila ada, lalu memetakan semua baris dengan `mapEvent`. `getEventById` menambahkan `.eq(\"id\", eventId).single()` dan secara khusus menerjemahkan kode `PGRST116` sebagai `null`, yaitu kondisi Supabase ketika tidak ada baris tunggal yang cocok. Error lain tetap dilempar agar masalah koneksi atau izin tidak tersembunyi. Kedua fungsi menggunakan cast ke `EventRow[]` atau `EventRow` karena tipe hasil kueri Supabase tidak selalu menyampaikan bentuk join secara eksplisit.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "hooks/useSession.ts": {
+      "overview": "Hook kustom yang menyediakan status sesi autentikasi ke seluruh komponen yang membutuhkannya. `useSession` mengambil sesi awal dari service, mendengarkan perubahan auth, dan mengembalikan `session`, `isLoading`, `isLoggedIn`, serta `user`. Pola ini disorot pada tour langkah 7: state dan subscription ditempatkan di hook, validasi di skema, dan navigasi di halaman. Flag `mounted` menjaga agar setState tidak terjadi setelah komponen dibongkar.",
+      "sections": [
+        {
+          "title": "Impor dan dependensi hook",
+          "lineRange": [1, 7],
+          "explanation": "Hook mengimpor `useEffect` dan `useState` dari React, tipe `Session` dari Supabase, serta `getSession` dan `onAuthStateChange` dari `authService`. Tidak ada akses langsung ke klien Supabase di sini, sehingga hook tetap bergantung pada abstraksi yang sudah diuji di lapisan service. Impor bertipe `import type` untuk `Session` memastikan tidak ada kode runtime tambahan.",
+          "tourOrder": 7
+        },
+        {
+          "title": "State awal sesi",
+          "lineRange": [9, 14],
+          "explanation": "State disimpan sebagai satu objek yang berisi `session` dan `isLoading`, bukan dua state terpisah. Nilai awalnya `session: null` dan `isLoading: true`, karena sesi harus diminta dari Supabase sebelum aplikasi tahu apakah pengguna sudah masuk. Menggabungkan keduanya dalam satu objek memungkinkan pembaruan atomik ketika hasil sesi awal tiba.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Efek sesi dan listener",
+          "lineRange": [15, 34],
+          "explanation": "Di dalam `useEffect`, variabel lokal `mounted` dipakai sebagai penjaga agar hasil async tidak menulis state setelah unmount. `getSession()` dipanggil sekali, lalu `setState` hanya dijalankan bila `mounted` masih true; cabang `.catch()` memperlakukan kegagalan sebagai tidak ada sesi agar UI tidak macet dalam loading. Selanjutnya `onAuthStateChange` mendaftarkan listener yang memperbarui bagian `session` saja dengan spread `prev`, sehingga status loading tidak ikut ter-reset. Fungsi cleanup menandai `mounted = false` dan memanggil `unsubscribe()` untuk mencegah kebocoran subscription.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Nilai yang dikembalikan",
+          "lineRange": [36, 43],
+          "explanation": "Hook membaca `session` dan `isLoading` dari state lalu mengembalikan objek turunan. `isLoggedIn` adalah boolean sederhana `!!session`, sementara `user` memakai `session?.user ?? null` supaya konsumen selalu menerima null, bukan `undefined`, saat belum login. API ini membuat halaman seperti `LoginPage` cukup mendestrukturisasi dua field tanpa peduli detail subscription Supabase.",
+          "tourOrder": 7
+        }
+      ]
+    },
+    "features/auth/schema/authSchemas.ts": {
+      "overview": "Tempat berkumpulnya aturan validasi Zod untuk formulir masuk dan daftar. File ini menyiapkan satu helper pesan untuk field kosong, mendefinisikan skema email dan kata sandi, lalu memperluasnya menjadi skema pendaftaran dengan nama dan konfirmasi kata sandi. Tour langkah 7 menempatkan file ini sebagai contoh pemisahan validasi dari halaman. Tipe hasil `z.infer` diekspor agar `useForm<LoginSchema>` dan `useForm<SignupSchema>` mendapatkan tipe yang sama persis dengan aturan runtime.",
+      "sections": [
+        {
+          "title": "Helper pesan kosong",
+          "lineRange": [1, 3],
+          "explanation": "Baris tiga membuat `errorMessageInput` sebagai `z.string().nonempty(...)` dengan pesan `field is empty`. Helper ini dipakai ulang oleh hampir semua field, sehingga pesan untuk input kosong konsisten dan tidak ditulis berulang. Perlu dicatat bahwa teks bawaan ini masih Bahasa Inggris, sementara pesan validasi lainnya sudah Bahasa Indonesia.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Skema login dan alias",
+          "lineRange": [5, 12],
+          "explanation": "`authSchema` berisi `email` yang harus lolos `.email()` dan `password` dengan panjang 6 sampai 20 karakter. `loginSchema` dinyatakan sebagai alias `authSchema`, artinya keduanya adalah skema yang sama persis; ini memberi nama yang sesuai konteks tanpa menggandakan definisi. Pesan error setiap aturan sudah eksplisit agar langsung bisa ditampilkan lewat `errors.email?.message` di halaman.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Skema pendaftaran",
+          "lineRange": [14, 28],
+          "explanation": "`signupSchema` menambahkan `name` dengan regex huruf dan spasi, `email`, `password`, serta `confirmPassword`. Metode `.refine(...)` memeriksa kesamaan `password` dan `confirmPassword` setelah validasi field dasar berjalan. Opsi `path: [\"confirmPassword\"]` mengarahkan pesan `Konfirmasi kata sandi tidak cocok` ke field tersebut, bukan ke level objek, sehingga React Hook Form bisa menampilkannya di input yang tepat.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Tipe turunan Zod",
+          "lineRange": [30, 32],
+          "explanation": "Tiga tipe diekspor memakai `z.infer<typeof ...>`: `AuthSchema`, `LoginSchema`, dan `SignupSchema`. Dengan ini, bentuk nilai formulir di TypeScript selalu mengikuti skema Zod yang sama yang dipakai `zodResolver`. Perubahan pada aturan validasi otomatis mengubah tipe, sehingga mismatch antara form dan validator terdeteksi saat compile time.",
+          "tourOrder": 7
+        }
+      ]
+    },
+    "features/auth/page/LoginPage.tsx": {
+      "overview": "Halaman masuk yang menyatukan formulir email, login Google, pengecekan sesi, dan navigasi setelah autentikasi. Komponen ini memakai React Hook Form dengan `zodResolver` dan `loginSchema`, lalu meneruskan error ke `InputField` serta notifikasi ke `Alerts`. Sesuai tour langkah 7, halaman ini menjadi contoh bahwa logika state ada di hook, aturan di skema, dan keputusan navigasi di komponen halaman. Seluruh tombol dinonaktifkan selama proses submit atau OAuth agar pengguna tidak memicu aksi ganda.",
+      "sections": [
+        {
+          "title": "Impor dan dependensi halaman",
+          "lineRange": [1, 21],
+          "explanation": "Impor terdiri dari ikon Google, React Hook Form, `zodResolver`, `useEffect`/`useState`, dan utilitas navigasi `useLocation`/`useNavigate`. Komponen tampilan yang dipakai adalah `Alerts`, `Banner`, `Button`, `Footer`, dan `InputField` dari pustaka bersama. Bagian ini juga mengimpor `useSession`, `loginSchema`, dan fungsi service `mapAuthError`, `signInWithEmail`, `signInWithGoogle`, sehingga ketergantungan antar lapisan terlihat jelas di satu blok.",
+          "tourOrder": 7
+        },
+        {
+          "title": "State dan pengalihan sesi",
+          "lineRange": [23, 45],
+          "explanation": "Komponen menyiapkan `navigate`, arah tujuan dari `location.state.from` dengan fallback `\"/matchs\"`, serta status dari `useSession`. Tiga state lokal mengelola notifikasi alert, status tombol Google, dan pesan status sementara. `useForm<LoginSchema>` menghubungkan `zodResolver(loginSchema)` dan membuka `errors` serta `isSubmitting` dari `formState`. Effect mengalihkan pengguna ke halaman tujuan dengan `replace: true` bila sesi sudah aktif dan loading selesai, mencegah halaman login ditampilkan kepada pengguna yang sudah masuk.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Submit email dan Google",
+          "lineRange": [47, 71],
+          "explanation": "`onSubmit` menerima nilai tervalidasi dan memanggil `signInWithEmail`; bila ada error, alert danger ditampilkan memakai hasil `mapAuthError` dengan fallback umum, jika tidak pengguna dinavigasi ke `from`. `handleGoogle` menyalakan `isGoogleLoading`, menampilkan status berbahasa Indonesia, lalu memanggil `signInWithGoogle`. Khusus kegagalan Google, status dan loading dikembalikan ke semula agar pengguna bisa mencoba lagi; saat berhasil, halaman bergantung pada redirect OAuth ke `/auth/callback`.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Kerangka halaman dan alert",
+          "lineRange": [73, 103],
+          "explanation": "JSX dimulai dengan `<main>` berlatar `bg-surface-subtle`, lalu `Alerts` dirender bersyarat dengan durasi 4000 ms dan callback `onClose` untuk menutupnya. Section utama memakai gradien dari `night-950` sampai `surface-white` dan memuat tombol kembali yang menuju `/` dengan `aria-label=\"Kembali\"`. Kartu putih berisi judul `Masuk ke akun Anda` dan deskripsi singkat manfaat e-tiket. Tombol kembali memakai ikon `material-symbols-outlined` dengan `aria-hidden=\"true\"` agar pembaca layar tidak mengulang teks ikon.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Tombol OAuth dan pemisah",
+          "lineRange": [105, 128],
+          "explanation": "Tombol Google memakai `variant=\"oauth\"` dan dinonaktifkan ketika email sedang disubmit atau OAuth sedang berjalan. Di dalamnya, spinner muncul menggantikan ikon `FcGoogle` sementara label berubah menjadi `Memproses...`, memberi umpan balik visual yang jelas. Pemisah berupa dua garis tipis dan teks `atau masuk dengan email` memisahkan opsi OAuth dari formulir email.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Formulir masuk",
+          "lineRange": [129, 191],
+          "explanation": "Form memakai `handleSubmit(onSubmit)` sehingga validasi Zod berjalan sebelum fungsi submit dipanggil. Dua `InputField` untuk email dan kata sandi menerima `register(...)` langsung, `error` dari `errors`, dan `disabled` saat proses async berlangsung; kata sandi juga mengaktifkan tautan lupa sandi. Checkbox `Biarkan saya tetap masuk di perangkat ini` saat ini hanya berupa tampilan dan belum terhubung ke state atau service. Banner status muncul saat `statusMessage` tidak null, diikuti tombol submit dan tautan ke halaman `/signup`.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Footer dan ekspor",
+          "lineRange": [193, 199],
+          "explanation": "Komponen `Footer` ditempatkan di luar section formulir tetapi masih di dalam `<main>`, sehingga tampil di bawah kartu masuk. Penutup file mengekspor `LoginPage` sebagai default export sesuai pola halaman lain di proyek. Tidak ada logika tambahan pada rentang ini."
+        }
+      ]
+    },
+    "features/auth/page/SignupPage.tsx": {
+      "overview": "Halaman pendaftaran pengguna yang menangani input email, nama, kata sandi, konfirmasi kata sandi, dan opsi daftar dengan Google. Halaman memakai `signupSchema` melalui `zodResolver` lalu meneruskan hasil ke `signUpWithEmail`, dengan pengecekan sesi setelahnya untuk membedakan pengguna yang langsung masuk dan pengguna yang perlu verifikasi email. Bersama `LoginPage.tsx`, file ini melengkapi contoh tour langkah 7 tentang pemisahan hook, skema, service, dan halaman. State loading dan alert dipakai untuk mencegah submit ganda serta menyampaikan error terjemahan dari `mapAuthError`.",
+      "sections": [
+        {
+          "title": "Impor dan dependensi halaman",
+          "lineRange": [1, 19],
+          "explanation": "Blok impor hampir sama dengan `LoginPage`, tetapi skemanya `signupSchema` dan service-nya menambahkan `getSession` serta `signUpWithEmail`. Komponen bersama yang dipakai tetap `Alerts`, `Banner`, `Button`, `Footer`, dan `InputField`. Kehadiran `getSession` di sini menandakan bahwa pendaftaran perlu memeriksa ulang sesi setelah Supabase memproses `signUp`.",
+          "tourOrder": 7
+        },
+        {
+          "title": "State, form, dan redirect",
+          "lineRange": [21, 43],
+          "explanation": "Komponen menyiapkan tujuan navigasi dari `location.state.from` dengan fallback `/matchs`, status sesi dari `useSession`, dan tiga state lokal untuk alert, loading Google, serta pesan status. `useForm<SignupSchema>` memakai `zodResolver(signupSchema)` dan mengekspos `errors` serta `isSubmitting`. Effect mengalihkan pengguna yang sudah masuk ke `from` dengan `replace: true` setelah loading selesai, mirror perilaku halaman login.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Submit pendaftaran",
+          "lineRange": [45, 67],
+          "explanation": "`onSubmit` memanggil `signUpWithEmail(values.email, values.password, values.name)` dan menampilkan alert danger bila Supabase mengembalikan error. Setelah berhasil, halaman memanggil `getSession()` untuk memeriksa apakah sesi langsung terbentuk; bila ada, pengguna dinavigasi ke `from`. Bila tidak ada sesi, alert success memberitahu `Cek email untuk verifikasi akun.`, mencerminkan alur Supabase yang meminta konfirmasi email sebelum sesi aktif.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Handler Google",
+          "lineRange": [69, 81],
+          "explanation": "`handleGoogle` mengaktifkan `isGoogleLoading`, menetapkan status yang menjelaskan proses penghubungan akun Google, lalu memanggil `signInWithGoogle`. Jika error, halaman menampilkan alert danger hasil `mapAuthError`, menghapus status, dan mematikan loading. Sama seperti di halaman login, keberhasilan OAuth akan ditangani oleh halaman callback yang menjadi tujuan `redirectTo` di service.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Kerangka halaman dan alert",
+          "lineRange": [83, 113],
+          "explanation": "Bagian render membuka `<main>`, menampilkan `Alerts` bersyarat dengan `duration={4000}` dan `onClose`, lalu section gradien dengan tombol kembali ke `/`. Tombol kembali memakai ikon material yang tersembunyi dari pembaca layar lewat `aria-hidden=\"true\"`. Kartu putih memuat judul `Buat akun Tiket.ku` dan deskripsi tentang pemesanan tiket acara GBK.",
+          "tourOrder": 7
+        },
+        {
+          "title": "OAuth dan pemisah",
+          "lineRange": [115, 137],
+          "explanation": "Tombol dengan `variant=\"oauth\"` memakai ikon `FcGoogle` dan teks `Daftar dengan Google`, berganti menjadi spinner dan `Memproses...` saat `isGoogleLoading`. Tombol dinonaktifkan baik saat submit email maupun saat OAuth berjalan. Garis horizontal di dua sisi teks `atau daftar dengan email` memisahkan opsi OAuth dari formulir utama.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Field formulir daftar",
+          "lineRange": [139, 186],
+          "explanation": "Formulir merender empat `InputField`: nama lengkap sesuai KTP, email, kata sandi, dan konfirmasi kata sandi. Setiap field menerima `register(...)` dari React Hook Form dan `error` dari objek `errors`, sehingga pesan `.refine()` pada `confirmPassword` muncul tepat di field terkait. Semua field dinonaktifkan selama submit atau OAuth untuk mencegah perubahan nilai di tengah proses. Perhatikan placeholder kata sandi `Minimal 8 karakter` belum cocok dengan batas 6 sampai 20 karakter di `authSchemas.ts`.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Persetujuan dan status",
+          "lineRange": [188, 206],
+          "explanation": "Checkbox Syarat & Ketentuan memakai atribut `required` bawaan HTML, jadi browser menolak submit bila belum dicentang meski checkbox ini tidak didaftarkan ke React Hook Form. Teksnya juga menyebut verifikasi identitas e-tiket GBK, selaras dengan data `BuyerInput`. Banner status dirender ketika `statusMessage` tidak null, memberi tahu pengguna bahwa penghubungan akun Google sedang berlangsung.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Submit, tautan, dan footer",
+          "lineRange": [208, 234],
+          "explanation": "Tombol submit `Buat Akun Tiket.ku` memakai `variant=\"primary\"`, lebar penuh, dan dinonaktifkan saat form sedang mengirim atau OAuth berjalan. Di bawahnya, tautan `Masuk sekarang` mengarah ke `/login` untuk pengguna yang sudah punya akun. `Footer` ditutup di luar section, lalu komponen diekspor sebagai default export. Akhirnya, seluruh alur dari skema hingga service terlihat ringkas karena detail validasi dan akses data tidak ditulis di dalam halaman.",
+          "tourOrder": 7
+        }
+      ]
+    }
+  }
+}

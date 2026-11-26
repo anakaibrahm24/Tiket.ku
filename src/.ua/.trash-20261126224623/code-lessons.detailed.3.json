@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-26T22:43:01Z",
+  "files": {
+    "features/auth/page/AuthCallbackPage.tsx": {
+      "overview": "Halaman callback ini menjadi titik transit setelah autentikasi, khususnya ketika penyedia auth mengembalikan pengguna ke aplikasi. Halaman tidak merender formulir; ia memeriksa sesi lalu mengalihkan pengguna dengan `replace: true` supaya halaman perantara tidak menumpuk di riwayat browser. Langkah tur 7 menyinggung berkas ini sebagai penutup alur autentikasi setelah hook sesi serta halaman masuk dan daftar.",
+      "sections": [
+        {
+          "title": "Impor dan tujuan alias",
+          "lineRange": [1, 9],
+          "explanation": "Impor mencakup `useEffect`, `useLocation`, `useNavigate`, dan `getSession` dari service auth. Baris 9 membaca `location.state` dengan penegasan tipe `{ from?: string } | null`, lalu memakai `/matchs` bila tidak ada tujuan. Nilai `/matchs` mengikuti ejaan rute legacy pada fitur matches. `replace: true` yang dipakai nanti memastikan halaman callback tidak bisa dikunjungi kembali lewat tombol back.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Pemeriksaan sesi dan alihkan",
+          "lineRange": [11, 28],
+          "explanation": "Effect menyiapkan penanda `mounted` lalu memanggil `getSession()` secara asinkron. Penanda itu mencegah navigasi setelah komponen unmount. Error, sesi bernilai null, atau Promise yang ditolak semuanya mengalihkan ke `/login`; sesi valid mengalihkan ke `from`. Cleanup menetapkan `mounted = false`, dan dependency `[navigate, from]` membuat pemeriksaan dijalankan ulang bila tujuan berubah.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Tampilan spinner dan ekspor",
+          "lineRange": [30, 37],
+          "explanation": "Tampilan hanya berisi `main` dengan layout flex penuh dan satu `div` berputar lewat `animate-spin`. Ini memberi umpan balik visual selama pengecekan sesi yang singkat. Komponen diekspor default sehingga bisa dipasang langsung sebagai elemen rute di `App.tsx`.",
+          "tourOrder": 7
+        }
+      ]
+    },
+    "features/matches/service/matchService.ts": {
+      "overview": "Adapter ini menjembatani model `Event` yang lebih baru ke bentuk `MatchPayload` yang masih dipakai komponen jadwal lama. Fungsi memanggil `getEvents` dari service events, lalu memetakan setiap event menjadi satu pertandingan dengan dua tim turunan dari judul dan subtitle. Kategori tiket diubah menjadi objek `tickets` yang diindeks berdasarkan nama kategori. Tur 8 menempatkan berkas ini sebagai awal rantai service, hook, halaman, lalu komponen pada daftar pertandingan.",
+      "sections": [
+        {
+          "title": "Impor dan catatan adapter",
+          "lineRange": [1, 5],
+          "explanation": "Berkas mengimpor `getEvents` serta tipe `MatchPayload` secara relatif dari folder `types`. Komentar `ponytail` menyatakan adapter sengaja dibuat dangkal supaya UI lama tetap kompil. Juga tercantum upgrade path: memakai `EventRecord` langsung saat halaman jadwal didesain ulang, lalu menghapus adapter ini. Komentar tersebut menjelaskan mengapa pemetaan di bawahnya berupa transformasi tipis, bukan logika domain baru.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Pemetaan event ke pertandingan",
+          "lineRange": [6, 24],
+          "explanation": "`getMatches` mengambil semua event lalu mengembalikan array `MatchPayload` melalui `map`. Bidang `id` dan `matchId` diisi dari `event.id`; tim rumah memakai `event.title`, sedangkan tim tamu memakai `event.subtitle || event.title`. Logo kedua tim sama-sama memakai `event.imageUrl ?? \"\"`, jadi adapter tidak menyediakan logo tim yang berbeda. `Object.fromEntries` mengubah array `event.categories` menjadi peta nama kategori ke `{ price, quota }`. Fungsi tidak menangkap error, sehingga kegagalan `getEvents` diteruskan ke pemanggil, yaitu hook `useMatchData`.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/matches/hooks/useMatchData.ts": {
+      "overview": "Hook ini mengelola pengambilan data pertandingan untuk halaman jadwal. Ia menyimpan tiga keping state: daftar pertandingan, status loading, dan error, lalu mengisi semuanya dari `getMatches`. Pola ini memisahkan efek async dari tampilan sehingga halaman hanya perlu membaca hasilnya. Tur 8 menunjukkan hook ini sebagai penghubung antara service dan halaman `Matches.tsx`.",
+      "sections": [
+        {
+          "title": "Impor dependensi",
+          "lineRange": [1, 4],
+          "explanation": "Berkas mengimpor `useEffect` dan `useState` dari React, `getMatches` dari service, serta tipe `MatchPayload`. Komentar path pada baris 1 menunjukkan sisa penamaan lama `match`, walaupun berkas berada di folder `matches`. Tidak ada state global yang dipakai di sini; seluruh data berasal dari satu panggilan service.",
+          "tourOrder": 8
+        },
+        {
+          "title": "State awal hook",
+          "lineRange": [6, 10],
+          "explanation": "Hook menyiapkan `matches` sebagai array kosong, `loading` sebagai `true`, dan `error` sebagai `null`. Nilai awal `loading = true` penting karena efek belum selesai saat komponen pertama render. Tipe `Error | null` membuat konsumen hook bisa memeriksa error tanpa pengecekan tipe tambahan.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Efek pengambilan data",
+          "lineRange": [11, 25],
+          "explanation": "`fetchData` menandai loading, memanggil `getMatches`, lalu menyimpan hasil dan menghapus error. Cabang `catch` menormalisasi nilai apa pun menjadi `Error`, sehingga bentuk state error tetap konsisten. `finally` menjamin `loading` kembali `false` baik sukses maupun gagal. Panggilan `void fetchData()` sengaja menandakan Promise tidak di-await karena dijalankan dari efek. Array dependency kosong berarti data diambil sekali saat mount.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Nilai kembalian",
+          "lineRange": [27, 28],
+          "explanation": "Hook mengembalikan objek `{ matches, loading, error }` kepada komponen. Halaman `Matches.tsx` saat ini hanya memakai `matches`, tetapi dua field lain tetap tersedia untuk penanganan loading dan error. Karena kembalian berupa objek baru tiap render, konsumen sebaiknya mendestrukturisasi field yang benar-benar dipakai.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/matches/page/Matches.tsx": {
+      "overview": "Halaman ini menampilkan daftar pertandingan dalam grid tiga kolom dan tiga baris. Data diperoleh dari `useMatchData`, lalu setiap entri diteruskan ke `Card` sebagai props. Saat kartu diklik, halaman menyimpan `matchId` terpilih ke `sessionStorage` sebelum bernavigasi ke formulir. Ini merupakan titik tempat rantai service dan hook tur 8 mulai terlihat sebagai antarmuka.",
+      "sections": [
+        {
+          "title": "Impor halaman",
+          "lineRange": [1, 4],
+          "explanation": "Halaman mengimpor `useNavigate` dari React Router, komponen `Card`, dan hook `useMatchData`. Tidak ada prop yang diterima halaman; semua data jadwal berasal dari hook. Impor relatif dipakai di sini karena berkas berada di dalam folder fitur `matches` yang sama.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Penanganan klik kartu",
+          "lineRange": [5, 14],
+          "explanation": "Komponen mengambil `navigate` dan mendestrukturisasi `matches` dari hook. `handleCardClick` menulis `selectedMatchId` ke `sessionStorage` lebih dulu, lalu bernavigasi ke `/matchs/${matchId}/form`. Pemeriksaan `if (matchId)` mencegah navigasi ke rute dengan segmen kosong. `sessionStorage` dipilih sehingga pilihan bertahan selama sesi tab, bukan permanen seperti `localStorage`.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Render grid dan ekspor",
+          "lineRange": [16, 25],
+          "explanation": "`main` memakai grid `grid-cols-3 grid-rows-3` dengan padding dan gap tetap. Setiap `data` disebar sebagai props ke `Card`, dan `onClick` dipetakan ke `handleCardClick(data.matchId)`. Karena jumlah kartu tidak dibatasi secara eksplisit oleh layout ini, baris tambahan akan mengikuti aturan grid yang sama. Komponen diekspor default agar bisa didaftarkan sebagai rute.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/matches/components/Card.tsx": {
+      "overview": "Komponen ini merender satu kartu jadwal pertandingan dari data `MatchPayload`. Kartu membagi tampilan menjadi tiga kolom: tim rumah, waktu dan zona waktu, serta tim tamu, dengan tanggal dan stadion di bawahnya. Props `onClick` disalurkan ke elemen pembungkus sehingga halaman bisa menanggapi klik. Tur 8 menampilkan komponen ini sebagai tampilan akhir dari data yang sudah diubah oleh service.",
+      "sections": [
+        {
+          "title": "Impor tipe dan komponen",
+          "lineRange": [1, 4],
+          "explanation": "Berkas mengimpor `MatchPayload`, `TeamSection`, dan tipe `MatchCardProps`. Tipe `MatchCardProps` kemungkinan menyediakan `onClick`, karena field itu tidak ada di `MatchPayload` yang dipakai pada baris berikutnya. Pemisahan tipe data dan tipe perilaku ini membuat komponen bisa menerima keduanya tanpa mendefinisikan antarmuka baru.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Props kartu",
+          "lineRange": [5, 13],
+          "explanation": "`MatchScheduleCard` dianotasi sebagai `React.FC<MatchPayload & MatchCardProps>`, yaitu gabungan data pertandingan dan callback klik. Destructuring mengambil `team_home`, `team_away`, `match_time`, `time_zone`, `match_date`, `stadium`, dan `onClick`. Bidang `id`, `matchId`, maupun `tickets` tidak dipakai di sini walaupun tersedia dari service. Penamaan masih memakai snake_case karena `MatchPayload` berasal dari kontrak legacy.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Tata letak tiga kolom",
+          "lineRange": [14, 29],
+          "explanation": "Elemen pembungkus memakai grid tiga kolom; `TeamSection` dipanggil dua kali untuk rumah dan tamu. Di tengah, `match_time` dan `time_zone` ditampilkan sebagai judul besar di atas latar abu-abu. Bagian bawah menggabungkan `match_date` dan `stadium` dengan `col-start-1 col-end-4` agar membentang penuh. Perhatikan kelas `grid-rows[auto_1fr]` pada baris 15 ditulis tanpa tanda hubung sebelum tanda kurung siku, berbeda dari bentuk `grid-rows-[...]` yang lazim.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Ekspor default",
+          "lineRange": [30, 33],
+          "explanation": "Komponen diekspor sebagai default export. Halaman `Matches.tsx` mengimpornya dengan nama `Card`, jadi nama lokal di berkas ini tidak harus sama dengan nama di pemanggil. Pola ini konsisten dengan kebiasaan komponen halaman lain di proyek.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/matches/components/TeamSection.tsx": {
+      "overview": "Komponen kecil ini menampilkan identitas satu tim: nama dalam huruf kapital dan logo di bawahnya. Ia menerima `TeamPayload` yang dihasilkan oleh adapter `matchService`. Bersama `Card.tsx`, komponen ini melengkapi tampilan jadwal pada tur 8.",
+      "sections": [
+        {
+          "title": "Impor tipe tim",
+          "lineRange": [1, 2],
+          "explanation": "Berkas mengimpor `TeamPayload` dari `matchesPayload.types`. Tipe ini hanya dipakai sebagai anotasi parameter, bukan sebagai nilai runtime. Tidak ada impor komponen lain karena tampilannya seluruhnya memakai elemen HTML dan kelas utilitas.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Tampilan nama dan logo",
+          "lineRange": [3, 14],
+          "explanation": "`TeamSection` langsung mengembalikan `section` tanpa blok fungsi atau state. `name` diberi kelas `uppercase`, sementara `logo` dipasang pada `img` dengan `alt={name}` untuk aksesibilitas. Kotak gambar memakai `h-35 w-35` dan `object-contain` supaya logo tidak terdistorsi. Karena `logo` bisa berupa string kosong dari adapter, atribut `src` dapat menjadi kosong bila event tidak memiliki `imageUrl`.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/payment/schemas/paymentSchema.ts": {
+      "overview": "Berkas ini mendefinisikan skema Zod untuk empat field formulir pembayaran: nama pemegang kartu, nomor kartu, CVV, dan tanggal kedaluwarsa. Sebuah validator string bersama dipakai ulang supaya pesan field kosong konsisten. Hasil inferensi tipe diekspor sehingga hook dapat mengetik `useForm`. Tur 9 menempatkan skema ini sebagai lapisan validasi sebelum halaman pembayaran melakukan navigasi.",
+      "sections": [
+        {
+          "title": "Validator string bersama",
+          "lineRange": [1, 3],
+          "explanation": "Baris 3 membuat `errorMessageInput` dari `z.string().nonempty(...)` dengan pesan `field is empty`. Validator ini dipakai ulang oleh keempat field, sehingga aturan field kosong tidak ditulis empat kali. Pesannya masih berbahasa Inggris, walaupun sebagian pesan regex di bawahnya berbahasa Indonesia.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Skema field kartu",
+          "lineRange": [5, 21],
+          "explanation": "`paymentSchema` adalah `z.object` dengan empat kunci yang cocok dengan `register(...)` di halaman pembayaran. `nameOnCard` hanya menerima huruf dan spasi melalui pola `^[A-Za-z\\s]+$`. `cardNumber` harus berupa digit dan tepat 4 karakter, bukan 16 digit seperti kartu pada umumnya. `cvv` dan `validTHRU` hanya divalidasi sebagai digit; tidak ada aturan panjang atau format tanggal di berkas ini. Karena validator kosong dirangkai sebelum regex, input kosong lebih dulu ditangkap oleh pesan bersama.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Ekspor tipe turunan",
+          "lineRange": [23, 23],
+          "explanation": "`PaymentSchema` diturunkan dari `z.infer<typeof paymentSchema>`. Ini menjaga tipe formulir tetap selaras dengan aturan validasi tanpa mendeklarasikan antarmuka terpisah. `usePayment.ts` mengimpor tipe ini sebagai parameter generik `useForm`.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/payment/hooks/usePayment.ts": {
+      "overview": "Berkas ini menyiapkan React Hook Form dengan resolver Zod untuk formulir pembayaran. Ia meneruskan `paymentSchema` agar error validasi otomatis muncul pada `formState.errors`. Fungsi yang diekspor bernama `PaymentFormValidation`, bukan `usePayment` seperti nama berkasnya. Tur 9 memakai hook ini sebagai contoh pemisahan aturan formulir dari komponen tampilan.",
+      "sections": [
+        {
+          "title": "Impor resolver dan skema",
+          "lineRange": [1, 4],
+          "explanation": "Impor mencakup `zodResolver`, `useForm`, serta skema dan tipe dari `paymentSchema`. `zodResolver` menjadi jembatan antara aturan Zod dan mekanisme error React Hook Form. Tipe diimpor dalam pernyataan yang sama dengan nilai, tetapi penggunaannya hanya sebagai generik.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Inisialisasi formulir",
+          "lineRange": [5, 13],
+          "explanation": "`PaymentFormValidation` memanggil `useForm<PaymentSchema>` dengan `resolver: zodResolver(paymentSchema)`. Semua metode (`register`, `handleSubmit`, `formState`, dan lain-lain) dikembalikan lewat spread object. Halaman `Payment.tsx` lalu mengonsumsinya seolah-olah memanggil hook bernama `use` sesuai konvensi React. Tidak ada state tambahan atau defaultValues yang ditetapkan di berkas ini.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/payment/components/PaymentMethods.tsx": {
+      "overview": "Komponen ini merender satu tombol pilihan metode pembayaran yang sepenuhnya dikendalikan oleh props. Status `selected` menentukan gaya visual dan atribut `aria-pressed`, sedangkan klik memanggil `onSelect` dengan `value`. Halaman pembayaran memakai komponen ini untuk pilihan kartu dan transfer bank. Tur 9 menyebutnya sebagai bagian dari antarmuka formulir pembayaran.",
+      "sections": [
+        {
+          "title": "Kontrak props",
+          "lineRange": [1, 8],
+          "explanation": "Antarmuka `PaymentMethodsProps` mendefinisikan `label`, `value`, `selected`, dan `onSelect`. `onSelect` menerima string sehingga komponen tidak perlu tahu tipe `PaymentOption` milik halaman. Shape ini membuat satu komponen bisa dipakai berulang untuk beberapa metode.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Tombol dan gaya pilihan",
+          "lineRange": [10, 33],
+          "explanation": "Komponen mengembalikan `button` dengan `type=\"button\"`, sehingga tidak mengirimkan formulir saat diklik. `onClick` meneruskan `value` ke `onSelect`. Template literal kelas memilih gaya biru ketika `selected` dan gaya abu-abu dengan hover ketika tidak dipilih. `aria-pressed={selected}` memberi informasi status tombol toggle kepada pembaca layar. Baris 30 masih berisi `span` ikon yang dikomentari, padahal props tidak memiliki field `icon`, sehingga berkas ini menyimpan sisa kode lama yang tidak aktif.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Ekspor default",
+          "lineRange": [35, 36],
+          "explanation": "Komponen diekspor sebagai default export. Halaman `Payment.tsx` mengimpornya dengan nama `PaymentMethods`. Tidak ada barrel ekspor tambahan di berkas ini.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/payment/page/Payment.tsx": {
+      "overview": "Halaman ini menyatukan pilihan metode pembayaran dan empat field kartu dalam satu formulir. Validasi berasal dari `PaymentFormValidation`, dan submit yang berhasil hanya mengalihkan ke rute tiket dengan `userId` dari parameter URL. Tidak ada panggilan ke service order maupun gateway pembayaran di berkas ini. Tur 9 memakai halaman ini untuk menunjukkan bagaimana skema dan hook dipakai dari tampilan.",
+      "sections": [
+        {
+          "title": "Impor dan opsi pembayaran",
+          "lineRange": [1, 18],
+          "explanation": "Impor mencakup `useState`, `useNavigate`, `useParams`, komponen bersama `Button` dan `InputField`, `PaymentMethods`, serta hook validasi. `PaymentOption` membatasi nilai menjadi `card` atau `bank`. Konstanta `PAYMENT_METHODS` menyimpan dua label yang kelak di-render sebagai tombol.",
+          "tourOrder": 9
+        },
+        {
+          "title": "State dan handler submit",
+          "lineRange": [19, 37],
+          "explanation": "`useParams` mengambil `userId`, hook memberi `register`, `handleSubmit`, dan `formState`, sedangkan `useNavigate` disimpan dalam variabel `Navigate`. State `selected` dimulai dari `card` dan diubah lewat callback tombol. `onSubmit` adalah hasil `handleSubmit`, sehingga validasi Zod berjalan lebih dulu sebelum navigasi ke `/user/${userId}/ticket`. Beberapa baris di rentang ini masih berupa komentar lama tentang `GetUsers`, `localStorage`, dan pengecekan user; tidak ada kode aktif di dalamnya.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Formulir dan metode",
+          "lineRange": [38, 52],
+          "explanation": "`main` membungkus satu `form` dengan handler `onSubmit`. `PAYMENT_METHODS` dipetakan menjadi komponen `PaymentMethods`, dengan `selected` dibandingkan terhadap state dan `onSelect` melakukan cast ke `PaymentOption`. Cast diperlukan karena komponen memancarkan string generik, sementara state halaman bertipe union.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Field kartu dan tombol bayar",
+          "lineRange": [53, 78],
+          "explanation": "Empat `InputField` memakai `register` untuk `nameOnCard`, `cardNumber`, `cvv`, dan `validTHRU`. Pesan error diambil dari `formState.errors` sesuai kunci skema Zod. Prop `required` ditandai pada tiap field, sementara teks label masih memakai bahasa Inggris. Tombol `Button` memakai `type=\"submit\"` dan `onClick={onSubmit}`; karena tombol berada di dalam formulir, submit sudah dipicu oleh `type`, sehingga pemasangan `onClick` berpotensi menjalankan handler dua kali.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Penutup formulir dan ekspor",
+          "lineRange": [79, 85],
+          "explanation": "Baris 79 sampai 81 menutup struktur `div`, `form`, dan `main`. Komponen kemudian ditutup dan diekspor default. Tidak ada penanganan error submit khusus di bagian ini karena error field sudah ditampilkan inline.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/orders/service/orderService.ts": {
+      "overview": "Service ini mengelola dua langkah inti pemesanan: membuat order dan menyelesaikan pembayaran simulasi. Keduanya memanggil fungsi Postgres lewat `supabase.rpc`, sehingga aturan transaksi berada di database. `createOrder` lebih dulu memastikan ada pengguna yang login sebelum memanggil RPC. Tur 10 menampilkan berkas ini sebagai penghubung antara data pembeli dan e-ticket.",
+      "sections": [
+        {
+          "title": "Impor dan kontrak input",
+          "lineRange": [1, 19],
+          "explanation": "Impor mencakup `requireUserId`, tipe `BuyerInput` dan `OrderItemInput`, serta klien `supabase`. `CreateOrderInput` berisi `eventId`, array `items`, dan `buyer`. `CompletePaymentInput` berisi `orderId` dan metode `card` atau `bank`. `CreateOrderResult` menggambarkan bentuk baris yang diharapkan dari RPC, yaitu `order_id` dan `total_amount` dalam snake_case.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Buat order lewat RPC",
+          "lineRange": [21, 41],
+          "explanation": "`createOrder` memanggil `requireUserId()` sebelum apa pun, sehingga order tidak dibuat tanpa pengguna aktif. Ia meneruskan parameter RPC dengan nama `p_event_id`, `p_items`, `p_buyer_name`, `p_buyer_email`, `p_identity_number`, dan `p_gender`. `items` dipetakan ulang supaya hanya `categoryId` dan `qty` yang dikirim. Bila Supabase mengembalikan error, error itu dilempar; bila array hasil kosong, fungsi melempar error buatan. Baris pertama hasil dipetakan ke `{ orderId, totalAmount }` agar pemanggil memakai nama camelCase.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Selesaikan pembayaran",
+          "lineRange": [43, 54],
+          "explanation": "`completePayment` memanggil RPC `complete_payment` dengan `p_order_id` dan `p_payment_method`. Error dari Supabase dilempar langsung ke pemanggil, tanpa dibungkus pesan baru. Nilai `data` dikembalikan sebagai `ticketId` dengan penegasan tipe string. Tidak ada pemeriksaan `requireUserId` di fungsi ini, jadi keamanan bergantung pada kebijakan RLS dan implementasi RPC di database.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "features/tickets/service/ticketService.ts": {
+      "overview": "Service ini mengambil satu tiket berdasarkan `orderId` dari tabel `tickets`. Ia menerjemahkan nama kolom database snake_case menjadi model `OrderTicket` yang dipakai UI. Kasus tiket belum ada diterjemahkan menjadi `null`, bukan error. Tur 10 menempatkan berkas ini setelah alur order sebagai sumber data untuk kartu e-ticket dan kode QR.",
+      "sections": [
+        {
+          "title": "Tipe baris database",
+          "lineRange": [1, 9],
+          "explanation": "Berkas mengimpor `OrderTicket` dan klien Supabase. `TicketRow` mendefinisikan empat kolom yang dibaca: `id`, `order_id`, `qr_code`, dan `issued_at`. Antarmuka ini berlaku lokal di service, sehingga perubahan skema tidak langsung bocor ke komponen.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Ambil tiket berdasarkan order",
+          "lineRange": [11, 28],
+          "explanation": "`getTicketByOrderId` memilih empat kolom, memfilter dengan `.eq(\"order_id\", orderId)`, lalu memakai `.single()`. Karena `.single()` mengharapkan paling banyak satu baris, kombinasi filter dan kardinalitas ini menentukan hasil null atau objek. Kode `PGRST116` dari PostgREST berarti tidak ada baris, sehingga dikembalikan `null`. Error lain tetap dilempar supaya masalah akses atau jaringan tidak tersembunyi. Terakhir, data dicasting ke `TicketRow` dan dipetakan ke `id`, `orderId`, `qrCode`, dan `issuedAt`.",
+          "tourOrder": 10
+        }
+      ]
+    }
+  }
+}

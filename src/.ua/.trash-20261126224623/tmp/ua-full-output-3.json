@@ -1,0 +1,205 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "components/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/payment/components/PaymentMethods.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "PaymentMethods",
+          "startLine": 10,
+          "endLine": 34,
+          "params": [
+            "{\r\n  label,\r\n  value,\r\n  selected,\r\n  onSelect,\r\n}"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PaymentMethods",
+          "callee": "onSelect",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/payment/hooks/usePayment.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 11,
+      "functions": [
+        {
+          "name": "PaymentFormValidation",
+          "startLine": 5,
+          "endLine": 13,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PaymentFormValidation",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PaymentFormValidation",
+          "callee": "useForm",
+          "lineNumber": 6
+        },
+        {
+          "caller": "PaymentFormValidation",
+          "callee": "zodResolver",
+          "lineNumber": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/payment/page/Payment.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "Payment",
+          "startLine": 19,
+          "endLine": 83,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Payment",
+          "callee": "useParams",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Payment",
+          "callee": "PaymentFormValidation",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Payment",
+          "callee": "useNavigate",
+          "lineNumber": 23
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "Payment",
+          "callee": "handleSubmit",
+          "lineNumber": 28
+        },
+        {
+          "caller": "Payment",
+          "callee": "Navigate",
+          "lineNumber": 29
+        },
+        {
+          "caller": "Payment",
+          "callee": "PAYMENT_METHODS.map",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Payment",
+          "callee": "setSelected",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Payment",
+          "callee": "register",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Payment",
+          "callee": "register",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Payment",
+          "callee": "register",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Payment",
+          "callee": "register",
+          "lineNumber": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/payment/schemas/paymentSchema.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 19,
+      "exports": [
+        {
+          "name": "paymentSchema",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

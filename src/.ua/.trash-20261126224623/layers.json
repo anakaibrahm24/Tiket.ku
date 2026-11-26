@@ -1,0 +1,196 @@
+[
+  {
+    "id": "layer:entry",
+    "name": "Bootstrap dan Perutean",
+    "description": "Titik masuk React main.tsx, definisi rute BrowserRouter di App.tsx, serta stylesheet global Tailwind dan token tema Tiket.ku di app.css.",
+    "nodeIds": [
+      "file:App.tsx",
+      "file:app.css",
+      "file:main.tsx"
+    ]
+  },
+  {
+    "id": "layer:ui",
+    "name": "Komponen UI Bersama",
+    "description": "Primitif tampilan reusable seperti Button, Alerts, Navbar, dan barrel components/index.ts yang dipakai lintas fitur.",
+    "nodeIds": [
+      "file:components/index.ts",
+      "file:components/Button.tsx",
+      "file:components/CardAction.tsx",
+      "file:components/Navbar.tsx",
+      "file:components/Searchbar.tsx",
+      "file:components/Alerts.tsx",
+      "file:components/Badge.tsx",
+      "file:components/Banner.tsx",
+      "file:components/Drawer.tsx",
+      "file:components/Footer.tsx",
+      "file:components/FooterLinks.tsx",
+      "file:components/InputField.tsx",
+      "file:components/QrPassCard.tsx",
+      "file:components/RadioSelector.tsx",
+      "file:components/Stepper.tsx",
+      "file:components/SummaryCard.tsx",
+      "file:components/Tabs.tsx"
+    ],
+    "containerLabels": [
+      {
+        "name": "Primitif UI",
+        "nodeIds": [
+          "file:components/index.ts",
+          "file:components/Button.tsx",
+          "file:components/Badge.tsx",
+          "file:components/Tabs.tsx"
+        ]
+      },
+      {
+        "name": "Kartu Acara Tiket",
+        "nodeIds": [
+          "file:components/CardAction.tsx",
+          "file:components/QrPassCard.tsx"
+        ]
+      },
+      {
+        "name": "Navigasi Situs",
+        "nodeIds": [
+          "file:components/Navbar.tsx",
+          "file:components/Footer.tsx",
+          "file:components/FooterLinks.tsx"
+        ]
+      },
+      {
+        "name": "Formulir Input",
+        "nodeIds": [
+          "file:components/Searchbar.tsx",
+          "file:components/InputField.tsx",
+          "file:components/RadioSelector.tsx"
+        ]
+      },
+      {
+        "name": "Notifikasi Panel",
+        "nodeIds": [
+          "file:components/Alerts.tsx",
+          "file:components/Banner.tsx",
+          "file:components/Drawer.tsx"
+        ]
+      },
+      {
+        "name": "Ringkasan Checkout",
+        "nodeIds": [
+          "file:components/Stepper.tsx",
+          "file:components/SummaryCard.tsx"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "layer:feature-ui",
+    "name": "Tampilan Fitur",
+    "description": "Halaman dan komponen spesifik fitur beranda, pertandingan, autentikasi, pembayaran, serta kartu tiket pengguna dalam alur pemesanan.",
+    "nodeIds": [
+      "file:features/matches/components/Card.tsx",
+      "file:features/matches/components/TeamSection.tsx",
+      "file:features/matches/page/Matches.tsx",
+      "file:features/auth/page/AuthCallbackPage.tsx",
+      "file:features/auth/page/LoginPage.tsx",
+      "file:features/auth/page/SignupPage.tsx",
+      "file:features/home/page/Home.tsx",
+      "file:features/payment/components/PaymentMethods.tsx",
+      "file:features/payment/page/Payment.tsx",
+      "file:features/users/components/TicketCard.tsx"
+    ],
+    "containerLabels": [
+      {
+        "name": "Jadwal Pertandingan",
+        "nodeIds": [
+          "file:features/matches/components/Card.tsx",
+          "file:features/matches/components/TeamSection.tsx",
+          "file:features/matches/page/Matches.tsx"
+        ]
+      },
+      {
+        "name": "Autentikasi",
+        "nodeIds": [
+          "file:features/auth/page/AuthCallbackPage.tsx",
+          "file:features/auth/page/LoginPage.tsx",
+          "file:features/auth/page/SignupPage.tsx"
+        ]
+      },
+      {
+        "name": "Alur Pemesanan",
+        "nodeIds": [
+          "file:features/payment/components/PaymentMethods.tsx",
+          "file:features/payment/page/Payment.tsx",
+          "file:features/users/components/TicketCard.tsx"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "layer:hooks",
+    "name": "Hook React",
+    "description": "Hook kustom aktif untuk data pertandingan, validasi pembayaran, pendaftaran pengguna, dan sesi autentikasi Supabase.",
+    "nodeIds": [
+      "file:features/matches/hooks/useMatchData.ts",
+      "file:features/payment/hooks/usePayment.ts",
+      "file:features/users/hooks/useUserRegister.ts",
+      "file:hooks/useSession.ts"
+    ]
+  },
+  {
+    "id": "layer:service",
+    "name": "Service dan Akses Data",
+    "description": "Layanan yang membungkus Supabase Auth serta query event, pertandingan, order, dan tiket, termasuk klien Supabase singleton.",
+    "nodeIds": [
+      "file:features/matches/service/matchService.ts",
+      "file:features/auth/service/authService.ts",
+      "file:features/events/service/eventService.ts",
+      "file:features/orders/service/orderService.ts",
+      "file:features/tickets/service/ticketService.ts",
+      "file:lib/supabase.ts"
+    ]
+  },
+  {
+    "id": "layer:validation",
+    "name": "Skema Validasi",
+    "description": "Skema Zod untuk formulir autentikasi, pembayaran, dan pendaftaran yang dipakai bersama React Hook Form.",
+    "nodeIds": [
+      "file:features/payment/schemas/paymentSchema.ts",
+      "file:features/users/schema/userSchema.ts",
+      "file:features/auth/schema/authSchemas.ts"
+    ]
+  },
+  {
+    "id": "layer:types",
+    "name": "Definisi Tipe",
+    "description": "Tipe TypeScript dan deklarasi ambient untuk payload pertandingan, model event, data pengguna, serta dukungan tipe Vite.",
+    "nodeIds": [
+      "file:features/matches/components/matchesProps.ts",
+      "file:features/matches/types/matchesPayload.ts",
+      "file:features/matches/types/matchesPayload.types.ts",
+      "file:features/events/types/event.types.ts",
+      "file:features/users/types/userPayload.d.ts",
+      "file:vite-env.d.ts"
+    ]
+  },
+  {
+    "id": "layer:utility",
+    "name": "Utilitas",
+    "description": "Fungsi bantu lintas proyek: penggabung kelas Tailwind cn di lib/utiils.ts dan hook penghitung lokal useCounter.",
+    "nodeIds": [
+      "file:lib/utiils.ts",
+      "file:hooks/useCounter.ts"
+    ]
+  },
+  {
+    "id": "layer:legacy",
+    "name": "Kode Legacy Nonaktif",
+    "description": "Berkas lama dari fitur tiket, pengguna, dan service yang seluruh implementasinya masih dikomentari serta tidak dipakai alur aktif.",
+    "nodeIds": [
+      "file:features/tickets/component/Ticket.tsx",
+      "file:features/users/hooks/useUsers.ts",
+      "file:features/users/page/RegisterForm.tsx",
+      "file:features/users/service/userServices.ts",
+      "file:services/userService.ts"
+    ]
+  }
+]

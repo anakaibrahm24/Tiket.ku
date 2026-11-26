@@ -1,0 +1,304 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 8,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 8,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "features/matches/components/Card.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "MatchScheduleCard",
+          "startLine": 5,
+          "endLine": 31,
+          "params": [
+            "{\r\n  team_home,\r\n  team_away,\r\n  match_time,\r\n  time_zone,\r\n  match_date,\r\n  stadium,\r\n  onClick,\r\n}"
+          ]
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/matches/components/TeamSection.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 13,
+      "functions": [
+        {
+          "name": "TeamSection",
+          "startLine": 3,
+          "endLine": 14,
+          "params": [
+            "{ name, logo }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TeamSection",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/matches/components/matchesProps.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/matches/hooks/useMatchData.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "useMatchData",
+          "startLine": 6,
+          "endLine": 28,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useMatchData",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useMatchData",
+          "callee": "useState",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useMatchData",
+          "callee": "useState",
+          "lineNumber": 8
+        },
+        {
+          "caller": "useMatchData",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "useMatchData",
+          "callee": "useEffect",
+          "lineNumber": 11
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setLoading",
+          "lineNumber": 13
+        },
+        {
+          "caller": "fetchData",
+          "callee": "getMatches",
+          "lineNumber": 15
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setMatches",
+          "lineNumber": 16
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setError",
+          "lineNumber": 17
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setError",
+          "lineNumber": 19
+        },
+        {
+          "caller": "fetchData",
+          "callee": "String",
+          "lineNumber": 19
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setLoading",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useMatchData",
+          "callee": "fetchData",
+          "lineNumber": 24
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/matches/page/Matches.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 21,
+      "functions": [
+        {
+          "name": "Matches",
+          "startLine": 5,
+          "endLine": 23,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Matches",
+          "callee": "useNavigate",
+          "lineNumber": 6
+        },
+        {
+          "caller": "Matches",
+          "callee": "useMatchData",
+          "lineNumber": 7
+        },
+        {
+          "caller": "handleCardClick",
+          "callee": "sessionStorage.setItem",
+          "lineNumber": 10
+        },
+        {
+          "caller": "handleCardClick",
+          "callee": "navigate",
+          "lineNumber": 12
+        },
+        {
+          "caller": "Matches",
+          "callee": "matches.map",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Matches",
+          "callee": "handleCardClick",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/matches/service/matchService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 23,
+      "functions": [
+        {
+          "name": "getMatches",
+          "startLine": 6,
+          "endLine": 24,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "getMatches",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getMatches",
+          "callee": "getEvents",
+          "lineNumber": 7
+        },
+        {
+          "caller": "getMatches",
+          "callee": "events.map",
+          "lineNumber": 8
+        },
+        {
+          "caller": "getMatches",
+          "callee": "Object.fromEntries",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getMatches",
+          "callee": "event.categories.map",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/matches/types/matchesPayload.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/matches/types/matchesPayload.types.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 4,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

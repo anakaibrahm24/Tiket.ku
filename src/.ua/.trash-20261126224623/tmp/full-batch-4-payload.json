@@ -1,0 +1,43 @@
+{
+  "batchIndex": 4,
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "files": [
+    {
+      "path": "components/Button.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/CardAction.tsx",
+      "language": "typescript",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Navbar.tsx",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Searchbar.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "components/Button.tsx": [],
+    "components/CardAction.tsx": [
+      "components/Button.tsx"
+    ],
+    "components/Navbar.tsx": [
+      "components/Button.tsx"
+    ],
+    "components/Searchbar.tsx": [
+      "components/Button.tsx"
+    ]
+  },
+  "neighborMap": {}
+}

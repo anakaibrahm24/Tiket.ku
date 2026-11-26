@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 56,
+  "totalBatches": 1,
+  "exportsByPath": {
+    "App.tsx": [],
+    "components/Alerts.tsx": [],
+    "components/Badge.tsx": [
+      "Badge"
+    ],
+    "components/Banner.tsx": [
+      "Banner"
+    ],
+    "components/Button.tsx": [
+      "Button"
+    ],
+    "components/CardAction.tsx": [
+      "CardAction"
+    ],
+    "components/Drawer.tsx": [
+      "Drawer"
+    ],
+    "components/Footer.tsx": [
+      "Footer"
+    ],
+    "components/FooterLinks.tsx": [
+      "FooterLinks"
+    ],
+    "components/InputField.tsx": [
+      "InputField"
+    ],
+    "components/Navbar.tsx": [
+      "Navbar"
+    ],
+    "components/QrPassCard.tsx": [
+      "QrPassCard"
+    ],
+    "components/RadioSelector.tsx": [
+      "RadioSelector"
+    ],
+    "components/Searchbar.tsx": [
+      "Searchbar"
+    ],
+    "components/Stepper.tsx": [
+      "Stepper"
+    ],
+    "components/SummaryCard.tsx": [
+      "SummaryCard"
+    ],
+    "components/Tabs.tsx": [
+      "Tabs"
+    ],
+    "components/index.ts": [],
+    "features/auth/page/AuthCallbackPage.tsx": [],
+    "features/auth/page/LoginPage.tsx": [],
+    "features/auth/page/SignupPage.tsx": [],
+    "features/auth/schema/authSchemas.ts": [
+      "authSchema",
+      "loginSchema",
+      "signupSchema"
+    ],
+    "features/auth/service/authService.ts": [
+      "getSession",
+      "onAuthStateChange",
+      "requireUserId",
+      "signInWithEmail",
+      "signUpWithEmail",
+      "signInWithGoogle",
+      "signOut",
+      "mapAuthError"
+    ],
+    "features/events/service/eventService.ts": [
+      "getEvents",
+      "getEventById"
+    ],
+    "features/events/types/event.types.ts": [],
+    "features/home/page/Home.tsx": [],
+    "features/matches/components/Card.tsx": [],
+    "features/matches/components/TeamSection.tsx": [
+      "TeamSection"
+    ],
+    "features/matches/components/matchesProps.ts": [],
+    "features/matches/hooks/useMatchData.ts": [
+      "useMatchData"
+    ],
+    "features/matches/page/Matches.tsx": [],
+    "features/matches/service/matchService.ts": [
+      "getMatches"
+    ],
+    "features/matches/types/matchesPayload.ts": [],
+    "features/matches/types/matchesPayload.types.ts": [],
+    "features/orders/service/orderService.ts": [
+      "createOrder",
+      "completePayment"
+    ],
+    "features/payment/components/PaymentMethods.tsx": [],
+    "features/payment/hooks/usePayment.ts": [
+      "PaymentFormValidation"
+    ],
+    "features/payment/page/Payment.tsx": [],
+    "features/payment/schemas/paymentSchema.ts": [
+      "paymentSchema"
+    ],
+    "features/tickets/component/Ticket.tsx": [],
+    "features/tickets/service/ticketService.ts": [
+      "getTicketByOrderId"
+    ],
+    "features/users/components/TicketCard.tsx": [],
+    "features/users/hooks/useUserRegister.ts": [
+      "useUserRegister"
+    ],
+    "features/users/hooks/useUsers.ts": [],
+    "features/users/page/RegisterForm.tsx": [],
+    "features/users/schema/userSchema.ts": [
+      "userSchema"
+    ],
+    "features/users/service/userServices.ts": [],
+    "features/users/types/userPayload.d.ts": [],
+    "hooks/useCounter.ts": [
+      "useCounter"
+    ],
+    "hooks/useSession.ts": [
+      "useSession"
+    ],
+    "lib/supabase.ts": [
+      "supabase"
+    ],
+    "lib/utiils.ts": [
+      "cn"
+    ],
+    "main.tsx": [],
+    "services/userService.ts": [],
+    "vite-env.d.ts": []
+  },
+  "batches": [
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "features/auth/page/SignupPage.tsx",
+          "language": "typescript",
+          "sizeLines": 234,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/home/page/Home.tsx",
+          "language": "typescript",
+          "sizeLines": 368,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "features/auth/page/SignupPage.tsx": [],
+        "features/home/page/Home.tsx": []
+      },
+      "neighborMap": {
+        "features/auth/page/SignupPage.tsx": [
+          {
+            "path": "App.tsx",
+            "batchIndex": 2,
+            "symbols": []
+          }
+        ],
+        "features/home/page/Home.tsx": [
+          {
+            "path": "App.tsx",
+            "batchIndex": 2,
+            "symbols": []
+          }
+        ]
+      }
+    }
+  ]
+}

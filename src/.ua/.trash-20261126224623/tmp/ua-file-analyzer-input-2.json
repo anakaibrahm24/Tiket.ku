@@ -1,0 +1,11 @@
+{
+  "projectRoot": "D:\\naka\\project\\Tiket.ku_Fork_V.2\\src",
+  "batchFiles": [
+    {"path": "features/auth/page/SignupPage.tsx", "language": "typescript", "sizeLines": 234, "fileCategory": "code"},
+    {"path": "features/home/page/Home.tsx", "language": "typescript", "sizeLines": 368, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "features/auth/page/SignupPage.tsx": [],
+    "features/home/page/Home.tsx": []
+  }
+}

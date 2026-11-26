@@ -1,0 +1,211 @@
+{
+  "nodes": [
+    {
+      "id": "file:App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "App.tsx",
+      "summary": "Titik masuk aplikasi yang mendefinisikan BrowserRouter dan rute utama untuk beranda, jadwal pertandingan, masuk, daftar, serta callback autentikasi.",
+      "tags": ["titik-masuk", "perutean", "komponen", "react-router"],
+      "complexity": "simple",
+      "languageNotes": "Menggunakan BrowserRouter dengan deklarasi Route statis; rute lama untuk formulir dan pembayaran masih dinonaktifkan."
+    },
+    {
+      "id": "function:App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "App.tsx",
+      "lineRange": [11, 26],
+      "summary": "Merender Router dan kumpulan Route yang memetakan URL ke halaman beranda, pertandingan, login, signup, dan callback auth.",
+      "tags": ["komponen", "perutean", "titik-masuk"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/auth/page/AuthCallbackPage.tsx",
+      "type": "file",
+      "name": "AuthCallbackPage.tsx",
+      "filePath": "features/auth/page/AuthCallbackPage.tsx",
+      "summary": "Halaman transisi setelah autentikasi yang memeriksa sesi Supabase lalu mengalihkan pengguna ke halaman tujuan atau login.",
+      "tags": ["autentikasi", "halaman", "callback", "navigasi"],
+      "complexity": "simple",
+      "languageNotes": "Membersihkan flag mounted pada cleanup useEffect agar navigasi tidak terjadi setelah komponen dilepas."
+    },
+    {
+      "id": "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage",
+      "type": "function",
+      "name": "AuthCallbackPage",
+      "filePath": "features/auth/page/AuthCallbackPage.tsx",
+      "lineRange": [6, 35],
+      "summary": "Menunggu hasil getSession, lalu mengalihkan ke rute asal bila sesi valid atau ke /login bila gagal, sambil menampilkan indikator spinner.",
+      "tags": ["autentikasi", "callback", "efek", "navigasi"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/auth/page/LoginPage.tsx",
+      "type": "file",
+      "name": "LoginPage.tsx",
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "summary": "Halaman masuk dengan formulir email dan kata sandi serta opsi login Google, memakai Zod untuk validasi dan komponen Alerts untuk error.",
+      "tags": ["autentikasi", "halaman", "formulir", "validasi", "komponen"],
+      "complexity": "moderate",
+      "languageNotes": "Formulir memakai react-hook-form dengan zodResolver; status submit dan Google dikelola terpisah untuk mengunci tombol."
+    },
+    {
+      "id": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "type": "function",
+      "name": "LoginPage",
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "lineRange": [23, 197],
+      "summary": "Mengelola state formulir login, redirect pengguna yang sudah masuk, memanggil signInWithEmail atau signInWithGoogle, lalu merender UI kartu masuk.",
+      "tags": ["autentikasi", "formulir", "validasi", "penanganan-error"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/auth/page/SignupPage.tsx",
+      "type": "file",
+      "name": "SignupPage.tsx",
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "summary": "Halaman pendaftaran akun dengan formulir nama, email, kata sandi, konfirmasi kata sandi, dan opsi daftar dengan Google.",
+      "tags": ["autentikasi", "halaman", "formulir", "validasi", "komponen"],
+      "complexity": "moderate",
+      "languageNotes": "Menggunakan skema signupSchema via zodResolver dan membedakan alur sesi langsung dengan verifikasi email."
+    },
+    {
+      "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "function",
+      "name": "SignupPage",
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "lineRange": [21, 232],
+      "summary": "Menangani pendaftaran email, pemeriksaan sesi setelah sign up, alur Google, serta merender formulir dan pesan status untuk pengguna.",
+      "tags": ["autentikasi", "pendaftaran", "formulir", "penanganan-error"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/home/page/Home.tsx",
+      "type": "file",
+      "name": "Home.tsx",
+      "filePath": "features/home/page/Home.tsx",
+      "summary": "Halaman beranda Tiket.ku yang menampilkan hero, agenda acara GBK, keunggulan layanan, venue, dan ajakan memesan tiket.",
+      "tags": ["halaman", "beranda", "komponen", "navigasi", "tampilan"],
+      "complexity": "complex",
+      "languageNotes": "Data acara dan venue masih berupa array placeholder statis; tata letak memakai grid Tailwind responsif."
+    },
+    {
+      "id": "function:features/home/page/Home.tsx:HomePage",
+      "type": "function",
+      "name": "HomePage",
+      "filePath": "features/home/page/Home.tsx",
+      "lineRange": [58, 366],
+      "summary": "Menggabungkan Navbar, hero, daftar acara, fitur, venue, dan CTA dengan handler navigasi serta scroll halus ke bagian tertentu.",
+      "tags": ["beranda", "komponen", "tampilan", "navigasi"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/AuthCallbackPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/LoginPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/SignupPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/home/page/Home.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/matches/page/Matches.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "function:App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "function:App.tsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/AuthCallbackPage.tsx",
+      "target": "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/page/AuthCallbackPage.tsx",
+      "target": "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "function:features/home/page/Home.tsx:HomePage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "function:features/home/page/Home.tsx:HomePage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

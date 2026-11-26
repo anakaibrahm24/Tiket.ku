@@ -1,1334 +1,1902 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-24T09:04:04.469030+00:00",
+  "generatedAt": "2026-11-26T15:45:41.826195+00:00",
   "files": {
-    "App.tsx": {
-      "overview": "Top-level route definition for Tiket.ku. Wraps the app in BrowserRouter and maps five paths to their pages, giving the guided tour its bird's-eye view of runtime structure. The file also carries commented-out imports and routes for the ticket, registration, and payment flows that are not yet wired into this MVP build.",
-      "sections": [
-        {
-          "title": "Imports and route setup",
-          "lineRange": [
-            1,
-            9
-          ],
-          "explanation": "Imports routing primitives from react-router-dom and the five active page components. The commented imports on lines 8-9 hint at the planned Ticket and RegisterForm routes; they are inert and should be read as roadmap notes, not live dependencies.",
-          "tourOrder": 1
-        },
-        {
-          "title": "App component and routes",
-          "lineRange": [
-            11,
-            27
-          ],
-          "explanation": "Renders BrowserRouter containing a Routes switch with paths for home, '/matchs', login, signup, and the OAuth callback. Each Route uses an element prop rather than children, the React Router v6+ convention. Commented route placeholders on lines 20-22 mark future form, payment, and ticket destinations; they do not participate in routing.",
-          "tourOrder": 1
-        },
-        {
-          "title": "Default export",
-          "lineRange": [
-            29,
-            29
-          ],
-          "explanation": "Default-exports App so main.tsx can mount it as the single root component.",
-          "tourOrder": 1
-        }
-      ]
-    },
     "main.tsx": {
-      "overview": "Application entry point referenced by the first tour step. Imports global styles and App, then mounts the React tree into the DOM element with id 'root'. StrictMode is enabled to surface unsafe lifecycles and side effects during development.",
+      "overview": "Titik masuk aplikasi yang memuat stylesheet global lalu memasang root React pada elemen `#root`. Komponen `App` dirender di dalam `StrictMode` agar pemeriksaan pengembangan React aktif. Berada di langkah 1 tour, file ini menjadi pintu teknis sebelum rute dan fitur dibaca.",
       "sections": [
         {
-          "title": "Global imports",
+          "title": "Impor global dan React",
           "lineRange": [
             1,
             4
           ],
-          "explanation": "Loads app.css first so Tailwind theme tokens and utility classes are available before components render. App is imported via the '@/' alias configured in tsconfig, while React APIs come from their packages. Order matters here only for readability; CSS is applied as a side effect regardless.",
+          "explanation": "Baris pertama mengimpor `app.css` sehingga token Tailwind dan gaya global termuat sebelum komponen apa pun dirender. `App` diimpor lewat alias `@/`, diikuti `StrictMode` dan `createRoot` dari React DOM. Urutan ini memastikan fondasi styling siap saat pohon komponen dibuat.",
           "tourOrder": 1
         },
         {
-          "title": "Root mount",
+          "title": "Pemasangan root React",
           "lineRange": [
             6,
             10
           ],
-          "explanation": "createRoot targets document.getElementById('root') with a non-null assertion, trusting the Vite index.html template to provide the element. render wraps App in StrictMode, which double-invokes certain functions in development to expose impure code. BrowserRouter itself lives inside App, not here.",
+          "explanation": "`createRoot(document.getElementById(\"root\")!)` mengambil kontainer dari HTML dan Assertion `!` menandakan kontainer dianggap pasti ada. Render membungkus `App` dengan `StrictMode`, yang di pengembangan menjalankan pemeriksaan tambahan seperti deteksi efek samping. Dari sini seluruh rute di `App.tsx` mulai hidup.",
+          "tourOrder": 1
+        }
+      ]
+    },
+    "App.tsx": {
+      "overview": "Pusat deklarasi rute aplikasi berbasis React Router. File ini memetakan beranda, jadwal pertandingan, masuk, daftar, dan callback autentikasi ke halaman masing-masing. Bersama `main.tsx`, file ini menyusun langkah 1 tour tentang bootstrap dan perutean.",
+      "sections": [
+        {
+          "title": "Impor router dan halaman",
+          "lineRange": [
+            1,
+            7
+          ],
+          "explanation": "`BrowserRouter` di-alias menjadi `Router` bersama `Route` dan `Routes` diimpor dari `react-router-dom`. Lima halaman aktif diimpor dari folder `features`, mencerminkan struktur feature-first proyek. Impor `Ticket` dan `RegisterForm` masih dikomentari, menandakan jalur lama yang tidak dipakai alur aktif.",
+          "tourOrder": 1
+        },
+        {
+          "title": "Deklarasi rute aktif",
+          "lineRange": [
+            11,
+            26
+          ],
+          "explanation": "`Router` membungkus `Routes`, lalu enam tag `Route` mendefinisikan pintu masuk tiap alur: `/`, `/matchs`, `/login`, `/signup`, dan `/auth/callback`. Perhatikan ejaan `/matchs` yang memang dipakai kode, bukan `/matches`. Tiga rute bertema formulir, pembayaran, dan tiket dikomentari pada baris 20-22 sehingga tidak terdaftar.",
+          "tourOrder": 1
+        },
+        {
+          "title": "Ekspor komponen App",
+          "lineRange": [
+            28,
+            28
+          ],
+          "explanation": "`App` diekspor sebagai default agar `main.tsx` dapat merendernya. Ekspor ini menutup rantai bootstrap dari HTML ke root React ke tabel rute.",
           "tourOrder": 1
         }
       ]
     },
     "app.css": {
-      "overview": "Design-token source of truth for the project, highlighted in tour step 2. Uses Tailwind CSS v4's @theme block to declare brand, surface, ink, night, and semantic color tokens plus font, radius, spacing, and shadow scales. Additional @utility rules expose reusable typography classes, and the file ends with base styles for focus visibility and reduced motion.",
+      "overview": "Entri styling global yang mengimpor Tailwind CSS v4 dan mendefinisikan seluruh token desain di blok `@theme`. Di sini warna, font, skala teks, spacing, radius, bayangan, dan motion ditetapkan sebelum dipakai komponen. Langkah 2 tour menjadikan file ini fondasi yang harus dipahami sebelum membaca tampilan lain.",
       "sections": [
         {
-          "title": "Font and Tailwind imports",
+          "title": "Impor font dan Tailwind",
           "lineRange": [
             1,
-            4
+            5
           ],
-          "explanation": "Pulls Inter and Fira Code from Google Fonts as external @import rules, then loads Tailwind via @import \"tailwindcss\". In CSS, @import statements must precede other rules, which is why fonts and Tailwind appear before @theme. The fonts are later referenced by the --font-* tokens.",
+          "explanation": "Dua `@import` URL memuat Inter, Plus Jakarta Sans, dan Material Symbols Outlined dari Google Fonts. `@import \"tailwindcss\"` menghadirkan mesin utilitas Tailwind v4. Font dan ikon ini dipakai ulang lewat token di bawah, jadi tidak perlu deklarasi font per komponen.",
           "tourOrder": 2
         },
         {
-          "title": "Theme color tokens",
+          "title": "Token warna kanonik",
           "lineRange": [
             6,
-            54
+            58
           ],
-          "explanation": "The @theme block defines custom CSS variables that Tailwind v4 turns into utility classes. Brand blues, neutral surface/ink/night palettes, line colors, and Tiket.ku semantic colors such as --color-primary and --color-danger all live here. Centralizing them means components can use classes like bg-brand-blue or text-danger without ad-hoc hex values.",
+          "explanation": "Blok `@theme` membuka kumpulan variabel CSS yang menjadi token desain. Bagian ini memuat warna merek seperti `--color-brand-blue`, warna status, serta paleta `light-*` dan `dark-*` untuk permukaan, teks, dan outline. Mendefinisikan semuanya di satu tempat membuat perubahan tema cukup dilakukan sekali.",
           "tourOrder": 2
         },
         {
-          "title": "Type, radius, spacing, shadows",
+          "title": "Alias warna kompatibilitas",
           "lineRange": [
-            56,
-            83
+            59,
+            88
           ],
-          "explanation": "Declares font stacks, radius scale, spacing scale, and shadow tokens inside the same @theme block. --font-heading aliases --font-sans so headings inherit the body family. Note that --radius-base/sm/lg are not a simple ascending scale (10px, 12px, 14px), so read each token by name rather than assuming ordering.",
+          "explanation": "Alias seperti `--color-surface-white` dan `--color-ink-900` merujuk ke token kanonik atau nilai eksplisit. Komentar pada baris 59 menandakan ini lapisan kompatibilitas yang menghubungkan nama lama dengan token baru. Komponen dapat memakai nama pendek sambil tetap berasal dari paleta tunggal.",
           "tourOrder": 2
         },
         {
-          "title": "Typography utilities",
+          "title": "Token keluarga font",
           "lineRange": [
-            85,
-            139
+            89,
+            98
           ],
-          "explanation": "Tailwind v4 @utility rules create named classes type-display, type-h1 through type-h3, type-body, type-small, type-caption, and type-code. Each bundles font family, size, line height, and weight so JSX can apply one class instead of four. type-code is the only one using --font-mono.",
+          "explanation": " `--font-sans`, `--font-mono`, `--font-display`, dan turunannya memetakan peran tipografi ke font yang sudah diimpor. `--font-heading` dan `--font-headline` misalnya menunjuk ke `--font-display`. Pola ini memisahkan peran visual dari nama font konkret.",
           "tourOrder": 2
         },
         {
-          "title": "Base styles and accessibility",
+          "title": "Skala ukuran teks",
           "lineRange": [
-            141,
-            159
+            99,
+            147
           ],
-          "explanation": "Applies the sans font stack to :root, gives every focusable element a visible brand-blue outline, and honors prefers-reduced-motion by collapsing animations and transitions. These are global safeguards: the focus ring supports keyboard navigation and the media query prevents motion sickness for users who opt out.",
+          "explanation": "Token `--text-*` menyimpan ukuran, tinggi baris, jarak huruf, dan bobot untuk tiap peran teks. Beberapa ukuran punya variasi `-mobile` agar headline tetap proporsional di layar kecil. Kelas seperti `text-display-lg` atau `text-label-md` memakai token ini, bukan angka ad-hoc.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Token spacing",
+          "lineRange": [
+            148,
+            163
+          ],
+          "explanation": "Spacing kanonik memakai awalan `--spacing-gutter-*`, ditambah `--spacing-section` dan `--spacing-page-margin` untuk ritme halaman. Alias `--spacing-xs` sampai `--spacing-xxl` memberikan nama yang lebih pendek. Nilai mobile dan desktop tetap konsisten karena berasal dari satu skala.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Radius bayangan dan motion",
+          "lineRange": [
+            165,
+            184
+          ],
+          "explanation": "Token radius mencakup `--radius-sm` sampai `--radius-full`, sementara `--shadow-*` menyediakan empat tingkat kedalaman. Bagian motion menyimpan durasi dan easing untuk perubahan status serta entri permukaan. Memisahkan durasi dari easing memudahkan pemakaian ulang pada transisi berbeda.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Utilitas motion kustom",
+          "lineRange": [
+            187,
+            201
+          ],
+          "explanation": "Empat blok `@utility` membungkus token motion menjadi kelas siap pakai: `duration-state-change`, `ease-state-change`, `duration-surface-enter`, dan `ease-surface-enter`. Tiap utilitas hanya menetapkan satu properti CSS dari token terkait. Ini jembatan antara variabel desain dan kelas Tailwind di JSX.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Gaya dasar dan aksesibilitas",
+          "lineRange": [
+            203,
+            223
+          ],
+          "explanation": "`:root` menetapkan `--font-sans` sebagai font dasar dokumen. Aturan `*:focus-visible` memberi outline biru sehingga navigasi keyboard terlihat. Media query `prefers-reduced-motion` mematikan animasi dan transisi bagi pengguna yang memilih gerakan minimal, lalu baris terakhir mengatur variasi font Material Symbols.",
+          "tourOrder": 2
+        }
+      ]
+    },
+    "components/Button.tsx": {
+      "overview": "Tombol bersama dengan tujuh varian visual dan dua ukuran. Komponen ini memakai helper `cn` agar kelas bawaan, kelas varian, dan kelas pemanggil dapat digabung tanpa konflik Tailwind. Langkah 2 tour memakainya sebagai contoh nyata pemakaian token dari `app.css`.",
+      "sections": [
+        {
+          "title": "Kontrak props tombol",
+          "lineRange": [
+            1,
+            17
+          ],
+          "explanation": "`ButtonProps` memperluas `ButtonHTMLAttributes<HTMLButtonElement>`, sehingga atribut native seperti `onClick` dan `disabled` tetap tersedia. Props tambahan mencakup `label`, `children`, `icon`, `size`, serta `variant` dengan tujuh nilai literal. `label` dan `children` keduanya opsional, memberi dua cara mengisi teks tombol.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Default dan pemetaan varian",
+          "lineRange": [
+            19,
+            38
+          ],
+          "explanation": "Destructuring menetapkan `variant=\"primary\"`, `type=\"button\"`, `size=\"md\"`, dan `className` kosong sebagai nilai awal. `sizeClass` memilih padding, lalu objek `variants` memetakan tiap varian ke kelas token seperti `bg-brand-blue` atau `bg-surface-subtle`. Varian `icon` dan `oauth` sudah membawa padding sendiri sehingga ukuran umum tidak diterapkan padanya.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Render dan penggabungan kelas",
+          "lineRange": [
+            40,
+            56
+          ],
+          "explanation": "`cn` menggabungkan kelas dasar, kelas ukuran bersyarat, kelas varian, `className` dari pemanggil, dan kelas tambahan saat `props.disabled`. Spread `{...props}` meneruskan atribut native ke elemen `button`, sehingga perilaku standar tetap bekerja. Isi tombol memakai `children ?? label`, lalu `icon` dirender setelahnya.",
           "tourOrder": 2
         }
       ]
     },
     "lib/utiils.ts": {
-      "overview": "Tiny shared helper referenced in tour step 2. The cn function composes conditional class names with clsx then resolves conflicting Tailwind utilities with tailwind-merge. Nearly every shared UI primitive imports it to merge a caller's className with defaults. Note the directory name 'utiils' is misspelled consistently, so imports must match it exactly.",
+      "overview": "Helper kecil untuk menggabungkan kelas CSS di seluruh proyek. Fungsi `cn` menyatukan `clsx` dan `tailwind-merge` agar kelas bersyarat tetap rapi dan konflik utilitas terselesaikan. Langkah 2 tour menjadikannya kunci untuk memahami semua komponen yang menerima `className`.",
       "sections": [
         {
-          "title": "Imports",
+          "title": "Impor penggabung kelas",
           "lineRange": [
             1,
             2
           ],
-          "explanation": "clsx provides the ClassValue type and flattens conditional/array/object class inputs. twMerge from tailwind-merge drops earlier conflicting utilities so the last one wins, for example 'p-2 p-4' becomes 'p-4'.",
+          "explanation": "`clsx` menangani ekspresi bersyarat dan menyaring nilai falsy, sementara `twMerge` menyelesaikan kelas Tailwind yang saling bertentangan. Tipe `ClassValue` diimpor agar parameter fungsi menerima bentuk input yang didukung `clsx`. Nama file `utiils.ts` memang ejaan yang dipakai seluruh impor, termasuk di komponen lain.",
           "tourOrder": 2
         },
         {
-          "title": "cn helper",
+          "title": "Fungsi cn",
           "lineRange": [
             4,
             6
           ],
-          "explanation": "A single generic variadic function: clsx(inputs) builds the class string, twMerge normalizes it. Wrapping both in one helper keeps components free of merge details and is the standard shadcn/ui pattern for className props.",
+          "explanation": "`twMerge(clsx(inputs))` menjalankan `clsx` lebih dulu untuk membangun daftar kelas, lalu `twMerge` membuang kelas yang tertimpa. Hasilnya satu string kelas yang aman dipakai pada `className`. Pola ini mencegah dua warna latar masuk bersamaan ketika komponen memberi kelas override.",
           "tourOrder": 2
         }
       ]
     },
-    "components/Alerts.tsx": {
-      "overview": "Toast-style alert component introduced in tour step 3. Renders a fixed-position notification with a variant-driven color scheme, an animated entrance/exit via framer-motion, a countdown progress bar, and an optional onClose callback fired after the exit animation finishes. Variants map to design tokens from app.css.",
+    "features/home/page/Home.tsx": {
+      "overview": "Halaman beranda yang menyusun hero, agenda GBK, keunggulan layanan, venue, dan ajakan memesan tiket. Halaman ini memakai `Button`, `CardAction`, `Navbar`, dan `Footer` serta status sesi untuk mengarahkan tombol pembelian. Meski tour langkah 3 menyebut `Searchbar` dan `Banner`, file ini tidak mengimpor keduanya; sorotan acara dibuat langsung dengan markup sendiri.",
       "sections": [
         {
-          "title": "Imports and types",
+          "title": "Impor halaman beranda",
           "lineRange": [
             1,
-            12
+            6
           ],
-          "explanation": "Imports cn, framer-motion primitives, and React hooks. AlertVariant is a string union of five supported styles; AlertProps makes variant and desc required while duration and onClose are optional. Keeping the union narrow means variantStyles can be exhaustively typed with Record.",
+          "explanation": "Komponen bersama yang dipakai adalah `Button`, `CardAction`, `Footer`, dan `Navbar`. Hook `useSession` memberi status login, sedangkan `useNavigate` dari React Router dipakai untuk pindah halaman. Tidak ada impor `Searchbar` atau `Banner` di sini.",
           "tourOrder": 3
         },
         {
-          "title": "Variant style map",
+          "title": "Data contoh acara dan venue",
           "lineRange": [
-            14,
-            48
+            8,
+            56
           ],
-          "explanation": "variantStyles assigns four token-based classes per variant: text, border, background tint, and progress bar. Record<AlertVariant, ...> makes TypeScript require every variant, so adding a new one forces a style definition. The 'dark' variant uses ink/surface tokens instead of semantic status colors.",
+          "explanation": "Array `events` berisi tiga objek dengan nilai placeholder seperti `Kategori`, `Status`, dan `Rp ---`; ini bukan data Supabase. Array `venues` memuat empat lokasi GBK beserta kapasitas dan deskripsi yang lebih konkret. Keduanya ditaruh di level modul karena statis untuk halaman ini.",
           "tourOrder": 3
         },
         {
-          "title": "State and auto-dismiss timer",
+          "title": "Aksi navigasi dan scroll",
           "lineRange": [
-            50,
-            64
+            58,
+            76
           ],
-          "explanation": "Selects styles for the current variant and initializes isVisible to true. A useEffect starts a setTimeout that flips isVisible to false after duration ms (default 5000), and the cleanup clears the timer if duration changes or the alert unmounts. Flipping the flag triggers the exit animation rather than removing the node immediately.",
+          "explanation": "`useNavigate` dan `useSession` dipanggil di awal komponen. `handlePesanTiket` mengarahkan pengguna yang belum login ke `/login`, jika sudah login ke `/matchs`; `handleLihatJadwal` langsung ke `/matchs`. Fungsi `scrollTo` memakai `getElementById` dan `scrollIntoView({ behavior: \"smooth\" })` untuk CTA internal.",
           "tourOrder": 3
         },
         {
-          "title": "Animated alert markup",
+          "title": "Kerangka dan skip link",
           "lineRange": [
-            66,
-            104
+            78,
+            85
           ],
-          "explanation": "AnimatePresence keeps the motion.div mounted until the exit transition completes, then calls onClose via onExitComplete. The div slides in from x:300 and out to the same side with a 0.4s duration, carries role='alert' for assistive tech, and combines variant classes through cn. Inside, an info icon, the description text, and a manual close button are laid out with flex; clicking the button repeats the same isVisible(false) path as the timer.",
+          "explanation": "`main` membungkus seluruh halaman dengan latar `bg-surface-white`. Tautan `sr-only` menjadi skip link yang muncul saat fokus dan mengarah ke `#main-content`. `Navbar` menerima `user={isLoggedIn}` agar tampilannya mengikuti status sesi.",
           "tourOrder": 3
         },
         {
-          "title": "Countdown progress bar",
+          "title": "Hero dan kartu sorotan",
           "lineRange": [
-            106,
-            116
+            87,
+            194
           ],
-          "explanation": "A second motion.div animates width from 100% to 0% over duration/1000 seconds with linear easing, visually mirroring the auto-dismiss timer. Its bar color comes from the same variant map, so the accent stays consistent across all alert types.",
+          "explanation": "Bagian hero memakai latar gelap `bg-night-950`, lencana mitra resmi, headline, dan dua tombol yang memanggil `scrollTo`. Placeholder gambar dirender sebagai ikon Material Symbols `image` dengan `aria-hidden=\"true\"`. Di sisi kanan, kartu sorotan menampilkan badge `Sorotan Utama` dan `Hampir Habis`, harga placeholder, serta tombol `Pilih Kursi` yang memanggil `handleLihatJadwal`.",
           "tourOrder": 3
         },
         {
-          "title": "Default export",
+          "title": "Agenda acara GBK",
           "lineRange": [
-            119,
-            119
+            196,
+            246
           ],
-          "explanation": "Default-exports Alerts; the components barrel re-exports it with 'export *', so consumers can import it from the shared module path.",
+          "explanation": "Section dengan `id=\"jadwal-gbk\"` menjadi target tombol hero. Tiga entri `events` dipetakan ke `CardAction` dengan media placeholder dan aksi `handleLihatJadwal`. Karena datanya contoh, kartu ini memperlihatkan komposisi UI sebelum data nyata tersedia.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Bagian keunggulan",
+          "lineRange": [
+            248,
+            299
+          ],
+          "explanation": "Section `id=\"keunggulan\"` memuat tiga kartu statis: e-tiket QR, pilihan zona tribun, dan transaksi aman. Tiap kartu memakai ikon Material Symbols berbeda dan token warna yang sama. Ini menjelaskan nilai produk tanpa bergantung pada data backend.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Daftar venue GBK",
+          "lineRange": [
+            301,
+            332
+          ],
+          "explanation": "Section `id=\"venue-gbk\"` memetakan array `venues` menjadi kartu dalam grid responsif. Kartu menampilkan kapasitas, nama venue, dan deskripsi singkat. Grid berubah dari satu kolom di layar kecil menjadi empat kolom di layar besar.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Ajakan beli dan footer",
+          "lineRange": [
+            334,
+            364
+          ],
+          "explanation": "Section `id=\"cta-gbk\"` menutup konten dengan tombol `Beli Tiket Sekarang` yang memanggil `handlePesanTiket`. Tombol ini menghormati status login lewat fungsi tersebut. Setelah `div#main-content` ditutup, `Footer` dirender sebagai penutup halaman.",
           "tourOrder": 3
         }
       ]
     },
-    "components/Button.tsx": {
-      "overview": "Shared button primitive from tour step 3. Extends native button attributes with a required label and explicit type union, then folds a disabled-driven spinner and 'Loading...' text into the render. The cn helper merges caller classes and applies disabled styling, making it the standard submit/action button across pages.",
+    "components/CardAction.tsx": {
+      "overview": "Kartu acara bersama yang merangkum media, kategori, status, tanggal, judul, lokasi, harga, dan tombol aksi. Komponen ini dipakai beranda untuk menampilkan entri agenda dengan gaya yang konsisten. Langkah 3 tour memakainya sebagai contoh kartu yang menyusun informasi acara menjadi satu unit visual.",
       "sections": [
         {
-          "title": "Imports and props",
+          "title": "Props kartu aksi",
           "lineRange": [
             1,
-            7
+            17
           ],
-          "explanation": "Imports cn and ButtonHTMLAttributes. ButtonProps extends the native attribute set, so onClick, disabled, aria-* props, and other button behavior pass through without manual forwarding. It adds a required label string and narrows type to button/submit/reset.",
+          "explanation": "Sebagian besar props bersifat opsional, kecuali `title` yang wajib. `media` bertipe `ReactNode` sehingga pemanggil bisa mengirim gambar atau placeholder apa pun. `onAction` berupa callback tanpa argumen, sementara `disabled` dan `className` mengontrol tampilan serta override gaya.",
           "tourOrder": 3
         },
         {
-          "title": "Component signature",
+          "title": "Pemetaan warna status",
           "lineRange": [
-            8,
+            19,
+            37
+          ],
+          "explanation": "Nilai `status === \"Hampir Habis\"` memakai `bg-danger`, `Tersedia` memakai `bg-surface-muted`, dan nilai lain jatuh ke `bg-brand-tint`. `statusClassName` dihitung sebelum render agar badge tetap konsisten. Ini menghindari percabangan gaya di dalam JSX badge.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Media dan badge",
+          "lineRange": [
+            39,
+            71
+          ],
+          "explanation": "`article` memakai `cn` untuk menggabungkan gaya dasar dengan `opacity-80` saat disabled atau `hover:border-brand-blue` saat aktif. Area media memakai `media ??` placeholder ikon `image`, lalu badge kategori dan status diposisikan absolut di sudut. Kedua badge hanya muncul bila propsnya diisi.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Detail judul acara",
+          "lineRange": [
+            72,
+            83
+          ],
+          "explanation": "Blok ini merender tanggal, judul, dan lokasi secara berturut-turut. Ikon `location_on` diberi `aria-hidden=\"true\"` agar pembaca layar tidak membacanya sebagai teks. Semua field bersifat opsional sehingga kartu tetap valid untuk data yang belum lengkap.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Harga dan tombol aksi",
+          "lineRange": [
+            84,
+            104
+          ],
+          "explanation": "Footer hanya dirender jika `price` atau `actionLabel` tersedia. Harga ditampilkan dengan font mono dan `tabular-nums` agar angka sejajar. `Button` memakai varian `disabled` saat prop `disabled` benar, dengan `size=\"sm\"` dan `onClick={onAction}`.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/Searchbar.tsx": {
+      "overview": "Form pencarian ringan yang mengambil nilai input `q` lewat `FormData` saat submit. Komponen ini menyediakan `placeholder`, `className`, dan callback `onSearch` agar bisa dipakai ulang di berbagai halaman. Langkah 3 tour menyebutnya sebagai pelengkap pencarian beranda, meskipun `Home.tsx` tidak mengimpornya.",
+      "sections": [
+        {
+          "title": "Props searchbar",
+          "lineRange": [
+            1,
+            8
+          ],
+          "explanation": "`SearchbarProps` hanya berisi tiga field: `placeholder`, `onSearch`, dan `className`. Callback `onSearch` menerima satu string nilai pencarian. Antarmuka ini sengaja kecil agar komponen tidak terikat pada logika pencarian tertentu.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Nilai props awal",
+          "lineRange": [
+            10,
             14
           ],
-          "explanation": "Destructures label, onClick, className (default empty), and type (default 'button'), collecting everything else in props. The default type prevents accidental form submission when the button is used for navigation or toggles.",
+          "explanation": "Destructuring memberi `placeholder=\"Placeholder pencarian...\"` dan `className=\"\"` sebagai default. `onSearch` tidak diberi nilai awal karena pemanggil boleh tidak memakai callback. Pola ini membuat komponen tetap render tanpa konfigurasi tambahan.",
           "tourOrder": 3
         },
         {
-          "title": "Rendered button",
+          "title": "Submit dan FormData",
           "lineRange": [
-            15,
+            16,
+            27
+          ],
+          "explanation": "Form memakai `role=\"search\"` dan menangani `onSubmit` dengan `preventDefault()`. Nilai diambil dari `new FormData(e.currentTarget).get(\"q\")?.toString() ?? \"\"`, lalu diteruskan ke `onSearch?.()`. Kelas form digabung lewat `cn` sehingga `className` pemanggil dapat menimpa gaya dasar.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Input dan tombol cari",
+          "lineRange": [
+            28,
+            39
+          ],
+          "explanation": "Ikon `search` ditempatkan di sisi kiri, diikuti input dengan `name=\"q\"`, `type=\"search\"`, dan `aria-label=\"Kolom pencarian\"`. Tombol `Cari` memakai `Button` dengan `type=\"submit\"` sehingga memicu handler form yang sama. Tombol diberi `shrink-0` agar tidak menyusut saat ruang sempit.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/Banner.tsx": {
+      "overview": "Komponen banner informatif dengan ikon, judul, kode opsional, deskripsi, dan konten tambahan. Gaya visualnya memakai token bersama seperti `bg-brand-tint` dan `bg-surface`. Langkah 3 tour menyebutnya sebagai pelengkap sorotan informasi, meskipun `Home.tsx` tidak mengimpor komponen ini.",
+      "sections": [
+        {
+          "title": "Props banner",
+          "lineRange": [
+            1,
+            11
+          ],
+          "explanation": "Hanya `title` yang wajib; `description`, `code`, `icon`, `className`, dan `children` bersifat opsional. `children` bertipe `ReactNode` sehingga pemanggil bisa menyisipkan elemen tambahan di bawah teks. Ini memberi banner satu struktur dengan banyak tingkat detail.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Destructuring dan default",
+          "lineRange": [
+            13,
+            20
+          ],
+          "explanation": "Nilai awal `icon=\"verified\"` dan `className=\"\"` membuat banner tetap tampil walaupun pemanggil tidak mengirim keduanya. Props `description`, `code`, dan `children` dibiarkan tanpa default karena render bersifat kondisional. Gaya ini khas komponen presentasional yang aman dipakai ulang.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Kontainer dan ikon",
+          "lineRange": [
+            22,
             32
           ],
-          "explanation": "cn merges base classes, the caller's className, and conditional disabled styles. type and onClick are destructured out of props, so the later spread cannot override them; remaining native attributes pass straight through. When disabled is true, a CSS-only spinning border and the literal text 'Loading...' replace the label, coupling loading and disabled into one state.",
+          "explanation": "Div luar memakai `cn` untuk menggabungkan gaya dasar dengan `className` pemanggil. Ikon ditempatkan dalam lingkaran `h-10 w-10` berlatar `bg-brand-tint` dan berwarna `text-brand-deep`. `aria-hidden=\"true\"` menandakan ikon hanya dekoratif.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Judul kode dan deskripsi",
+          "lineRange": [
+            33,
+            47
+          ],
+          "explanation": "Judul dan kode berada dalam satu baris yang bisa membungkus bila sempit. Kode memakai font mono dan border tipis agar terlihat seperti label teknis. Deskripsi dirender hanya bila tersedia, lalu `children` ditempatkan terakhir sebagai konten bebas.",
           "tourOrder": 3
         }
       ]
     },
     "components/index.ts": {
-      "overview": "Barrel file described in tour step 3. Re-exports every shared UI component from a single module so pages can import several primitives in one statement. It contains no logic; adding a component to components/ requires adding a matching export line here for the barrel to stay complete.",
+      "overview": "Barrel file yang mengekspor ulang seluruh komponen bersama dari satu jalur. Fitur lain cukup mengimpor dari `components/index.ts` tanpa perlu mengetahui file asal tiap komponen. Langkah 4 tour memakainya untuk menjelaskan pola ekspor terpusat pada pustaka UI.",
       "sections": [
         {
-          "title": "Alert and button exports",
-          "lineRange": [
-            1,
-            3
-          ],
-          "explanation": "Re-exports Alerts (default export made available through export *) and Button. The blank lines are formatting only. These are the primitives most pages reach for first.",
-          "tourOrder": 3
-        },
-        {
-          "title": "Remaining UI exports",
-          "lineRange": [
-            4,
-            14
-          ],
-          "explanation": "One export * line per component module, covering banners, dropdowns, feature cards, hero, footer, navbar, input fields, and schedule sections. export * forwards named exports only, so this line does not re-export default exports; modules such as Alerts.tsx that only use export default must be imported directly from their own path. Worth noticing when a page imports a default-exported component elsewhere in the codebase.",
-          "tourOrder": 3
-        }
-      ]
-    },
-    "components/InputField.tsx": {
-      "overview": "Form input primitive covered by tour step 3. Combines a native input with a CSS-only floating label, inline error text, password visibility toggle, and an optional forgot-password link. It uses the same disabled-driven styling discipline as Button and relies on Tailwind peer-* classes instead of JavaScript for the label motion.",
-      "sections": [
-        {
-          "title": "Imports and props",
-          "lineRange": [
-            1,
-            14
-          ],
-          "explanation": "Imports cn, lucide eye icons, React state, and router Link. InputFieldProps extends native input attributes and adds labelName, optional error, a narrowed type union, required boolean, and optional forgot-password controls. Extending native props means react-hook-form's register output can be spread onto the input unchanged.",
-          "tourOrder": 3
-        },
-        {
-          "title": "State setup",
-          "lineRange": [
-            15,
-            26
-          ],
-          "explanation": "Destructures props with defaults: empty className, text type, and '#' for forgotPasswordPath. showPassword tracks the toggle state, and isPassword is derived from type so password-only UI is gated by a single boolean.",
-          "tourOrder": 3
-        },
-        {
-          "title": "Input and floating label",
-          "lineRange": [
-            27,
-            45
-          ],
-          "explanation": "The input's effective type switches between text and password based on showPassword. cn merges base styles, caller classes, error red border, and disabled cursor. The adjacent span is the label: peer-placeholder-shown and peer-focus utilities move it down or up, which is why the input needs placeholder support to trigger the collapsed state. A required asterisk is appended inline.",
-          "tourOrder": 3
-        },
-        {
-          "title": "Password visibility toggle",
-          "lineRange": [
-            46,
-            62
-          ],
-          "explanation": "Rendered only for password inputs. The button is type='button' to avoid submitting a surrounding form, and its onClick is dropped when disabled. Eye/EyeOff icons reflect state, and aria-label changes between 'Hide password' and 'show password' for screen readers.",
-          "tourOrder": 3
-        },
-        {
-          "title": "Error slot and forgot-password link",
-          "lineRange": [
-            64,
-            89
-          ],
-          "explanation": "A permanent <p> reserves vertical space for the error message, using a non-breaking space when there is no error so layout does not jump. For password fields only, a right-aligned area renders either a router Link to forgotPasswordPath or an empty placeholder paragraph. The Link's onClick prevents navigation when disabled, keeping the visual and functional disabled states consistent.",
-          "tourOrder": 3
-        }
-      ]
-    },
-    "components/Features.tsx": {
-      "overview": "Landing-page section highlighted in tour step 4. Holds a static array of four value propositions and renders each through FeatureCard inside a responsive grid. Copy is in Indonesian per project convention, and headings use ink tokens from the design system.",
-      "sections": [
-        {
-          "title": "Imports and feature data",
-          "lineRange": [
-            1,
-            25
-          ],
-          "explanation": "Imports four Font Awesome icons and the local FeatureCard component. The features array stores icon elements plus title/description strings for schedule browsing, tribun selection, simulated payment, and QR e-tickets. Keeping content as data makes the JSX a simple map and would allow future localization without changing markup.",
-          "tourOrder": 4
-        },
-        {
-          "title": "Section heading",
-          "lineRange": [
-            27,
-            38
-          ],
-          "explanation": "The exported Features component renders a section with a subtle surface background, centered heading, and supporting paragraph. max-w-2xl keeps the text block readable while mx-auto centers it.",
-          "tourOrder": 4
-        },
-        {
-          "title": "Feature card grid",
-          "lineRange": [
-            39,
-            52
-          ],
-          "explanation": "A responsive grid goes from one column on mobile to two on sm and four on lg. Each item is mapped to FeatureCard with a stable key of f.title and explicit icon/title/description props; spreading the object could be shorter but naming props documents the card contract.",
-          "tourOrder": 4
-        }
-      ]
-    },
-    "components/Hero.tsx": {
-      "overview": "First visible landing section in tour step 4. Renders a dark gradient hero with the Tiket.ku headline and two call-to-action buttons whose behavior is supplied by the parent through callbacks. The component is purely presentational: no routing or auth logic lives here.",
-      "sections": [
-        {
-          "title": "Imports and props",
+          "title": "Ekspor komponen awal",
           "lineRange": [
             1,
             8
           ],
-          "explanation": "Imports the shared Button and defines HeroProps with two callback functions: onPesanTiket and onLihatJadwal. Naming them in Indonesian matches UI copy while keeping the component decoupled from useNavigate. The parent decides where each action leads.",
+          "explanation": "Delapan baris pertama mengekspor `Alerts`, `Badge`, `Banner`, `Button`, `CardAction`, `Drawer`, `Footer`, dan `FooterLinks`. Tiap baris memakai `export * from` sehingga seluruh ekspor named dari modul asal diteruskan. Perubahan isi modul tidak mengubah jalur impor bagi fitur pengguna.",
           "tourOrder": 4
         },
         {
-          "title": "Hero section shell",
+          "title": "Ekspor komponen berikutnya",
           "lineRange": [
-            10,
-            29
+            9,
+            16
           ],
-          "explanation": "The root section has id='main-content', the target of the skip link in Home.tsx. A decorative gradient overlay is marked aria-hidden so assistive tech ignores it. Content is centered with max-w-3xl; the eyebrow text names the venue, the h1 and subheading use display tokens, and the paragraph states the value proposition.",
-          "tourOrder": 4
-        },
-        {
-          "title": "Call-to-action buttons",
-          "lineRange": [
-            30,
-            46
-          ],
-          "explanation": "Two Buttons stack on small screens and sit side by side from sm upward. Each receives its label, the corresponding callback, and a className supplying colors, padding, and rounded corners. The secondary button uses line-on-dark plus a translucent hover, keeping visual hierarchy clear without another component variant.",
+          "explanation": "Delapan baris berikutnya mengekspor `InputField`, `Navbar`, `QrPassCard`, `RadioSelector`, `Searchbar`, `Stepper`, `SummaryCard`, dan `Tabs`. Bersama bagian pertama, barrel ini menyatukan 16 komponen UI. File ini hanya berisi re-ekspor, tanpa logika atau state sama sekali.",
           "tourOrder": 4
         }
       ]
     },
-    "components/SchedulePreview.tsx": {
-      "overview": "Landing-page event preview from tour step 4. Defines three hard-coded upcoming events and renders them as ScheduleCard components in a responsive grid. A single onDetail callback is forwarded to every card, so the parent controls navigation while this file stays presentational.",
+    "components/Alerts.tsx": {
+      "overview": "Notifikasi toast yang muncul di pojok kanan atas dengan animasi masuk dan keluar dari Framer Motion. Komponen mendukung lima varian, auto-close setelah durasi tertentu, dan callback `onClose` saat animasi keluar selesai. Langkah 4 tour menjadikannya contoh notifikasi dengan varian dan penutupan terkontrol.",
       "sections": [
         {
-          "title": "Imports and sample events",
+          "title": "Impor dan kontrak alert",
           "lineRange": [
             1,
-            28
+            12
           ],
-          "explanation": "Imports ScheduleCard and declares a local events array of three objects with badge, title, subtitle, date, time, and venue. These are static marketing placeholders rather than Supabase data; the live match list lives in the Matches feature. Titles serve as React keys here, which is acceptable only because the sample list is fixed.",
+          "explanation": "`cn` dipakai untuk menggabungkan kelas, sementara `AnimatePresence` dan `motion` dari Framer Motion mengatur animasi. `AlertVariant` terdiri dari `info`, `danger`, `success`, `warning`, dan `dark`. `AlertProps` mewajibkan `variant` serta `desc`, dan menerima `duration` serta `onClose` opsional.",
           "tourOrder": 4
         },
         {
-          "title": "Props interface",
+          "title": "Peta gaya varian",
           "lineRange": [
-            30,
-            32
+            14,
+            48
           ],
-          "explanation": "SchedulePreviewProps exposes one required onDetail callback with no arguments. Because every card shares it, individual events cannot carry distinct destinations in this version.",
+          "explanation": "`variantStyles` bertipe `Record<AlertVariant, { text; border; bg; bar }>` sehingga setiap varian wajib memiliki empat kelas. Warna status memakai token seperti `text-danger`, `bg-success/10`, dan `bg-warning`. Varian `dark` memakai `text-ink-900` dan `bg-surface-subtle` agar tetap netral.",
           "tourOrder": 4
         },
         {
-          "title": "Schedule section and card grid",
+          "title": "State dan timer auto-close",
           "lineRange": [
-            34,
-            54
+            50,
+            64
           ],
-          "explanation": "Renders a white-background section with a centered heading and the same responsive grid pattern used by Features (1/2/3 columns). Each event object is spread into ScheduleCard and onDetail is passed through, keeping the preview free of layout duplication.",
+          "explanation": "Props `duration` default-nya 5000 milidetik dan `styles` diambil dari peta varian. State `isVisible` diawali `true`, lalu `useEffect` menjadwalkan `setIsVisible(false)` setelah durasi. Fungsi cleanup memanggil `clearTimeout` bila komponen dibongkar atau durasi berubah.",
+          "tourOrder": 4
+        },
+        {
+          "title": "AnimatePresence dan kartu",
+          "lineRange": [
+            66,
+            85
+          ],
+          "explanation": "`AnimatePresence` menjalankan `onClose` hanya setelah animasi keluar selesai. `motion.div` diberi `key=\"alert\"` agar siklus masuk dan keluar terdeteksi, dengan transisi opasitas serta posisi `x`. Kartu diposisikan `fixed top-4 right-4 z-50`, memakai `role=\"alert\"`, dan menggabungkan kelas gaya varian.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Ikon pesan dan tombol tutup",
+          "lineRange": [
+            87,
+            104
+          ],
+          "explanation": "SVG inline di samping teks ditandai `aria-hidden=\"true\"` karena hanya simbol informasi. `desc` dirender sebagai isi utama dengan `flex-1`. Tombol `×` langsung memanggil `setIsVisible(false)` agar animasi keluar dimulai lebih cepat dari timer.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Progress bar",
+          "lineRange": [
+            106,
+            113
+          ],
+          "explanation": "Bar di bawah kartu memakai `motion.div` yang lebarnya berubah dari `100%` ke `0%`. Durasi animasi `duration / 1000` detik dan easing linear membuatnya sejalan dengan timer auto-close. Warna bar berasal dari `styles.bar`, sehingga mengikuti varian yang aktif.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Penutup dan ekspor",
+          "lineRange": [
+            115,
+            119
+          ],
+          "explanation": "Baris 115 menutup `AnimatePresence`, lalu komponen diakhiri dengan blok return dan fungsi. `Alerts` diekspor sebagai default sekaligus tersedia lewat barrel `components/index.ts`. Struktur ini menutup seluruh siklus tampil, tunggu, dan tutup notifikasi.",
           "tourOrder": 4
         }
       ]
     },
-    "features/home/page/Home.tsx": {
-      "overview": "Landing page composed in tour step 4. Reads login state from useSession, defines navigation handlers, and assembles Navbar, Hero, Features, SchedulePreview, and Footer. It also includes a skip link for keyboard users and gates the 'Pesan Tiket' action behind authentication.",
+    "components/Navbar.tsx": {
+      "overview": "Bilah navigasi atas dengan identitas merek Tiket.ku, menu desktop, dan tombol yang berubah mengikuti status pengguna. Prop `user` berupa boolean membuat komponen ini murni presentasional; keputusan login berada di pemanggil. Langkah 4 tour menjadikannya contoh navigasi yang menyesuaikan status pengguna.",
       "sections": [
         {
-          "title": "Imports",
+          "title": "Impor dan props",
+          "lineRange": [
+            1,
+            6
+          ],
+          "explanation": "Komponen mengimpor `Button` dari folder yang sama dan `useNavigate` dari React Router. `NavbarProps` hanya berisi `user: boolean`, tanpa data profil atau callback. Ini menjaga navbar tetap sederhana dan mudah dipakai dari beranda maupun halaman lain.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Brand dan tautan beranda",
+          "lineRange": [
+            8,
+            25
+          ],
+          "explanation": "`useNavigate` dipanggil sekali di awal komponen. `nav` memakai `sticky top-0 z-50` dengan latar semi-transparan dan `backdrop-blur`. Tombol logo berisi ikon `confirmation_number` dan teks `Tiket.ku`, lalu mengarah ke `/` ketika diklik.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Menu desktop",
+          "lineRange": [
+            27,
+            41
+          ],
+          "explanation": "Grup ini hanya tampil pada layar sedang ke atas karena `hidden md:flex`. Tombol `Jadwal` mengarah ke `/matchs`, sementara `Tentang` dan `Bantuan` masih berupa anchor `href=\"#\"`. Perbedaan ini menunjukkan tautan yang sudah terhubung rute versus tautan placeholder.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Aksi sesuai status pengguna",
+          "lineRange": [
+            43,
+            67
+          ],
+          "explanation": "Cabang `user ?` menampilkan satu tombol `Jadwal` berubah ke `/matchs`. Cabang lain menampilkan tombol `Masuk` ke `/login` dan `Daftar` ke `/signup` dengan varian berbeda. Seluruh tombol memakai komponen `Button` bersama sehingga gaya tetap konsisten.",
+          "tourOrder": 4
+        }
+      ]
+    },
+    "components/InputField.tsx": {
+      "overview": "Komponen input formulir bersama yang dipakai halaman autentikasi dan alur lain di proyek. InputField merangkum label, penanda wajib, pesan error, tautan lupa kata sandi, serta tombol tampil/sembunyikan kata sandi dalam satu tempat. Komponen ini merupakan bagian dari Pustaka Komponen Bersama pada tour langkah 4, dan memperlihatkan bagaimana token gaya dari `app.css` dipakai lewat kelas Tailwind. Propsnya mewarisi `InputHTMLAttributes`, sehingga pemanggil bisa mengirim `register` dari React Hook Form langsung ke komponen ini.",
+      "sections": [
+        {
+          "title": "Impor dan kontrak props",
+          "lineRange": [
+            1,
+            13
+          ],
+          "explanation": "Bagian ini mengimpor helper `cn`, ikon mata dari `lucide-react`, tipe atribut input, `useState`, dan `Link` dari React Router. Antarmuka `InputFieldProps` memperpanjang `InputHTMLAttributes<HTMLInputElement>` sehingga semua atribut input standar tetap tersedia, lalu menambahkan `labelName`, `error`, `required`, `showForgotPasswordLink`, dan `forgotPasswordPath`. Pendekatan ini menghindari duplikasi prop: komponen hanya mendefinisikan tambahan yang benar-benar spesifik untuk formulir aplikasi. Perhatikan bahwa helper yang diimpor berada di `@/lib/utiils`, bukan `@/lib/utils`.",
+          "tourOrder": 4
+        },
+        {
+          "title": "State dan deteksi sandi",
+          "lineRange": [
+            15,
+            26
+          ],
+          "explanation": "Fungsi komponen mendestrukturisasi props dengan nilai default: `className` kosong, `required` false, tautan lupa sandi nonaktif, path `#`, dan tipe `text`. Sisa props dikumpulkan lewat `...props` agar diteruskan apa adanya ke elemen `<input>`. `useState` menyimpan status tampilnya kata sandi, sementara `isPassword` ditentukan dari `type === \"password\"` supaya perilaku khusus hanya aktif pada input sandi.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Label dan tautan lupa sandi",
+          "lineRange": [
+            28,
+            43
+          ],
+          "explanation": "Wrapper utama memakai `flex flex-col gap-1.5` untuk menyusun label, input, dan pesan error secara vertikal. Label memakai token `font-label`, `text-label-lg`, dan `text-ink-900`, dengan tanda bintang merah ketika `required` bernilai true. Tautan `Lupa kata sandi?` hanya dirender ketika input bertipe password dan `showForgotPasswordLink` aktif; jika input sedang `disabled`, tautan diarahkan ke `#` agar tidak membawa pengguna ke halaman lupa sandi saat form terkunci.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Input dan toggle sandi",
+          "lineRange": [
+            45,
+            71
+          ],
+          "explanation": "Elemen `<input>` mengubah `type` antara `text` dan `password` mengikuti `showPassword`, sehingga pengguna bisa memeriksa ketikan sandinya. Fungsi `cn()` menggabungkan kelas dasar dengan kelas kondisional untuk error (border merah) dan disabled (kursor terlarang plus opacitas), lalu `className` dari pemanggil ditempatkan terakhir agar menang dalam konflik Tailwind. Tombol mata berada di posisi absolut di dalam wrapper relatif, memakai `aria-label` dinamis sesuai keadaan, dan tidak mengubah state ketika input disabled. Tombol diberi `type=\"button\"` supaya tidak mengirimkan formulir saat diklik.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Pesan error dan ekspor",
+          "lineRange": [
+            72,
+            79
+          ],
+          "explanation": "Paragraf error selalu dirender, tetapi memakai `error ?? \"\\u00A0\"` agar tinggi area pesan tetap stabil walau tidak ada error; transisi layout jadi lebih halus. Warna teks memakai token `text-danger` sesuai konvensi token desain proyek. Komponen diekspor dua kali, sebagai named export dan default export, sehingga pemanggil bisa memilih gaya impor yang sesuai."
+        }
+      ]
+    },
+    "components/Stepper.tsx": {
+      "overview": "Komponen kecil untuk menampilkan langkah-langkah alur pemesanan secara visual. Stepper menerima daftar nama langkah dan indeks langkah aktif, lalu menandai langkah sebelumnya sebagai selesai dengan warna brand. Komponen ini disebut dalam tour langkah 4 sebagai bagian dari Pustaka Komponen Bersama, dan sepenuhnya berbasis kelas token dari sistem desain tanpa logika bisnis.",
+      "sections": [
+        {
+          "title": "Impor dan props langkah",
           "lineRange": [
             1,
             7
           ],
-          "explanation": "Imports the five landing sections via the '@/components' barrel, useSession for auth state, and useNavigate for routing. Using the barrel here shows the payoff described in tour step 3: one import path instead of five relative ones.",
+          "explanation": "Stepper hanya mengimpor `cn` dari `@/lib/utiils`, menandakan komponen ini murni presentasional. Antarmuka `StepperProps` meminta `steps: string[]`, `activeIndex: number`, dan `className` opsional. Kontrak yang kecil ini membuat komponen bisa dipakai ulang di alur mana pun selama urutan langkah dapat dinyatakan sebagai array nama.",
           "tourOrder": 4
         },
         {
-          "title": "Navigation handlers",
+          "title": "Status aktif dan selesai",
           "lineRange": [
             9,
-            23
-          ],
-          "explanation": "HomePage pulls navigate and isLoggedIn. handlePesanTiket redirects unauthenticated users to '/login' and otherwise goes to '/matchs'; handleLihatJadwal always goes to '/matchs'. This is the tour's auth-gating example: the decision lives in the page, not in Hero.",
-          "tourOrder": 4
-        },
-        {
-          "title": "Page composition",
-          "lineRange": [
-            25,
-            39
-          ],
-          "explanation": "A main wrapper holds a visually hidden skip link that becomes visible on focus and jumps to the Hero's '#main-content' id. Navbar receives the login boolean, Hero gets both handlers, Features is static, SchedulePreview reuses handleLihatJadwal for its onDetail, and Footer closes the page.",
-          "tourOrder": 4
-        },
-        {
-          "title": "Default export",
-          "lineRange": [
-            41,
-            41
-          ],
-          "explanation": "Default-exports HomePage for the '/' route in App.tsx.",
-          "tourOrder": 4
-        }
-      ]
-    },
-    "features/matches/components/Card.tsx": {
-      "overview": "Renders a single match schedule card as a 3-column grid: home team, kickoff time and timezone, away team, plus a spanning footer with date and stadium. Combines MatchPayload data with an optional onClick handler from MatchCardProps.",
-      "sections": [
-        {
-          "title": "Imports",
-          "lineRange": [
-            1,
-            3
-          ],
-          "explanation": "Imports the MatchPayload type, TeamSection component, and MatchCardProps. Keeping these imports typed ensures the card stays aligned with the legacy match payload and shared prop contract.",
-          "tourOrder": 5
-        },
-        {
-          "title": "Match card layout",
-          "lineRange": [
-            5,
-            31
-          ],
-          "explanation": "Destructures home/away teams, match time, timezone, date, stadium, and onClick, then renders a CSS grid. TeamSection displays each side, the middle section shows kickoff time and timezone, and the bottom section spans all columns for date and stadium. The root div carries onClick so the whole card is clickable.",
-          "tourOrder": 5
-        },
-        {
-          "title": "Default export",
-          "lineRange": [
-            33,
-            33
-          ],
-          "explanation": "Default-exports MatchScheduleCard for consumption by the Matches page.",
-          "tourOrder": 5
-        }
-      ]
-    },
-    "features/matches/components/TeamSection.tsx": {
-      "overview": "Small presentational component rendering a team's name and logo inside a centered section. It is used twice by MatchScheduleCard for the home and away sides.",
-      "sections": [
-        {
-          "title": "Import",
-          "lineRange": [
-            1,
-            1
-          ],
-          "explanation": "Imports TeamPayload, which defines the name and logo fields rendered by this component.",
-          "tourOrder": 5
-        },
-        {
-          "title": "Team section",
-          "lineRange": [
-            3,
             14
           ],
-          "explanation": "Accepts a TeamPayload and renders an uppercase team name plus logo image. The logo is constrained to a fixed box and uses object-contain so differently sized logos stay consistent. The component is stateless and reusable for both teams.",
-          "tourOrder": 5
+          "explanation": "Komponen merender kontainer fleksibel dengan `gap-4` dan menggabungkan `className` dari pemanggil lewat `cn()`. Setiap entri `steps` dipetakan ke elemen dengan `key={step}`, jadi nama langkah dianggap unik. Dua flag sederhana menentukan tampilan: `active` bila indeks sama dengan `activeIndex`, dan `done` bila indeks lebih kecil; keduanya berasal dari satu sumber kebenaran berupa indeks.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Render penanda dan label",
+          "lineRange": [
+            15,
+            40
+          ],
+          "explanation": "Lingkaran nomor memakai `bg-brand-blue` dan teks putih untuk langkah aktif maupun selesai, sementara langkah yang belum dicapai memakai `bg-surface-muted` dan `text-ink-500`. Nomor ditampilkan sebagai `index + 1` karena indeks array dimulai dari nol. Label di sampingnya hanya dipertebal secara visual pada langkah aktif lewat `text-ink-900`; tidak ada state lain seperti klik atau navigasi, sehingga Stepper benar-benar hanya indikator progres.",
+          "tourOrder": 4
         }
       ]
     },
-    "features/matches/page/Matches.tsx": {
-      "overview": "Page component that fetches matches via useMatchData and renders a 3x3 grid of cards. It stores the selected match id in sessionStorage and navigates to the match form on click.",
+    "features/events/types/event.types.ts": {
+      "overview": "Berisi kontrak tipe inti untuk domain acara dan pemesanan pada arsitektur feature-first proyek. File ini mendefinisikan bentuk data acara beserta kategori tiketnya, input item order, data pembeli, dan tiket yang dihasilkan. Tipe-tipe ini menjadi jembatan antara baris database Supabase dan objek yang dikonsumsi UI, sesuai dengan tour langkah 5 tentang Kontrak Tipe Domain. Penamaan memakai camelCase (`eventId`, `orderId`, `imageUrl`) sesuai konvensi proyek untuk kode baru.",
       "sections": [
         {
-          "title": "Imports",
+          "title": "Tipe acara dan kategori",
           "lineRange": [
             1,
-            3
+            11
           ],
-          "explanation": "Imports navigation, the Card component, and the useMatchData hook used to load and display matches.",
+          "explanation": "`EventType` adalah union literal `\"football\" | \"concert\"`, sehingga nilai selain dua jenis itu ditolak saat compile time. `EventCategoryRecord` merepresentasikan tribun atau kategori tiket dengan `id`, `eventId`, harga, kuota, dan jumlah terjual. Field `remaining` juga dinyatakan di sini sebagai bagian dari model kategori, walaupun nilainya nantinya dihitung oleh service, bukan diambil langsung dari database.",
           "tourOrder": 5
         },
         {
-          "title": "Matches page",
+          "title": "Rekam data acara",
           "lineRange": [
-            5,
-            23
+            13,
+            26
           ],
-          "explanation": "Calls useMatchData to get matches, defines handleCardClick to persist selectedMatchId in sessionStorage and navigate to /matchs/{id}/form when an id exists, and maps each match to a Card with an onClick handler. The grid layout uses three columns and rows.",
+          "explanation": "`EventRecord` menggabungkan identitas acara, judul, subtitle, tanggal, jam, zona waktu, venue, deskripsi, dan waktu pembuatan. `imageUrl` bertipe `string | null` karena gambar acara boleh kosong, sehingga komponen pemakai harus siap dengan fallback visual. Properti `categories` berupa array `EventCategoryRecord` menaruh data relasi di dalam satu objek acara, mirip hasil join dari tabel `ticket_categories`.",
           "tourOrder": 5
         },
         {
-          "title": "Default export",
+          "title": "Input order dan pembeli",
           "lineRange": [
-            25,
-            25
+            28,
+            38
           ],
-          "explanation": "Default-exports the Matches page for routing in App.tsx.",
+          "explanation": "`OrderItemInput` hanya berisi `categoryId` dan `qty`, artinya klien mengirim referensi kategori dan jumlah, bukan harga; harga sebaiknya dihitung sisi database. `BuyerInput` memuat identitas pembeli yang dibutuhkan untuk e-tiket. Gender dibatasi pada dua literal `\"Laki-laki\" | \"Perempuan\"` agar nilainya konsisten dengan teks yang dipakai UI dan backend.",
           "tourOrder": 5
-        }
-      ]
-    },
-    "features/matches/hooks/useMatchData.ts": {
-      "overview": "Custom hook that fetches matches on mount and exposes matches, loading, and error state. The Matches page currently consumes only matches.",
-      "sections": [
-        {
-          "title": "Imports",
-          "lineRange": [
-            1,
-            4
-          ],
-          "explanation": "Includes a source-path comment plus React hooks, the getMatches service, and the MatchPayload type used for state.",
-          "tourOrder": 6
         },
         {
-          "title": "useMatchData hook",
+          "title": "Tiket hasil pemesanan",
           "lineRange": [
-            6,
-            28
+            40,
+            45
           ],
-          "explanation": "Initializes state for matches, loading, and error. The effect runs an async fetchData that calls getMatches, stores results, clears any previous error, and always resets loading in finally. An empty dependency array ensures a single fetch on mount, and all three values are returned to consumers.",
-          "tourOrder": 6
-        }
-      ]
-    },
-    "features/matches/service/matchService.ts": {
-      "overview": "Adapter service converting EventRecord records from eventService into the legacy MatchPayload shape used by the match schedule UI. It is intentionally shallow, with an upgrade path to use EventRecord directly.",
-      "sections": [
-        {
-          "title": "Imports",
-          "lineRange": [
-            1,
-            2
-          ],
-          "explanation": "Imports getEvents from the events service and the MatchPayload type that the legacy UI expects.",
-          "tourOrder": 6
-        },
-        {
-          "title": "Adapter rationale",
-          "lineRange": [
-            4,
-            5
-          ],
-          "explanation": "A ponytail comment documents that this adapter is deliberately shallow to keep the old UI compiling, and points to using EventRecord directly once the schedule page is redesigned.",
-          "tourOrder": 6
-        },
-        {
-          "title": "getMatches",
-          "lineRange": [
-            6,
-            24
-          ],
-          "explanation": "Calls getEvents(), then maps each event to a MatchPayload. Home team uses event title and image, away team uses subtitle or title, time/date/venue are copied, and tickets is built from event categories. This keeps the legacy card UI working while the newer event model carries richer data.",
-          "tourOrder": 6
+          "explanation": "`OrderTicket` menggambarkan tiket digital yang dikaitkan ke `orderId` melalui `qrCode` dan `issuedAt`. Tidak ada field pembeli di sini karena data pembeli sudah berada di order; tiket hanya menyimpan hasil penerbitan. Tipe ini dipakai lapisan service tiket pada tour langkah 10 saat mengambil e-ticket untuk ditampilkan.",
+          "tourOrder": 5
         }
       ]
     },
     "features/matches/types/matchesPayload.ts": {
-      "overview": "Defines the MatchPayload interface describing a scheduled match: identifiers, home/away teams, time and timezone, date, stadium, and a ticket price/quota map.",
+      "overview": "Kontrak tipe untuk payload pertandingan pada fitur `matches` yang masih berstatus legacy. File ini menentukan bentuk objek `MatchPayload` yang dikonsumsi komponen, hook, dan service pertandingan sebelum alur berpindah ke model `EventRecord`. Sesuai tour langkah 5, file ini menjadi simpul kontrak dengan fan-in tinggi, tetapi memakai penamaan `snake_case` dan `matchId` yang kini dianggap legacy. Memahaminya membantu membaca halaman jadwal pertandingan tanpa tertukar dengan tipe acara baru.",
       "sections": [
         {
-          "title": "Import",
+          "title": "Impor tipe tim",
           "lineRange": [
             1,
-            1
+            2
           ],
-          "explanation": "Imports TeamPayload used for the home and away team fields.",
-          "tourOrder": 6
+          "explanation": "Baris pertama memakai `import type` untuk mengambil `TeamPayload` dari `matchesPayload.types`. Bentuk `import type` memastikan impor ini hilang saat transpilasi karena hanya dipakai untuk pemeriksaan tipe. Pemisahan tipe tim ke file sendiri menjadikan kontrak tersebut bisa dipakai ulang oleh dua sisi pertandingan.",
+          "tourOrder": 5
         },
         {
-          "title": "MatchPayload interface",
+          "title": "Kontrak payload pertandingan",
           "lineRange": [
             3,
             13
           ],
-          "explanation": "Declares the fields consumed by the match card and schedule UI. tickets is a record keyed by category name with price and quota, mirroring the adapted event categories.",
-          "tourOrder": 6
+          "explanation": "`MatchPayload` memuat `id` internal dan `matchId` sebagai pengenal legacy, lalu dua tim `team_home` dan `team_away` bertipe `TeamPayload`. Waktu, zona waktu, tanggal, dan stadion juga memakai `snake_case`, mencerminkan bentuk data lama yang belum dipetakan ke konvensi camelCase proyek. Field `tickets` bertipe `Record<string, { price: number; quota: number }>`, jadi kategori tiket disimpan sebagai objek dinamis yang diindeks oleh kunci tertentu, bukan array seperti pada `EventCategoryRecord`. Perbedaan bentuk ini penting ketika membaca `matchService.ts` yang menjadi jembatan ke UI.",
+          "tourOrder": 5
         }
       ]
     },
     "features/matches/types/matchesPayload.types.ts": {
-      "overview": "Defines the TeamPayload interface with name and logo fields used by match payloads and the TeamSection component.",
+      "overview": "File tipe minimal yang mendefinisikan bentuk data tim untuk payload pertandingan legacy. Tipe `TeamPayload` dipakai oleh `MatchPayload` pada file bersebelahan sebagai tipe untuk `team_home` dan `team_away`. Meskipun isinya sangat kecil, file ini termasuk Kontrak Tipe Domain pada tour langkah 5 karena menjadi acuan bersama bagi komponen dan service fitur `matches`. Tidak ada logika runtime di dalamnya.",
       "sections": [
         {
-          "title": "TeamPayload interface",
+          "title": "Deklarasi antarmuka tim",
+          "lineRange": [
+            1,
+            1
+          ],
+          "explanation": "Baris pertama membuka deklarasi `TeamPayload` sebagai `interface`, bukan `type`. Pemilihan `interface` di sini konsisten dengan gaya file tipe lain di proyek dan memungkinkan pengembangan tipe jika suatu hari diperlukan. Tidak ada generic atau relasi lain yang didefinisikan pada baris ini.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Field nama dan logo",
+          "lineRange": [
+            2,
+            4
+          ],
+          "explanation": "Antarmuka hanya berisi dua field wajib: `name` dan `logo`, keduanya bertipe `string`. Keduanya langsung dipakai komponen tim untuk menampilkan identitas klub dan gambar logo, sehingga tidak ada nilai opsional yang perlu ditangani. Karena file ini hanya berisi tipe, perubahan pada field akan langsung terasa di semua pemakai saat type-check tanpa perubahan runtime.",
+          "tourOrder": 5
+        }
+      ]
+    },
+    "lib/supabase.ts": {
+      "overview": "Titik inisialisasi klien Supabase untuk seluruh aplikasi. Modul ini membaca dua variabel lingkungan, menolak konfigurasi yang kosong lebih awal, lalu mengekspor satu instance `supabase` yang dipakai semua lapisan service. Tour langkah 6 menempatkan file ini sebagai awal dari Klien dan Service Supabase, sebelum membaca `authService.ts` dan `eventService.ts`. Guard di sini mencegah aplikasi berjalan dengan koneksi database yang diam-diam rusak.",
+      "sections": [
+        {
+          "title": "Impor dan variabel lingkungan",
           "lineRange": [
             1,
             4
           ],
-          "explanation": "Declares the minimal team shape needed to render a team section: a display name and logo URL.",
+          "explanation": "Baris pertama mengimpor `createClient` dari `@supabase/supabase-js`. Dua konstanta dibaca dari `import.meta.env`, yaitu `VITE_SUPABASE_URL` dan `VITE_SUPABASE_PUBLISHABLE_KEY`, sesuai pola Vite untuk variabel yang diekspos ke browser. Memakai publishable key berarti kredensial ini memang ditujukan untuk sisi klien dan tetap harus dikombinasikan dengan RLS di database.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Guard konfigurasi kosong",
+          "lineRange": [
+            6,
+            10
+          ],
+          "explanation": "Blok `if` melempar error ketika salah satu variabel tidak ada, sehingga kegagalan konfigurasi terlihat segera saat modul dimuat. Pesan errornya sudah Bahasa Indonesia dan memberi petunjuk konkret: salin `.env.example` ke `.env.local`. Strategi fail-fast ini lebih baik daripada membiarkan `createClient` menerima nilai `undefined` dan menimbulkan error yang sulit dilacak di komponen.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Ekspor instance klien",
+          "lineRange": [
+            12,
+            12
+          ],
+          "explanation": "Satu instance klien dibuat sekali lalu diekspor, sehingga seluruh service berbagi konfigurasi dan sesi auth yang sama. Pola singleton sederhana ini menghindari inisialisasi berulang yang bisa memicu beberapa subscription auth. Service lain cukup mengimpor `supabase` dari modul ini tanpa tahu detail env atau URL.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "features/auth/service/authService.ts": {
+      "overview": "Lapisan service yang membungkus seluruh operasi Supabase Auth untuk aplikasi. Modul ini menyediakan pembacaan sesi, subscription perubahan auth, penjaga ID pengguna, login dan daftar email, login Google, logout, serta penerjemah error ke Bahasa Indonesia. Tour langkah 6 memperkenalkan file ini sebagai contoh pemisahan akses data dari komponen. Hasilnya, halaman `LoginPage` dan `SignupPage` cukup memanggil fungsi-fungsi di sini tanpa berinteraksi langsung dengan klien Supabase.",
+      "sections": [
+        {
+          "title": "Impor dan pembungkus sesi",
+          "lineRange": [
+            1,
+            9
+          ],
+          "explanation": "File mengimpor tipe `AuthError` dan klien `supabase` yang sudah disiapkan di `@/lib/supabase`. `getSession` dan `onAuthStateChange` adalah pembungkus tipis di atas API Supabase, sehingga seluruh aplikasi punya satu jalur untuk membaca sesi dan mendengarkan perubahan auth. Tipe callback `onAuthStateChange` diambil memakai `Parameters<typeof supabase.auth.onAuthStateChange>[0]` agar selalu mengikuti tanda tangan resmi library tanpa duplikasi manual.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Penjaga ID pengguna",
+          "lineRange": [
+            11,
+            17
+          ],
+          "explanation": "`requireUserId` memanggil `getUser()` dan melempar error berbahasa Indonesia bila gagal atau tidak ada pengguna. Fungsi async ini mengembalikan `data.user.id`, yang dipakai alur pemesanan untuk memastikan hanya pengguna masuk yang bisa membuat order. Melempar error di service memungkinkan pemanggil menangani satu kegagalan konsisten, misalnya dengan menampilkan `Alerts` atau mengalihkan ke halaman login.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Autentikasi email",
+          "lineRange": [
+            19,
+            27
+          ],
+          "explanation": "`signInWithEmail` meneruskan email dan password ke `supabase.auth.signInWithPassword`. `signUpWithEmail` memanggil `signUp` dan menyimpan `fullName` ke dalam `options.data` dengan kunci `full_name`, sehingga nama pengguna ikut tersimpan sebagai metadata saat pendaftaran. Kedua fungsi mengembalikan hasil Supabase apa adanya agar halaman bisa memeriksa `error` atau `data` sesuai kebutuhan.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Google dan logout",
+          "lineRange": [
+            29,
+            35
+          ],
+          "explanation": "`signInWithGoogle` memakai `signInWithOAuth` dengan provider `google` dan menentukan `redirectTo` ke `${window.location.origin}/auth/callback`. Penggunaan `window.location.origin` membuat alur OAuth tetap benar baik di lokal maupun saat deploy, karena URL callback mengikuti asal halaman saat ini. `signOut` membungkus `supabase.auth.signOut()` tanpa logika tambahan.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Terjemahan error auth",
+          "lineRange": [
+            37,
+            60
+          ],
+          "explanation": "`mapAuthError` mengubah pesan error Supabase menjadi teks yang ramah pengguna; bila error null, fungsi langsung mengembalikan null. Beberapa pesan seperti `Invalid login credentials`, `User already registered`, dan `Email not confirmed` dicocokkan dengan `includes` memakai teks asli, sedangkan `weak password`, `oauth`, `network`, dan `fetch` dicocokkan terhadap versi lowercase. Urutan pemeriksaan penting karena pesan yang lebih spesifik ditempatkan lebih dulu, dengan fallback umum di akhir. Pendekatan ini menjaga teks UI Bahasa Indonesia tanpa mengubah lapisan service yang lain.",
           "tourOrder": 6
         }
       ]
     },
     "features/events/service/eventService.ts": {
-      "overview": "Supabase data access for events: defines row interfaces, maps database rows to EventRecord, builds an upcoming-event query with an optional type filter, and exposes getEvents and getEventById.",
+      "overview": "Service untuk mengambil data acara dari Supabase dan mengubahnya menjadi model `EventRecord` yang dipakai UI. File ini mendefinisikan tipe baris database dengan `snake_case`, memetakannya ke model camelCase, dan menghitung jumlah tiket tersisa. Kuerinya hanya mengambil acara hari ini ke depan, mengikuti urutan tanggal dan jam, serta bisa difilter berdasarkan `EventType`. Tour langkah 6 memakai file ini untuk menunjukkan bahwa transformasi data dan penanganan error berada di service, bukan di komponen.",
       "sections": [
         {
-          "title": "Row interfaces",
+          "title": "Impor dan tipe baris",
+          "lineRange": [
+            1,
+            2
+          ],
+          "explanation": "Bagian atas mengimpor `EventRecord` dan `EventType` dari modul tipe acara serta klien `supabase`. Tipe `EventRow` dan `CategoryRow` didefinisikan secara lokal karena merepresentasikan bentuk mentah hasil kueri, bukan bentuk yang dipakai komponen. Menyimpan kedua bentuk ini secara terpisah membuat titik konversi jelas dan tidak mencampurkan skema database ke UI.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Bentuk baris database",
           "lineRange": [
             4,
             26
           ],
-          "explanation": "Defines CategoryRow and EventRow matching the database columns returned by Supabase, including the nested ticket_categories array. These interfaces type the raw query result before mapping.",
-          "tourOrder": 7
+          "explanation": "`CategoryRow` memuat kolom kategori seperti `event_id`, `price`, `quota`, dan `sold`, tanpa field `remaining` yang ada di model aplikasi. `EventRow` memakai `event_date`, `event_time`, `image_url`, dan `created_at`, lalu menambahkan `ticket_categories: CategoryRow[] | null` untuk hasil join. Nullable pada `ticket_categories` mengingatkan bahwa join bisa kembali kosong, sehingga pemetaan harus punya fallback.",
+          "tourOrder": 6
         },
         {
-          "title": "mapEvent",
+          "title": "Pemetaan baris ke model",
           "lineRange": [
             28,
             49
           ],
-          "explanation": "Converts an EventRow into an EventRecord, renaming snake_case columns to camelCase and deriving remaining as quota minus sold for each category. Null category arrays are normalized to an empty list.",
-          "tourOrder": 7
+          "explanation": "Fungsi `mapEvent` menerjemahkan setiap field `snake_case` menjadi nama camelCase di `EventRecord`, termasuk `eventDate`, `imageUrl`, dan `createdAt`. Nilai `remaining` dihitung sebagai `quota - sold` di sini, jadi UI tidak perlu mengulang perhitungan yang sama. Ekspresi `(row.ticket_categories ?? [])` mengubah hasil join yang null menjadi array kosong, mencegah error saat memanggil `.map()`.",
+          "tourOrder": 6
         },
         {
-          "title": "buildQuery",
+          "title": "Penyusunan kueri acara",
           "lineRange": [
             51,
             61
           ],
-          "explanation": "Builds a Supabase query selecting events with their categories, filtering to events on or after today, and ordering by date then time. An optional EventType filter is applied when provided.",
-          "tourOrder": 7
+          "explanation": "`buildQuery` memulai kueri dari tabel `events` dengan `select(\"*, ticket_categories(*)\")` untuk mengambil kategori sekaligus. Filter `.gte(\"event_date\", new Date().toISOString().slice(0, 10))` membatasi hasil pada tanggal hari ini atau setelahnya; `slice(0, 10)` mengambil bagian `YYYY-MM-DD` dari ISO timestamp. Kueri diurutkan berdasarkan tanggal lalu jam secara ascending, dan filter tipe ditambahkan hanya bila argumen `type` diberikan. Pola builder ini memungkinkan dua fungsi ekspor memakai kueri dasar yang sama.",
+          "tourOrder": 6
         },
         {
-          "title": "getEvents",
+          "title": "Fungsi ambil acara",
           "lineRange": [
             63,
-            67
-          ],
-          "explanation": "Executes buildQuery, throws on error, and maps the returned rows to EventRecord objects.",
-          "tourOrder": 7
-        },
-        {
-          "title": "getEventById",
-          "lineRange": [
-            69,
             74
           ],
-          "explanation": "Reuses buildQuery, adds an id equality filter and single-row selection. A PGRST116 error is treated as not found and returns null; other errors are thrown.",
-          "tourOrder": 7
-        }
-      ]
-    },
-    "features/events/types/event.types.ts": {
-      "overview": "Domain type definitions for the events feature: event types, category and event records, order item input, buyer input, and issued ticket shape.",
-      "sections": [
-        {
-          "title": "EventType",
-          "lineRange": [
-            1,
-            1
-          ],
-          "explanation": "Union type restricting events to football or concert.",
-          "tourOrder": 7
-        },
-        {
-          "title": "EventCategoryRecord",
-          "lineRange": [
-            3,
-            11
-          ],
-          "explanation": "Describes a ticket category including price, quota, sold count, and derived remaining availability.",
-          "tourOrder": 7
-        },
-        {
-          "title": "EventRecord",
-          "lineRange": [
-            13,
-            26
-          ],
-          "explanation": "Describes an event with schedule, venue, media, and its categories. This is the primary domain model used by services and UI.",
-          "tourOrder": 7
-        },
-        {
-          "title": "Order inputs",
-          "lineRange": [
-            28,
-            38
-          ],
-          "explanation": "Defines OrderItemInput for category/quantity pairs and BuyerInput for buyer identity fields used during registration and ordering.",
-          "tourOrder": 7
-        },
-        {
-          "title": "OrderTicket",
-          "lineRange": [
-            40,
-            45
-          ],
-          "explanation": "Describes an issued ticket with id, order id, QR code, and issuance timestamp.",
-          "tourOrder": 7
-        }
-      ]
-    },
-    "lib/supabase.ts": {
-      "overview": "Creates and exports a singleton Supabase client from Vite environment variables, throwing if either required value is missing.",
-      "sections": [
-        {
-          "title": "Import",
-          "lineRange": [
-            1,
-            1
-          ],
-          "explanation": "Imports createClient from @supabase/supabase-js.",
-          "tourOrder": 8
-        },
-        {
-          "title": "Environment validation",
-          "lineRange": [
-            3,
-            10
-          ],
-          "explanation": "Reads VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY from import.meta.env and throws a clear Indonesian error if either is absent, prompting use of .env.local.",
-          "tourOrder": 8
-        },
-        {
-          "title": "Client export",
-          "lineRange": [
-            12,
-            12
-          ],
-          "explanation": "Creates and exports the shared supabase client used by all services.",
-          "tourOrder": 8
-        }
-      ]
-    },
-    "features/auth/schema/authSchemas.ts": {
-      "overview": "Zod schemas for authentication forms: a base authSchema, a loginSchema alias, and a signupSchema with name and password confirmation, plus inferred TypeScript types.",
-      "sections": [
-        {
-          "title": "Imports and base field",
-          "lineRange": [
-            1,
-            3
-          ],
-          "explanation": "Imports zod and defines errorMessageInput as a non-empty string used as the starting point for validated fields.",
-          "tourOrder": 9
-        },
-        {
-          "title": "authSchema",
-          "lineRange": [
-            5,
-            10
-          ],
-          "explanation": "Validates email format and password length between 6 and 20 characters, with Indonesian error messages.",
-          "tourOrder": 9
-        },
-        {
-          "title": "loginSchema",
-          "lineRange": [
-            12,
-            12
-          ],
-          "explanation": "Aliases authSchema for the login form.",
-          "tourOrder": 9
-        },
-        {
-          "title": "signupSchema",
-          "lineRange": [
-            14,
-            28
-          ],
-          "explanation": "Extends validation with a name field restricted to letters and spaces, plus confirmPassword and a refine check ensuring passwords match.",
-          "tourOrder": 9
-        },
-        {
-          "title": "Inferred types",
-          "lineRange": [
-            30,
-            32
-          ],
-          "explanation": "Exports AuthSchema, LoginSchema, and SignupSchema inferred from the Zod schemas for use with react-hook-form.",
-          "tourOrder": 9
-        }
-      ]
-    },
-    "features/auth/service/authService.ts": {
-      "overview": "Thin wrappers around Supabase auth: session retrieval, state subscription, user id requirement, email and Google sign-in, sign-up, sign-out, and mapping auth errors to Indonesian messages.",
-      "sections": [
-        {
-          "title": "Imports",
-          "lineRange": [
-            1,
-            3
-          ],
-          "explanation": "Imports the AuthError type and the shared supabase client used by all auth helpers.",
-          "tourOrder": 9
-        },
-        {
-          "title": "Session helpers",
-          "lineRange": [
-            5,
-            9
-          ],
-          "explanation": "getSession returns the current Supabase session, and onAuthStateChange subscribes to auth state changes using Supabase's callback type.",
-          "tourOrder": 9
-        },
-        {
-          "title": "requireUserId",
-          "lineRange": [
-            11,
-            17
-          ],
-          "explanation": "Fetches the current user and returns their id, or throws an Indonesian message prompting sign-in when no authenticated user exists.",
-          "tourOrder": 9
-        },
-        {
-          "title": "Email auth",
-          "lineRange": [
-            19,
-            27
-          ],
-          "explanation": "signInWithEmail delegates to signInWithPassword, while signUpWithEmail calls signUp with full name stored in user metadata.",
-          "tourOrder": 9
-        },
-        {
-          "title": "Google and sign-out",
-          "lineRange": [
-            29,
-            35
-          ],
-          "explanation": "signInWithGoogle starts Google OAuth redirecting to /auth/callback, and signOut ends the current session.",
-          "tourOrder": 9
-        },
-        {
-          "title": "mapAuthError",
-          "lineRange": [
-            37,
-            60
-          ],
-          "explanation": "Maps Supabase auth errors to Indonesian user-facing messages by checking known error strings, with a generic fallback. Covers invalid credentials, duplicate registration, unconfirmed email, weak password, OAuth, and network failures.",
-          "tourOrder": 9
+          "explanation": "`getEvents` menjalankan kueri, melempar error bila ada, lalu memetakan semua baris dengan `mapEvent`. `getEventById` menambahkan `.eq(\"id\", eventId).single()` dan secara khusus menerjemahkan kode `PGRST116` sebagai `null`, yaitu kondisi Supabase ketika tidak ada baris tunggal yang cocok. Error lain tetap dilempar agar masalah koneksi atau izin tidak tersembunyi. Kedua fungsi menggunakan cast ke `EventRow[]` atau `EventRow` karena tipe hasil kueri Supabase tidak selalu menyampaikan bentuk join secara eksplisit.",
+          "tourOrder": 6
         }
       ]
     },
     "hooks/useSession.ts": {
-      "overview": "Custom hook that tracks the current Supabase auth session and loading state. It fetches the initial session on mount and subscribes to auth state changes, exposing isLoggedIn, isLoading, session, and user. It is referenced by the authentication service and session tour step.",
+      "overview": "Hook kustom yang menyediakan status sesi autentikasi ke seluruh komponen yang membutuhkannya. `useSession` mengambil sesi awal dari service, mendengarkan perubahan auth, dan mengembalikan `session`, `isLoading`, `isLoggedIn`, serta `user`. Pola ini disorot pada tour langkah 7: state dan subscription ditempatkan di hook, validasi di skema, dan navigasi di halaman. Flag `mounted` menjaga agar setState tidak terjadi setelah komponen dibongkar.",
       "sections": [
         {
-          "title": "Imports",
+          "title": "Impor dan dependensi hook",
           "lineRange": [
             1,
-            8
+            7
           ],
-          "explanation": "Imports React's useEffect and useState along with the Supabase Session type. Pulls getSession and onAuthStateChange from authService so the hook stays a thin wrapper over the auth service.",
-          "tourOrder": 9
+          "explanation": "Hook mengimpor `useEffect` dan `useState` dari React, tipe `Session` dari Supabase, serta `getSession` dan `onAuthStateChange` dari `authService`. Tidak ada akses langsung ke klien Supabase di sini, sehingga hook tetap bergantung pada abstraksi yang sudah diuji di lapisan service. Impor bertipe `import type` untuk `Session` memastikan tidak ada kode runtime tambahan.",
+          "tourOrder": 7
         },
         {
-          "title": "Session state and effect",
+          "title": "State awal sesi",
           "lineRange": [
             9,
-            35
+            14
           ],
-          "explanation": "Initializes state with session null and isLoading true. On mount it fetches the current session, guards against updates after unmount with a mounted flag, and subscribes to auth state changes to keep session in sync. The cleanup unsubscribes the listener and flips mounted to false.",
-          "tourOrder": 9
+          "explanation": "State disimpan sebagai satu objek yang berisi `session` dan `isLoading`, bukan dua state terpisah. Nilai awalnya `session: null` dan `isLoading: true`, karena sesi harus diminta dari Supabase sebelum aplikasi tahu apakah pengguna sudah masuk. Menggabungkan keduanya dalam satu objek memungkinkan pembaruan atomik ketika hasil sesi awal tiba.",
+          "tourOrder": 7
         },
         {
-          "title": "Derived return values",
+          "title": "Efek sesi dan listener",
+          "lineRange": [
+            15,
+            34
+          ],
+          "explanation": "Di dalam `useEffect`, variabel lokal `mounted` dipakai sebagai penjaga agar hasil async tidak menulis state setelah unmount. `getSession()` dipanggil sekali, lalu `setState` hanya dijalankan bila `mounted` masih true; cabang `.catch()` memperlakukan kegagalan sebagai tidak ada sesi agar UI tidak macet dalam loading. Selanjutnya `onAuthStateChange` mendaftarkan listener yang memperbarui bagian `session` saja dengan spread `prev`, sehingga status loading tidak ikut ter-reset. Fungsi cleanup menandai `mounted = false` dan memanggil `unsubscribe()` untuk mencegah kebocoran subscription.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Nilai yang dikembalikan",
           "lineRange": [
             36,
             43
           ],
-          "explanation": "Destructures session and isLoading from state and returns isLoggedIn, isLoading, session, and user. Deriving isLoggedIn from !!session keeps consumers from handling null checks repeatedly.",
-          "tourOrder": 9
+          "explanation": "Hook membaca `session` dan `isLoading` dari state lalu mengembalikan objek turunan. `isLoggedIn` adalah boolean sederhana `!!session`, sementara `user` memakai `session?.user ?? null` supaya konsumen selalu menerima null, bukan `undefined`, saat belum login. API ini membuat halaman seperti `LoginPage` cukup mendestrukturisasi dua field tanpa peduli detail subscription Supabase.",
+          "tourOrder": 7
         }
       ]
     },
-    "features/auth/page/AuthCallbackPage.tsx": {
-      "overview": "Handles the OAuth redirect callback by checking the Supabase session and routing to the intended destination or back to login. It is a minimal effect-driven component with a spinner fallback. It relates to the authentication pages tour step.",
+    "features/auth/schema/authSchemas.ts": {
+      "overview": "Tempat berkumpulnya aturan validasi Zod untuk formulir masuk dan daftar. File ini menyiapkan satu helper pesan untuk field kosong, mendefinisikan skema email dan kata sandi, lalu memperluasnya menjadi skema pendaftaran dengan nama dan konfirmasi kata sandi. Tour langkah 7 menempatkan file ini sebagai contoh pemisahan validasi dari halaman. Tipe hasil `z.infer` diekspor agar `useForm<LoginSchema>` dan `useForm<SignupSchema>` mendapatkan tipe yang sama persis dengan aturan runtime.",
       "sections": [
         {
-          "title": "Imports",
+          "title": "Helper pesan kosong",
           "lineRange": [
             1,
-            4
+            3
           ],
-          "explanation": "Imports useEffect from React and routing hooks from react-router-dom. Imports getSession from authService to verify the redirected session.",
-          "tourOrder": 10
+          "explanation": "Baris tiga membuat `errorMessageInput` sebagai `z.string().nonempty(...)` dengan pesan `field is empty`. Helper ini dipakai ulang oleh hampir semua field, sehingga pesan untuk input kosong konsisten dan tidak ditulis berulang. Perlu dicatat bahwa teks bawaan ini masih Bahasa Inggris, sementara pesan validasi lainnya sudah Bahasa Indonesia.",
+          "tourOrder": 7
         },
         {
-          "title": "Callback redirect logic",
+          "title": "Skema login dan alias",
           "lineRange": [
-            6,
+            5,
+            12
+          ],
+          "explanation": "`authSchema` berisi `email` yang harus lolos `.email()` dan `password` dengan panjang 6 sampai 20 karakter. `loginSchema` dinyatakan sebagai alias `authSchema`, artinya keduanya adalah skema yang sama persis; ini memberi nama yang sesuai konteks tanpa menggandakan definisi. Pesan error setiap aturan sudah eksplisit agar langsung bisa ditampilkan lewat `errors.email?.message` di halaman.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Skema pendaftaran",
+          "lineRange": [
+            14,
             28
           ],
-          "explanation": "Reads the intended destination from location.state with a fallback to /matchs. On mount it calls getSession; if there is an error or no session it navigates to /login, otherwise to the intended route. A mounted flag prevents navigation after unmount.",
-          "tourOrder": 10
+          "explanation": "`signupSchema` menambahkan `name` dengan regex huruf dan spasi, `email`, `password`, serta `confirmPassword`. Metode `.refine(...)` memeriksa kesamaan `password` dan `confirmPassword` setelah validasi field dasar berjalan. Opsi `path: [\"confirmPassword\"]` mengarahkan pesan `Konfirmasi kata sandi tidak cocok` ke field tersebut, bukan ke level objek, sehingga React Hook Form bisa menampilkannya di input yang tepat.",
+          "tourOrder": 7
         },
         {
-          "title": "Loading spinner",
+          "title": "Tipe turunan Zod",
           "lineRange": [
             30,
-            35
+            32
           ],
-          "explanation": "Renders a centered spinning indicator while the session check resolves. The component returns this UI for the brief async window before navigation occurs.",
-          "tourOrder": 10
+          "explanation": "Tiga tipe diekspor memakai `z.infer<typeof ...>`: `AuthSchema`, `LoginSchema`, dan `SignupSchema`. Dengan ini, bentuk nilai formulir di TypeScript selalu mengikuti skema Zod yang sama yang dipakai `zodResolver`. Perubahan pada aturan validasi otomatis mengubah tipe, sehingga mismatch antara form dan validator terdeteksi saat compile time.",
+          "tourOrder": 7
         }
       ]
     },
     "features/auth/page/LoginPage.tsx": {
-      "overview": "Login screen with email/password and Google sign-in forms, validation, and redirect handling. It uses react-hook-form with a Zod resolver and surfaces auth errors via Alerts. It is part of the authentication pages tour step.",
+      "overview": "Halaman masuk yang menyatukan formulir email, login Google, pengecekan sesi, dan navigasi setelah autentikasi. Komponen ini memakai React Hook Form dengan `zodResolver` dan `loginSchema`, lalu meneruskan error ke `InputField` serta notifikasi ke `Alerts`. Sesuai tour langkah 7, halaman ini menjadi contoh bahwa logika state ada di hook, aturan di skema, dan keputusan navigasi di komponen halaman. Seluruh tombol dinonaktifkan selama proses submit atau OAuth agar pengguna tidak memicu aksi ganda.",
       "sections": [
         {
-          "title": "Imports",
+          "title": "Impor dan dependensi halaman",
           "lineRange": [
             1,
-            19
+            21
           ],
-          "explanation": "Imports icons, form libraries, routing, shared UI primitives, the session hook, and auth schemas/services. Keeps the page wired to the same validation and auth helpers used elsewhere.",
-          "tourOrder": 10
+          "explanation": "Impor terdiri dari ikon Google, React Hook Form, `zodResolver`, `useEffect`/`useState`, dan utilitas navigasi `useLocation`/`useNavigate`. Komponen tampilan yang dipakai adalah `Alerts`, `Banner`, `Button`, `Footer`, dan `InputField` dari pustaka bersama. Bagian ini juga mengimpor `useSession`, `loginSchema`, dan fungsi service `mapAuthError`, `signInWithEmail`, `signInWithGoogle`, sehingga ketergantungan antar lapisan terlihat jelas di satu blok.",
+          "tourOrder": 7
         },
         {
-          "title": "State and form setup",
+          "title": "State dan pengalihan sesi",
           "lineRange": [
-            21,
-            36
+            23,
+            45
           ],
-          "explanation": "Initializes navigation, location, session status, alert state, and Google loading flag. Configures react-hook-form with zodResolver(loginSchema) and destructures register, handleSubmit, errors, and isSubmitting.",
-          "tourOrder": 10
+          "explanation": "Komponen menyiapkan `navigate`, arah tujuan dari `location.state.from` dengan fallback `\"/matchs\"`, serta status dari `useSession`. Tiga state lokal mengelola notifikasi alert, status tombol Google, dan pesan status sementara. `useForm<LoginSchema>` menghubungkan `zodResolver(loginSchema)` dan membuka `errors` serta `isSubmitting` dari `formState`. Effect mengalihkan pengguna ke halaman tujuan dengan `replace: true` bila sesi sudah aktif dan loading selesai, mencegah halaman login ditampilkan kepada pengguna yang sudah masuk.",
+          "tourOrder": 7
         },
         {
-          "title": "Redirect when already logged in",
+          "title": "Submit email dan Google",
           "lineRange": [
-            38,
-            42
+            47,
+            71
           ],
-          "explanation": "Effect redirects authenticated users away from the login page to the intended destination. It waits until isLoading is false to avoid premature redirects.",
-          "tourOrder": 10
+          "explanation": "`onSubmit` menerima nilai tervalidasi dan memanggil `signInWithEmail`; bila ada error, alert danger ditampilkan memakai hasil `mapAuthError` dengan fallback umum, jika tidak pengguna dinavigasi ke `from`. `handleGoogle` menyalakan `isGoogleLoading`, menampilkan status berbahasa Indonesia, lalu memanggil `signInWithGoogle`. Khusus kegagalan Google, status dan loading dikembalikan ke semula agar pengguna bisa mencoba lagi; saat berhasil, halaman bergantung pada redirect OAuth ke `/auth/callback`.",
+          "tourOrder": 7
         },
         {
-          "title": "Submit handlers",
+          "title": "Kerangka halaman dan alert",
           "lineRange": [
-            44,
-            66
+            73,
+            103
           ],
-          "explanation": "onSubmit calls signInWithEmail and shows a mapped error alert on failure or navigates on success. handleGoogle triggers Google OAuth and manages its loading state, showing an alert on error.",
-          "tourOrder": 10
+          "explanation": "JSX dimulai dengan `<main>` berlatar `bg-surface-subtle`, lalu `Alerts` dirender bersyarat dengan durasi 4000 ms dan callback `onClose` untuk menutupnya. Section utama memakai gradien dari `night-950` sampai `surface-white` dan memuat tombol kembali yang menuju `/` dengan `aria-label=\"Kembali\"`. Kartu putih berisi judul `Masuk ke akun Anda` dan deskripsi singkat manfaat e-tiket. Tombol kembali memakai ikon `material-symbols-outlined` dengan `aria-hidden=\"true\"` agar pembaca layar tidak mengulang teks ikon.",
+          "tourOrder": 7
         },
         {
-          "title": "Login form UI",
+          "title": "Tombol OAuth dan pemisah",
           "lineRange": [
-            68,
-            188
+            105,
+            128
           ],
-          "explanation": "Renders the gradient hero, Google button, divider, and email/password form with floating labels and inline errors. Disables inputs while submitting and shows a spinner on the Google button. Footer is rendered at the bottom.",
-          "tourOrder": 10
+          "explanation": "Tombol Google memakai `variant=\"oauth\"` dan dinonaktifkan ketika email sedang disubmit atau OAuth sedang berjalan. Di dalamnya, spinner muncul menggantikan ikon `FcGoogle` sementara label berubah menjadi `Memproses...`, memberi umpan balik visual yang jelas. Pemisah berupa dua garis tipis dan teks `atau masuk dengan email` memisahkan opsi OAuth dari formulir email.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Formulir masuk",
+          "lineRange": [
+            129,
+            191
+          ],
+          "explanation": "Form memakai `handleSubmit(onSubmit)` sehingga validasi Zod berjalan sebelum fungsi submit dipanggil. Dua `InputField` untuk email dan kata sandi menerima `register(...)` langsung, `error` dari `errors`, dan `disabled` saat proses async berlangsung; kata sandi juga mengaktifkan tautan lupa sandi. Checkbox `Biarkan saya tetap masuk di perangkat ini` saat ini hanya berupa tampilan dan belum terhubung ke state atau service. Banner status muncul saat `statusMessage` tidak null, diikuti tombol submit dan tautan ke halaman `/signup`.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Footer dan ekspor",
+          "lineRange": [
+            193,
+            199
+          ],
+          "explanation": "Komponen `Footer` ditempatkan di luar section formulir tetapi masih di dalam `<main>`, sehingga tampil di bawah kartu masuk. Penutup file mengekspor `LoginPage` sebagai default export sesuai pola halaman lain di proyek. Tidak ada logika tambahan pada rentang ini."
         }
       ]
     },
     "features/auth/page/SignupPage.tsx": {
-      "overview": "Registration screen with name/email/password form, Google sign-up, and email verification feedback. It validates with signupSchema and checks the session after signup to decide between redirect and verification prompt. It is part of the authentication pages tour step.",
+      "overview": "Halaman pendaftaran pengguna yang menangani input email, nama, kata sandi, konfirmasi kata sandi, dan opsi daftar dengan Google. Halaman memakai `signupSchema` melalui `zodResolver` lalu meneruskan hasil ke `signUpWithEmail`, dengan pengecekan sesi setelahnya untuk membedakan pengguna yang langsung masuk dan pengguna yang perlu verifikasi email. Bersama `LoginPage.tsx`, file ini melengkapi contoh tour langkah 7 tentang pemisahan hook, skema, service, dan halaman. State loading dan alert dipakai untuk mencegah submit ganda serta menyampaikan error terjemahan dari `mapAuthError`.",
       "sections": [
         {
-          "title": "Imports",
-          "lineRange": [
-            1,
-            17
-          ],
-          "explanation": "Imports icons, form libraries, routing, shared UI, the session hook, and auth schemas/services including getSession for the post-signup check.",
-          "tourOrder": 10
-        },
-        {
-          "title": "State and form setup",
-          "lineRange": [
-            19,
-            34
-          ],
-          "explanation": "Initializes navigation, location, session status, alert state, and Google loading flag. Configures react-hook-form with zodResolver(signupSchema).",
-          "tourOrder": 10
-        },
-        {
-          "title": "Redirect when already logged in",
-          "lineRange": [
-            36,
-            40
-          ],
-          "explanation": "Effect redirects authenticated users away from the signup page. It waits for isLoading to finish before navigating.",
-          "tourOrder": 10
-        },
-        {
-          "title": "Submit handlers",
-          "lineRange": [
-            42,
-            76
-          ],
-          "explanation": "onSubmit calls signUpWithEmail with name, email, and password; on error it shows a mapped alert. On success it calls getSession and either navigates if a session exists or shows a success message asking the user to verify their email. handleGoogle starts Google OAuth and handles errors.",
-          "tourOrder": 10
-        },
-        {
-          "title": "Signup form UI",
-          "lineRange": [
-            78,
-            235
-          ],
-          "explanation": "Renders the hero, Google button, divider, and a four-field form (name, email, password, confirm password) with inline validation errors. Disables inputs while submitting and includes a link back to login.",
-          "tourOrder": 10
-        }
-      ]
-    },
-    "features/orders/service/orderService.ts": {
-      "overview": "Order creation and payment completion via Supabase RPCs. createOrder requires an authenticated user and maps the buyer and items into RPC parameters; completePayment completes an order by id and method. It belongs to the payment form and order processing tour step.",
-      "sections": [
-        {
-          "title": "Imports and interfaces",
+          "title": "Impor dan dependensi halaman",
           "lineRange": [
             1,
             19
           ],
-          "explanation": "Imports requireUserId, buyer/order types, and the Supabase client. Defines CreateOrderInput, CompletePaymentInput, and CreateOrderResult interfaces that shape the RPC calls and returned data.",
-          "tourOrder": 11
+          "explanation": "Blok impor hampir sama dengan `LoginPage`, tetapi skemanya `signupSchema` dan service-nya menambahkan `getSession` serta `signUpWithEmail`. Komponen bersama yang dipakai tetap `Alerts`, `Banner`, `Button`, `Footer`, dan `InputField`. Kehadiran `getSession` di sini menandakan bahwa pendaftaran perlu memeriksa ulang sesi setelah Supabase memproses `signUp`.",
+          "tourOrder": 7
         },
         {
-          "title": "createOrder",
+          "title": "State, form, dan redirect",
           "lineRange": [
             21,
-            41
+            43
           ],
-          "explanation": "Ensures the user is authenticated, then calls the create_order RPC with event id, mapped items, and buyer details. Throws on error or empty result and returns the order id and total amount.",
-          "tourOrder": 11
+          "explanation": "Komponen menyiapkan tujuan navigasi dari `location.state.from` dengan fallback `/matchs`, status sesi dari `useSession`, dan tiga state lokal untuk alert, loading Google, serta pesan status. `useForm<SignupSchema>` memakai `zodResolver(signupSchema)` dan mengekspos `errors` serta `isSubmitting`. Effect mengalihkan pengguna yang sudah masuk ke `from` dengan `replace: true` setelah loading selesai, mirror perilaku halaman login.",
+          "tourOrder": 7
         },
         {
-          "title": "completePayment",
+          "title": "Submit pendaftaran",
           "lineRange": [
-            43,
-            54
+            45,
+            67
           ],
-          "explanation": "Calls the complete_payment RPC with order id and payment method. Throws on error and returns the resulting ticket id.",
-          "tourOrder": 11
+          "explanation": "`onSubmit` memanggil `signUpWithEmail(values.email, values.password, values.name)` dan menampilkan alert danger bila Supabase mengembalikan error. Setelah berhasil, halaman memanggil `getSession()` untuk memeriksa apakah sesi langsung terbentuk; bila ada, pengguna dinavigasi ke `from`. Bila tidak ada sesi, alert success memberitahu `Cek email untuk verifikasi akun.`, mencerminkan alur Supabase yang meminta konfirmasi email sebelum sesi aktif.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Handler Google",
+          "lineRange": [
+            69,
+            81
+          ],
+          "explanation": "`handleGoogle` mengaktifkan `isGoogleLoading`, menetapkan status yang menjelaskan proses penghubungan akun Google, lalu memanggil `signInWithGoogle`. Jika error, halaman menampilkan alert danger hasil `mapAuthError`, menghapus status, dan mematikan loading. Sama seperti di halaman login, keberhasilan OAuth akan ditangani oleh halaman callback yang menjadi tujuan `redirectTo` di service.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Kerangka halaman dan alert",
+          "lineRange": [
+            83,
+            113
+          ],
+          "explanation": "Bagian render membuka `<main>`, menampilkan `Alerts` bersyarat dengan `duration={4000}` dan `onClose`, lalu section gradien dengan tombol kembali ke `/`. Tombol kembali memakai ikon material yang tersembunyi dari pembaca layar lewat `aria-hidden=\"true\"`. Kartu putih memuat judul `Buat akun Tiket.ku` dan deskripsi tentang pemesanan tiket acara GBK.",
+          "tourOrder": 7
+        },
+        {
+          "title": "OAuth dan pemisah",
+          "lineRange": [
+            115,
+            137
+          ],
+          "explanation": "Tombol dengan `variant=\"oauth\"` memakai ikon `FcGoogle` dan teks `Daftar dengan Google`, berganti menjadi spinner dan `Memproses...` saat `isGoogleLoading`. Tombol dinonaktifkan baik saat submit email maupun saat OAuth berjalan. Garis horizontal di dua sisi teks `atau daftar dengan email` memisahkan opsi OAuth dari formulir utama.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Field formulir daftar",
+          "lineRange": [
+            139,
+            186
+          ],
+          "explanation": "Formulir merender empat `InputField`: nama lengkap sesuai KTP, email, kata sandi, dan konfirmasi kata sandi. Setiap field menerima `register(...)` dari React Hook Form dan `error` dari objek `errors`, sehingga pesan `.refine()` pada `confirmPassword` muncul tepat di field terkait. Semua field dinonaktifkan selama submit atau OAuth untuk mencegah perubahan nilai di tengah proses. Perhatikan placeholder kata sandi `Minimal 8 karakter` belum cocok dengan batas 6 sampai 20 karakter di `authSchemas.ts`.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Persetujuan dan status",
+          "lineRange": [
+            188,
+            206
+          ],
+          "explanation": "Checkbox Syarat & Ketentuan memakai atribut `required` bawaan HTML, jadi browser menolak submit bila belum dicentang meski checkbox ini tidak didaftarkan ke React Hook Form. Teksnya juga menyebut verifikasi identitas e-tiket GBK, selaras dengan data `BuyerInput`. Banner status dirender ketika `statusMessage` tidak null, memberi tahu pengguna bahwa penghubungan akun Google sedang berlangsung.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Submit, tautan, dan footer",
+          "lineRange": [
+            208,
+            234
+          ],
+          "explanation": "Tombol submit `Buat Akun Tiket.ku` memakai `variant=\"primary\"`, lebar penuh, dan dinonaktifkan saat form sedang mengirim atau OAuth berjalan. Di bawahnya, tautan `Masuk sekarang` mengarah ke `/login` untuk pengguna yang sudah punya akun. `Footer` ditutup di luar section, lalu komponen diekspor sebagai default export. Akhirnya, seluruh alur dari skema hingga service terlihat ringkas karena detail validasi dan akses data tidak ditulis di dalam halaman.",
+          "tourOrder": 7
         }
       ]
     },
-    "features/payment/components/PaymentMethods.tsx": {
-      "overview": "Selectable payment method button component with selected/hover styling and aria-pressed state. It is a small presentational component used by the Payment page. It belongs to the payment form and order processing tour step.",
+    "features/auth/page/AuthCallbackPage.tsx": {
+      "overview": "Halaman callback ini menjadi titik transit setelah autentikasi, khususnya ketika penyedia auth mengembalikan pengguna ke aplikasi. Halaman tidak merender formulir; ia memeriksa sesi lalu mengalihkan pengguna dengan `replace: true` supaya halaman perantara tidak menumpuk di riwayat browser. Langkah tur 7 menyinggung berkas ini sebagai penutup alur autentikasi setelah hook sesi serta halaman masuk dan daftar.",
       "sections": [
         {
-          "title": "Props interface",
+          "title": "Impor dan tujuan alias",
           "lineRange": [
             1,
             9
           ],
-          "explanation": "Imports React and defines PaymentMethodsProps with label, value, selected, and onSelect. The icon prop is commented out, leaving only the label rendered.",
-          "tourOrder": 11
+          "explanation": "Impor mencakup `useEffect`, `useLocation`, `useNavigate`, dan `getSession` dari service auth. Baris 9 membaca `location.state` dengan penegasan tipe `{ from?: string } | null`, lalu memakai `/matchs` bila tidak ada tujuan. Nilai `/matchs` mengikuti ejaan rute legacy pada fitur matches. `replace: true` yang dipakai nanti memastikan halaman callback tidak bisa dikunjungi kembali lewat tombol back.",
+          "tourOrder": 7
         },
         {
-          "title": "Selectable button",
-          "lineRange": [
-            10,
-            36
-          ],
-          "explanation": "Renders a button that calls onSelect with its value on click. Applies selected or unselected Tailwind classes and sets aria-pressed to reflect selection state. Exports the component as default.",
-          "tourOrder": 11
-        }
-      ]
-    },
-    "features/payment/hooks/usePayment.ts": {
-      "overview": "Hook providing a react-hook-form instance configured with zodResolver and the payment schema. It keeps form setup reusable for the Payment page. It belongs to the payment form and order processing tour step.",
-      "sections": [
-        {
-          "title": "Imports",
-          "lineRange": [
-            1,
-            4
-          ],
-          "explanation": "Imports zodResolver, useForm, and the payment schema with its inferred type. These wire schema validation into react-hook-form.",
-          "tourOrder": 11
-        },
-        {
-          "title": "PaymentFormValidation hook",
-          "lineRange": [
-            5,
-            13
-          ],
-          "explanation": "Creates and returns a useForm instance validated by paymentSchema via zodResolver. Spreading methods keeps all form helpers available to callers.",
-          "tourOrder": 11
-        }
-      ]
-    },
-    "features/payment/page/Payment.tsx": {
-      "overview": "Payment page rendering payment method options and a card details form, navigating to the ticket page on submit. It manages the selected method state and registers form fields. It belongs to the payment form and order processing tour step.",
-      "sections": [
-        {
-          "title": "Imports and constants",
-          "lineRange": [
-            1,
-            18
-          ],
-          "explanation": "Imports React state, routing, shared UI, PaymentMethods, and the usePayment hook. Defines the PaymentOption type and the PAYMENT_METHODS list with card and bank options.",
-          "tourOrder": 11
-        },
-        {
-          "title": "Component state and submit",
-          "lineRange": [
-            19,
-            35
-          ],
-          "explanation": "Initializes params, form registration, navigation, and selected method state. onSubmit is wrapped by handleSubmit and navigates to the ticket route using userId; the legacy user lookup is commented out.",
-          "tourOrder": 11
-        },
-        {
-          "title": "Payment form UI",
-          "lineRange": [
-            38,
-            83
-          ],
-          "explanation": "Renders the payment method buttons, four card detail InputFields with error messages, and a submit button. Passes selected state to PaymentMethods and updates it via onSelect.",
-          "tourOrder": 11
-        }
-      ]
-    },
-    "features/payment/schemas/paymentSchema.ts": {
-      "overview": "Zod schema validating payment form fields: cardholder name, 4-digit card number, CVV, and expiry. It is used by usePayment through zodResolver. It belongs to the payment form and order processing tour step.",
-      "sections": [
-        {
-          "title": "Imports",
-          "lineRange": [
-            1,
-            1
-          ],
-          "explanation": "Imports zod for schema construction. Single import keeps the schema module minimal.",
-          "tourOrder": 11
-        },
-        {
-          "title": "Schema definition",
-          "lineRange": [
-            3,
-            21
-          ],
-          "explanation": "Defines a reusable nonempty string helper and the paymentSchema object with regex and length rules for nameOnCard, cardNumber, cvv, and validTHRU. Error messages are in Indonesian.",
-          "tourOrder": 11
-        },
-        {
-          "title": "Type export",
-          "lineRange": [
-            23,
-            23
-          ],
-          "explanation": "Exports PaymentSchema as the inferred type of paymentSchema, giving the form a compile-time contract matching validation.",
-          "tourOrder": 11
-        }
-      ]
-    },
-    "features/tickets/service/ticketService.ts": {
-      "overview": "Fetches a ticket by order id from Supabase, mapping snake_case database columns to the camelCase OrderTicket domain type. It belongs to the buyer registration and tickets tour step.",
-      "sections": [
-        {
-          "title": "Imports and row type",
-          "lineRange": [
-            1,
-            9
-          ],
-          "explanation": "Imports OrderTicket type and the Supabase client. Defines TicketRow describing the selected columns id, order_id, qr_code, and issued_at.",
-          "tourOrder": 12
-        },
-        {
-          "title": "getTicketByOrderId",
+          "title": "Pemeriksaan sesi dan alihkan",
           "lineRange": [
             11,
             28
           ],
-          "explanation": "Queries the tickets table filtered by order_id using single(). Returns null on PGRST116 (no rows), throws other errors, and maps the row to OrderTicket with camelCase fields.",
-          "tourOrder": 12
+          "explanation": "Effect menyiapkan penanda `mounted` lalu memanggil `getSession()` secara asinkron. Penanda itu mencegah navigasi setelah komponen unmount. Error, sesi bernilai null, atau Promise yang ditolak semuanya mengalihkan ke `/login`; sesi valid mengalihkan ke `from`. Cleanup menetapkan `mounted = false`, dan dependency `[navigate, from]` membuat pemeriksaan dijalankan ulang bila tujuan berubah.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Tampilan spinner dan ekspor",
+          "lineRange": [
+            30,
+            37
+          ],
+          "explanation": "Tampilan hanya berisi `main` dengan layout flex penuh dan satu `div` berputar lewat `animate-spin`. Ini memberi umpan balik visual selama pengecekan sesi yang singkat. Komponen diekspor default sehingga bisa dipasang langsung sebagai elemen rute di `App.tsx`.",
+          "tourOrder": 7
         }
       ]
     },
-    "features/users/components/TicketCard.tsx": {
-      "overview": "React component rendering a ticket tribune card with price display and quantity increase/decrease controls. It notifies the parent via onCountChange. It belongs to the buyer registration and tickets tour step.",
+    "features/matches/service/matchService.ts": {
+      "overview": "Adapter ini menjembatani model `Event` yang lebih baru ke bentuk `MatchPayload` yang masih dipakai komponen jadwal lama. Fungsi memanggil `getEvents` dari service events, lalu memetakan setiap event menjadi satu pertandingan dengan dua tim turunan dari judul dan subtitle. Kategori tiket diubah menjadi objek `tickets` yang diindeks berdasarkan nama kategori. Tur 8 menempatkan berkas ini sebagai awal rantai service, hook, halaman, lalu komponen pada daftar pertandingan.",
       "sections": [
         {
-          "title": "Imports and props",
+          "title": "Impor dan catatan adapter",
           "lineRange": [
             1,
-            13
+            5
           ],
-          "explanation": "Imports React, Control type, and UserSchema. Defines TicketCardProps including name, tribune, price, count, control, and onCountChange; the GetDatas import is commented out.",
-          "tourOrder": 12
+          "explanation": "Berkas mengimpor `getEvents` serta tipe `MatchPayload` secara relatif dari folder `types`. Komentar `ponytail` menyatakan adapter sengaja dibuat dangkal supaya UI lama tetap kompil. Juga tercantum upgrade path: memakai `EventRecord` langsung saat halaman jadwal didesain ulang, lalu menghapus adapter ini. Komentar tersebut menjelaskan mengapa pemetaan di bawahnya berupa transformasi tipis, bukan logika domain baru.",
+          "tourOrder": 8
         },
         {
-          "title": "Quantity handlers",
+          "title": "Pemetaan event ke pertandingan",
           "lineRange": [
-            15,
-            27
+            6,
+            24
           ],
-          "explanation": "Destructures tribune, price, count, and onCountChange from props. handleDecrease decrements only when count is greater than zero; handleIncrease increments unconditionally.",
-          "tourOrder": 12
-        },
-        {
-          "title": "Card UI",
-          "lineRange": [
-            29,
-            62
-          ],
-          "explanation": "Renders the tribune name, price, and a stepper with minus, count, and plus buttons. Clicking the buttons updates quantity through onCountChange.",
-          "tourOrder": 12
+          "explanation": "`getMatches` mengambil semua event lalu mengembalikan array `MatchPayload` melalui `map`. Bidang `id` dan `matchId` diisi dari `event.id`; tim rumah memakai `event.title`, sedangkan tim tamu memakai `event.subtitle || event.title`. Logo kedua tim sama-sama memakai `event.imageUrl ?? \"\"`, jadi adapter tidak menyediakan logo tim yang berbeda. `Object.fromEntries` mengubah array `event.categories` menjadi peta nama kategori ke `{ price, quota }`. Fungsi tidak menangkap error, sehingga kegagalan `getEvents` diteruskan ke pemanggil, yaitu hook `useMatchData`.",
+          "tourOrder": 8
         }
       ]
     },
-    "features/users/hooks/useUserRegister.ts": {
-      "overview": "Custom hook wrapping react-hook-form with zod validation for user registration form state. It provides default values for all fields. It belongs to the buyer registration and tickets tour step.",
+    "features/matches/hooks/useMatchData.ts": {
+      "overview": "Hook ini mengelola pengambilan data pertandingan untuk halaman jadwal. Ia menyimpan tiga keping state: daftar pertandingan, status loading, dan error, lalu mengisi semuanya dari `getMatches`. Pola ini memisahkan efek async dari tampilan sehingga halaman hanya perlu membaca hasilnya. Tur 8 menunjukkan hook ini sebagai penghubung antara service dan halaman `Matches.tsx`.",
       "sections": [
         {
-          "title": "Imports",
+          "title": "Impor dependensi",
           "lineRange": [
             1,
             4
           ],
-          "explanation": "Imports zodResolver, useForm, and userSchema with its inferred type. These connect schema validation to form state.",
-          "tourOrder": 12
+          "explanation": "Berkas mengimpor `useEffect` dan `useState` dari React, `getMatches` dari service, serta tipe `MatchPayload`. Komentar path pada baris 1 menunjukkan sisa penamaan lama `match`, walaupun berkas berada di folder `matches`. Tidak ada state global yang dipakai di sini; seluruh data berasal dari satu panggilan service.",
+          "tourOrder": 8
         },
         {
-          "title": "useUserRegister hook",
+          "title": "State awal hook",
+          "lineRange": [
+            6,
+            10
+          ],
+          "explanation": "Hook menyiapkan `matches` sebagai array kosong, `loading` sebagai `true`, dan `error` sebagai `null`. Nilai awal `loading = true` penting karena efek belum selesai saat komponen pertama render. Tipe `Error | null` membuat konsumen hook bisa memeriksa error tanpa pengecekan tipe tambahan.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Efek pengambilan data",
+          "lineRange": [
+            11,
+            25
+          ],
+          "explanation": "`fetchData` menandai loading, memanggil `getMatches`, lalu menyimpan hasil dan menghapus error. Cabang `catch` menormalisasi nilai apa pun menjadi `Error`, sehingga bentuk state error tetap konsisten. `finally` menjamin `loading` kembali `false` baik sukses maupun gagal. Panggilan `void fetchData()` sengaja menandakan Promise tidak di-await karena dijalankan dari efek. Array dependency kosong berarti data diambil sekali saat mount.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Nilai kembalian",
+          "lineRange": [
+            27,
+            28
+          ],
+          "explanation": "Hook mengembalikan objek `{ matches, loading, error }` kepada komponen. Halaman `Matches.tsx` saat ini hanya memakai `matches`, tetapi dua field lain tetap tersedia untuk penanganan loading dan error. Karena kembalian berupa objek baru tiap render, konsumen sebaiknya mendestrukturisasi field yang benar-benar dipakai.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/matches/page/Matches.tsx": {
+      "overview": "Halaman ini menampilkan daftar pertandingan dalam grid tiga kolom dan tiga baris. Data diperoleh dari `useMatchData`, lalu setiap entri diteruskan ke `Card` sebagai props. Saat kartu diklik, halaman menyimpan `matchId` terpilih ke `sessionStorage` sebelum bernavigasi ke formulir. Ini merupakan titik tempat rantai service dan hook tur 8 mulai terlihat sebagai antarmuka.",
+      "sections": [
+        {
+          "title": "Impor halaman",
+          "lineRange": [
+            1,
+            4
+          ],
+          "explanation": "Halaman mengimpor `useNavigate` dari React Router, komponen `Card`, dan hook `useMatchData`. Tidak ada prop yang diterima halaman; semua data jadwal berasal dari hook. Impor relatif dipakai di sini karena berkas berada di dalam folder fitur `matches` yang sama.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Penanganan klik kartu",
           "lineRange": [
             5,
+            14
+          ],
+          "explanation": "Komponen mengambil `navigate` dan mendestrukturisasi `matches` dari hook. `handleCardClick` menulis `selectedMatchId` ke `sessionStorage` lebih dulu, lalu bernavigasi ke `/matchs/${matchId}/form`. Pemeriksaan `if (matchId)` mencegah navigasi ke rute dengan segmen kosong. `sessionStorage` dipilih sehingga pilihan bertahan selama sesi tab, bukan permanen seperti `localStorage`.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Render grid dan ekspor",
+          "lineRange": [
+            16,
+            25
+          ],
+          "explanation": "`main` memakai grid `grid-cols-3 grid-rows-3` dengan padding dan gap tetap. Setiap `data` disebar sebagai props ke `Card`, dan `onClick` dipetakan ke `handleCardClick(data.matchId)`. Karena jumlah kartu tidak dibatasi secara eksplisit oleh layout ini, baris tambahan akan mengikuti aturan grid yang sama. Komponen diekspor default agar bisa didaftarkan sebagai rute.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/matches/components/Card.tsx": {
+      "overview": "Komponen ini merender satu kartu jadwal pertandingan dari data `MatchPayload`. Kartu membagi tampilan menjadi tiga kolom: tim rumah, waktu dan zona waktu, serta tim tamu, dengan tanggal dan stadion di bawahnya. Props `onClick` disalurkan ke elemen pembungkus sehingga halaman bisa menanggapi klik. Tur 8 menampilkan komponen ini sebagai tampilan akhir dari data yang sudah diubah oleh service.",
+      "sections": [
+        {
+          "title": "Impor tipe dan komponen",
+          "lineRange": [
+            1,
+            4
+          ],
+          "explanation": "Berkas mengimpor `MatchPayload`, `TeamSection`, dan tipe `MatchCardProps`. Tipe `MatchCardProps` kemungkinan menyediakan `onClick`, karena field itu tidak ada di `MatchPayload` yang dipakai pada baris berikutnya. Pemisahan tipe data dan tipe perilaku ini membuat komponen bisa menerima keduanya tanpa mendefinisikan antarmuka baru.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Props kartu",
+          "lineRange": [
+            5,
+            13
+          ],
+          "explanation": "`MatchScheduleCard` dianotasi sebagai `React.FC<MatchPayload & MatchCardProps>`, yaitu gabungan data pertandingan dan callback klik. Destructuring mengambil `team_home`, `team_away`, `match_time`, `time_zone`, `match_date`, `stadium`, dan `onClick`. Bidang `id`, `matchId`, maupun `tickets` tidak dipakai di sini walaupun tersedia dari service. Penamaan masih memakai snake_case karena `MatchPayload` berasal dari kontrak legacy.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Tata letak tiga kolom",
+          "lineRange": [
+            14,
+            29
+          ],
+          "explanation": "Elemen pembungkus memakai grid tiga kolom; `TeamSection` dipanggil dua kali untuk rumah dan tamu. Di tengah, `match_time` dan `time_zone` ditampilkan sebagai judul besar di atas latar abu-abu. Bagian bawah menggabungkan `match_date` dan `stadium` dengan `col-start-1 col-end-4` agar membentang penuh. Perhatikan kelas `grid-rows[auto_1fr]` pada baris 15 ditulis tanpa tanda hubung sebelum tanda kurung siku, berbeda dari bentuk `grid-rows-[...]` yang lazim.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Ekspor default",
+          "lineRange": [
+            30,
+            33
+          ],
+          "explanation": "Komponen diekspor sebagai default export. Halaman `Matches.tsx` mengimpornya dengan nama `Card`, jadi nama lokal di berkas ini tidak harus sama dengan nama di pemanggil. Pola ini konsisten dengan kebiasaan komponen halaman lain di proyek.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/matches/components/TeamSection.tsx": {
+      "overview": "Komponen kecil ini menampilkan identitas satu tim: nama dalam huruf kapital dan logo di bawahnya. Ia menerima `TeamPayload` yang dihasilkan oleh adapter `matchService`. Bersama `Card.tsx`, komponen ini melengkapi tampilan jadwal pada tur 8.",
+      "sections": [
+        {
+          "title": "Impor tipe tim",
+          "lineRange": [
+            1,
+            2
+          ],
+          "explanation": "Berkas mengimpor `TeamPayload` dari `matchesPayload.types`. Tipe ini hanya dipakai sebagai anotasi parameter, bukan sebagai nilai runtime. Tidak ada impor komponen lain karena tampilannya seluruhnya memakai elemen HTML dan kelas utilitas.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Tampilan nama dan logo",
+          "lineRange": [
+            3,
+            14
+          ],
+          "explanation": "`TeamSection` langsung mengembalikan `section` tanpa blok fungsi atau state. `name` diberi kelas `uppercase`, sementara `logo` dipasang pada `img` dengan `alt={name}` untuk aksesibilitas. Kotak gambar memakai `h-35 w-35` dan `object-contain` supaya logo tidak terdistorsi. Karena `logo` bisa berupa string kosong dari adapter, atribut `src` dapat menjadi kosong bila event tidak memiliki `imageUrl`.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/payment/schemas/paymentSchema.ts": {
+      "overview": "Berkas ini mendefinisikan skema Zod untuk empat field formulir pembayaran: nama pemegang kartu, nomor kartu, CVV, dan tanggal kedaluwarsa. Sebuah validator string bersama dipakai ulang supaya pesan field kosong konsisten. Hasil inferensi tipe diekspor sehingga hook dapat mengetik `useForm`. Tur 9 menempatkan skema ini sebagai lapisan validasi sebelum halaman pembayaran melakukan navigasi.",
+      "sections": [
+        {
+          "title": "Validator string bersama",
+          "lineRange": [
+            1,
+            3
+          ],
+          "explanation": "Baris 3 membuat `errorMessageInput` dari `z.string().nonempty(...)` dengan pesan `field is empty`. Validator ini dipakai ulang oleh keempat field, sehingga aturan field kosong tidak ditulis empat kali. Pesannya masih berbahasa Inggris, walaupun sebagian pesan regex di bawahnya berbahasa Indonesia.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Skema field kartu",
+          "lineRange": [
+            5,
+            21
+          ],
+          "explanation": "`paymentSchema` adalah `z.object` dengan empat kunci yang cocok dengan `register(...)` di halaman pembayaran. `nameOnCard` hanya menerima huruf dan spasi melalui pola `^[A-Za-z\\s]+$`. `cardNumber` harus berupa digit dan tepat 4 karakter, bukan 16 digit seperti kartu pada umumnya. `cvv` dan `validTHRU` hanya divalidasi sebagai digit; tidak ada aturan panjang atau format tanggal di berkas ini. Karena validator kosong dirangkai sebelum regex, input kosong lebih dulu ditangkap oleh pesan bersama.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Ekspor tipe turunan",
+          "lineRange": [
+            23,
+            23
+          ],
+          "explanation": "`PaymentSchema` diturunkan dari `z.infer<typeof paymentSchema>`. Ini menjaga tipe formulir tetap selaras dengan aturan validasi tanpa mendeklarasikan antarmuka terpisah. `usePayment.ts` mengimpor tipe ini sebagai parameter generik `useForm`.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/payment/hooks/usePayment.ts": {
+      "overview": "Berkas ini menyiapkan React Hook Form dengan resolver Zod untuk formulir pembayaran. Ia meneruskan `paymentSchema` agar error validasi otomatis muncul pada `formState.errors`. Fungsi yang diekspor bernama `PaymentFormValidation`, bukan `usePayment` seperti nama berkasnya. Tur 9 memakai hook ini sebagai contoh pemisahan aturan formulir dari komponen tampilan.",
+      "sections": [
+        {
+          "title": "Impor resolver dan skema",
+          "lineRange": [
+            1,
+            4
+          ],
+          "explanation": "Impor mencakup `zodResolver`, `useForm`, serta skema dan tipe dari `paymentSchema`. `zodResolver` menjadi jembatan antara aturan Zod dan mekanisme error React Hook Form. Tipe diimpor dalam pernyataan yang sama dengan nilai, tetapi penggunaannya hanya sebagai generik.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Inisialisasi formulir",
+          "lineRange": [
+            5,
+            13
+          ],
+          "explanation": "`PaymentFormValidation` memanggil `useForm<PaymentSchema>` dengan `resolver: zodResolver(paymentSchema)`. Semua metode (`register`, `handleSubmit`, `formState`, dan lain-lain) dikembalikan lewat spread object. Halaman `Payment.tsx` lalu mengonsumsinya seolah-olah memanggil hook bernama `use` sesuai konvensi React. Tidak ada state tambahan atau defaultValues yang ditetapkan di berkas ini.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/payment/components/PaymentMethods.tsx": {
+      "overview": "Komponen ini merender satu tombol pilihan metode pembayaran yang sepenuhnya dikendalikan oleh props. Status `selected` menentukan gaya visual dan atribut `aria-pressed`, sedangkan klik memanggil `onSelect` dengan `value`. Halaman pembayaran memakai komponen ini untuk pilihan kartu dan transfer bank. Tur 9 menyebutnya sebagai bagian dari antarmuka formulir pembayaran.",
+      "sections": [
+        {
+          "title": "Kontrak props",
+          "lineRange": [
+            1,
+            8
+          ],
+          "explanation": "Antarmuka `PaymentMethodsProps` mendefinisikan `label`, `value`, `selected`, dan `onSelect`. `onSelect` menerima string sehingga komponen tidak perlu tahu tipe `PaymentOption` milik halaman. Shape ini membuat satu komponen bisa dipakai berulang untuk beberapa metode.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Tombol dan gaya pilihan",
+          "lineRange": [
+            10,
+            33
+          ],
+          "explanation": "Komponen mengembalikan `button` dengan `type=\"button\"`, sehingga tidak mengirimkan formulir saat diklik. `onClick` meneruskan `value` ke `onSelect`. Template literal kelas memilih gaya biru ketika `selected` dan gaya abu-abu dengan hover ketika tidak dipilih. `aria-pressed={selected}` memberi informasi status tombol toggle kepada pembaca layar. Baris 30 masih berisi `span` ikon yang dikomentari, padahal props tidak memiliki field `icon`, sehingga berkas ini menyimpan sisa kode lama yang tidak aktif.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Ekspor default",
+          "lineRange": [
+            35,
+            36
+          ],
+          "explanation": "Komponen diekspor sebagai default export. Halaman `Payment.tsx` mengimpornya dengan nama `PaymentMethods`. Tidak ada barrel ekspor tambahan di berkas ini.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/payment/page/Payment.tsx": {
+      "overview": "Halaman ini menyatukan pilihan metode pembayaran dan empat field kartu dalam satu formulir. Validasi berasal dari `PaymentFormValidation`, dan submit yang berhasil hanya mengalihkan ke rute tiket dengan `userId` dari parameter URL. Tidak ada panggilan ke service order maupun gateway pembayaran di berkas ini. Tur 9 memakai halaman ini untuk menunjukkan bagaimana skema dan hook dipakai dari tampilan.",
+      "sections": [
+        {
+          "title": "Impor dan opsi pembayaran",
+          "lineRange": [
+            1,
             18
           ],
-          "explanation": "Creates a useForm instance with userSchema resolver and default values for fullName, identityNumber, email, gender, and tickets. Returns all form methods spread for convenient use in components.",
-          "tourOrder": 12
+          "explanation": "Impor mencakup `useState`, `useNavigate`, `useParams`, komponen bersama `Button` dan `InputField`, `PaymentMethods`, serta hook validasi. `PaymentOption` membatasi nilai menjadi `card` atau `bank`. Konstanta `PAYMENT_METHODS` menyimpan dua label yang kelak di-render sebagai tombol.",
+          "tourOrder": 9
+        },
+        {
+          "title": "State dan handler submit",
+          "lineRange": [
+            19,
+            37
+          ],
+          "explanation": "`useParams` mengambil `userId`, hook memberi `register`, `handleSubmit`, dan `formState`, sedangkan `useNavigate` disimpan dalam variabel `Navigate`. State `selected` dimulai dari `card` dan diubah lewat callback tombol. `onSubmit` adalah hasil `handleSubmit`, sehingga validasi Zod berjalan lebih dulu sebelum navigasi ke `/user/${userId}/ticket`. Beberapa baris di rentang ini masih berupa komentar lama tentang `GetUsers`, `localStorage`, dan pengecekan user; tidak ada kode aktif di dalamnya.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Formulir dan metode",
+          "lineRange": [
+            38,
+            52
+          ],
+          "explanation": "`main` membungkus satu `form` dengan handler `onSubmit`. `PAYMENT_METHODS` dipetakan menjadi komponen `PaymentMethods`, dengan `selected` dibandingkan terhadap state dan `onSelect` melakukan cast ke `PaymentOption`. Cast diperlukan karena komponen memancarkan string generik, sementara state halaman bertipe union.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Field kartu dan tombol bayar",
+          "lineRange": [
+            53,
+            78
+          ],
+          "explanation": "Empat `InputField` memakai `register` untuk `nameOnCard`, `cardNumber`, `cvv`, dan `validTHRU`. Pesan error diambil dari `formState.errors` sesuai kunci skema Zod. Prop `required` ditandai pada tiap field, sementara teks label masih memakai bahasa Inggris. Tombol `Button` memakai `type=\"submit\"` dan `onClick={onSubmit}`; karena tombol berada di dalam formulir, submit sudah dipicu oleh `type`, sehingga pemasangan `onClick` berpotensi menjalankan handler dua kali.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Penutup formulir dan ekspor",
+          "lineRange": [
+            79,
+            85
+          ],
+          "explanation": "Baris 79 sampai 81 menutup struktur `div`, `form`, dan `main`. Komponen kemudian ditutup dan diekspor default. Tidak ada penanganan error submit khusus di bagian ini karena error field sudah ditampilkan inline.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/orders/service/orderService.ts": {
+      "overview": "Service ini mengelola dua langkah inti pemesanan: membuat order dan menyelesaikan pembayaran simulasi. Keduanya memanggil fungsi Postgres lewat `supabase.rpc`, sehingga aturan transaksi berada di database. `createOrder` lebih dulu memastikan ada pengguna yang login sebelum memanggil RPC. Tur 10 menampilkan berkas ini sebagai penghubung antara data pembeli dan e-ticket.",
+      "sections": [
+        {
+          "title": "Impor dan kontrak input",
+          "lineRange": [
+            1,
+            19
+          ],
+          "explanation": "Impor mencakup `requireUserId`, tipe `BuyerInput` dan `OrderItemInput`, serta klien `supabase`. `CreateOrderInput` berisi `eventId`, array `items`, dan `buyer`. `CompletePaymentInput` berisi `orderId` dan metode `card` atau `bank`. `CreateOrderResult` menggambarkan bentuk baris yang diharapkan dari RPC, yaitu `order_id` dan `total_amount` dalam snake_case.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Buat order lewat RPC",
+          "lineRange": [
+            21,
+            41
+          ],
+          "explanation": "`createOrder` memanggil `requireUserId()` sebelum apa pun, sehingga order tidak dibuat tanpa pengguna aktif. Ia meneruskan parameter RPC dengan nama `p_event_id`, `p_items`, `p_buyer_name`, `p_buyer_email`, `p_identity_number`, dan `p_gender`. `items` dipetakan ulang supaya hanya `categoryId` dan `qty` yang dikirim. Bila Supabase mengembalikan error, error itu dilempar; bila array hasil kosong, fungsi melempar error buatan. Baris pertama hasil dipetakan ke `{ orderId, totalAmount }` agar pemanggil memakai nama camelCase.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Selesaikan pembayaran",
+          "lineRange": [
+            43,
+            54
+          ],
+          "explanation": "`completePayment` memanggil RPC `complete_payment` dengan `p_order_id` dan `p_payment_method`. Error dari Supabase dilempar langsung ke pemanggil, tanpa dibungkus pesan baru. Nilai `data` dikembalikan sebagai `ticketId` dengan penegasan tipe string. Tidak ada pemeriksaan `requireUserId` di fungsi ini, jadi keamanan bergantung pada kebijakan RLS dan implementasi RPC di database.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "features/tickets/service/ticketService.ts": {
+      "overview": "Service ini mengambil satu tiket berdasarkan `orderId` dari tabel `tickets`. Ia menerjemahkan nama kolom database snake_case menjadi model `OrderTicket` yang dipakai UI. Kasus tiket belum ada diterjemahkan menjadi `null`, bukan error. Tur 10 menempatkan berkas ini setelah alur order sebagai sumber data untuk kartu e-ticket dan kode QR.",
+      "sections": [
+        {
+          "title": "Tipe baris database",
+          "lineRange": [
+            1,
+            9
+          ],
+          "explanation": "Berkas mengimpor `OrderTicket` dan klien Supabase. `TicketRow` mendefinisikan empat kolom yang dibaca: `id`, `order_id`, `qr_code`, dan `issued_at`. Antarmuka ini berlaku lokal di service, sehingga perubahan skema tidak langsung bocor ke komponen.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Ambil tiket berdasarkan order",
+          "lineRange": [
+            11,
+            28
+          ],
+          "explanation": "`getTicketByOrderId` memilih empat kolom, memfilter dengan `.eq(\"order_id\", orderId)`, lalu memakai `.single()`. Karena `.single()` mengharapkan paling banyak satu baris, kombinasi filter dan kardinalitas ini menentukan hasil null atau objek. Kode `PGRST116` dari PostgREST berarti tidak ada baris, sehingga dikembalikan `null`. Error lain tetap dilempar supaya masalah akses atau jaringan tidak tersembunyi. Terakhir, data dicasting ke `TicketRow` dan dipetakan ke `id`, `orderId`, `qrCode`, dan `issuedAt`.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "components/QrPassCard.tsx": {
+      "overview": "Komponen kartu e-ticket yang menampilkan judul acara, subjudul, status, placeholder QR, dan kode tiket. Berada di pustaka bersama sehingga halaman tiket dapat memakai tampilan yang konsisten. Termasuk dalam langkah tur 10 tentang pemesanan dan e-ticket, tempat tiket digital disajikan kepada pengguna. Kode QR belum digambar sebagai QR asli; yang tampil adalah ikon `qr_code_2` plus teks kode bila tersedia.",
+      "sections": [
+        {
+          "title": "Impor dan Kontrak Props",
+          "lineRange": [
+            1,
+            9
+          ],
+          "explanation": "Baris 1 mengimpor helper `cn` dari alias `@/lib/utiils` untuk menggabungkan kelas Tailwind. Antarmuka `QrPassCardProps` mendefinisikan `title` wajib serta `subtitle`, `code`, `status`, dan `className` opsional. Props opsional membuat komponen bisa dipakai untuk kartu dengan atau tanpa kode QR lengkap. Kontrak ini sederhana karena komponen hanya menerima data tampilan, bukan objek tiket dari database.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Deklarasi Komponen",
+          "lineRange": [
+            11,
+            17
+          ],
+          "explanation": "Komponen dideklarasikan sebagai arrow function yang langsung melakukan destructuring props. Nilai `className` diberi default string kosong supaya pemanggilan `cn` selalu menerima nilai string. Pola ini menghindari percabangan saat menambahkan kelas dari pemanggil. Tidak ada state atau efek di sini, sehingga komponen murni bergantung pada props.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Struktur Kartu QR",
+          "lineRange": [
+            18,
+            32
+          ],
+          "explanation": "Wrapper memakai token desain seperti `border-line-soft`, `bg-surface-white`, dan `shadow-sm`, lalu memberi ruang internal `p-5`. Header memakai `justify-between` sehingga judul di kiri dan badge status di kanan; keduanya baru dirender bila propsnya ada. Area QR berupa kotak tinggi `h-40` berisi ikon Material Symbols, bukan QR code yang dihasilkan dari `code`. Teks `code` ditampilkan terpisah dengan font mono bila tersedia.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Ekspor Ganda",
+          "lineRange": [
+            33,
+            35
+          ],
+          "explanation": "Komponen diekspor dua kali: sebagai named export dan sebagai default export. Ini memberi fleksibilitas bagi pemanggil untuk memakai `import { QrPassCard }` maupun `import QrPassCard`. Keduanya merujuk ke fungsi yang sama, jadi tidak ada duplikasi implementasi.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "components/SummaryCard.tsx": {
+      "overview": "Kartu ringkasan generik untuk menampilkan daftar detail pesanan, total, dan tombol aksi. Komponen ini memakai `children` sehingga halaman pemesanan dapat mengisi sendiri baris-baris ringkasannya. Bersama `QrPassCard`, komponen ini menjadi bagian dari langkah tur 10 yang merangkai alur order sampai e-ticket. Semua bagian opsional kecuali `children`, sehingga satu komponen melayani beberapa konteks tampilan.",
+      "sections": [
+        {
+          "title": "Impor dan Kontrak Props",
+          "lineRange": [
+            1,
+            12
+          ],
+          "explanation": "`cn` diimpor untuk menggabungkan kelas, sementara `ReactNode` mengetik konten arbitrer yang disisipkan lewat `children`. Props `title`, `totalLabel`, `totalValue`, `actionLabel`, `onAction`, dan `className` semuanya opsional. Hanya `children` yang wajib karena itulah isi utama kartu. Kontrak ini memisahkan struktur kartu dari data spesifik pesanan.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Nilai Default Props",
+          "lineRange": [
+            14,
+            22
+          ],
+          "explanation": "Destructuring langsung menetapkan default `title = \"Ringkasan\"` dan `totalLabel = \"Total\"`. Default `className = \"\"` memastikan helper `cn` tidak menerima `undefined`. Callback `onAction` sengaja tidak diberi default; tombol hanya muncul bila `actionLabel` diisi. Pola ini membuat komponen aman dipakai tanpa konfigurasi lengkap.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Konten dan Total",
+          "lineRange": [
+            23,
+            32
+          ],
+          "explanation": "Wrapper luar memakai token yang sama dengan kartu lain, lalu judul dirender memakai `font-title text-title-lg`. `children` ditempatkan dalam kolom flex dengan jarak `gap-3` agar tiap baris ringkasan rapi. Blok total baru dirender bila `totalValue` ada dan dipisahkan dengan garis atas `border-t`. Label memakai font label, sedangkan nilai memakai font mono supaya angka mudah dibaca.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Bagian Aksi",
+          "lineRange": [
+            33,
+            41
+          ],
+          "explanation": "Tombol aksi muncul hanya ketika `actionLabel` diberikan. Atribut `type=\"button\"` mencegah tombol mengirim formulir induk secara tidak sengaja. Klik tombol diteruskan ke `onAction` yang disediakan pemanggil, sehingga komponen tidak menentukan navigasi sendiri. Gaya hover memakai transisi warna dari `bg-brand-blue` ke `bg-brand-deep`.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Ekspor Ganda",
+          "lineRange": [
+            43,
+            46
+          ],
+          "explanation": "Baris terakhir mengekspor `SummaryCard` sebagai named export sekaligus default export. Pemanggil dapat memilih gaya impor yang sesuai dengan konvensi fiturnya. Tidak ada logika tambahan sehingga ekspor ini murni soal kompatibilitas konsumsi.",
+          "tourOrder": 10
         }
       ]
     },
     "features/users/schema/userSchema.ts": {
-      "overview": "Zod validation schema for the buyer registration form. It defines reusable nonempty string rules, then constrains name, identity number, email, gender, and ticket quantities. It is reused by useUserRegister and TicketCard, and belongs to the buyer registration and tickets tour step.",
+      "overview": "Skema Zod yang menetapkan aturan data pendaftaran pengguna. Dipakai oleh `useUserRegister` melalui `zodResolver` untuk memvalidasi formulir sebelum data pembeli dipakai alur order. Langkah tur 11 menjadikan skema ini sebagai titik awal input pengguna. Tipe `UserSchema` diinference dari skema sehingga form dan validator tidak bisa saling menyimpang.",
       "sections": [
         {
-          "title": "Validation building blocks",
+          "title": "Pesan Error Dasar",
           "lineRange": [
             1,
             4
           ],
-          "explanation": "Imports z from zod and declares two shared nonempty string validators with distinct error messages. Splitting generic text and dropdown validation lets the object schema reuse rules while still giving field-appropriate messages.",
-          "tourOrder": 12
+          "explanation": "Baris 1 mengimpor `z` dari Zod. Dua konstanta kecil dibuat untuk pesan `_string` kosong: `errorMessageInput` untuk input teks biasa dan `errorMessageOption` untuk pilihan dropdown. Keduanya memakai `nonempty` agar nilai kosong ditolak lebih awal. Pemisahan ini menghindari pengulangan pesan error di tiap field.",
+          "tourOrder": 11
         },
         {
-          "title": "Buyer object schema",
+          "title": "Skema Pengguna",
           "lineRange": [
             6,
             16
           ],
-          "explanation": "Defines userSchema with field-level constraints: fullName allows letters and spaces only, identityNumber accepts digits only, email must be a valid address, gender uses the option validator, and tickets is a record of numeric quantities. Regex and built-in email checks encode the input contract before data reaches services, so invalid form values are caught at the UI boundary.",
-          "tourOrder": 12
+          "explanation": "`userSchema` adalah objek dengan lima field. `fullName` hanya boleh huruf dan spasi, `identityNumber` hanya angka, dan `email` memakai validator email bawaan Zod. `gender` memakai `errorMessageOption` sehingga wajib dipilih. `tickets` bertipe `z.record(z.number())`, yaitu peta jumlah tiket per tribun; ini selaras dengan `TicketCard` yang mengubah jumlah lewat callback.",
+          "tourOrder": 11
         },
         {
-          "title": "Inferred TypeScript type",
+          "title": "Tipe Turunan",
           "lineRange": [
             18,
             18
           ],
-          "explanation": "Exports UserSchema via z.infer so TypeScript consumers derive their type from the runtime schema instead of maintaining a separate interface. This keeps validation rules and compile-time types in sync.",
+          "explanation": "`UserSchema` diperoleh dari `z.infer<typeof userSchema>`, sehingga tipe TypeScript mengikuti skema runtime secara otomatis. Jika aturan field berubah, tipe form ikut berubah tanpa sunting manual. Hook `useUserRegister` memakai tipe ini sebagai generic `useForm`. Ini menjaga validasi dan tipe tetap satu sumber kebenaran.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/users/hooks/useUserRegister.ts": {
+      "overview": "Hook kustom yang menyiapkan React Hook Form untuk formulir pendaftaran pengguna. Hook ini menjembatani `userSchema` memakai `zodResolver` dan mengembalikan seluruh methods form ke komponen. Langkah tur 11 menempatkannya sebagai lapisan state formulir sebelum data dikirim ke order. Tidak ada logika submit di sini; keputusan akhir tetap di halaman.",
+      "sections": [
+        {
+          "title": "Impor dan Resolver",
+          "lineRange": [
+            1,
+            3
+          ],
+          "explanation": "Baris 1-2 mengimpor `zodResolver` dan `useForm`. Baris 3 mengimpor skema beserta tipe turunannya dari `../schema/userSchema`. Pemakaian resolver berarti aturan validasi tinggal di satu file skema, bukan tersebar di komponen. Ini mengikuti konvensi proyek yang memisahkan validasi Zod dari tampilan.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Inisialisasi Formulir",
+          "lineRange": [
+            5,
+            15
+          ],
+          "explanation": "`useForm<UserSchema>` membuat state formulir bertipe skema pengguna. Opsi `resolver: zodResolver(userSchema)` menyambungkan error Zod ke `formState.errors`. `defaultValues` mengisi semua field dengan string kosong dan `tickets` dengan objek kosong. Nilai awal yang eksplisit mencegah input terkontrol menjadi `undefined` saat pertama render.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Ekspor Methods",
+          "lineRange": [
+            17,
+            18
+          ],
+          "explanation": "Hook mengembalikan salinan seluruh methods dengan spread `{ ...methods }`. Pemanggil mendapat `register`, `handleSubmit`, `control`, dan `formState` tanpa hook perlu memilihnya satu per satu. Karena spread dibuat baru, penambahan methods di masa depan otomatis tersedia. Tidak ada state tambahan yang dikelola hook ini.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/users/components/TicketCard.tsx": {
+      "overview": "Kartu baris tribun dengan harga dan kontrol jumlah tiket ber tombol plus/minus. Komponen ini dipakai dalam alur pendaftaran pengguna pada langkah tur 11 untuk menyusun data `tickets`. Perubahan jumlah tidak disimpan internal, melainkan diteruskan lewat `onCountChange`. Ada sisa kode legacy: impor API dikomentari dan props `name`/`control` diterima tetapi tidak dipakai.",
+      "sections": [
+        {
+          "title": "Impor dan Tipe Props",
+          "lineRange": [
+            1,
+            4
+          ],
+          "explanation": "Baris 1 adalah impor lama `GetDatas` yang sudah dikomentari dan tidak berpengaruh. Baris 2-4 mengimpor `React`, tipe `Control` dari React Hook Form, serta `UserSchema`. Kehadiran `Control` menunjukkan komponen ini awalnya direncanakan terhubung langsung ke form. Saat ini callback saja yang dipakai untuk memperbarui jumlah.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Antarmuka dan Parameter",
+          "lineRange": [
+            6,
+            20
+          ],
+          "explanation": "`TicketCardProps` mendefinisikan `name`, `tribune`, `price`, `count`, `control`, dan `onCountChange`. Destructuring pada komponen hanya mengambil `tribune`, `price`, `count`, dan `onCountChange`, sehingga `name` dan `control` efektif diabaikan. Ini gotcha penting saat membaca kode: tipe props lebih luas daripada perilaku nyata. Komponen dinterval arrow function yang dibungkus `React.FC`.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Penanganan Jumlah Tiket",
+          "lineRange": [
+            21,
+            27
+          ],
+          "explanation": "`handleDecrease` hanya memanggil `onCountChange` jika `count > 0`, jadi jumlah tidak pernah negatif. `handleIncrease` langsung menaikkan `count` tanpa batas atas. Keduanya tidak menyimpan state lokal; pemanggil yang memiliki state bertanggung jawab memperbaruinya. Pola ini membuat kartu menjadi komponen terkontrol.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Tampilan Kartu",
+          "lineRange": [
+            29,
+            59
+          ],
+          "explanation": "Marker `tribune` dan `price` ditampilkan pada kolom kiri memakai warna heksadesimal hardcoded, bukan token dari `DESIGN.md`. Kolom kanan berisi grup tombol dengan `select-none` agar teks jumlah tidak tersorot saat diklik berulang. Kedua tombol memakai `type=\"button\"` supaya tidak mengirim formulir induk. Kelas `hover:bg-gray-100` memberi umpan balik visual tanpa mengubah data.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Ekspor Komponen",
+          "lineRange": [
+            60,
+            62
+          ],
+          "explanation": "Baris terakhir hanya mengekspor `TicketCard` sebagai default export. Tidak ada named export untuk komponen ini. Konsumen harus memakai `import TicketCard from ...` sesuai pola lama berkas ini.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/tickets/component/Ticket.tsx": {
+      "overview": "Berkas tiket lama yang seluruh isinya dikomentari. Tidak ada komponen, fungsi, atau ekspor aktif, sehingga mengimpor berkas ini tidak menghasilkan apa pun. Langkah tur 12 menyebutnya sebagai jejak kode legacy yang sebaiknya tidak dijadikan referensi alur aktif. Versi e-ticket yang dipakai sekarang ada di `components/QrPassCard.tsx` lewat alur `orderService` dan `ticketService`.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [
+            1,
+            4
+          ],
+          "explanation": "Keempat baris pertama adalah komentar untuk impor `useEffect`, `useMatchData`, dan `useUsers`. Karena dikomentari, tidak ada dependensi yang benar-benar dimuat. Impor `useUsers` sendiri merujuk ke hook yang juga seluruhnya dikomentari. Ini menandakan berkas tidak lagi berpartisipasi dalam build aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Komponen dan Pencarian Data",
+          "lineRange": [
+            5,
+            27
+          ],
+          "explanation": "Blok ini berisi komponen `Ticket` versi lama yang juga dikomentari. Logikanya dulu mengambil `selectedMatchId` dan `selectedUserId` dari `sessionStorage`, lalu mencari kecocokan di `matches` dan `userData`. `useEffect` dipakai untuk memanggil `window.print()` khi kedua data tersedia. Guard `if (!match || !user)` menampilkan pesan jika data tidak ditemukan; semuanya kini hanya teks komentar.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Tampilan Tiket Nonaktif",
+          "lineRange": [
+            28,
+            80
+          ],
+          "explanation": "Bagian ini memuat markup tiket cetak lama: judul `Soccer Match Ticket`, nama tim, tanggal, waktu, stadion, kursi, dan nomor tiket. Semua baris adalah komentar, termasuk ekspresi JSX yang tersemat di dalam komentar bertingkat. Tidak ada token desain proyek yang dipakai di sini; warna memakai gradien dan kelas Tailwind langsung. Membacanya sebagai contoh implementasi bisa menyesatkan.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Baris Ekspor Nonaktif",
+          "lineRange": [
+            81,
+            82
+          ],
+          "explanation": "`export default Ticket;` juga berada di dalam komentar. Akibatnya modul ini tidak mengekspor nilai apa pun. Jika ada kode yang mencoba mengimpornya, hasilnya bukan komponen. Riwayat git lebih tepat dipakai kalau ingin melihat versi lama yang masih berfungsi.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/service/userServices.ts": {
+      "overview": "Lapisan service lama untuk mendaftarkan dan mengambil pengguna yang seluruhnya dikomentari. Tidak ada fungsi aktif yang diekspor, sehingga tidak bisa dipanggil dari halaman maupun hook. Langkah tur 12 mengelompokkannya sebagai kode legacy bersama hook dan halaman pendaftaran lama. Alur aktif kini memakai Supabase Auth dan RPC pada layanan orders, bukan service ini.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [
+            1,
+            1
+          ],
+          "explanation": "Satu-satunya baris awal adalah komentar impor `UserPayload` dari `../types/userPayload`. Karena dikomentari, tipe tersebut tidak tersedia di modul ini. Menjadi petunjuk bahwa berkas tidak dirawat bersama kontrak tipe aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Fungsi registerUser Nonaktif",
+          "lineRange": [
+            3,
+            11
+          ],
+          "explanation": "Blok berisi `registerUser` lama dengan pola `try`/`catch` dan `console.log` saat gagal. Perlu dicatat bahwa pemanggilan `await .post<UserPayload>(\"/users\", data)` bahkan tidak memiliki objek sebelum titik, sehingga tidak akan valid bila sekadar di-uncomment. Ini bukan contoh service yang bisa dipakai ulang. Kini pembuatan data pembeli ditangani lewat RPC Supabase di `orderService`.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Fungsi getUsers Nonaktif",
+          "lineRange": [
+            12,
+            19
+          ],
+          "explanation": "Blok kedua berisi `getUsers` lama yang memanggil `.get(\"/users\")` di dalam `try`/`catch`. Sama seperti fungsi sebelumnya, pemanggilan tidak valid karena tidak ada receiver. Tidak ada nilai yang dikembalikan secara eksplisit pada jalur error. Seluruh blok tetap dikomentari agar tidak mengganggu kompilasi.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/hooks/useUsers.ts": {
+      "overview": "Hook lama untuk mengambil daftar pengguna, seluruhnya dikomentari. Tidak ada state, efek, atau nilai kembalian yang aktif pada runtime. Tur langkah 12 menyebutnya sebagai bagian dari jejak legacy yang sebaiknya dibaca hanya untuk konteks historis. Status sesi aktif kini berasal dari `hooks/useSession.ts`, bukan hook ini.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [
+            1,
+            3
+          ],
+          "explanation": "Tiga baris pertama mengomentari impor `useEffect`, `useState`, `getUsers`, dan tipe `User`. Karena tidak diimpor, tidak ada ketergantungan ke service lama. Ini mengonfirmasi berkas tidak terhubung ke lapisan data aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Hook Nonaktif",
+          "lineRange": [
+            5,
+            21
+          ],
+          "explanation": "Blok komentar menggambarkan hook dengan state `userData` dan `useEffect` yang memanggil `fetchUsers` sekali saat mount. Data hasil `getUsers()` disimpan bila truthy, dan error hanya dicetak ke konsol. Nilai kembalian berupa `{ userData }` juga ikut dikomentari. Tidak ada ekspor aktif, jadi berkas ini aman diabaikan saat menelusuri alur aplikasi.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "services/userService.ts": {
+      "overview": "Berkas service generik lama di folder `src/services`, bukan folder fitur. Seluruh implementasinya dikomentari dan tidak mengekspor apa pun. Langkah tur 12 memasukkannya ke dalam kumpulan kode legacy bersama `userServices.ts`, `useUsers.ts`, dan `RegisterForm.tsx`. Pola aktif proyek meletakkan akses data di `src/features/<fitur>/service` yang memanggil Supabase.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [
+            1,
+            1
+          ],
+          "explanation": "Baris pertama mengomentari impor `useEffect` dan `useState` dari React. Keduanya tidak benar-benar diimpor. Karena seluruh berkas komentar, tidak ada efek samping saat modul dibaca.",
+          "tourOrder": 12
+        },
+        {
+          "title": "PostDatas Nonaktif",
+          "lineRange": [
+            3,
+            23
+          ],
+          "explanation": "Blok ini menggambarkan hook `PostDatas` lama dengan state `userFormDatas` dan fungsi `postUserDatas`. Fungsi tersebut dulu memanggil `axiosInstance.post<UserDatas>(\"/users\", data)` dan mengembalikan `null` saat gagal. Baik state maupun fungsi berada di dalam komentar. Hilangnya impor `axiosInstance` dan tipe `UserDatas` membuat blok ini tidak bisa dijalankan begitu saja.",
+          "tourOrder": 12
+        },
+        {
+          "title": "GetUsers Nonaktif",
+          "lineRange": [
+            25,
+            41
+          ],
+          "explanation": "Blok kedua menggambarkan `GetUsers` dengan state array `userDatas` dan `useEffect` yang mengambil data sekali saat mount. Hasil `axiosInstance.get` dulu disimpan ke state, sementara error hanya dicetak dengan `console.error`. Semua baris tetap dikomentari sehingga tidak ada permintaan jaringan dari berkas ini. Ini contoh pola lama yang sudah digantikan service berbasis Supabase.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/page/RegisterForm.tsx": {
+      "overview": "Halaman formulir pendaftaran pengguna versi lama yang seluruh implementasinya dikomentari. Dulunya halaman ini menggabungkan pilihan tribun, data pembeli, dan navigasi ke pembayaran. Langkah tur 12 menyebutnya sebagai jejak kode legacy karena tidak ada komponen aktif yang diekspor. Alur aktif sekarang memisahkan pendaftaran/auth dari formulir pemesanan yang memakai Supabase.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [
+            1,
+            8
+          ],
+          "explanation": "Delapan baris pertama mengomentari impor `useState`, `useNavigate`, komponen UI, `useMatchData`, `TicketCard`, `useUserRegister`, dan `registerUser`. Karena dikomentari, tidak ada dependensi yang dimuat. Tumpukan impor ini menunjukkan bagaimana halaman lama menggabungkan banyak lapisan dalam satu berkas.",
+          "tourOrder": 12
+        },
+        {
+          "title": "State dan Turunan Tribun",
+          "lineRange": [
+            9,
+            29
+          ],
+          "explanation": "Blok komentar ini mendefinisikan state `ticketCounts` berbentuk peta jumlah per tribun. Hook `useUserRegister` dulu dipakai untuk mendapatkan `register`, `handleSubmit`, `formState`, dan `control`. `selectedMatch` dicari dari `matchId` di `sessionStorage`, lalu `tribunList` diambil dari `Object.entries(selectedMatch.tickets[0])`. Callback `onTicketCountChange` memperbarui state dengan spread objek sebelumnya.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Alur Submit Nonaktif",
+          "lineRange": [
+            30,
+            45
+          ],
+          "explanation": "`onSubmit` lama menggabungkan nilai form dengan `ticketCounts` menjadi `payload`, lalu memanggil `registerUser`. Jika gagal, kode memakai `alert(\"gagal\")`, yang bertentangan dengan konvensi proyek sekarang yang memakai komponen `Alerts`. Jika berhasil, kode menavigasi ke rute pembayaran lama dan menyimpan `selectedUserId` di `sessionStorage`. Semua baris adalah komentar, termasuk baris `console.log` yang juga dinonaktifkan.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Daftar Kartu Tiket",
+          "lineRange": [
+            47,
+            62
+          ],
+          "explanation": "Bagian ini menggambarkan `form` dengan `FormField` yang memetakan `tribunList` ke komponen `TicketCard`. Setiap kartu menerima `key`, `name`, `price`, `control`, `tribune`, `count`, dan callback per tribun. `count` diambil dari state dengan default `0`. Karena dikomentari, tidak ada kartu yang dirender dari berkas ini.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Formulir Pembeli Nonaktif",
+          "lineRange": [
+            63,
+            96
+          ],
+          "explanation": "Blok ini berisi field lama untuk nama lengkap, jenis kelamin, nomor identitas, dan email. Tiap field menghubungkan `register(...)` dari React Hook Form dengan `errorMessage` dari `formState.errors`. Dropdown jenis kelamin memakai dua opsi statis, sedangkan tombol submit memakai kelas warna lama. Sebagai komentar, field-field ini tidak akan pernah muncul di UI aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Penutup Formulir dan Ekspor",
+          "lineRange": [
+            97,
+            102
+          ],
+          "explanation": "Enam baris terakhir menutup struktur `form`, `main`, dan komponen dalam bentuk komentar. Baris 102 juga mengomentari `export default RegisterForm`. Akibatnya modul tidak mengekspor komponen sama sekali. Ini menutup bukti bahwa berkas tergolong kode mati yang disimpan untuk referensi historis.",
           "tourOrder": 12
         }
       ]
     },
     "features/matches/components/matchesProps.ts": {
-      "overview": "Defines the MatchCardProps interface carrying an optional onClick handler for match cards.",
+      "overview": "Deklarasi tipe TypeScript untuk properti komponen kartu pertandingan yang dipakai oleh modul tampilan.",
       "sections": []
     },
-    "components/CTABanner.tsx": {
-      "overview": "Call-to-action banner prompting users to book tickets.",
+    "components/Badge.tsx": {
+      "overview": "Komponen badge ringkas dengan beberapa varian warna untuk menandai status atau kategori.",
       "sections": []
     },
-    "components/Dropdown.tsx": {
-      "overview": "Form dropdown select integrated with react-hook-form registration and error display.",
-      "sections": []
-    },
-    "components/FeatureCard.tsx": {
-      "overview": "Card displaying a feature icon, title, and description.",
+    "components/Drawer.tsx": {
+      "overview": "Komponen panel geser (drawer) dengan judul, konten, dan callback penutupan untuk menampilkan detail tanpa mengganti halaman.",
       "sections": []
     },
     "components/Footer.tsx": {
-      "overview": "Site footer with copyright and footer links.",
+      "overview": "Komponen footer situs yang menampilkan informasi dan tautan navigasi pada bagian bawah halaman.",
       "sections": []
     },
     "components/FooterLinks.tsx": {
-      "overview": "Navigation links list for the footer.",
+      "overview": "Komponen ringkas yang merender daftar tautan footer dari sebuah array data.",
       "sections": []
     },
-    "components/Navbar.tsx": {
-      "overview": "Sticky navigation bar with route links and auth buttons.",
+    "components/RadioSelector.tsx": {
+      "overview": "Komponen pemilih radio dengan daftar opsi, nilai terpilih, dan callback perubahan untuk pilihan tunggal.",
       "sections": []
     },
-    "components/ScheduleCard.tsx": {
-      "overview": "Card displaying event schedule details with badge and detail button.",
-      "sections": []
-    },
-    "features/tickets/component/Ticket.tsx": {
-      "overview": "Legacy ticket display component currently commented out.",
-      "sections": []
-    },
-    "features/users/hooks/useUsers.ts": {
-      "overview": "Legacy hook for fetching users currently commented out.",
-      "sections": []
-    },
-    "features/users/page/RegisterForm.tsx": {
-      "overview": "Legacy registration form currently commented out.",
-      "sections": []
-    },
-    "features/users/service/userServices.ts": {
-      "overview": "Legacy user registration service currently commented out.",
+    "components/Tabs.tsx": {
+      "overview": "Komponen tab dengan daftar item, id aktif, dan callback pergantian untuk membagi konten menjadi beberapa panel.",
       "sections": []
     },
     "features/users/types/userPayload.d.ts": {
-      "overview": "UserPayload interface for registration data.",
+      "overview": "Deklarasi tipe UserPayload untuk data pendaftaran pengguna, termasuk jumlah tiket per tribun.",
       "sections": []
     },
     "hooks/useCounter.ts": {
-      "overview": "React hook managing a counter state with increment and decrement helpers.",
-      "sections": []
-    },
-    "services/userService.ts": {
-      "overview": "Legacy file containing only commented-out user service hook implementations.",
+      "overview": "Hook React sederhana untuk menghitung nilai dengan fungsi naik dan turun; berfungsi sebagai utilitas lokal atau contoh.",
       "sections": []
     },
     "vite-env.d.ts": {
-      "overview": "TypeScript reference to Vite client types for import.meta.env support.",
+      "overview": "Deklarasi tipe ambient yang memuat referensi vite/client untuk dukungan TypeScript pada aset dan import.meta.env.",
       "sections": []
     }
   }

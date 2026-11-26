@@ -1,0 +1,217 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "components/Button.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "Button",
+          "startLine": 19,
+          "endLine": 56,
+          "params": [
+            "{\n  label,\n  children,\n  variant = \"primary\",\n  icon,\n  className = \"\",\n  type = \"button\",\n  size = \"md\",\n  ...props\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Button",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Button",
+          "callee": "cn",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/CardAction.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 102,
+      "functions": [
+        {
+          "name": "CardAction",
+          "startLine": 19,
+          "endLine": 104,
+          "params": [
+            "{\r\n  media,\r\n  category,\r\n  status,\r\n  date,\r\n  title,\r\n  location,\r\n  price,\r\n  actionLabel = \"Pilih Kursi\",\r\n  onAction,\r\n  disabled = false,\r\n  className = \"\",\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CardAction",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CardAction",
+          "callee": "cn",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CardAction",
+          "callee": "cn",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Navbar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "Navbar",
+          "startLine": 8,
+          "endLine": 70,
+          "params": [
+            "{ user }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Navbar",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Navbar",
+          "callee": "useNavigate",
+          "lineNumber": 9
+        },
+        {
+          "caller": "Navbar",
+          "callee": "navigate",
+          "lineNumber": 15
+        },
+        {
+          "caller": "Navbar",
+          "callee": "navigate",
+          "lineNumber": 30
+        },
+        {
+          "caller": "Navbar",
+          "callee": "navigate",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Navbar",
+          "callee": "navigate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Navbar",
+          "callee": "navigate",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Searchbar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "Searchbar",
+          "startLine": 10,
+          "endLine": 41,
+          "params": [
+            "{\n  placeholder = \"Placeholder pencarian...\",\n  onSearch,\n  className = \"\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Searchbar",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Searchbar",
+          "callee": "e.preventDefault",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Searchbar",
+          "callee": "new FormData(e.currentTarget).get(\"q\")?.toString",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Searchbar",
+          "callee": "new FormData(e.currentTarget).get",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Searchbar",
+          "callee": "onSearch",
+          "lineNumber": 21
+        },
+        {
+          "caller": "Searchbar",
+          "callee": "cn",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

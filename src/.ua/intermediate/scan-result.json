@@ -14,13 +14,13 @@
     {
       "path": "App.tsx",
       "language": "typescript",
-      "sizeLines": 29,
+      "sizeLines": 28,
       "fileCategory": "code"
     },
     {
       "path": "app.css",
       "language": "css",
-      "sizeLines": 158,
+      "sizeLines": 223,
       "fileCategory": "markup"
     },
     {
@@ -30,39 +30,39 @@
       "fileCategory": "code"
     },
     {
-      "path": "components/Button.tsx",
+      "path": "components/Badge.tsx",
       "language": "typescript",
-      "sizeLines": 32,
+      "sizeLines": 33,
       "fileCategory": "code"
     },
     {
-      "path": "components/CTABanner.tsx",
-      "language": "typescript",
-      "sizeLines": 24,
-      "fileCategory": "code"
-    },
-    {
-      "path": "components/Dropdown.tsx",
-      "language": "typescript",
-      "sizeLines": 47,
-      "fileCategory": "code"
-    },
-    {
-      "path": "components/FeatureCard.tsx",
-      "language": "typescript",
-      "sizeLines": 18,
-      "fileCategory": "code"
-    },
-    {
-      "path": "components/Features.tsx",
+      "path": "components/Banner.tsx",
       "language": "typescript",
       "sizeLines": 51,
       "fileCategory": "code"
     },
     {
+      "path": "components/Button.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/CardAction.tsx",
+      "language": "typescript",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Drawer.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
       "path": "components/Footer.tsx",
       "language": "typescript",
-      "sizeLines": 13,
+      "sizeLines": 24,
       "fileCategory": "code"
     },
     {
@@ -72,39 +72,57 @@
       "fileCategory": "code"
     },
     {
-      "path": "components/Hero.tsx",
-      "language": "typescript",
-      "sizeLines": 45,
-      "fileCategory": "code"
-    },
-    {
       "path": "components/InputField.tsx",
       "language": "typescript",
-      "sizeLines": 89,
+      "sizeLines": 79,
       "fileCategory": "code"
     },
     {
       "path": "components/Navbar.tsx",
       "language": "typescript",
-      "sizeLines": 63,
+      "sizeLines": 70,
       "fileCategory": "code"
     },
     {
-      "path": "components/ScheduleCard.tsx",
+      "path": "components/QrPassCard.tsx",
       "language": "typescript",
-      "sizeLines": 39,
+      "sizeLines": 35,
       "fileCategory": "code"
     },
     {
-      "path": "components/SchedulePreview.tsx",
+      "path": "components/RadioSelector.tsx",
       "language": "typescript",
-      "sizeLines": 53,
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Searchbar.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Stepper.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/SummaryCard.tsx",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Tabs.tsx",
+      "language": "typescript",
+      "sizeLines": 48,
       "fileCategory": "code"
     },
     {
       "path": "components/index.ts",
       "language": "typescript",
-      "sizeLines": 13,
+      "sizeLines": 16,
       "fileCategory": "code"
     },
     {
@@ -116,7 +134,7 @@
     {
       "path": "features/auth/page/LoginPage.tsx",
       "language": "typescript",
-      "sizeLines": 188,
+      "sizeLines": 199,
       "fileCategory": "code"
     },
     {
@@ -152,7 +170,7 @@
     {
       "path": "features/home/page/Home.tsx",
       "language": "typescript",
-      "sizeLines": 41,
+      "sizeLines": 368,
       "fileCategory": "code"
     },
     {
@@ -330,7 +348,7 @@
       "fileCategory": "code"
     }
   ],
-  "totalFiles": 53,
+  "totalFiles": 56,
   "filteredByIgnore": 0,
   "estimatedComplexity": "moderate",
   "importMap": {
@@ -343,26 +361,27 @@
     ],
     "app.css": [],
     "components/Alerts.tsx": [],
+    "components/Badge.tsx": [],
+    "components/Banner.tsx": [],
     "components/Button.tsx": [],
-    "components/CTABanner.tsx": [],
-    "components/Dropdown.tsx": [],
-    "components/FeatureCard.tsx": [],
-    "components/Features.tsx": [
-      "components/FeatureCard.tsx"
-    ],
-    "components/Footer.tsx": [
-      "components/FooterLinks.tsx"
-    ],
-    "components/FooterLinks.tsx": [],
-    "components/Hero.tsx": [
+    "components/CardAction.tsx": [
       "components/Button.tsx"
     ],
+    "components/Drawer.tsx": [],
+    "components/Footer.tsx": [],
+    "components/FooterLinks.tsx": [],
     "components/InputField.tsx": [],
-    "components/Navbar.tsx": [],
-    "components/ScheduleCard.tsx": [],
-    "components/SchedulePreview.tsx": [
-      "components/ScheduleCard.tsx"
+    "components/Navbar.tsx": [
+      "components/Button.tsx"
     ],
+    "components/QrPassCard.tsx": [],
+    "components/RadioSelector.tsx": [],
+    "components/Searchbar.tsx": [
+      "components/Button.tsx"
+    ],
+    "components/Stepper.tsx": [],
+    "components/SummaryCard.tsx": [],
+    "components/Tabs.tsx": [],
     "components/index.ts": [],
     "features/auth/page/AuthCallbackPage.tsx": [],
     "features/auth/page/LoginPage.tsx": [],
@@ -427,5 +446,6 @@
     "main.tsx": [],
     "services/userService.ts": [],
     "vite-env.d.ts": []
-  }
+  },
+  "contentDigest": "1334c3dc112a49c3a00b3db98ea716c4857533e0f825b1772b0e932a3db28bab"
 }

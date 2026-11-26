@@ -1,0 +1,4 @@
+[
+  "features/auth/page/SignupPage.tsx",
+  "features/home/page/Home.tsx"
+]

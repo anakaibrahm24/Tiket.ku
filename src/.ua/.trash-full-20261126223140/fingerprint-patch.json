@@ -1,0 +1,821 @@
+{
+  "version": "1.0.0",
+  "baseCommit": "f380ff666b3b2f38a3363d50f0dd6493bbba3328",
+  "headCommit": "9cb949b672fe4c04e42f752ef5e51820da75bf07",
+  "generatedAt": "2026-11-26T15:18:59.333Z",
+  "files": {
+    "App.tsx": {
+      "filePath": "App.tsx",
+      "contentHash": "59da5a0dd1026846df7ede7806adfefd5551bffbba1b21dee94ee17a14092251",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": false,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Route",
+            "Router",
+            "Routes"
+          ]
+        },
+        {
+          "source": "./features/home/page/Home",
+          "specifiers": [
+            "HomePage"
+          ]
+        },
+        {
+          "source": "./features/matches/page/Matches",
+          "specifiers": [
+            "Matches"
+          ]
+        },
+        {
+          "source": "./features/auth/page/LoginPage",
+          "specifiers": [
+            "LoginPage"
+          ]
+        },
+        {
+          "source": "./features/auth/page/SignupPage",
+          "specifiers": [
+            "SignupPage"
+          ]
+        },
+        {
+          "source": "./features/auth/page/AuthCallbackPage",
+          "specifiers": [
+            "AuthCallbackPage"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "app.css": {
+      "filePath": "app.css",
+      "contentHash": "86e1673367bd9be18aafa6d510c0899ee3befc5d64b9f61390b4817c3949dd04",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 224,
+      "hasStructuralAnalysis": false
+    },
+    "components/Badge.tsx": {
+      "filePath": "components/Badge.tsx",
+      "contentHash": "4b3c2aa039f61f4806e29782027f4f037662b01d046fa64fec306fdbb33e38fa",
+      "functions": [
+        {
+          "name": "Badge",
+          "params": [
+            "{ children, variant = \"neutral\", className = \"\" }"
+          ],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Badge"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "components/Banner.tsx": {
+      "filePath": "components/Banner.tsx",
+      "contentHash": "bc782a286cfd097709077abe866b225ed0dd3f641a69139f4325a24a50d8acbf",
+      "functions": [
+        {
+          "name": "Banner",
+          "params": [
+            "{\n  title,\n  description,\n  code,\n  icon = \"verified\",\n  className = \"\",\n  children,\n}"
+          ],
+          "exported": true,
+          "lineCount": 37
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "Banner"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "components/Button.tsx": {
+      "filePath": "components/Button.tsx",
+      "contentHash": "0edd6714e79a7edc11c7c34797f46f3d1d376ca725cfeb5e8a6772b6e992c366",
+      "functions": [
+        {
+          "name": "Button",
+          "params": [
+            "{\n  label,\n  children,\n  variant = \"primary\",\n  icon,\n  className = \"\",\n  type = \"button\",\n  size = \"md\",\n  ...props\n}"
+          ],
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ButtonHTMLAttributes",
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "Button"
+      ],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "components/CardAction.tsx": {
+      "filePath": "components/CardAction.tsx",
+      "contentHash": "7b1f55016bbd34e85145d3796d533152317e2b40b40552d2f4d1ae6f339992e8",
+      "functions": [
+        {
+          "name": "CardAction",
+          "params": [
+            "{\r\n  media,\r\n  category,\r\n  status,\r\n  date,\r\n  title,\r\n  location,\r\n  price,\r\n  actionLabel = \"Pilih Kursi\",\r\n  onAction,\r\n  disabled = false,\r\n  className = \"\",\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 86
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "CardAction"
+      ],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "components/Drawer.tsx": {
+      "filePath": "components/Drawer.tsx",
+      "contentHash": "6e38ed2b5740d04b2d5932d3c8a69c0b1a286e999c3d56dfd99560fef8d5666c",
+      "functions": [
+        {
+          "name": "Drawer",
+          "params": [
+            "{ open, title, children, onClose, className = \"\" }"
+          ],
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "Drawer"
+      ],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "components/Footer.tsx": {
+      "filePath": "components/Footer.tsx",
+      "contentHash": "59e6b635ec1b4574bb5d4e7d5cf06a2cf50b07d9b8fd6c301d6c190c7951a75f",
+      "functions": [
+        {
+          "name": "Footer",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "Footer"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "components/FooterLinks.tsx": {
+      "filePath": "components/FooterLinks.tsx",
+      "contentHash": "3dbcd02cb020cb5ebfec11137677bbb74efd0c71822065dca5984a7e2dbc7833",
+      "functions": [
+        {
+          "name": "FooterLinks",
+          "params": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "FooterLinks"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "components/InputField.tsx": {
+      "filePath": "components/InputField.tsx",
+      "contentHash": "745d3bc1576b08b4d47fe8a62b1892872cb308bddda63314b0632367ef0d303f",
+      "functions": [
+        {
+          "name": "InputField",
+          "params": [
+            "{\n  className = \"\",\n  labelName,\n  error,\n  required = false,\n  showForgotPasswordLink = false,\n  forgotPasswordPath = \"#\",\n  type = \"text\",\n  ...props\n}"
+          ],
+          "exported": true,
+          "lineCount": 63
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Eye",
+            "EyeOff"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "InputHTMLAttributes",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "InputField"
+      ],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "components/Navbar.tsx": {
+      "filePath": "components/Navbar.tsx",
+      "contentHash": "dd933a5d6cb12b223a34920c88e6435bfdeaedac550fce05336e82c6f9676a2c",
+      "functions": [
+        {
+          "name": "Navbar",
+          "params": [
+            "{ user }"
+          ],
+          "exported": true,
+          "lineCount": 63
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [
+        "Navbar"
+      ],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "components/QrPassCard.tsx": {
+      "filePath": "components/QrPassCard.tsx",
+      "contentHash": "5d008cf4169154662b473601b586fa1bee334661d75c69028c5e6ff14b1883cd",
+      "functions": [
+        {
+          "name": "QrPassCard",
+          "params": [
+            "{\n  title,\n  subtitle,\n  code,\n  status,\n  className = \"\",\n}"
+          ],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "QrPassCard"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "components/RadioSelector.tsx": {
+      "filePath": "components/RadioSelector.tsx",
+      "contentHash": "7061d559681483d3785240360af270ef0d45d250b13569d7366f07f3d871b8e6",
+      "functions": [
+        {
+          "name": "RadioSelector",
+          "params": [
+            "{\n  options,\n  value,\n  onChange,\n  className = \"\",\n}"
+          ],
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "RadioSelector"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "components/Searchbar.tsx": {
+      "filePath": "components/Searchbar.tsx",
+      "contentHash": "89de359989892ec8198cf50453cd65b425775a4410392d873b1aa19a9abdf704",
+      "functions": [
+        {
+          "name": "Searchbar",
+          "params": [
+            "{\n  placeholder = \"Placeholder pencarian...\",\n  onSearch,\n  className = \"\",\n}"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "./Button",
+          "specifiers": [
+            "Button"
+          ]
+        }
+      ],
+      "exports": [
+        "Searchbar"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "components/Stepper.tsx": {
+      "filePath": "components/Stepper.tsx",
+      "contentHash": "9f8990c4acd27bc5662e31f1b4da29c06bebb38aad3cda27fe7b9d428224ca6a",
+      "functions": [
+        {
+          "name": "Stepper",
+          "params": [
+            "{ steps, activeIndex, className = \"\" }"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Stepper"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "components/SummaryCard.tsx": {
+      "filePath": "components/SummaryCard.tsx",
+      "contentHash": "d131dcd58a9a543667d8eb2288d75ce366dee56b42d0e5b893595ea73c511ed9",
+      "functions": [
+        {
+          "name": "SummaryCard",
+          "params": [
+            "{\n  title = \"Ringkasan\",\n  children,\n  totalLabel = \"Total\",\n  totalValue,\n  actionLabel,\n  onAction,\n  className = \"\",\n}"
+          ],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "SummaryCard"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "components/Tabs.tsx": {
+      "filePath": "components/Tabs.tsx",
+      "contentHash": "09e53aec57767fa0ab9842b54a7bb93283bb5e85457e784495ee64c4a9c0979d",
+      "functions": [
+        {
+          "name": "Tabs",
+          "params": [
+            "{ items, activeId, onChange, className = \"\" }"
+          ],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utiils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Tabs"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "components/index.ts": {
+      "filePath": "components/index.ts",
+      "contentHash": "5ee501585aee5109fedd30c62952ba7410f653323f8b7c8e9c6215cb336c6867",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "features/auth/page/LoginPage.tsx": {
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "contentHash": "71857809ac586d5ed32d6b9957bc241f41bc5f640eeba33bde806112e6b2d23c",
+      "functions": [
+        {
+          "name": "LoginPage",
+          "params": [],
+          "exported": false,
+          "lineCount": 175
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-icons/fc",
+          "specifiers": [
+            "FcGoogle"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "@/components/Alerts",
+          "specifiers": [
+            "Alerts"
+          ]
+        },
+        {
+          "source": "@/components/Banner",
+          "specifiers": [
+            "Banner"
+          ]
+        },
+        {
+          "source": "@/components/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/InputField",
+          "specifiers": [
+            "InputField"
+          ]
+        },
+        {
+          "source": "@/hooks/useSession",
+          "specifiers": [
+            "useSession"
+          ]
+        },
+        {
+          "source": "@/features/auth/schema/authSchemas",
+          "specifiers": [
+            "loginSchema",
+            "LoginSchema"
+          ]
+        },
+        {
+          "source": "@/features/auth/service/authService",
+          "specifiers": [
+            "mapAuthError",
+            "signInWithEmail",
+            "signInWithGoogle"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 200,
+      "hasStructuralAnalysis": true
+    },
+    "features/auth/page/SignupPage.tsx": {
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "contentHash": "9b565694626ba830392b101dc8fb90ba0e4a824ebd0f4d725d059453bb6c9085",
+      "functions": [
+        {
+          "name": "SignupPage",
+          "params": [],
+          "exported": false,
+          "lineCount": 212
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-icons/fc",
+          "specifiers": [
+            "FcGoogle"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/zod",
+          "specifiers": [
+            "zodResolver"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useLocation",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "@/components/Alerts",
+          "specifiers": [
+            "Alerts"
+          ]
+        },
+        {
+          "source": "@/components/Banner",
+          "specifiers": [
+            "Banner"
+          ]
+        },
+        {
+          "source": "@/components/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/InputField",
+          "specifiers": [
+            "InputField"
+          ]
+        },
+        {
+          "source": "@/hooks/useSession",
+          "specifiers": [
+            "useSession"
+          ]
+        },
+        {
+          "source": "@/features/auth/schema/authSchemas",
+          "specifiers": [
+            "signupSchema",
+            "SignupSchema"
+          ]
+        },
+        {
+          "source": "@/features/auth/service/authService",
+          "specifiers": [
+            "getSession",
+            "mapAuthError",
+            "signUpWithEmail",
+            "signInWithGoogle"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 235,
+      "hasStructuralAnalysis": true
+    },
+    "features/home/page/Home.tsx": {
+      "filePath": "features/home/page/Home.tsx",
+      "contentHash": "d65b31b68786fda5ffe0129d2ac41abdb33eff1b416a6d3e01d440969cb86a47",
+      "functions": [
+        {
+          "name": "HomePage",
+          "params": [],
+          "exported": false,
+          "lineCount": 309
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@/components/CardAction",
+          "specifiers": [
+            "CardAction"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "@/hooks/useSession",
+          "specifiers": [
+            "useSession"
+          ]
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            "useNavigate"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 369,
+      "hasStructuralAnalysis": true
+    }
+  },
+  "deletedFiles": [
+    "components/CTABanner.tsx",
+    "components/Dropdown.tsx",
+    "components/FeatureCard.tsx",
+    "components/Features.tsx",
+    "components/Hero.tsx",
+    "components/ScheduleCard.tsx",
+    "components/SchedulePreview.tsx"
+  ]
+}

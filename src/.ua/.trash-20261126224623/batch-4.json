@@ -1,0 +1,163 @@
+{
+  "nodes": [
+    {
+      "id": "file:components/Button.tsx",
+      "type": "file",
+      "name": "Button.tsx",
+      "filePath": "components/Button.tsx",
+      "summary": "Komponen tombol bersama dengan tujuh varian gaya (primary, with-icon, secondary, icon, oauth, glass, disabled) dan dua ukuran. Menggabungkan kelas CSS dinamis lewat cn() serta meneruskan atribut button standar dari props.",
+      "tags": ["komponen", "tombol", "varian-gaya", "primitif-ui", "styling"],
+      "complexity": "moderate",
+      "languageNotes": "Interface ButtonProps memperluas ButtonHTMLAttributes dan memetakan varian ke kelas Tailwind lewat objek Record<string, string>."
+    },
+    {
+      "id": "function:components/Button.tsx:Button",
+      "type": "function",
+      "name": "Button",
+      "filePath": "components/Button.tsx",
+      "lineRange": [19, 56],
+      "summary": "Merender elemen button dengan varian gaya dan ukuran terpilih, menggabungkan className, serta menampilkan children atau label disertai ikon opsional.",
+      "tags": ["komponen", "tombol", "render", "styling"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/CardAction.tsx",
+      "type": "file",
+      "name": "CardAction.tsx",
+      "filePath": "components/CardAction.tsx",
+      "summary": "Kartu acara yang menampilkan media, kategori, status ketersediaan, tanggal, judul, lokasi, harga, dan tombol aksi. Warna badge status ditentukan secara dinamis dan aksi utama memakai komponen Button.",
+      "tags": ["komponen", "kartu-acara", "tampilan", "status-badge", "aksi"],
+      "complexity": "moderate",
+      "languageNotes": "Media bertipe ReactNode dengan placeholder ikon Material Symbols saat tidak diberikan, sementara kelas badge status dipilih lewat percabangan ternary."
+    },
+    {
+      "id": "function:components/CardAction.tsx:CardAction",
+      "type": "function",
+      "name": "CardAction",
+      "filePath": "components/CardAction.tsx",
+      "lineRange": [19, 104],
+      "summary": "Merender kartu acara lengkap dengan badge status, metadata, harga, dan tombol aksi yang beralih ke varian disabled saat kartu dinonaktifkan.",
+      "tags": ["komponen", "kartu-acara", "render", "status-badge", "aksi"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Navbar.tsx",
+      "type": "file",
+      "name": "Navbar.tsx",
+      "filePath": "components/Navbar.tsx",
+      "summary": "Bilah navigasi sticky berisi logo Tiket.ku, tautan Jadwal/Tentang/Bantuan, dan tombol autentikasi. Navigasi pengguna diarahkan ke beranda, jadwal, masuk, atau daftar sesuai status user.",
+      "tags": ["komponen", "navigasi", "routing", "autentikasi", "header"],
+      "complexity": "moderate",
+      "languageNotes": "Memakai useNavigate dari react-router-dom untuk navigasi programatik pada logo dan tombol, sementara sebagian tautan masih memakai anchor href=\"#\"."
+    },
+    {
+      "id": "function:components/Navbar.tsx:Navbar",
+      "type": "function",
+      "name": "Navbar",
+      "filePath": "components/Navbar.tsx",
+      "lineRange": [8, 70],
+      "summary": "Merender header navigasi dan menangani klik logo serta tombol untuk berpindah rute, dengan tombol Masuk dan Daftar untuk pengguna tamu.",
+      "tags": ["komponen", "navigasi", "routing", "render"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Searchbar.tsx",
+      "type": "file",
+      "name": "Searchbar.tsx",
+      "filePath": "components/Searchbar.tsx",
+      "summary": "Formulir pencarian dengan ikon, input bertipe search, dan tombol Cari. Saat disubmit, form mencegah reload halaman lalu meneruskan nilai kueri ke callback onSearch.",
+      "tags": ["komponen", "pencarian", "form", "input", "event-handler"],
+      "complexity": "simple",
+      "languageNotes": "Nilai kueri diambil memakai FormData bawaan browser, sehingga tidak memerlukan state terkontrol untuk input."
+    },
+    {
+      "id": "function:components/Searchbar.tsx:Searchbar",
+      "type": "function",
+      "name": "Searchbar",
+      "filePath": "components/Searchbar.tsx",
+      "lineRange": [10, 41],
+      "summary": "Merender form pencarian dan memanggil onSearch dengan nilai field q ketika pengguna mengirimkan form.",
+      "tags": ["komponen", "pencarian", "form", "event-handler"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:components/CardAction.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/Navbar.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/Searchbar.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/Button.tsx",
+      "target": "function:components/Button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/CardAction.tsx",
+      "target": "function:components/CardAction.tsx:CardAction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Navbar.tsx",
+      "target": "function:components/Navbar.tsx:Navbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Searchbar.tsx",
+      "target": "function:components/Searchbar.tsx:Searchbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Button.tsx",
+      "target": "function:components/Button.tsx:Button",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/CardAction.tsx",
+      "target": "function:components/CardAction.tsx:CardAction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Navbar.tsx",
+      "target": "function:components/Navbar.tsx:Navbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Searchbar.tsx",
+      "target": "function:components/Searchbar.tsx:Searchbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

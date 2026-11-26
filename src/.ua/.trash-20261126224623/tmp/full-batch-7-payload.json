@@ -1,0 +1,51 @@
+{
+  "batchIndex": 7,
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "files": [
+    {
+      "path": "hooks/useSession.ts",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/supabase.ts",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/utiils.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "main.tsx",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "services/userService.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vite-env.d.ts",
+      "language": "typescript",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "hooks/useSession.ts": [],
+    "lib/supabase.ts": [],
+    "lib/utiils.ts": [],
+    "main.tsx": [],
+    "services/userService.ts": [],
+    "vite-env.d.ts": []
+  },
+  "neighborMap": {}
+}

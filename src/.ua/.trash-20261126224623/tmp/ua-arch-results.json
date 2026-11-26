@@ -1,0 +1,375 @@
+{
+  "scriptCompleted": true,
+  "directoryGroups": {
+    "features": [
+      "file:features/matches/components/Card.tsx",
+      "file:features/matches/components/TeamSection.tsx",
+      "file:features/matches/components/matchesProps.ts",
+      "file:features/matches/hooks/useMatchData.ts",
+      "file:features/matches/page/Matches.tsx",
+      "file:features/matches/service/matchService.ts",
+      "file:features/matches/types/matchesPayload.ts",
+      "file:features/matches/types/matchesPayload.types.ts",
+      "file:features/auth/page/AuthCallbackPage.tsx",
+      "file:features/auth/page/LoginPage.tsx",
+      "file:features/auth/page/SignupPage.tsx",
+      "file:features/home/page/Home.tsx",
+      "file:features/payment/components/PaymentMethods.tsx",
+      "file:features/payment/hooks/usePayment.ts",
+      "file:features/payment/page/Payment.tsx",
+      "file:features/payment/schemas/paymentSchema.ts",
+      "file:features/users/components/TicketCard.tsx",
+      "file:features/users/hooks/useUserRegister.ts",
+      "file:features/users/schema/userSchema.ts",
+      "file:features/auth/schema/authSchemas.ts",
+      "file:features/auth/service/authService.ts",
+      "file:features/events/service/eventService.ts",
+      "file:features/events/types/event.types.ts",
+      "file:features/orders/service/orderService.ts",
+      "file:features/tickets/component/Ticket.tsx",
+      "file:features/tickets/service/ticketService.ts",
+      "file:features/users/hooks/useUsers.ts",
+      "file:features/users/page/RegisterForm.tsx",
+      "file:features/users/service/userServices.ts",
+      "file:features/users/types/userPayload.d.ts"
+    ],
+    "root": [
+      "file:App.tsx",
+      "file:app.css",
+      "file:main.tsx"
+    ],
+    "components": [
+      "file:components/index.ts",
+      "file:components/Button.tsx",
+      "file:components/CardAction.tsx",
+      "file:components/Navbar.tsx",
+      "file:components/Searchbar.tsx",
+      "file:components/Alerts.tsx",
+      "file:components/Badge.tsx",
+      "file:components/Banner.tsx",
+      "file:components/Drawer.tsx",
+      "file:components/Footer.tsx",
+      "file:components/FooterLinks.tsx",
+      "file:components/InputField.tsx",
+      "file:components/QrPassCard.tsx",
+      "file:components/RadioSelector.tsx",
+      "file:components/Stepper.tsx",
+      "file:components/SummaryCard.tsx",
+      "file:components/Tabs.tsx"
+    ],
+    "hooks": [
+      "file:hooks/useCounter.ts",
+      "file:hooks/useSession.ts"
+    ],
+    "lib": [
+      "file:lib/supabase.ts",
+      "file:lib/utiils.ts"
+    ],
+    "services": [
+      "file:services/userService.ts"
+    ],
+    "types": [
+      "file:vite-env.d.ts"
+    ]
+  },
+  "nodeTypeGroups": {
+    "file": [
+      "file:features/matches/components/Card.tsx",
+      "file:features/matches/components/TeamSection.tsx",
+      "file:features/matches/components/matchesProps.ts",
+      "file:features/matches/hooks/useMatchData.ts",
+      "file:features/matches/page/Matches.tsx",
+      "file:features/matches/service/matchService.ts",
+      "file:features/matches/types/matchesPayload.ts",
+      "file:features/matches/types/matchesPayload.types.ts",
+      "file:App.tsx",
+      "file:features/auth/page/AuthCallbackPage.tsx",
+      "file:features/auth/page/LoginPage.tsx",
+      "file:features/auth/page/SignupPage.tsx",
+      "file:features/home/page/Home.tsx",
+      "file:components/index.ts",
+      "file:features/payment/components/PaymentMethods.tsx",
+      "file:features/payment/hooks/usePayment.ts",
+      "file:features/payment/page/Payment.tsx",
+      "file:features/payment/schemas/paymentSchema.ts",
+      "file:components/Button.tsx",
+      "file:components/CardAction.tsx",
+      "file:components/Navbar.tsx",
+      "file:components/Searchbar.tsx",
+      "file:features/users/components/TicketCard.tsx",
+      "file:features/users/hooks/useUserRegister.ts",
+      "file:features/users/schema/userSchema.ts",
+      "file:app.css",
+      "file:components/Alerts.tsx",
+      "file:components/Badge.tsx",
+      "file:components/Banner.tsx",
+      "file:components/Drawer.tsx",
+      "file:components/Footer.tsx",
+      "file:components/FooterLinks.tsx",
+      "file:components/InputField.tsx",
+      "file:components/QrPassCard.tsx",
+      "file:components/RadioSelector.tsx",
+      "file:components/Stepper.tsx",
+      "file:components/SummaryCard.tsx",
+      "file:components/Tabs.tsx",
+      "file:features/auth/schema/authSchemas.ts",
+      "file:features/auth/service/authService.ts",
+      "file:features/events/service/eventService.ts",
+      "file:features/events/types/event.types.ts",
+      "file:features/orders/service/orderService.ts",
+      "file:features/tickets/component/Ticket.tsx",
+      "file:features/tickets/service/ticketService.ts",
+      "file:features/users/hooks/useUsers.ts",
+      "file:features/users/page/RegisterForm.tsx",
+      "file:features/users/service/userServices.ts",
+      "file:features/users/types/userPayload.d.ts",
+      "file:hooks/useCounter.ts",
+      "file:hooks/useSession.ts",
+      "file:lib/supabase.ts",
+      "file:lib/utiils.ts",
+      "file:main.tsx",
+      "file:services/userService.ts",
+      "file:vite-env.d.ts"
+    ]
+  },
+  "crossCategoryEdges": [
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "imports",
+      "count": 24
+    },
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "depends_on",
+      "count": 4
+    }
+  ],
+  "interGroupImports": [
+    {
+      "from": "root",
+      "to": "features",
+      "count": 5
+    },
+    {
+      "from": "features",
+      "to": "components",
+      "count": 1
+    }
+  ],
+  "intraGroupDensity": {
+    "features": {
+      "internalEdges": 15,
+      "totalEdges": 21,
+      "density": 0.7142857142857143
+    },
+    "root": {
+      "internalEdges": 0,
+      "totalEdges": 5,
+      "density": 0
+    },
+    "components": {
+      "internalEdges": 3,
+      "totalEdges": 4,
+      "density": 0.75
+    },
+    "hooks": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "lib": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "services": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    },
+    "types": {
+      "internalEdges": 0,
+      "totalEdges": 0,
+      "density": 0
+    }
+  },
+  "patternMatches": {
+    "components": "ui",
+    "hooks": "hooks",
+    "lib": "service",
+    "services": "service",
+    "types": "types"
+  },
+  "deploymentTopology": {
+    "hasDockerfile": false,
+    "hasCompose": false,
+    "hasK8s": false,
+    "hasTerraform": false,
+    "hasCI": false,
+    "infraFiles": []
+  },
+  "dataPipeline": {
+    "schemaFiles": [],
+    "migrationFiles": [],
+    "dataModelFiles": [],
+    "apiHandlerFiles": []
+  },
+  "docCoverage": {
+    "groupsWithDocs": 0,
+    "totalGroups": 7,
+    "coverageRatio": 0,
+    "undocumentedGroups": [
+      "features",
+      "root",
+      "components",
+      "hooks",
+      "lib",
+      "services",
+      "types"
+    ]
+  },
+  "dependencyDirection": [
+    {
+      "dependent": "root",
+      "dependsOn": "features"
+    },
+    {
+      "dependent": "features",
+      "dependsOn": "components"
+    }
+  ],
+  "fileStats": {
+    "totalFileNodes": 56,
+    "filesPerGroup": {
+      "features": 30,
+      "root": 3,
+      "components": 17,
+      "hooks": 2,
+      "lib": 2,
+      "services": 1,
+      "types": 1
+    },
+    "nodeTypeCounts": {
+      "file": 56
+    }
+  },
+  "fileFanIn": {
+    "file:features/matches/components/Card.tsx": 1,
+    "file:features/matches/components/TeamSection.tsx": 1,
+    "file:features/matches/components/matchesProps.ts": 1,
+    "file:features/matches/hooks/useMatchData.ts": 1,
+    "file:features/matches/page/Matches.tsx": 1,
+    "file:features/matches/service/matchService.ts": 1,
+    "file:features/matches/types/matchesPayload.ts": 3,
+    "file:features/matches/types/matchesPayload.types.ts": 2,
+    "file:App.tsx": 0,
+    "file:features/auth/page/AuthCallbackPage.tsx": 1,
+    "file:features/auth/page/LoginPage.tsx": 1,
+    "file:features/auth/page/SignupPage.tsx": 1,
+    "file:features/home/page/Home.tsx": 1,
+    "file:components/index.ts": 1,
+    "file:features/payment/components/PaymentMethods.tsx": 1,
+    "file:features/payment/hooks/usePayment.ts": 1,
+    "file:features/payment/page/Payment.tsx": 0,
+    "file:features/payment/schemas/paymentSchema.ts": 1,
+    "file:components/Button.tsx": 3,
+    "file:components/CardAction.tsx": 0,
+    "file:components/Navbar.tsx": 0,
+    "file:components/Searchbar.tsx": 0,
+    "file:features/users/components/TicketCard.tsx": 0,
+    "file:features/users/hooks/useUserRegister.ts": 0,
+    "file:features/users/schema/userSchema.ts": 2,
+    "file:app.css": 0,
+    "file:components/Alerts.tsx": 0,
+    "file:components/Badge.tsx": 0,
+    "file:components/Banner.tsx": 0,
+    "file:components/Drawer.tsx": 0,
+    "file:components/Footer.tsx": 0,
+    "file:components/FooterLinks.tsx": 0,
+    "file:components/InputField.tsx": 0,
+    "file:components/QrPassCard.tsx": 0,
+    "file:components/RadioSelector.tsx": 0,
+    "file:components/Stepper.tsx": 0,
+    "file:components/SummaryCard.tsx": 0,
+    "file:components/Tabs.tsx": 0,
+    "file:features/auth/schema/authSchemas.ts": 0,
+    "file:features/auth/service/authService.ts": 0,
+    "file:features/events/service/eventService.ts": 0,
+    "file:features/events/types/event.types.ts": 0,
+    "file:features/orders/service/orderService.ts": 0,
+    "file:features/tickets/component/Ticket.tsx": 0,
+    "file:features/tickets/service/ticketService.ts": 0,
+    "file:features/users/hooks/useUsers.ts": 0,
+    "file:features/users/page/RegisterForm.tsx": 0,
+    "file:features/users/service/userServices.ts": 0,
+    "file:features/users/types/userPayload.d.ts": 0,
+    "file:hooks/useCounter.ts": 0,
+    "file:hooks/useSession.ts": 0,
+    "file:lib/supabase.ts": 0,
+    "file:lib/utiils.ts": 0,
+    "file:main.tsx": 0,
+    "file:services/userService.ts": 0,
+    "file:vite-env.d.ts": 0
+  },
+  "fileFanOut": {
+    "file:features/matches/components/Card.tsx": 3,
+    "file:features/matches/components/TeamSection.tsx": 1,
+    "file:features/matches/components/matchesProps.ts": 0,
+    "file:features/matches/hooks/useMatchData.ts": 2,
+    "file:features/matches/page/Matches.tsx": 2,
+    "file:features/matches/service/matchService.ts": 1,
+    "file:features/matches/types/matchesPayload.ts": 1,
+    "file:features/matches/types/matchesPayload.types.ts": 0,
+    "file:App.tsx": 5,
+    "file:features/auth/page/AuthCallbackPage.tsx": 0,
+    "file:features/auth/page/LoginPage.tsx": 0,
+    "file:features/auth/page/SignupPage.tsx": 0,
+    "file:features/home/page/Home.tsx": 0,
+    "file:components/index.ts": 0,
+    "file:features/payment/components/PaymentMethods.tsx": 0,
+    "file:features/payment/hooks/usePayment.ts": 1,
+    "file:features/payment/page/Payment.tsx": 3,
+    "file:features/payment/schemas/paymentSchema.ts": 0,
+    "file:components/Button.tsx": 0,
+    "file:components/CardAction.tsx": 1,
+    "file:components/Navbar.tsx": 1,
+    "file:components/Searchbar.tsx": 1,
+    "file:features/users/components/TicketCard.tsx": 1,
+    "file:features/users/hooks/useUserRegister.ts": 1,
+    "file:features/users/schema/userSchema.ts": 0,
+    "file:app.css": 0,
+    "file:components/Alerts.tsx": 0,
+    "file:components/Badge.tsx": 0,
+    "file:components/Banner.tsx": 0,
+    "file:components/Drawer.tsx": 0,
+    "file:components/Footer.tsx": 0,
+    "file:components/FooterLinks.tsx": 0,
+    "file:components/InputField.tsx": 0,
+    "file:components/QrPassCard.tsx": 0,
+    "file:components/RadioSelector.tsx": 0,
+    "file:components/Stepper.tsx": 0,
+    "file:components/SummaryCard.tsx": 0,
+    "file:components/Tabs.tsx": 0,
+    "file:features/auth/schema/authSchemas.ts": 0,
+    "file:features/auth/service/authService.ts": 0,
+    "file:features/events/service/eventService.ts": 0,
+    "file:features/events/types/event.types.ts": 0,
+    "file:features/orders/service/orderService.ts": 0,
+    "file:features/tickets/component/Ticket.tsx": 0,
+    "file:features/tickets/service/ticketService.ts": 0,
+    "file:features/users/hooks/useUsers.ts": 0,
+    "file:features/users/page/RegisterForm.tsx": 0,
+    "file:features/users/service/userServices.ts": 0,
+    "file:features/users/types/userPayload.d.ts": 0,
+    "file:hooks/useCounter.ts": 0,
+    "file:hooks/useSession.ts": 0,
+    "file:lib/supabase.ts": 0,
+    "file:lib/utiils.ts": 0,
+    "file:main.tsx": 0,
+    "file:services/userService.ts": 0,
+    "file:vite-env.d.ts": 0
+  },
+  "commonPrefix": ""
+}
