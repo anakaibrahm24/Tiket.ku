@@ -76,6 +76,8 @@ supabase/
 ## Alur kerja
 
 - **Kontrol versi:** jangan langsung `git add`/`git commit`. Jangan pernah commit tanpa persetujuan pengguna. Biarkan pengguna meninjau perubahan kode terlebih dahulu.
+- **Standar DevOps untuk commit:** gunakan Conventional Commits `type(scope): deskripsi`. Type: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `perf`, `build`, `ci`, `style`, `revert`; scope opsional; deskripsi imperatif Bahasa Indonesia, huruf kecil, tanpa titik akhir. Contoh: `docs(agents): susun ulang struktur aturan`.
+- Perlakukan perubahan yang tidak dibuat agen pada sesi ini sebagai perubahan pengguna; jangan revert atau timpa ke versi agen. Jika ragu, tanyakan apakah perubahan itu dari pengguna.
 - **Branch per progress:** setiap progress/fitur/perbaikan harus dikerjakan di branch baru yang namanya sesuai progress (mis. `feat/<nama-fitur>`, `fix/<nama-bug>`). Jangan commit langsung ke `main`/`master`.
 - **Scope task:** jangan keluar dari scope task. Jika ada yang membingungkan, interview pengguna sebelum bertindak.
 
@@ -109,6 +111,7 @@ supabase/
 
 ## Standar kode
 
+- Sebelum menganalisis atau mengubah kode, baca `src/.ua/knowledge-graph.json` hasil skill `/understand` sebagai peta awal; gunakan `src/.ua/code-lessons.json` bila perlu penjelasan file.
 - **TypeScript strict mode** aktif (`strict`, `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`). Jangan nonaktifkan. Perbaiki error tipe, jangan gunakan `any` atau `@ts-ignore`.
 - **Tanpa dead code:** hapus blok yang dikomentari dan kode mati saat menyentuh file, jangan dibiarkan. Gunakan riwayat git untuk referensi.
 - **Penamaan konsisten:** gunakan `eventId` (bukan `matchId`/`match_id`) dan `orderId` (bukan `userId` untuk order) untuk fitur baru. Standarkan camelCase untuk kolom DB jika memungkinkan, atau petakan eksplisit di service layer.
