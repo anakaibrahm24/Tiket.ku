@@ -14,6 +14,7 @@ export const Navbar = ({ user }: NavbarProps) => {
         type="button"
         onClick={() => navigate("/")}
         className="flex items-center gap-2.5 text-ink-900"
+        aria-label="Beranda Tiket.ku"
       >
         <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-brand-blue text-surface-white">
           <span className="material-symbols-outlined text-title-md" aria-hidden="true">
