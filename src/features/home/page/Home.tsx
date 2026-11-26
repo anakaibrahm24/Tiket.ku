@@ -9,7 +9,7 @@ const events = [
   {
     category: "Sepak Bola",
     status: "Terbatas",
-    date: "Sab, 14 Des · 19:30 WIB",
+    date: "Sab, 14 Des Â· 19:30 WIB",
     title: "Persija vs Persib",
     location: "Stadion Utama GBK",
     price: "Rp 150.000",
@@ -19,7 +19,7 @@ const events = [
   {
     category: "Konser",
     status: "Hampir Habis",
-    date: "Min, 22 Des · 20:00 WIB",
+    date: "Min, 22 Des Â· 20:00 WIB",
     title: "Konser Sheila on 7",
     location: "Stadion Utama GBK",
     price: "Rp 350.000",
@@ -29,7 +29,7 @@ const events = [
   {
     category: "Olahraga",
     status: "Tersedia",
-    date: "Min, 29 Des · 13:00 WIB",
+    date: "Min, 29 Des Â· 13:00 WIB",
     title: "Indonesia Open Final",
     location: "Istora Senayan GBK",
     price: "Rp 175.000",
@@ -76,11 +76,14 @@ const HomePage = () => {
       <Navbar user={isLoggedIn} />
       <div id="main-content">
         <section className="relative overflow-hidden border-b border-dark-700 bg-night-950">
-          <img
-            src="https://lh3.googleusercontent.com/aida/ALJJyrAFghPgsUqkpDmo_QCDKy4lDYI3oqL39G5iWAX6B8r3KOjpO108yIO80QUTCeXbmYe29qTcxMz8sRO9lxqfVMm-baSAoG4-8S4lar8f5Fva9_qXATgk24kGuYf4GCVrDjaJYSHUSIj_t5HwNrMatM3Z-yPexoFprhv6X18yQX2yu4Mc-nx_ymWPEL8DGoKJJmimyQ2tqDdYZLPkGSDp_ROCXVFPHN-mULos-hekGzL4xAO6ngsqmTc-3xQ_dmjq"
-            alt="Stadion Utama Gelora Bung Karno saat acara malam"
-            className="absolute inset-0 h-full w-full object-cover opacity-35"
-          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 flex items-center justify-center bg-surface-subtle opacity-40"
+          >
+            <span className="material-symbols-outlined text-6xl text-ink-300">
+              image
+            </span>
+          </div>
           <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 lg:grid-cols-12 lg:px-16 lg:py-20">
             <div className="flex flex-col gap-6 lg:col-span-7">
               <div className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-blue px-3.5 py-1.5 text-surface-white">
@@ -123,11 +126,14 @@ const HomePage = () => {
             <div className="lg:col-span-5">
               <article className="overflow-hidden rounded-xl border border-line-on-dark bg-dark-900 shadow-lg">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida/ALJJyrD0iFwXrDg-yeDx9fEUr8tXJIADINYQRahf8BaUAjArfNHfUUI9IGYVli1pphhi-J8hDuy_d0D86mT4NdbLEcMZ6cBFcg5IaoeRx8QHam5zlb2as3JXhibxDC-J0h4nh44ri84qybooRPt8axRubWJkavVzc6FuUKYvydiezdBOP7dKR0EN42CAFnLJodW7YJlXis5i-SP5XXRC-bxRt-Q4IRuC1KeVcuyHyjHiAXhq3qYBQdv13jG4UQRurQ"
-                    alt="Indonesia vs Jepang di Stadion Utama GBK"
-                    className="h-full w-full object-cover"
-                  />
+                <div
+                  aria-hidden="true"
+                  className="flex h-full w-full items-center justify-center bg-surface-subtle"
+                >
+                  <span className="material-symbols-outlined text-5xl text-ink-300">
+                    image
+                  </span>
+                </div>
                   <span className="absolute left-3 top-3 rounded-full bg-brand-blue px-3 py-1 font-label text-label-md text-surface-white">
                     Sorotan Utama
                   </span>
@@ -136,7 +142,7 @@ const HomePage = () => {
                   </span>
                 </div>
                 <div className="flex flex-col gap-3 p-6">
-                  <p className="font-label text-label-md tabular-nums text-brand-sky">Kam, 19 Des · 19:00 WIB</p>
+                  <p className="font-label text-label-md tabular-nums text-brand-sky">Kam, 19 Des Â· 19:00 WIB</p>
                   <h2 className="font-title text-headline-md text-surface-white">Indonesia vs Jepang</h2>
                   <p className="flex items-center gap-1.5 font-body text-body-md text-brand-sky">
                     <span className="material-symbols-outlined text-body-lg" aria-hidden="true">
