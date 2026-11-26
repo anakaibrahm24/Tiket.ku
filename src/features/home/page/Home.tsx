@@ -168,7 +168,8 @@ const HomePage = () => {
             <button
               type="button"
               onClick={() => scrollTo("venue-gbk")}
-              className="inline-flex items-center gap-1.5 font-label text-label-lg text-brand-deep transition-colors hover:text-brand-blue"
+              className="inline-flex items-center gap-1.5 font-label text-label-lg text-brand-deep transition-colors hover:text-brand-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+              aria-label="Lihat semua venue"
             >
               Lihat Semua Venue
               <span className="material-symbols-outlined text-title-md" aria-hidden="true">
