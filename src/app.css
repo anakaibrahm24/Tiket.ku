@@ -4,58 +4,91 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand & Aksen */
+  /* Warna kanonik Stitch */
   --color-brand-blue: #146DFC;
   --color-brand-hover: #006FFF;
   --color-brand-deep: #0056EC;
   --color-brand-sky: #BADFFF;
   --color-brand-tint: #DEF1FF;
-
-  /* Surface (Latar) */
-  --color-surface-white: #FFFFFF;
-  --color-surface-subtle: #F7F8F7;
-  --color-surface-muted: #F2F2F3;
-  --color-surface-tint: #EDEEF0;
-  --color-surface-line: #ECECED;
-
-  /* Teks & Ikon (Ink) */
-  --color-ink-900: #27272A;
-  --color-ink-700: #4F4F55;
-  --color-ink-600: #606169;
-  --color-ink-500: #71717A;
-  --color-ink-300: #BABABF;
-
-  /* Surface Gelap (Dark) */
-  --color-night-950: #020918;
-  --color-night-800: #051027;
-  --color-dark-900: #27272A;
-  --color-dark-800: #3B3C3F;
-  --color-dark-700: #434349;
-
-  /* Garis (Line) */
-  --color-line-soft: #0000000F;
-  --color-line-on-dark: #FFFFFF1F;
-
-  /* Colors (Tiket.ku semantic) */
-  --color-background: #FFFFFF;
-  --color-surface: #F8FAFC;
-  --color-foreground: #0F172A;
-  --color-muted: #64748B;
-  --color-border: #E2E8F0;
-  --color-primary: #0891B2;
-  --color-primary-hover: #0e7490;
-  --color-primary-foreground: #FFFFFF;
   --color-accent: #F97316;
-  --color-accent-foreground: #000000;
   --color-success: #16A34A;
   --color-warning: #F59E0B;
   --color-danger: #DC2626;
-  --color-info: #0891B2;
-  --color-support: #64748B;
 
-  /* Fonts */
+  --color-light-primary: #146DFC;
+  --color-light-on-primary: #FFFFFF;
+  --color-light-primary-container: #006FFF;
+  --color-light-on-primary-container: #070707;
+  --color-light-secondary: #0891B2;
+  --color-light-on-secondary: #1E1E1E;
+  --color-light-secondary-container: #DEF1FF;
+  --color-light-on-secondary-container: #0056EC;
+  --color-light-background: #FFFFFF;
+  --color-light-on-background: #27272A;
+  --color-light-surface: #F7F8F7;
+  --color-light-surface-dim: #EDEEF0;
+  --color-light-surface-bright: #FFFFFF;
+  --color-light-surface-container-lowest: #FFFFFF;
+  --color-light-surface-container-low: #F7F8F7;
+  --color-light-surface-container: #F2F2F3;
+  --color-light-surface-container-high: #EDEEF0;
+  --color-light-on-surface: #27272A;
+  --color-light-surface-variant: #F2F2F3;
+  --color-light-on-surface-variant: #606169;
+  --color-light-outline: #71717A;
+  --color-light-outline-variant: #E2E8F0;
+  --color-light-inverse-surface: #020918;
+  --color-light-inverse-on-surface: #FFFFFF;
+
+  --color-dark-primary: #BADFFF;
+  --color-dark-on-primary: #020918;
+  --color-dark-primary-container: #146DFC;
+  --color-dark-on-primary-container: #FFFFFF;
+  --color-dark-background: #020918;
+  --color-dark-on-background: #FFFFFF;
+  --color-dark-surface: #051027;
+  --color-dark-surface-container-lowest: #020918;
+  --color-dark-surface-container-low: #051027;
+  --color-dark-surface-container: #27272A;
+  --color-dark-surface-container-high: #3B3C3F;
+  --color-dark-on-surface: #FFFFFF;
+  --color-dark-on-surface-variant: #BADFFF;
+  --color-dark-outline: #71717A;
+  --color-dark-outline-variant: #434349;
+
+  /* Alias kompatibilitas; lihat DESIGN.md §01 */
+  --color-surface-white: var(--color-light-surface-bright);
+  --color-surface-subtle: var(--color-light-surface);
+  --color-surface-muted: var(--color-light-surface-container);
+  --color-surface-tint: var(--color-light-surface-dim);
+  --color-surface-line: var(--color-light-outline-variant);
+  --color-ink-900: var(--color-light-on-surface);
+  --color-ink-700: #4F4F55;
+  --color-ink-600: var(--color-light-on-surface-variant);
+  --color-ink-500: var(--color-light-outline);
+  --color-ink-300: #BABABF;
+  --color-night-950: var(--color-light-inverse-surface);
+  --color-night-800: var(--color-dark-surface);
+  --color-dark-900: var(--color-dark-surface-container);
+  --color-dark-800: var(--color-dark-surface-container-high);
+  --color-dark-700: var(--color-dark-outline-variant);
+  --color-line-soft: #0000000F;
+  --color-line-on-dark: var(--color-dark-outline-variant);
+  --color-background: var(--color-light-background);
+  --color-surface: #F8FAFC;
+  --color-foreground: #0F172A;
+  --color-muted: #64748B;
+  --color-border: var(--color-light-outline-variant);
+  --color-primary: var(--color-light-secondary);
+  --color-primary-hover: #0E7490;
+  --color-primary-foreground: var(--color-light-on-primary);
+  --color-accent-foreground: #000000;
+  --color-info: var(--color-light-secondary);
+  --color-support: var(--color-muted);
+
+  /* Font */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Inter", "SF Mono", "Fira Mono", monospace;
+  --font-mono: "Inter", monospace;
   --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-display);
@@ -112,24 +145,31 @@
   --text-mono-sm--line-height: 16px;
   --text-mono-sm--font-weight: 500;
 
+  /* Spacing kanonik Stitch */
+  --spacing-gutter-xs: 4px;
+  --spacing-gutter-sm: 8px;
+  --spacing-gutter-md: 16px;
+  --spacing-gutter-lg: 24px;
+  --spacing-gutter-xl: 32px;
+  --spacing-section: 56px;
+  --spacing-page-margin: 64px;
+
+  /* Alias spacing kompatibilitas */
+  --spacing-xs: var(--spacing-gutter-xs);
+  --spacing-sm: var(--spacing-gutter-sm);
+  --spacing-md: var(--spacing-gutter-md);
+  --spacing-lg: var(--spacing-gutter-lg);
+  --spacing-xl: var(--spacing-gutter-xl);
+  --spacing-xxl: 48px;
+
   /* Radius */
   --radius: 10px;
-  --radius-base: 10px;
   --radius-sm: 12px;
   --radius-md: 12px;
   --radius-lg: 14px;
   --radius-xl: 24px;
   --radius-full: 9999px;
-
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-xxl: 48px;
-  --spacing-section: 56px;
-  --spacing-page-margin: 64px;
+  --radius-base: var(--radius);
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -142,6 +182,22 @@
   --transition-duration-surface-enter: 220ms;
   --transition-timing-state-change: ease-out;
   --transition-timing-surface-enter: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@utility duration-state-change {
+  transition-duration: var(--transition-duration-state-change);
+}
+
+@utility ease-state-change {
+  transition-timing-function: var(--transition-timing-state-change);
+}
+
+@utility duration-surface-enter {
+  transition-duration: var(--transition-duration-surface-enter);
+}
+
+@utility ease-surface-enter {
+  transition-timing-function: var(--transition-timing-surface-enter);
 }
 
 :root {
