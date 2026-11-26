@@ -22,3 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Superpowers execution artifacts
+.superpowers/
+
+# Superpowers design/plan docs (local, not committed without approval)
+docs/superpowers/
+
+# Local agent skills (tooling; tracked skills already in index remain tracked)
+.agents/skills/
+.claude/skills/
+
+# Local Pencil design workspace
+.pencil/
+
+src/.ua
+
+agent/skills
+skills
+docs
+opencode.json
