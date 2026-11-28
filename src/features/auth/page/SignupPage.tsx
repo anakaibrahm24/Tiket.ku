@@ -83,7 +83,7 @@ const SignupPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-light-surface flex items-center justify-center px-6 py-12">
+    <main className="min-h-screen bg-light-surface flex flex-col items-center justify-center px-6 py-12">
       {alert && (
         <Alerts
           variant={alert.variant}
