@@ -154,14 +154,6 @@
   --spacing-section: 56px;
   --spacing-page-margin: 64px;
 
-  /* Alias spacing kompatibilitas */
-  --spacing-xs: var(--spacing-gutter-xs);
-  --spacing-sm: var(--spacing-gutter-sm);
-  --spacing-md: var(--spacing-gutter-md);
-  --spacing-lg: var(--spacing-gutter-lg);
-  --spacing-xl: var(--spacing-gutter-xl);
-  --spacing-xxl: 48px;
-
   /* Radius */
   --radius: 10px;
   --radius-sm: 12px;
