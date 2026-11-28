@@ -187,19 +187,19 @@ const LoginPage = () => {
               disabled={isSubmitting || isGoogleLoading}
               className="mt-1 w-full"
             />
-
-            <footer className="border-t border-light-outline-variant pt-4 text-center">
-              <p className="font-body text-body-md text-light-on-surface-variant">
-                Belum punya akun Tiket.ku?{" "}
-                <Link
-                  to="/signup"
-                  className="ml-1 font-label text-label-lg text-brand-deep hover:text-brand-blue"
-                >
-                  Daftar sekarang
-                </Link>
-              </p>
-            </footer>
           </form>
+
+          <footer className="border-t border-light-outline-variant pt-4 text-center">
+            <p className="font-body text-body-md text-light-on-surface-variant">
+              Belum punya akun Tiket.ku?{" "}
+              <Link
+                to="/signup"
+                className="ml-1 font-label text-label-lg text-brand-deep hover:text-brand-blue"
+              >
+                Daftar sekarang
+              </Link>
+            </p>
+          </footer>
         </section>
       </div>
     </main>

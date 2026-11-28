@@ -152,7 +152,7 @@ const SignupPage = () => {
           <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             <InputField
               id="name"
-              labelName="Nama Lengkap"
+              labelName="Nama Lengkap (sesuai KTP)"
               type="text"
               autoComplete="name"
               placeholder="Budi Santoso"
@@ -176,10 +176,10 @@ const SignupPage = () => {
 
             <InputField
               id="phone"
-              labelName="Nomor Telepon"
+              labelName="Nomor WhatsApp"
               type="tel"
               autoComplete="tel"
-              placeholder="08123456789"
+              placeholder="0812-3456-7890"
               required
               disabled={isSubmitting || isGoogleLoading}
               error={errors.phone?.message}
@@ -201,6 +201,7 @@ const SignupPage = () => {
             <label className="inline-flex cursor-pointer select-none items-start gap-2.5 pt-1">
               <input
                 type="checkbox"
+                defaultChecked
                 required
                 className="mt-0.5 h-4 w-4 rounded-sm border-light-outline-variant text-brand-blue focus:ring-brand-blue"
               />
@@ -225,19 +226,19 @@ const SignupPage = () => {
               disabled={isSubmitting || isGoogleLoading}
               className="mt-1 w-full"
             />
-
-            <footer className="border-t border-light-outline-variant pt-4 text-center">
-              <p className="font-body text-body-md text-light-on-surface-variant">
-                Sudah punya akun Tiket.ku?{" "}
-                <Link
-                  to="/login"
-                  className="ml-1 font-label text-label-lg text-brand-deep hover:text-brand-blue"
-                >
-                  Masuk sekarang
-                </Link>
-              </p>
-            </footer>
           </form>
+
+          <footer className="border-t border-light-outline-variant pt-4 text-center">
+            <p className="font-body text-body-md text-light-on-surface-variant">
+              Sudah punya akun Tiket.ku?{" "}
+              <Link
+                to="/login"
+                className="ml-1 font-label text-label-lg text-brand-deep hover:text-brand-blue"
+              >
+                Masuk sekarang
+              </Link>
+            </p>
+          </footer>
         </section>
       </div>
     </main>
