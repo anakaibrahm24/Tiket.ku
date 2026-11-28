@@ -19,11 +19,16 @@ export const requireUserId = async (): Promise<string> => {
 export const signInWithEmail = (email: string, password: string) =>
   supabase.auth.signInWithPassword({ email, password });
 
-export const signUpWithEmail = (email: string, password: string, fullName: string) =>
+export const signUpWithEmail = (
+  email: string,
+  password: string,
+  fullName: string,
+  phone: string,
+) =>
   supabase.auth.signUp({
     email,
     password,
-    options: { data: { full_name: fullName } },
+    options: { data: { full_name: fullName, phone } },
   });
 
 export const signInWithGoogle = () =>
