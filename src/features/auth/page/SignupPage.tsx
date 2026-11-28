@@ -1,16 +1,17 @@
-import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Alerts from "@/components/Alerts";
 import { Banner } from "@/components/Banner";
 import { Button } from "@/components/Button";
-import { Footer } from "@/components/Footer";
 import { InputField } from "@/components/InputField";
 import { useSession } from "@/hooks/useSession";
-import { signupSchema, type SignupSchema } from "@/features/auth/schema/authSchemas";
+import {
+  signupSchema,
+  type SignupSchema,
+} from "@/features/auth/schema/authSchemas";
 import {
   getSession,
   mapAuthError,
@@ -47,6 +48,7 @@ const SignupPage = () => {
       values.email,
       values.password,
       values.name,
+      values.phone,
     );
     if (error) {
       setAlert({
@@ -81,7 +83,7 @@ const SignupPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-surface-subtle">
+    <main className="min-h-screen bg-light-surface flex items-center justify-center px-6 py-12">
       {alert && (
         <Alerts
           variant={alert.variant}
@@ -90,56 +92,67 @@ const SignupPage = () => {
           onClose={() => setAlert(null)}
         />
       )}
-      <section className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-night-950 via-brand-deep via-brand-blue to-surface-white px-6 py-16">
-        <button
-          type="button"
-          onClick={() => navigate("/")}
-          className="absolute left-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-line-on-dark bg-line-on-dark text-surface-white"
-          aria-label="Kembali"
-        >
-          <span className="material-symbols-outlined" aria-hidden="true">
-            arrow_back
-          </span>
-        </button>
+      <div className="w-full max-w-md flex flex-col gap-6">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <Link to="/" className="inline-flex items-center gap-2.5 text-light-on-surface">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-blue text-light-on-primary">
+              <span className="material-symbols-outlined text-headline-md" aria-hidden="true">
+                confirmation_number
+              </span>
+            </span>
+            <span className="font-display text-headline-md text-light-on-surface">
+              Tiket.ku
+            </span>
+          </Link>
+          <p className="font-body text-body-md text-light-on-surface-variant">
+            Portal resmi pemesanan tiket Stadion Gelora Bung Karno
+          </p>
+        </div>
 
-        <div className="w-full max-w-[440px] rounded-xl border border-line-soft bg-surface-white p-8 shadow-sm">
+        <section className="flex flex-col gap-6 rounded-xl border border-light-outline-variant bg-light-surface-container-lowest p-8 shadow-sm">
           <header className="flex flex-col gap-1.5">
-            <h1 className="font-headline text-headline-md text-ink-900">
+            <h1 className="font-headline text-headline-md text-light-on-surface">
               Buat akun Tiket.ku
             </h1>
-            <p className="font-body text-body-md text-ink-600">
+            <p className="font-body text-body-md text-light-on-surface-variant">
               Daftar sekali untuk pesan tiket laga timnas, Liga 1, dan konser GBK.
             </p>
           </header>
 
-          <div className="mt-6">
-            <Button
-              type="button"
-              variant="oauth"
-              disabled={isSubmitting || isGoogleLoading}
-              onClick={handleGoogle}
-            >
-              {isGoogleLoading ? (
-                <div className="h-5 w-5 animate-spin rounded-full border-2 border-ink-300 border-t-brand-blue" />
-              ) : (
-                <FcGoogle size={20} />
-              )}
+          <Button
+            type="button"
+            variant="oauth"
+            disabled={isSubmitting || isGoogleLoading}
+            onClick={handleGoogle}
+            className="gap-3"
+          >
+            {isGoogleLoading ? (
+              <div className="h-5 w-5 animate-spin rounded-full border-2 border-light-outline-variant border-t-brand-blue" />
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" className="shrink-0">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z" />
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z" />
+                <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z" />
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z" />
+              </svg>
+            )}
+            <span className="font-label text-label-lg">
               {isGoogleLoading ? "Memproses..." : "Daftar dengan Google"}
-            </Button>
-          </div>
+            </span>
+          </Button>
 
-          <div className="my-5 flex items-center gap-3">
-            <div className="h-px flex-1 bg-line-soft" />
-            <span className="font-label text-label-md text-ink-500">
+          <div className="flex items-center gap-3">
+            <div className="h-px flex-1 bg-light-outline-variant" />
+            <span className="font-label text-label-md text-light-outline">
               atau daftar dengan email
             </span>
-            <div className="h-px flex-1 bg-line-soft" />
+            <div className="h-px flex-1 bg-light-outline-variant" />
           </div>
 
           <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             <InputField
               id="name"
-              labelName="Nama Lengkap (sesuai KTP)"
+              labelName="Nama Lengkap"
               type="text"
               autoComplete="name"
               placeholder="Budi Santoso"
@@ -162,6 +175,18 @@ const SignupPage = () => {
             />
 
             <InputField
+              id="phone"
+              labelName="Nomor Telepon"
+              type="tel"
+              autoComplete="tel"
+              placeholder="08123456789"
+              required
+              disabled={isSubmitting || isGoogleLoading}
+              error={errors.phone?.message}
+              {...register("phone")}
+            />
+
+            <InputField
               id="password"
               labelName="Kata Sandi"
               type="password"
@@ -173,25 +198,13 @@ const SignupPage = () => {
               {...register("password")}
             />
 
-            <InputField
-              id="confirmPassword"
-              labelName="Konfirmasi Kata Sandi"
-              type="password"
-              autoComplete="new-password"
-              placeholder="Ulangi kata sandi"
-              required
-              disabled={isSubmitting || isGoogleLoading}
-              error={errors.confirmPassword?.message}
-              {...register("confirmPassword")}
-            />
-
             <label className="inline-flex cursor-pointer select-none items-start gap-2.5 pt-1">
               <input
                 type="checkbox"
                 required
-                className="mt-0.5 h-4 w-4 rounded-sm border-line-soft text-brand-blue focus:ring-brand-blue"
+                className="mt-0.5 h-4 w-4 rounded-sm border-light-outline-variant text-brand-blue focus:ring-brand-blue"
               />
-              <span className="font-body text-body-md text-ink-600">
+              <span className="font-body text-body-md text-light-on-surface-variant">
                 Saya menyetujui Syarat & Ketentuan serta verifikasi identitas
                 e-tiket GBK.
               </span>
@@ -213,20 +226,20 @@ const SignupPage = () => {
               className="mt-1 w-full"
             />
 
-            <p className="text-center font-body text-body-md text-ink-600">
-              Sudah punya akun Tiket.ku?{" "}
-              <button
-                type="button"
-                onClick={() => navigate("/login")}
-                className="font-label text-label-lg text-brand-deep hover:text-brand-blue"
-              >
-                Masuk sekarang
-              </button>
-            </p>
+            <footer className="border-t border-light-outline-variant pt-4 text-center">
+              <p className="font-body text-body-md text-light-on-surface-variant">
+                Sudah punya akun Tiket.ku?{" "}
+                <Link
+                  to="/login"
+                  className="ml-1 font-label text-label-lg text-brand-deep hover:text-brand-blue"
+                >
+                  Masuk sekarang
+                </Link>
+              </p>
+            </footer>
           </form>
-        </div>
-      </section>
-      <Footer />
+        </section>
+      </div>
     </main>
   );
 };
