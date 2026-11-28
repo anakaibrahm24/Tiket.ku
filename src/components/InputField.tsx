@@ -26,7 +26,7 @@ export const InputField = ({
   const isPassword = type === "password";
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex w-full flex-col gap-1.5">
       <div className="flex items-center justify-between gap-2">
         <label className="font-label text-label-lg text-ink-900">
           {labelName}
