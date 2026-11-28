@@ -80,7 +80,7 @@ const LoginPage = () => {
           onClose={() => setAlert(null)}
         />
       )}
-      <div className="w-full flex flex-col gap-6">
+      <div className="w-full max-w-md mx-auto flex flex-col gap-6">
         <div className="flex flex-col items-center gap-3 text-center">
           <Link
             to="/"

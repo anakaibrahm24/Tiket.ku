@@ -92,7 +92,7 @@ const SignupPage = () => {
           onClose={() => setAlert(null)}
         />
       )}
-      <div className="w-full max-w-md flex flex-col gap-6">
+      <div className="w-full max-w-md mx-auto flex flex-col gap-6">
         <div className="flex flex-col items-center gap-3 text-center">
           <Link to="/" className="inline-flex items-center gap-2.5 text-light-on-surface">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-blue text-light-on-primary">
