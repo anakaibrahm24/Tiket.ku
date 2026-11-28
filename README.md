@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+## Konvensi commit
+
+Pesan commit mengikuti aturan di `AGENTS.md`: Conventional Commits `type(scope): deskripsi` dengan deskripsi imperatif Bahasa Inggris, huruf kecil, tanpa titik akhir. Contoh: `fix(ui): constrain auth card width`.
+
 ## Konfigurasi Supabase
 
 1. Salin `.env.example` ke `.env.local`.

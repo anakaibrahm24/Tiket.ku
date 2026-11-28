@@ -76,7 +76,7 @@ supabase/
 ## Alur kerja
 
 - **Kontrol versi:** jangan langsung `git add`/`git commit`. Jangan pernah commit tanpa persetujuan pengguna. Biarkan pengguna meninjau perubahan kode terlebih dahulu.
-- **Standar DevOps untuk commit:** gunakan Conventional Commits `type(scope): deskripsi`. Type: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `perf`, `build`, `ci`, `style`, `revert`; scope opsional; deskripsi imperatif Bahasa Indonesia, huruf kecil, tanpa titik akhir. Contoh: `docs(agents): susun ulang struktur aturan`.
+- **Standar DevOps untuk commit:** gunakan Conventional Commits `type(scope): deskripsi`. Type: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `perf`, `build`, `ci`, `style`, `revert`; scope opsional; deskripsi imperatif Bahasa Inggris, huruf kecil, tanpa titik akhir. Contoh: `docs(agents): regroup agent rules`.
 - Perlakukan perubahan yang tidak dibuat agen pada sesi ini sebagai perubahan pengguna; jangan revert atau timpa ke versi agen. Jika ragu, tanyakan apakah perubahan itu dari pengguna.
 - **Branch per progress:** setiap progress/fitur/perbaikan harus dikerjakan di branch baru yang namanya sesuai progress (mis. `feat/<nama-fitur>`, `fix/<nama-bug>`). Jangan commit langsung ke `main`/`master`.
 - **Scope task:** jangan keluar dari scope task. Jika ada yang membingungkan, interview pengguna sebelum bertindak.
@@ -87,7 +87,7 @@ supabase/
 - Status QA MVP dicatat di `README.md`: verifikasi statis selesai; QA live owner-side pending. Agen tidak menjalankan SQL live atau memakai kredensial.
 
 - **Branch:** buat branch baru sesuai progress sebelum mulai bekerja.
-- **Format judul:** `[tiket.ku] <deskripsi singkat>`
+- **Format judul:** `[tiket.ku] <short description>` (Bahasa Inggris)
 - **Sebelum commit:** jalankan `npm run lint`, `npm run build`, dan `npx tsc -b`; ketiganya harus lulus.
 - **Scope:** PR fokus pada satu fitur/perbaikan. Referensikan bagian `PRD.md` jika relevan.
 - **Commit per task:** setiap task selesai dan lulus verifikasi dibuat commit terpisah.
