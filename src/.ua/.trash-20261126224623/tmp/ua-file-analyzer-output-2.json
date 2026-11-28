@@ -1,0 +1,285 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "features/auth/page/SignupPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 234,
+      "nonEmptyLines": 215,
+      "functions": [
+        {
+          "name": "SignupPage",
+          "startLine": 21,
+          "endLine": 232,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SignupPage",
+          "callee": "useNavigate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useLocation",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useSession",
+          "lineNumber": 25
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 30
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 31
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useForm",
+          "lineNumber": 37
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "zodResolver",
+          "lineNumber": 37
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useEffect",
+          "lineNumber": 39
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 41
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "signUpWithEmail",
+          "lineNumber": 46
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "mapAuthError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "getSession",
+          "lineNumber": 58
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "navigate",
+          "lineNumber": 60
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setStatusMessage",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "signInWithGoogle",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setAlert",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "mapAuthError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setStatusMessage",
+          "lineNumber": 78
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 79
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "setAlert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 96
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "handleSubmit",
+          "lineNumber": 139
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 149
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 161
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 185
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 220
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/home/page/Home.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 368,
+      "nonEmptyLines": 349,
+      "functions": [
+        {
+          "name": "HomePage",
+          "startLine": 58,
+          "endLine": 366,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "HomePage",
+          "callee": "useNavigate",
+          "lineNumber": 59
+        },
+        {
+          "caller": "HomePage",
+          "callee": "useSession",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handlePesanTiket",
+          "callee": "navigate",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handlePesanTiket",
+          "callee": "navigate",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handleLihatJadwal",
+          "callee": "navigate",
+          "lineNumber": 71
+        },
+        {
+          "caller": "scrollTo",
+          "callee": "document.getElementById(id)?.scrollIntoView",
+          "lineNumber": 75
+        },
+        {
+          "caller": "scrollTo",
+          "callee": "document.getElementById",
+          "lineNumber": 75
+        },
+        {
+          "caller": "HomePage",
+          "callee": "scrollTo",
+          "lineNumber": 130
+        },
+        {
+          "caller": "HomePage",
+          "callee": "scrollTo",
+          "lineNumber": 136
+        },
+        {
+          "caller": "HomePage",
+          "callee": "scrollTo",
+          "lineNumber": 210
+        },
+        {
+          "caller": "HomePage",
+          "callee": "events.map",
+          "lineNumber": 223
+        },
+        {
+          "caller": "HomePage",
+          "callee": "[\n                {\n                  icon: \"qr_code_scanner\",\n                  title: \"E-Tiket QR Pintu Resmi\",\n                  desc: \"Pindai langsung di gerbang elektronik GBK tanpa perlu menukar tiket fisik di loket stadion.\",\n                },\n                {\n                  icon: \"event_seat\",\n                  title: \"Pilihan Zona Tribun Jelas\",\n                  desc: \"Bandingkan ketersediaan kursi dari Tribun Utara, Timur, hingga VIP Barat secara real-time.\",\n                },\n                {\n                  icon: \"verified_user\",\n                  title: \"Transaksi Aman & Instan\",\n                  desc: \"Bayar lewat QRIS, transfer bank, atau kartu debit dengan konfirmasi e-tiket instan.\",\n                },\n              ].map",
+          "lineNumber": 262
+        },
+        {
+          "caller": "HomePage",
+          "callee": "venues.map",
+          "lineNumber": 314
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

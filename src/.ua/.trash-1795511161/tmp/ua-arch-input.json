@@ -1,0 +1,1127 @@
+{
+  "fileNodes": [
+    {
+      "id": "file:features/matches/components/Card.tsx",
+      "type": "file",
+      "name": "Card.tsx",
+      "filePath": "features/matches/components/Card.tsx",
+      "summary": "Renders a single match schedule card composing two TeamSection blocks with kickoff time, date, and stadium, invoking onClick when clicked.",
+      "tags": [
+        "component",
+        "ui",
+        "match-card",
+        "presentation"
+      ]
+    },
+    {
+      "id": "file:features/matches/components/TeamSection.tsx",
+      "type": "file",
+      "name": "TeamSection.tsx",
+      "filePath": "features/matches/components/TeamSection.tsx",
+      "summary": "Renders a team's name and logo in a centered section used inside the match schedule card.",
+      "tags": [
+        "component",
+        "team",
+        "ui",
+        "presentation"
+      ]
+    },
+    {
+      "id": "file:features/matches/components/matchesProps.ts",
+      "type": "file",
+      "name": "matchesProps.ts",
+      "filePath": "features/matches/components/matchesProps.ts",
+      "summary": "Defines the MatchCardProps interface carrying an optional onClick handler for match cards.",
+      "tags": [
+        "type-definition",
+        "props",
+        "component"
+      ]
+    },
+    {
+      "id": "file:features/matches/hooks/useMatchData.ts",
+      "type": "file",
+      "name": "useMatchData.ts",
+      "filePath": "features/matches/hooks/useMatchData.ts",
+      "summary": "Custom hook that fetches matches on mount and exposes matches, loading, and error state.",
+      "tags": [
+        "hook",
+        "data-fetching",
+        "match",
+        "state"
+      ]
+    },
+    {
+      "id": "file:features/matches/page/Matches.tsx",
+      "type": "file",
+      "name": "Matches.tsx",
+      "filePath": "features/matches/page/Matches.tsx",
+      "summary": "Page component rendering a grid of match cards and navigating to the match form with the selected match id.",
+      "tags": [
+        "page",
+        "component",
+        "routing",
+        "match-list"
+      ]
+    },
+    {
+      "id": "file:features/matches/service/matchService.ts",
+      "type": "file",
+      "name": "matchService.ts",
+      "filePath": "features/matches/service/matchService.ts",
+      "summary": "Adapter service converting event records into the legacy MatchPayload shape used by the match schedule UI.",
+      "tags": [
+        "service",
+        "data-fetching",
+        "adapter",
+        "match"
+      ]
+    },
+    {
+      "id": "file:features/matches/types/matchesPayload.ts",
+      "type": "file",
+      "name": "matchesPayload.ts",
+      "filePath": "features/matches/types/matchesPayload.ts",
+      "summary": "Defines the MatchPayload interface describing a scheduled match including teams, times, venue, and ticket categories.",
+      "tags": [
+        "type-definition",
+        "payload",
+        "match"
+      ]
+    },
+    {
+      "id": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "file",
+      "name": "matchesPayload.types.ts",
+      "filePath": "features/matches/types/matchesPayload.types.ts",
+      "summary": "Defines the TeamPayload interface with name and logo fields used by match payloads.",
+      "tags": [
+        "type-definition",
+        "payload",
+        "team"
+      ]
+    },
+    {
+      "id": "file:App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "App.tsx",
+      "summary": "Root component that configures React Router and declares all top-level routes for the application.",
+      "tags": [
+        "entry-point",
+        "routing",
+        "component"
+      ]
+    },
+    {
+      "id": "file:features/auth/page/AuthCallbackPage.tsx",
+      "type": "file",
+      "name": "AuthCallbackPage.tsx",
+      "filePath": "features/auth/page/AuthCallbackPage.tsx",
+      "summary": "Handles the OAuth redirect callback by checking the Supabase session and redirecting to the intended route or login.",
+      "tags": [
+        "component",
+        "auth",
+        "callback"
+      ]
+    },
+    {
+      "id": "file:features/auth/page/LoginPage.tsx",
+      "type": "file",
+      "name": "LoginPage.tsx",
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "summary": "Login screen with email/password and Google sign-in forms, validation, and redirect handling.",
+      "tags": [
+        "component",
+        "auth",
+        "form"
+      ]
+    },
+    {
+      "id": "file:features/auth/page/SignupPage.tsx",
+      "type": "file",
+      "name": "SignupPage.tsx",
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "summary": "Registration screen with name/email/password form, Google sign-up, and email verification feedback.",
+      "tags": [
+        "component",
+        "auth",
+        "form"
+      ]
+    },
+    {
+      "id": "file:features/home/page/Home.tsx",
+      "type": "file",
+      "name": "Home.tsx",
+      "filePath": "features/home/page/Home.tsx",
+      "summary": "Landing page composing navbar, hero, features, schedule preview, and footer sections.",
+      "tags": [
+        "component",
+        "landing",
+        "layout"
+      ]
+    },
+    {
+      "id": "file:components/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "components/index.ts",
+      "summary": "Barrel file re-exporting all shared UI components (Alerts, Button, Dropdown, Hero, etc.) for convenient single-path imports.",
+      "tags": [
+        "barrel",
+        "entry-point",
+        "exports"
+      ]
+    },
+    {
+      "id": "file:features/payment/components/PaymentMethods.tsx",
+      "type": "file",
+      "name": "PaymentMethods.tsx",
+      "filePath": "features/payment/components/PaymentMethods.tsx",
+      "summary": "Selectable payment method button component with selected/hover styling and aria-pressed state.",
+      "tags": [
+        "component",
+        "payment",
+        "ui"
+      ]
+    },
+    {
+      "id": "file:features/payment/hooks/usePayment.ts",
+      "type": "file",
+      "name": "usePayment.ts",
+      "filePath": "features/payment/hooks/usePayment.ts",
+      "summary": "Hook providing a react-hook-form instance configured with zodResolver and the payment schema.",
+      "tags": [
+        "hook",
+        "form",
+        "validation"
+      ]
+    },
+    {
+      "id": "file:features/payment/page/Payment.tsx",
+      "type": "file",
+      "name": "Payment.tsx",
+      "filePath": "features/payment/page/Payment.tsx",
+      "summary": "Payment page rendering payment method options and a card details form, navigating to the ticket page on submit.",
+      "tags": [
+        "page",
+        "payment",
+        "form"
+      ]
+    },
+    {
+      "id": "file:features/payment/schemas/paymentSchema.ts",
+      "type": "file",
+      "name": "paymentSchema.ts",
+      "filePath": "features/payment/schemas/paymentSchema.ts",
+      "summary": "Zod schema validating payment form fields: cardholder name, 4-digit card number, CVV, and expiry.",
+      "tags": [
+        "validation",
+        "schema",
+        "payment"
+      ]
+    },
+    {
+      "id": "file:features/users/components/TicketCard.tsx",
+      "type": "file",
+      "name": "TicketCard.tsx",
+      "filePath": "features/users/components/TicketCard.tsx",
+      "summary": "React component rendering a ticket tribune card with price display and quantity increase/decrease controls.",
+      "tags": [
+        "component",
+        "react",
+        "ticket",
+        "ui"
+      ]
+    },
+    {
+      "id": "file:features/users/hooks/useUserRegister.ts",
+      "type": "file",
+      "name": "useUserRegister.ts",
+      "filePath": "features/users/hooks/useUserRegister.ts",
+      "summary": "Custom hook wrapping react-hook-form with zod validation for user registration form state.",
+      "tags": [
+        "hook",
+        "form",
+        "validation",
+        "react-hook-form"
+      ]
+    },
+    {
+      "id": "file:features/users/schema/userSchema.ts",
+      "type": "file",
+      "name": "userSchema.ts",
+      "filePath": "features/users/schema/userSchema.ts",
+      "summary": "Zod schema defining validation rules for user registration fields including name, identity number, email, gender, and ticket quantities.",
+      "tags": [
+        "schema",
+        "validation",
+        "zod",
+        "type-definition"
+      ]
+    },
+    {
+      "id": "file:app.css",
+      "type": "file",
+      "name": "app.css",
+      "filePath": "app.css",
+      "summary": "Tailwind CSS v4 theme defining design tokens (colors, fonts, radius, spacing, shadows) and base styles for Tiket.ku.",
+      "tags": [
+        "styling",
+        "design-tokens",
+        "configuration"
+      ]
+    },
+    {
+      "id": "file:components/Alerts.tsx",
+      "type": "file",
+      "name": "Alerts.tsx",
+      "filePath": "components/Alerts.tsx",
+      "summary": "Toast-style alert component with animated enter/exit and auto-dismiss progress bar, supporting multiple variants.",
+      "tags": [
+        "component",
+        "ui",
+        "alert"
+      ]
+    },
+    {
+      "id": "file:components/Button.tsx",
+      "type": "file",
+      "name": "Button.tsx",
+      "filePath": "components/Button.tsx",
+      "summary": "Reusable button component with loading spinner and disabled styling.",
+      "tags": [
+        "component",
+        "ui",
+        "button"
+      ]
+    },
+    {
+      "id": "file:components/CTABanner.tsx",
+      "type": "file",
+      "name": "CTABanner.tsx",
+      "filePath": "components/CTABanner.tsx",
+      "summary": "Call-to-action banner prompting users to book tickets.",
+      "tags": [
+        "component",
+        "ui",
+        "cta"
+      ]
+    },
+    {
+      "id": "file:components/Dropdown.tsx",
+      "type": "file",
+      "name": "Dropdown.tsx",
+      "filePath": "components/Dropdown.tsx",
+      "summary": "Form dropdown select integrated with react-hook-form registration and error display.",
+      "tags": [
+        "component",
+        "form",
+        "dropdown"
+      ]
+    },
+    {
+      "id": "file:components/FeatureCard.tsx",
+      "type": "file",
+      "name": "FeatureCard.tsx",
+      "filePath": "components/FeatureCard.tsx",
+      "summary": "Card displaying a feature icon, title, and description.",
+      "tags": [
+        "component",
+        "ui",
+        "card"
+      ]
+    },
+    {
+      "id": "file:components/Features.tsx",
+      "type": "file",
+      "name": "Features.tsx",
+      "filePath": "components/Features.tsx",
+      "summary": "Section listing platform features in a responsive grid of FeatureCards.",
+      "tags": [
+        "component",
+        "section",
+        "features"
+      ]
+    },
+    {
+      "id": "file:components/Footer.tsx",
+      "type": "file",
+      "name": "Footer.tsx",
+      "filePath": "components/Footer.tsx",
+      "summary": "Site footer with copyright and footer links.",
+      "tags": [
+        "component",
+        "layout",
+        "footer"
+      ]
+    },
+    {
+      "id": "file:components/FooterLinks.tsx",
+      "type": "file",
+      "name": "FooterLinks.tsx",
+      "filePath": "components/FooterLinks.tsx",
+      "summary": "Navigation links list for the footer.",
+      "tags": [
+        "component",
+        "navigation",
+        "footer"
+      ]
+    },
+    {
+      "id": "file:components/Hero.tsx",
+      "type": "file",
+      "name": "Hero.tsx",
+      "filePath": "components/Hero.tsx",
+      "summary": "Hero section with headline and CTA buttons for booking and schedule.",
+      "tags": [
+        "component",
+        "section",
+        "hero"
+      ]
+    },
+    {
+      "id": "file:components/InputField.tsx",
+      "type": "file",
+      "name": "InputField.tsx",
+      "filePath": "components/InputField.tsx",
+      "summary": "Form input with floating label, password toggle, and error display.",
+      "tags": [
+        "component",
+        "form",
+        "input"
+      ]
+    },
+    {
+      "id": "file:components/Navbar.tsx",
+      "type": "file",
+      "name": "Navbar.tsx",
+      "filePath": "components/Navbar.tsx",
+      "summary": "Sticky navigation bar with route links and auth buttons.",
+      "tags": [
+        "component",
+        "navigation",
+        "navbar"
+      ]
+    },
+    {
+      "id": "file:components/ScheduleCard.tsx",
+      "type": "file",
+      "name": "ScheduleCard.tsx",
+      "filePath": "components/ScheduleCard.tsx",
+      "summary": "Card displaying event schedule details with badge and detail button.",
+      "tags": [
+        "component",
+        "card",
+        "schedule"
+      ]
+    },
+    {
+      "id": "file:components/SchedulePreview.tsx",
+      "type": "file",
+      "name": "SchedulePreview.tsx",
+      "filePath": "components/SchedulePreview.tsx",
+      "summary": "Section previewing upcoming events using ScheduleCard grid.",
+      "tags": [
+        "component",
+        "section",
+        "schedule"
+      ]
+    },
+    {
+      "id": "file:features/auth/schema/authSchemas.ts",
+      "type": "file",
+      "name": "authSchemas.ts",
+      "filePath": "features/auth/schema/authSchemas.ts",
+      "summary": "Zod schemas for login and signup validation with Indonesian error messages.",
+      "tags": [
+        "validation",
+        "schema",
+        "auth"
+      ]
+    },
+    {
+      "id": "file:features/auth/service/authService.ts",
+      "type": "file",
+      "name": "authService.ts",
+      "filePath": "features/auth/service/authService.ts",
+      "summary": "Supabase auth helpers: session, sign-in/up, Google OAuth, sign-out, and error mapping.",
+      "tags": [
+        "service",
+        "auth",
+        "supabase"
+      ]
+    },
+    {
+      "id": "file:features/events/service/eventService.ts",
+      "type": "file",
+      "name": "eventService.ts",
+      "filePath": "features/events/service/eventService.ts",
+      "summary": "Supabase queries for events with category mapping and date filtering.",
+      "tags": [
+        "service",
+        "events",
+        "supabase"
+      ]
+    },
+    {
+      "id": "file:features/events/types/event.types.ts",
+      "type": "file",
+      "name": "event.types.ts",
+      "filePath": "features/events/types/event.types.ts",
+      "summary": "TypeScript types for events, categories, orders, and tickets.",
+      "tags": [
+        "type-definition",
+        "events",
+        "data-model"
+      ]
+    },
+    {
+      "id": "file:features/orders/service/orderService.ts",
+      "type": "file",
+      "name": "orderService.ts",
+      "filePath": "features/orders/service/orderService.ts",
+      "summary": "Order creation and payment completion via Supabase RPCs.",
+      "tags": [
+        "service",
+        "orders",
+        "payment"
+      ]
+    },
+    {
+      "id": "file:features/tickets/component/Ticket.tsx",
+      "type": "file",
+      "name": "Ticket.tsx",
+      "filePath": "features/tickets/component/Ticket.tsx",
+      "summary": "Legacy ticket display component currently commented out.",
+      "tags": [
+        "component",
+        "ticket",
+        "legacy"
+      ]
+    },
+    {
+      "id": "file:features/tickets/service/ticketService.ts",
+      "type": "file",
+      "name": "ticketService.ts",
+      "filePath": "features/tickets/service/ticketService.ts",
+      "summary": "Fetches a ticket by order id from Supabase.",
+      "tags": [
+        "service",
+        "tickets",
+        "supabase"
+      ]
+    },
+    {
+      "id": "file:features/users/hooks/useUsers.ts",
+      "type": "file",
+      "name": "useUsers.ts",
+      "filePath": "features/users/hooks/useUsers.ts",
+      "summary": "Legacy hook for fetching users currently commented out.",
+      "tags": [
+        "hook",
+        "users",
+        "legacy"
+      ]
+    },
+    {
+      "id": "file:features/users/page/RegisterForm.tsx",
+      "type": "file",
+      "name": "RegisterForm.tsx",
+      "filePath": "features/users/page/RegisterForm.tsx",
+      "summary": "Legacy registration form currently commented out.",
+      "tags": [
+        "page",
+        "users",
+        "legacy"
+      ]
+    },
+    {
+      "id": "file:features/users/service/userServices.ts",
+      "type": "file",
+      "name": "userServices.ts",
+      "filePath": "features/users/service/userServices.ts",
+      "summary": "Legacy user registration service currently commented out.",
+      "tags": [
+        "service",
+        "users",
+        "legacy"
+      ]
+    },
+    {
+      "id": "file:features/users/types/userPayload.d.ts",
+      "type": "file",
+      "name": "userPayload.d.ts",
+      "filePath": "features/users/types/userPayload.d.ts",
+      "summary": "UserPayload interface for registration data.",
+      "tags": [
+        "type-definition",
+        "users",
+        "data-model"
+      ]
+    },
+    {
+      "id": "file:hooks/useCounter.ts",
+      "type": "file",
+      "name": "useCounter.ts",
+      "filePath": "hooks/useCounter.ts",
+      "summary": "React hook managing a counter state with increment and decrement helpers.",
+      "tags": [
+        "hook",
+        "state",
+        "counter",
+        "utility"
+      ]
+    },
+    {
+      "id": "file:hooks/useSession.ts",
+      "type": "file",
+      "name": "useSession.ts",
+      "filePath": "hooks/useSession.ts",
+      "summary": "React hook tracking the current Supabase auth session and loading state.",
+      "tags": [
+        "hook",
+        "auth",
+        "session",
+        "state"
+      ]
+    },
+    {
+      "id": "file:lib/supabase.ts",
+      "type": "file",
+      "name": "supabase.ts",
+      "filePath": "lib/supabase.ts",
+      "summary": "Creates and exports the shared Supabase client using Vite environment variables.",
+      "tags": [
+        "client",
+        "database",
+        "singleton",
+        "configuration"
+      ]
+    },
+    {
+      "id": "file:lib/utiils.ts",
+      "type": "file",
+      "name": "utiils.ts",
+      "filePath": "lib/utiils.ts",
+      "summary": "Utility for merging Tailwind CSS classes using clsx and tailwind-merge.",
+      "tags": [
+        "utility",
+        "styling",
+        "tailwind",
+        "cn"
+      ]
+    },
+    {
+      "id": "file:main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "main.tsx",
+      "summary": "Application entry point that mounts the root React component into the DOM.",
+      "tags": [
+        "entry-point",
+        "bootstrap",
+        "react"
+      ]
+    },
+    {
+      "id": "file:services/userService.ts",
+      "type": "file",
+      "name": "userService.ts",
+      "filePath": "services/userService.ts",
+      "summary": "Legacy file containing only commented-out user service hook implementations.",
+      "tags": [
+        "service",
+        "user",
+        "legacy",
+        "dead-code"
+      ]
+    },
+    {
+      "id": "file:vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "vite-env.d.ts",
+      "summary": "TypeScript reference to Vite client types for import.meta.env support.",
+      "tags": [
+        "type-definition",
+        "vite",
+        "environment"
+      ]
+    }
+  ],
+  "importEdges": [
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/TeamSection.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/matchesProps.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/service/matchService.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/components/Card.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/hooks/useMatchData.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/types/matchesPayload.ts",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/AuthCallbackPage.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/LoginPage.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/SignupPage.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/home/page/Home.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/matches/page/Matches.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/AuthCallbackPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Alerts.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:features/auth/schema/authSchemas.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Alerts.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:features/auth/schema/authSchemas.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Features.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Hero.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Navbar.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/SchedulePreview.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/payment/hooks/usePayment.ts",
+      "target": "file:features/payment/schemas/paymentSchema.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:components/index.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:features/payment/components/PaymentMethods.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:features/payment/hooks/usePayment.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "file:components/FeatureCard.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "file:components/FooterLinks.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "file:components/ScheduleCard.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:App.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:app.css",
+      "type": "imports"
+    }
+  ],
+  "allEdges": [
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/TeamSection.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/matchesProps.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/service/matchService.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/components/Card.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/hooks/useMatchData.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/matches/types/matchesPayload.ts",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/AuthCallbackPage.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/LoginPage.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/SignupPage.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/home/page/Home.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/matches/page/Matches.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/auth/page/AuthCallbackPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Alerts.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:features/auth/schema/authSchemas.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/LoginPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Alerts.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:features/auth/schema/authSchemas.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Features.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Footer.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Hero.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/Navbar.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:components/SchedulePreview.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "file:hooks/useSession.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:features/payment/hooks/usePayment.ts",
+      "target": "file:features/payment/schemas/paymentSchema.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:components/index.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:features/payment/components/PaymentMethods.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/payment/page/Payment.tsx",
+      "target": "file:features/payment/hooks/usePayment.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/users/components/TicketCard.tsx",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:features/users/hooks/useUserRegister.ts",
+      "target": "file:features/users/schema/userSchema.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "file:components/FeatureCard.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "file:components/FooterLinks.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "file:components/ScheduleCard.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:App.tsx",
+      "type": "depends_on"
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:app.css",
+      "type": "depends_on"
+    }
+  ]
+}

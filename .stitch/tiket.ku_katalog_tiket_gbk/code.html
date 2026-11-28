@@ -1,0 +1,734 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket.ku — Katalog Tiket Pertandingan &amp; Konser</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'brand-blue': '#146DFC',
+        'brand-hover': '#006FFF',
+        'brand-deep': '#0056EC',
+        'brand-sky': '#BADFFF',
+        'brand-tint': '#DEF1FF',
+        'accent': '#F97316',
+        'success': '#16A34A',
+        'warning': '#F59E0B',
+        'danger': '#DC2626',
+        'light-primary': '#146DFC',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#006FFF',
+        'light-on-primary-container': '#070707',
+        'light-secondary': '#0891B2',
+        'light-on-secondary': '#1E1E1E',
+        'light-secondary-container': '#DEF1FF',
+        'light-on-secondary-container': '#0056EC',
+        'light-background': '#FFFFFF',
+        'light-on-background': '#27272A',
+        'light-surface': '#F7F8F7',
+        'light-surface-dim': '#EDEEF0',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F7F8F7',
+        'light-surface-container': '#F2F2F3',
+        'light-surface-container-high': '#EDEEF0',
+        'light-on-surface': '#27272A',
+        'light-surface-variant': '#F2F2F3',
+        'light-on-surface-variant': '#606169',
+        'light-outline': '#71717A',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#020918',
+        'light-inverse-on-surface': '#FFFFFF',
+        'dark-primary': '#BADFFF',
+        'dark-on-primary': '#020918',
+        'dark-primary-container': '#146DFC',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-background': '#020918',
+        'dark-on-background': '#FFFFFF',
+        'dark-surface': '#051027',
+        'dark-surface-container-lowest': '#020918',
+        'dark-surface-container-low': '#051027',
+        'dark-surface-container': '#27272A',
+        'dark-surface-container-high': '#3B3C3F',
+        'dark-on-surface': '#FFFFFF',
+        'dark-on-surface-variant': '#BADFFF',
+        'dark-outline': '#71717A',
+        'dark-outline-variant': '#434349',
+      },
+      borderRadius: {
+        'sm': '12px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '14px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '56px',
+        'page-margin': '64px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Inter"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['48px', { lineHeight: '52px', letterSpacing: '-1.5px', fontWeight: '600' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.75px', fontWeight: '600' }],
+        'headline-lg': ['38px', { lineHeight: '44px', letterSpacing: '-0.76px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.5px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '-0.16px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '220ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    dialog::backdrop {
+      background-color: rgba(2, 9, 24, 0.6);
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex flex-col bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <main id="top" class="flex-1">
+      <!-- Dark Night-950 Hero Banner (Tiket.ku) -->
+      <section class="relative bg-light-inverse-surface border-b border-dark-outline-variant overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrAFghPgsUqkpDmo_QCDKy4lDYI3oqL39G5iWAX6B8r3KOjpO108yIO80QUTCeXbmYe29qTcxMz8sRO9lxqfVMm-baSAoG4-8S4lar8f5Fva9_qXATgk24kGuYf4GCVrDjaJYSHUSIj_t5HwNrMatM3Z-yPexoFprhv6X18yQX2yu4Mc-nx_ymWPEL8DGoKJJmimyQ2tqDdYZLPkGSDp_ROCXVFPHN-mULos-hekGzL4xAO6ngsqmTc-3xQ_dmjq" alt="Suasana stadion dan konser langsung di Indonesia" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-light-inverse-surface/85"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 py-14 lg:py-16">
+          <div class="max-w-2xl flex flex-col gap-6">
+            <div class="inline-flex items-center gap-2 self-start bg-brand-blue text-light-on-primary px-3.5 py-1.5 rounded-full">
+              <span class="material-symbols-outlined text-label-lg" aria-hidden="true">bolt</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Tiket Resmi Kawasan GBK · E-Tiket Instan</span>
+            </div>
+
+            <h1 class="font-display text-display-lg-mobile lg:text-display-lg text-light-inverse-on-surface text-balance" data-design-text-token="display-lg">
+              Tiket resmi acara Stadion Gelora Bung Karno.
+            </h1>
+
+            <p class="font-body text-body-lg text-brand-sky text-pretty max-w-prose" data-design-text-token="body-lg">
+              Pesan kursi terbaik untuk laga Liga 1, pertandingan timnas, konser akbar, dan turnamen internasional di seluruh venue kawasan GBK, Senayan.
+            </p>
+
+            <!-- COMPONENT: searchbar-standard -->
+            <form data-component-id="searchbar-standard" data-component-type="searchbar" data-component-variant="standard" role="search" onsubmit="handleSearchSubmit(event)" class="flex items-center w-full bg-light-surface-container-lowest border border-light-outline-variant focus-within:border-brand-blue rounded-lg overflow-hidden p-1.5 shadow-sm">
+              <span class="pl-3 text-light-outline material-symbols-outlined text-title-lg" aria-hidden="true">search</span>
+              <input id="search-input-01" type="search" aria-label="Cari acara atau venue GBK" placeholder="Cari pertandingan, konser, atau venue GBK..." oninput="handleSearchInput(this.value)" class="w-full border-0 bg-transparent px-3 py-2.5 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:ring-0">
+              <button type="submit" aria-label="Cari acara" class="bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-2.5 rounded-md font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer shrink-0">
+                <span data-design-text-token="label-lg">Cari Acara</span>
+              </button>
+            </form>
+
+            <!-- Quick Category Chips -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="font-label text-label-md text-brand-sky mr-1" data-design-text-token="label-md">Populer di GBK:</span>
+              <button type="button" onclick="quickSearch(&#39;Stadion Utama&#39;)" class="px-3.5 py-1.5 rounded-full bg-light-surface-container-lowest/10 hover:bg-light-surface-container-lowest/20 text-light-inverse-on-surface border border-dark-outline-variant font-label text-label-md transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span data-design-text-token="label-md">Stadion Utama GBK</span>
+              </button>
+              <button type="button" onclick="quickSearch(&#39;Persija&#39;)" class="px-3.5 py-1.5 rounded-full bg-light-surface-container-lowest/10 hover:bg-light-surface-container-lowest/20 text-light-inverse-on-surface border border-dark-outline-variant font-label text-label-md transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span data-design-text-token="label-md">Persija vs Persib</span>
+              </button>
+              <button type="button" onclick="quickSearch(&#39;Istora&#39;)" class="px-3.5 py-1.5 rounded-full bg-light-surface-container-lowest/10 hover:bg-light-surface-container-lowest/20 text-light-inverse-on-surface border border-dark-outline-variant font-label text-label-md transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span data-design-text-token="label-md">Istora Senayan</span>
+              </button>
+              <button type="button" onclick="quickSearch(&#39;Tennis Indoor&#39;)" class="px-3.5 py-1.5 rounded-full bg-light-surface-container-lowest/10 hover:bg-light-surface-container-lowest/20 text-light-inverse-on-surface border border-dark-outline-variant font-label text-label-md transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span data-design-text-token="label-md">Tennis Indoor GBK</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filter Bar & Ticket Catalog -->
+      <section id="katalog" class="max-w-7xl mx-auto px-6 lg:px-16 py-14 flex flex-col gap-6">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-light-outline-variant pb-0">
+          <!-- COMPONENT: tabs-with-icon (Underline Active Indicator per Tiket.ku) -->
+          <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon">
+            <div role="tablist" aria-label="Filter kategori acara" class="flex flex-wrap items-center gap-6">
+              <button role="tab" data-category="Semua" aria-selected="true" tabindex="0" onclick="setCategory(&#39;Semua&#39;)" class="category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-brand-blue text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">grid_view</span>
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Semua</span>
+              </button>
+              <button role="tab" data-category="Sepak Bola" aria-selected="false" tabindex="-1" onclick="setCategory(&#39;Sepak Bola&#39;)" class="category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">sports_soccer</span>
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Sepak Bola</span>
+              </button>
+              <button role="tab" data-category="Konser" aria-selected="false" tabindex="-1" onclick="setCategory(&#39;Konser&#39;)" class="category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">music_note</span>
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Konser</span>
+              </button>
+              <button role="tab" data-category="Festival" aria-selected="false" tabindex="-1" onclick="setCategory(&#39;Festival&#39;)" class="category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">festival</span>
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Festival</span>
+              </button>
+              <button role="tab" data-category="Olahraga" aria-selected="false" tabindex="-1" onclick="setCategory(&#39;Olahraga&#39;)" class="category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">sports_basketball</span>
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Olahraga</span>
+              </button>
+              <button role="tab" data-category="Komedi" aria-selected="false" tabindex="-1" onclick="setCategory(&#39;Komedi&#39;)" class="category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">theater_comedy</span>
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Komedi &amp; Teater</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between lg:justify-end gap-3 pb-3 shrink-0">
+            <label for="city-filter" class="sr-only">Filter venue GBK</label>
+            <select id="city-filter" onchange="setCity(this.value)" class="bg-light-surface-container-lowest border border-light-outline-variant rounded-lg px-3.5 py-2 font-label text-label-lg text-light-on-surface focus:border-brand-blue focus:ring-0 cursor-pointer">
+              <option value="Semua">Semua Venue GBK</option>
+              <option value="Stadion Utama">Stadion Utama GBK</option>
+              <option value="Istora Senayan">Istora Senayan</option>
+              <option value="Tennis Indoor">Tennis Indoor GBK</option>
+              <option value="Plaza Timur">Plaza Timur GBK</option>
+            </select>
+
+            <span id="event-count" class="font-mono text-mono-sm text-light-on-surface-variant tabular-nums px-3 py-2 bg-light-surface-container rounded-full" data-design-text-token="mono-sm">
+              8 acara
+            </span>
+          </div>
+        </div>
+
+        <!-- 4-Column Ticket Card Grid -->
+        <div id="ticket-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          <!-- Cards rendered by inline script -->
+        </div>
+
+        <!-- Empty State (hidden by default) -->
+        <div id="empty-state" class="hidden border border-light-outline-variant bg-light-surface-container-lowest rounded-xl p-12 text-center flex-col items-center gap-3 shadow-sm">
+          <span class="material-symbols-outlined text-headline-lg text-light-outline" aria-hidden="true">event_busy</span>
+          <h2 class="font-headline text-title-lg text-light-on-surface" data-design-text-token="title-lg">Acara tidak ditemukan</h2>
+          <p class="font-body text-body-md text-light-on-surface-variant max-w-md mx-auto" data-design-text-token="body-md">
+            Coba ubah kata kunci pencarian atau pilih kategori dan kota lain untuk melihat jadwal tiket yang tersedia.
+          </p>
+          <button type="button" onclick="resetFilters()" class="mt-2 inline-flex items-center justify-center bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span data-design-text-token="label-lg">Reset Filter</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-light-outline-variant bg-light-surface-container-lowest mt-8">
+      <div class="max-w-7xl mx-auto px-6 lg:px-16 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-brand-blue text-light-on-primary">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">confirmation_number</span>
+          </span>
+          <span class="font-display text-title-md text-light-on-surface" data-design-text-token="title-md">Tiket.ku</span>
+          <span class="font-body text-body-md text-light-on-surface-variant ml-2" data-design-text-token="body-md">Platform resmi pemesanan tiket acara langsung di Indonesia.</span>
+        </div>
+        <p class="font-label text-label-md text-light-outline tabular-nums" data-design-text-token="label-md">
+          Layanan Pelanggan 24/7 · E-Tiket Terverifikasi
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- COMPONENT: drawer-right (Slide-over Seat Category & Event Detail Drawer) -->
+  <dialog id="seat-drawer" data-component-id="drawer-right" data-component-type="drawer" data-component-variant="right" aria-labelledby="drawer-event-title" class="m-0 ml-auto h-full max-h-none w-full max-w-lg bg-light-surface-container-lowest text-light-on-surface p-0 border-l border-light-outline-variant rounded-l-xl open:flex flex-col shadow-lg">
+    <header class="flex items-center justify-between px-6 py-4 border-b border-light-outline-variant shrink-0">
+      <div class="flex items-center gap-2.5">
+        <span id="drawer-category-badge" class="bg-brand-blue text-light-on-primary px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Sepak Bola</span>
+        <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Detail Acara &amp; Kursi</span>
+      </div>
+      <button type="button" onclick="closeSeatDrawer()" aria-label="Tutup panel" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-light-outline-variant hover:bg-light-surface-container-high text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer">
+        <span class="material-symbols-outlined text-title-lg" aria-hidden="true">close</span>
+      </button>
+    </header>
+
+    <div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+      <div class="aspect-[16/9] rounded-md overflow-hidden border border-light-outline-variant bg-light-surface-container shrink-0">
+        <img id="drawer-image" src="https://lh3.googleusercontent.com/aida/ALJJyrBMiILm9Zwh5M72qc8bJXr1BTUjJJEv3GYph5Xi4ynEq9rOjtWL1ouyTVmDBrue4fcL2SGE_Jyk3Ays8mODbdebfcCCLNS7X3fHuLndWsvoRy8sxsJXpEs-N2Hq8B6-WX7lYdt0hv5rd8OURJXnGn7AQml97h57ZdFMpoYLcro7RT5Bh2wglDf0-y6-nkJdCdj4OuzTEa6aCCoXJE5IIpLD_BBxUyZ5mc2npjcDM1Vu1FmvcSq2OfGgbK0cSb0v" alt class="w-full h-full object-cover">
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <p id="drawer-date" class="font-label text-label-md text-brand-blue tabular-nums" data-design-text-token="label-md">Sab, 14 Des · 19:30 WIB</p>
+        <h2 id="drawer-event-title" class="font-title text-headline-md text-light-on-surface text-balance" data-design-text-token="headline-md">Persija vs Persib</h2>
+        <p id="drawer-venue" class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5" data-design-text-token="body-md">
+          <span class="material-symbols-outlined text-body-lg text-light-outline" aria-hidden="true">location_on</span>
+          <span>Stadion Utama GBK, Jakarta</span>
+        </p>
+        <p id="drawer-desc" class="font-body text-body-md text-light-on-surface-variant pt-1" data-design-text-token="body-md"></p>
+      </div>
+
+      <div class="border-t border-light-outline-variant pt-5 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Pilih Kategori Kursi</h3>
+          <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Maks. 4 tiket/transaksi</span>
+        </div>
+
+        <div id="seat-tier-list" class="flex flex-col gap-2.5">
+          <!-- Seat tiers populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Quantity & Order Confirmation -->
+      <div id="booking-confirmation" class="hidden bg-brand-tint text-brand-deep border border-brand-sky rounded-lg p-4 flex items-start gap-3">
+        <span class="material-symbols-outlined text-title-lg shrink-0" aria-hidden="true">check_circle</span>
+        <div class="flex flex-col gap-1">
+          <p class="font-label text-label-lg" data-design-text-token="label-lg">Tiket berhasil dikunci!</p>
+          <p id="booking-confirmation-text" class="font-body text-body-md" data-design-text-token="body-md"></p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="px-6 py-4 border-t border-light-outline-variant bg-light-surface flex items-center justify-between gap-4 shrink-0">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center border border-light-outline-variant bg-light-surface-container-lowest rounded-lg overflow-hidden">
+          <button type="button" onclick="changeQty(-1)" aria-label="Kurangi jumlah tiket" class="w-9 h-9 flex items-center justify-center hover:bg-light-surface-container-high text-light-on-surface cursor-pointer">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">remove</span>
+          </button>
+          <span id="drawer-qty" class="w-8 text-center font-mono text-mono-md tabular-nums" data-design-text-token="mono-md">1</span>
+          <button type="button" onclick="changeQty(1)" aria-label="Tambah jumlah tiket" class="w-9 h-9 flex items-center justify-center hover:bg-light-surface-container-high text-light-on-surface cursor-pointer">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">add</span>
+          </button>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Total Bayar</span>
+          <span id="drawer-total" class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 150.000</span>
+        </div>
+      </div>
+
+      <button data-component-id="button-primary" data-component-type="button" data-component-variant="primary" type="button" onclick="confirmBooking()" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+        <span class="font-label text-label-lg" data-design-text-token="label-lg">Pesan Sekarang</span>
+      </button>
+    </footer>
+  </dialog>
+
+  <script data-stitch-original-script="7839bef43c708e50===../../images/event_football_derby.jpg|||d9d16edf68b47f0c===../../images/event_concert_pop.jpg|||d35ca6db8324c612===../../images/event_indie_fest.jpg|||c97c1367d495f124===../../images/event_timnas_match.jpg|||5feff8b4038fd6fb===../../images/event_jazz_night.jpg|||a79b073a585d1844===../../images/event_badminton_open.jpg|||c1d9dc1e8657b4e5===../../images/event_standup_comedy.jpg|||993e4ff089fec9a7===../../images/event_basketball_ibl.jpg">
+    const EVENTS = [
+      {
+        id: 'persija-persib',
+        title: 'Persija vs Persib',
+        category: 'Sepak Bola',
+        city: 'Stadion Utama',
+        date: 'Sab, 14 Des · 19:30 WIB',
+        venue: 'Stadion Utama GBK',
+        price: 150000,
+        status: 'Terbatas',
+        statusTone: 'brand',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrBMiILm9Zwh5M72qc8bJXr1BTUjJJEv3GYph5Xi4ynEq9rOjtWL1ouyTVmDBrue4fcL2SGE_Jyk3Ays8mODbdebfcCCLNS7X3fHuLndWsvoRy8sxsJXpEs-N2Hq8B6-WX7lYdt0hv5rd8OURJXnGn7AQml97h57ZdFMpoYLcro7RT5Bh2wglDf0-y6-nkJdCdj4OuzTEa6aCCoXJE5IIpLD_BBxUyZ5mc2npjcDM1Vu1FmvcSq2OfGgbK0cSb0v',
+        description: 'Duel klasik Liga 1 pekan ke-18. Gerbang stadion dibuka pukul 16:30 WIB dengan pemeriksaan e-tiket dan identitas resmi.',
+        tiers: [
+          { name: 'Tribun Utara / Selatan', note: 'Posisi di belakang gawang, akses gate 3 & 9', price: 150000, left: 42 },
+          { name: 'Tribun Timur', note: 'Pandangan sejajar garis tengah lapangan', price: 250000, left: 18 },
+          { name: 'VIP Barat', note: 'Kursi bernomor, akses lounge & pintu prioritas', price: 450000, left: 9 }
+        ]
+      },
+      {
+        id: 'sheila-on-7',
+        title: 'Konser Sheila on 7',
+        category: 'Konser',
+        city: 'Stadion Utama',
+        date: 'Min, 22 Des · 20:00 WIB',
+        venue: 'Stadion Utama GBK',
+        price: 350000,
+        status: 'Hampir Habis',
+        statusTone: 'danger',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrCoFVIvKzDDiOtciK3KakEnC58uJXy0OpEmCPQSvSof2imS9GR19bHFgNoGJRw-Z3OUeEN37B_a2uy7SxW2ciF68UamDDuFzNFO674mtyKxPGXQbxYMXKq0bjYAx2zoxGlOiuTcR21MUeFSrv8rPj9AV0MUFVg0bsysLrRKZ-IfE3GXfnNcEDStBU0LVR077Ns8QHaC31MihpyZH3WtvCgJbiPYOgOhMtNFps3dZGqHD74EECZRnlqMRHWQ',
+        description: 'Konser tunggal akhir tahun di Stadion Utama GBK dengan setlist penuh 22 lagu ikonik dan tata panggung 360 derajat.',
+        tiers: [
+          { name: 'Festival B (Standing)', note: 'Area berdiri bagian tengah lapangan GBK', price: 350000, left: 14 },
+          { name: 'Festival A (Front Stage)', note: 'Area berdiri tepat di depan panggung utama', price: 550000, left: 6 },
+          { name: 'Tribune Seated', note: 'Tempat duduk bernomor dengan pandangan luas', price: 475000, left: 21 }
+        ]
+      },
+      {
+        id: 'senja-berdendang',
+        title: 'Senja Berdendang Fest',
+        category: 'Festival',
+        city: 'Plaza Timur',
+        date: 'Sab, 28 Des · 15:00 WIB',
+        venue: 'Plaza Timur GBK',
+        price: 225000,
+        status: 'Tersedia',
+        statusTone: 'neutral',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrCYSdl7OSB8FjXY2EYGZicx65iw9s4dqkIv2tKLIuVGtuA0_zxf3aLmTu_f_aG_eDDdoZUul0XvFUUzirC3VPv1dYneSWFVKRitdsyvlUjQMgNKziE-CHslyrQ0EY0LYIQNsVfBPf7gU9LVj2GOr2CmmbQs1KBAtv-F5mc48gWtu5gBXdygcVexNkW5bPpANsGU-J7bXTcxfh4CrWWWP2gfiGxcBDHiBwOX-IQl3aT70HpHs7yjXqVxU1Y',
+        description: 'Festival musik lintas generasi di area terbuka Plaza Timur GBK dengan 2 panggung utama dan area kuliner.',
+        tiers: [
+          { name: '1-Day Pass Reguler', note: 'Akses penuh seluruh panggung mulai pukul 15:00', price: 225000, left: 120 },
+          { name: 'VIP Lounge Pass', note: 'Jalur masuk cepat, toilet khusus & area teduh', price: 420000, left: 35 }
+        ]
+      },
+      {
+        id: 'timnas-jepang',
+        title: 'Indonesia vs Jepang',
+        category: 'Sepak Bola',
+        city: 'Stadion Utama',
+        date: 'Kam, 19 Des · 19:00 WIB',
+        venue: 'Stadion Utama GBK',
+        price: 250000,
+        status: 'Hampir Habis',
+        statusTone: 'danger',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrD0iFwXrDg-yeDx9fEUr8tXJIADINYQRahf8BaUAjArfNHfUUI9IGYVli1pphhi-J8hDuy_d0D86mT4NdbLEcMZ6cBFcg5IaoeRx8QHam5zlb2as3JXhibxDC-J0h4nh44ri84qybooRPt8axRubWJkavVzc6FuUKYvydiezdBOP7dKR0EN42CAFnLJodW7YJlXis5i-SP5XXRC-bxRt-Q4IRuC1KeVcuyHyjHiAXhq3qYBQdv13jG4UQRurQ',
+        description: 'Laga kandang krusial Kualifikasi Piala Dunia zona Asia. Wajib membawa kartu identitas sesuai nama pada e-tiket.',
+        tiers: [
+          { name: 'Upper Garuda', note: 'Tribun tingkat atas dengan pandangan menyeluruh', price: 250000, left: 11 },
+          { name: 'Garuda North / South', note: 'Tribun bawah di belakang gawang', price: 550000, left: 7 },
+          { name: 'Premium West', note: 'Kursi utama tribun barat sejajar bangku pemain', price: 1250000, left: 4 }
+        ]
+      },
+      {
+        id: 'maliq-jazz-night',
+        title: 'Maliq & D’Essentials Live',
+        category: 'Konser',
+        city: 'Tennis Indoor',
+        date: 'Jum, 20 Des · 20:30 WIB',
+        venue: 'Tennis Indoor GBK',
+        price: 320000,
+        status: 'Tersedia',
+        statusTone: 'neutral',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrBUfeGi3BW0M9DNA6rUh4CEJVrdosd7PMeHCU4bHl4eD2maXK2EtMYmGy9pWK3kk3GIbNFdTxbNKBqL7rgjeX5RJhiQ-DQudXE_6D2eRp_fMqeGd5MZQQ_5uX4mKsqEOdsk_oqC0GVtbBnqCKSITPlWYLsN9AuL__Lc7FD77v84BEkuZ2FCIQPpcAXd_HceVI8J82zaBa1zOremnb0gy-dAtjrUwVaFSExaJtVwEGRcJiDQeWxjVQKblFc',
+        description: 'Pertunjukan akustik & brass section berkapasitas terbatas dalam tata ruang indoor Tennis Indoor Senayan.',
+        tiers: [
+          { name: 'Silver Seated', note: 'Baris tengah dengan akustik seimbang', price: 320000, left: 64 },
+          { name: 'Gold Seated', note: 'Baris depan dekat panggung utama', price: 520000, left: 28 },
+          { name: 'Platinum Front Row', note: '2 baris terdepan + poster bertanda tangan', price: 780000, left: 8 }
+        ]
+      },
+      {
+        id: 'indonesia-open',
+        title: 'Indonesia Open Final',
+        category: 'Olahraga',
+        city: 'Istora Senayan',
+        date: 'Min, 29 Des · 13:00 WIB',
+        venue: 'Istora Senayan GBK',
+        price: 175000,
+        status: 'Tersedia',
+        statusTone: 'neutral',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrB1Km0aKZmEZyj_CtafvGI0PwrzpzMzT5vZEMHGtwrnYuoxbrezJlnVwQL0R_eFswUM7RegVEP950WvXtfJm7-jK8S1OC_Rzf-Alg0emQf1MCryBQeAahJP78mGB6YoD9ZuUGQZ9DHVIdxVyz-xdSDd4QiAiCkQnParfg44vv2VXoVgKi5Tqrnm5pj_DpaGT6GhVdo2p_EBsIC6sK7Jnj3mxrZPv0jAJXXKa-pI4bgUeKHV1C55BAjXFfPZVMLQ',
+        description: 'Saksikan lima partai final bulu tangkis dunia secara langsung di Istora Senayan yang legendaris.',
+        tiers: [
+          { name: 'Kategori 2 (Atas)', note: 'Bebas pilih kursi di ring atas Istora', price: 175000, left: 85 },
+          { name: 'Kategori 1 (Tengah)', note: 'Dekat lapangan dengan sudut pandang optimal', price: 380000, left: 32 },
+          { name: 'VIP Courtside', note: 'Tepat di tepi lapangan + akses Istora Lounge', price: 750000, left: 10 }
+        ]
+      },
+      {
+        id: 'standup-raditya',
+        title: 'Stand-Up Raditya Dika',
+        category: 'Komedi',
+        city: 'Tennis Indoor',
+        date: 'Sab, 21 Des · 19:30 WIB',
+        venue: 'Tennis Indoor GBK',
+        price: 200000,
+        status: 'Terbatas',
+        statusTone: 'brand',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrBVtMRDHNi3OVZ2D5bpQS9GWfE70h7VIJkVMBUrWZ3F0GgN5KNpNUPj0e3edVa-SbjL9xIazfulDd6it1TGt6ibDnpjoWKWCLHZeMdPz8K0Vs9K15bNVrGutrkbyUmfxiOKKl33jKOICq0rI9WPA0q277EtU05lsRSo9e0Ny0j-J8yER76EPofk5GhpPEQCzVntA_89hU_ir8e7hG55aS7epaafXeFIxd1AWW4KtGn5Bd_u3bKCgoXSerb_CfpC',
+        description: 'Pertunjukan stand-up comedy berdurasi 90 menit dengan materi terbaru di Tennis Indoor GBK.',
+        tiers: [
+          { name: 'Tribun Atas', note: 'Kursi tribun dengan pandangan jelas ke panggung', price: 200000, left: 26 },
+          { name: 'Reguler Bawah', note: 'Area lantai utama baris tengah', price: 300000, left: 15 },
+          { name: 'VIP Depan', note: '3 baris terdepan di depan panggung', price: 450000, left: 5 }
+        ]
+      },
+      {
+        id: 'ibl-finals',
+        title: 'IBL: Prawira vs Pelita',
+        category: 'Olahraga',
+        city: 'Istora Senayan',
+        date: 'Rab, 25 Des · 18:30 WIB',
+        venue: 'Istora Senayan GBK',
+        price: 120000,
+        status: 'Baru Rilis',
+        statusTone: 'sky',
+        image: 'https://lh3.googleusercontent.com/aida/ALJJyrDFmR63BB78x7a8hByo6MmKC2c4msGZ_k6-ZiWiKi0VjG_i7TGTpYUqnRPcEwKdoDFWq17_492WqA8v_lqxn9_WVJppBiqWD-s0YxD3GAdCzARQU_wwlaqbqlyZF-b2mnqNZQTv6SidiEQj_jH5bfVO727zWHKzcBhTQW5933tl8qIn36hvQ1YxSAAfB24Hxf5g4pG_NHhWFxfiUj3wKB-KFOrLWi2mrfS8jeyoxD0ZpnLOgvBRMl35l-BgzA5w',
+        description: 'Gim penentuan seri final liga basket nasional dengan atmosfer arena Istora Senayan yang penuh energi.',
+        tiers: [
+          { name: 'Tribun Reguler', note: 'Tempat duduk tribun sisi timur & barat', price: 120000, left: 95 },
+          { name: 'Courtside Row 1', note: 'Tepat di pinggir lapangan basket', price: 350000, left: 12 }
+        ]
+      }
+    ];
+
+    let activeCategory = 'Semua';
+    let activeCity = 'Semua';
+    let searchQuery = '';
+    let selectedEvent = null;
+    let selectedTierIndex = 0;
+    let ticketQty = 1;
+
+    function formatRupiah(amount) {
+      return 'Rp ' + amount.toLocaleString('id-ID');
+    }
+
+    function getStatusClasses(tone) {
+      if (tone === 'danger') return 'bg-danger text-light-on-primary';
+      if (tone === 'brand') return 'bg-brand-tint text-brand-deep';
+      if (tone === 'sky') return 'bg-brand-sky text-light-on-surface';
+      return 'bg-light-surface-container text-light-on-surface-variant';
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('ticket-grid');
+      const emptyState = document.getElementById('empty-state');
+      const countEl = document.getElementById('event-count');
+
+      const filtered = EVENTS.filter((ev) => {
+        const matchCategory = activeCategory === 'Semua' || ev.category === activeCategory;
+        const matchCity = activeCity === 'Semua' || ev.city === activeCity;
+        const q = searchQuery.trim().toLowerCase();
+        const matchQuery = !q || ev.title.toLowerCase().includes(q) || ev.venue.toLowerCase().includes(q) || ev.category.toLowerCase().includes(q) || ev.city.toLowerCase().includes(q);
+        return matchCategory && matchCity && matchQuery;
+      });
+
+      countEl.textContent = filtered.length + ' acara';
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+      grid.classList.remove('hidden');
+
+      grid.innerHTML = filtered.map((ev) => `
+        <article
+          data-component-id="card-action"
+          data-component-type="card"
+          data-component-variant="action"
+          onclick="openSeatDrawer('${ev.id}')"
+          class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl shadow-sm flex flex-col justify-between overflow-hidden transition-colors duration-state-change ease-state-change cursor-pointer h-full"
+        >
+          <div>
+            <div class="relative aspect-[16/10] bg-light-surface-container overflow-hidden">
+              <img src="${ev.image}" alt="${ev.title}" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 bg-light-inverse-surface text-light-inverse-on-surface px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">${ev.category}</span>
+              <span class="absolute top-3 right-3 ${getStatusClasses(ev.statusTone)} px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">${ev.status}</span>
+            </div>
+
+            <header class="p-5 flex flex-col gap-2">
+              <p class="font-label text-label-md text-brand-blue tabular-nums" data-design-text-token="label-md">${ev.date}</p>
+              <h3 class="font-title text-title-md text-light-on-surface text-balance" data-design-text-token="title-md">${ev.title}</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5" data-design-text-token="body-md">
+                <span class="material-symbols-outlined text-body-lg text-light-outline shrink-0" aria-hidden="true">location_on</span>
+                <span>${ev.venue}</span>
+              </p>
+            </header>
+          </div>
+
+          <footer class="px-5 py-4 border-t border-light-outline-variant bg-light-surface-container-lowest flex items-center justify-between gap-3">
+            <div class="flex flex-col">
+              <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Mulai dari</span>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">${formatRupiah(ev.price)}</span>
+            </div>
+            <button
+              data-component-id="button-primary"
+              data-component-type="button"
+              data-component-variant="primary"
+              type="button"
+              onclick="event.stopPropagation(); openSeatDrawer('${ev.id}')"
+              class="inline-flex items-center justify-center bg-brand-blue hover:bg-brand-deep text-light-on-primary px-4 py-2.5 rounded-lg transition-colors duration-state-change ease-state-change cursor-pointer shrink-0"
+            >
+              <span class="font-label text-label-lg" data-design-text-token="label-lg">Pilih Tiket</span>
+            </button>
+          </footer>
+        </article>
+      `).join('');
+    }
+
+    function setCategory(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('.category-tab').forEach((btn) => {
+        const isSelected = btn.getAttribute('data-category') === cat;
+        btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        btn.setAttribute('tabindex', isSelected ? '0' : '-1');
+        if (isSelected) {
+          btn.className = 'category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-brand-blue text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer';
+        } else {
+          btn.className = 'category-tab inline-flex items-center gap-2 pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface transition-colors duration-state-change ease-state-change cursor-pointer';
+        }
+      });
+      renderGrid();
+    }
+
+    function setCity(city) {
+      activeCity = city;
+      renderGrid();
+    }
+
+    function handleSearchInput(val) {
+      searchQuery = val;
+      renderGrid();
+    }
+
+    function handleSearchSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('search-input-01');
+      searchQuery = input.value;
+      renderGrid();
+      document.getElementById('katalog').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function quickSearch(term) {
+      const input = document.getElementById('search-input-01');
+      input.value = term;
+      searchQuery = term;
+      setCategory('Semua');
+      document.getElementById('katalog').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetFilters() {
+      document.getElementById('search-input-01').value = '';
+      document.getElementById('city-filter').value = 'Semua';
+      searchQuery = '';
+      activeCity = 'Semua';
+      setCategory('Semua');
+    }
+
+    function openSeatDrawer(eventId) {
+      selectedEvent = EVENTS.find((e) => e.id === eventId);
+      if (!selectedEvent) return;
+      selectedTierIndex = 0;
+      ticketQty = 1;
+
+      document.getElementById('drawer-category-badge').textContent = selectedEvent.category;
+      document.getElementById('drawer-image').src = selectedEvent.image;
+      document.getElementById('drawer-image').alt = selectedEvent.title;
+      document.getElementById('drawer-date').textContent = selectedEvent.date;
+      document.getElementById('drawer-event-title').textContent = selectedEvent.title;
+      document.getElementById('drawer-venue').querySelector('span:last-child').textContent = selectedEvent.venue;
+      document.getElementById('drawer-desc').textContent = selectedEvent.description;
+      document.getElementById('booking-confirmation').classList.add('hidden');
+
+      renderTiers();
+      updateDrawerTotal();
+
+      const drawer = document.getElementById('seat-drawer');
+      if (typeof drawer.showModal === 'function') {
+        drawer.showModal();
+      } else {
+        drawer.setAttribute('open', '');
+      }
+    }
+
+    function closeSeatDrawer() {
+      const drawer = document.getElementById('seat-drawer');
+      if (typeof drawer.close === 'function') {
+        drawer.close();
+      } else {
+        drawer.removeAttribute('open');
+      }
+    }
+
+    function selectTier(idx) {
+      selectedTierIndex = idx;
+      document.getElementById('booking-confirmation').classList.add('hidden');
+      renderTiers();
+      updateDrawerTotal();
+    }
+
+    function renderTiers() {
+      const container = document.getElementById('seat-tier-list');
+      container.innerHTML = selectedEvent.tiers.map((tier, idx) => {
+        const isActive = idx === selectedTierIndex;
+        const borderClass = isActive
+          ? 'border-brand-blue bg-brand-tint/40'
+          : 'border-light-outline-variant bg-light-surface-container-lowest hover:border-light-on-surface';
+        return `
+          <button
+            type="button"
+            onclick="selectTier(${idx})"
+            class="w-full text-left p-4 rounded-lg border ${borderClass} flex items-center justify-between gap-4 transition-colors duration-state-change ease-state-change cursor-pointer"
+          >
+            <div class="flex flex-col gap-0.5">
+              <span class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">${tier.name}</span>
+              <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">${tier.note}</span>
+            </div>
+            <div class="flex flex-col items-end shrink-0">
+              <span class="font-mono text-mono-md text-brand-blue tabular-nums" data-design-text-token="mono-md">${formatRupiah(tier.price)}</span>
+              <span class="font-mono text-mono-sm text-light-outline tabular-nums" data-design-text-token="mono-sm">Sisa ${tier.left}</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function changeQty(delta) {
+      const next = ticketQty + delta;
+      if (next < 1 || next > 4) return;
+      ticketQty = next;
+      document.getElementById('booking-confirmation').classList.add('hidden');
+      updateDrawerTotal();
+    }
+
+    function updateDrawerTotal() {
+      if (!selectedEvent) return;
+      const tier = selectedEvent.tiers[selectedTierIndex];
+      document.getElementById('drawer-qty').textContent = ticketQty;
+      document.getElementById('drawer-total').textContent = formatRupiah(tier.price * ticketQty);
+    }
+
+    function confirmBooking() {
+      if (!selectedEvent) return;
+      const tier = selectedEvent.tiers[selectedTierIndex];
+      const box = document.getElementById('booking-confirmation');
+      const text = document.getElementById('booking-confirmation-text');
+      text.textContent = `${ticketQty}x tiket ${tier.name} untuk ${selectedEvent.title} (${formatRupiah(tier.price * ticketQty)}) siap dilanjutkan ke pembayaran.`;
+      box.classList.remove('hidden');
+    }
+
+    // Close drawer when clicking backdrop
+    document.getElementById('seat-drawer').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeSeatDrawer();
+    });
+
+    // Initial render
+    renderGrid();
+  </script>
+
+</body></html>

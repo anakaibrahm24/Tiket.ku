@@ -1,0 +1,505 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket.ku — Riwayat Pemesanan GBK</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'brand-blue': '#146DFC',
+        'brand-hover': '#006FFF',
+        'brand-deep': '#0056EC',
+        'brand-sky': '#BADFFF',
+        'brand-tint': '#DEF1FF',
+        'accent': '#F97316',
+        'success': '#16A34A',
+        'warning': '#F59E0B',
+        'danger': '#DC2626',
+        'light-primary': '#146DFC',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#006FFF',
+        'light-on-primary-container': '#070707',
+        'light-secondary': '#0891B2',
+        'light-on-secondary': '#1E1E1E',
+        'light-secondary-container': '#DEF1FF',
+        'light-on-secondary-container': '#0056EC',
+        'light-background': '#FFFFFF',
+        'light-on-background': '#27272A',
+        'light-surface': '#F7F8F7',
+        'light-surface-dim': '#EDEEF0',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F7F8F7',
+        'light-surface-container': '#F2F2F3',
+        'light-surface-container-high': '#EDEEF0',
+        'light-on-surface': '#27272A',
+        'light-surface-variant': '#F2F2F3',
+        'light-on-surface-variant': '#606169',
+        'light-outline': '#71717A',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#020918',
+        'light-inverse-on-surface': '#FFFFFF',
+        'dark-primary': '#BADFFF',
+        'dark-on-primary': '#020918',
+        'dark-primary-container': '#146DFC',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-background': '#020918',
+        'dark-on-background': '#FFFFFF',
+        'dark-surface': '#051027',
+        'dark-surface-container-lowest': '#020918',
+        'dark-surface-container-low': '#051027',
+        'dark-surface-container': '#27272A',
+        'dark-surface-container-high': '#3B3C3F',
+        'dark-on-surface': '#FFFFFF',
+        'dark-on-surface-variant': '#BADFFF',
+        'dark-outline': '#71717A',
+        'dark-outline-variant': '#434349',
+      },
+      borderRadius: {
+        'sm': '12px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '14px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '56px',
+        'page-margin': '64px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Inter"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['48px', { lineHeight: '52px', letterSpacing: '-1.5px', fontWeight: '600' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.75px', fontWeight: '600' }],
+        'headline-lg': ['38px', { lineHeight: '44px', letterSpacing: '-0.76px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.5px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '-0.16px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '220ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex flex-col bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <main class="flex-1 max-w-6xl w-full mx-auto px-6 lg:px-16 py-10 flex flex-col gap-8">
+      <!-- Contextual Back Link -->
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <a href="../katalog-tiket/KatalogTiket.html" class="inline-flex items-center gap-2 font-label text-label-lg text-brand-deep hover:text-brand-blue transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_back</span>
+          <span data-design-text-token="label-lg">Kembali ke Katalog GBK</span>
+        </a>
+
+        <a href="../e-tiket/ETiket.html" class="inline-flex items-center gap-2 font-label text-label-lg text-light-on-surface-variant hover:text-brand-deep transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">qr_code_2</span>
+          <span data-design-text-token="label-lg">Buka E-Tiket Terbaru</span>
+        </a>
+      </div>
+
+      <!-- Dark Hero Header Card -->
+      <section class="bg-light-inverse-surface text-light-inverse-on-surface rounded-xl p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="flex flex-col gap-2 max-w-2xl">
+          <span class="inline-flex items-center gap-2 self-start bg-dark-surface border border-dark-outline-variant px-3 py-1 rounded-full font-label text-label-md text-brand-sky" data-design-text-token="label-md">
+            Akun · Budi Santoso
+          </span>
+          <h1 class="font-display text-headline-lg-mobile lg:text-headline-lg text-light-inverse-on-surface" data-design-text-token="headline-lg">
+            Riwayat Pemesanan &amp; Tiket
+          </h1>
+          <p class="font-body text-body-lg text-brand-sky" data-design-text-token="body-lg">
+            Kelola seluruh transaksi tiket acara kawasan Gelora Bung Karno dan akses E-Tiket QR Anda kapan saja.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 shrink-0">
+          <div class="bg-dark-surface border border-dark-outline-variant rounded-lg px-4 py-3 flex flex-col gap-0.5">
+            <span class="font-mono text-mono-md text-light-inverse-on-surface tabular-nums" data-design-text-token="mono-md">1</span>
+            <span class="font-label text-label-md text-brand-sky" data-design-text-token="label-md">Tiket Aktif</span>
+          </div>
+          <div class="bg-dark-surface border border-dark-outline-variant rounded-lg px-4 py-3 flex flex-col gap-0.5">
+            <span class="font-mono text-mono-md text-light-inverse-on-surface tabular-nums" data-design-text-token="mono-md">1</span>
+            <span class="font-label text-label-md text-brand-sky" data-design-text-token="label-md">Menunggu</span>
+          </div>
+          <div class="bg-dark-surface border border-dark-outline-variant rounded-lg px-4 py-3 flex flex-col gap-0.5">
+            <span class="font-mono text-mono-md text-light-inverse-on-surface tabular-nums" data-design-text-token="mono-md">2</span>
+            <span class="font-label text-label-md text-brand-sky" data-design-text-token="label-md">Riwayat</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filter Tabs & Search -->
+      <section class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-light-outline-variant pb-1">
+        <div role="tablist" aria-label="Filter status pesanan" class="flex flex-wrap items-center gap-6">
+          <button type="button" role="tab" aria-selected="true" data-status-tab="semua" class="pb-3.5 border-b-2 border-brand-blue text-light-on-surface font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span data-design-text-token="label-lg">Semua (4)</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-status-tab="aktif" class="pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span data-design-text-token="label-lg">Tiket Aktif</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-status-tab="menunggu" class="pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span data-design-text-token="label-lg">Menunggu Bayar</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-status-tab="selesai" class="pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span data-design-text-token="label-lg">Selesai</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-status-tab="dibatalkan" class="pb-3.5 border-b-2 border-transparent text-light-outline hover:text-light-on-surface font-label text-label-lg transition-colors duration-state-change ease-state-change cursor-pointer">
+            <span data-design-text-token="label-lg">Dibatalkan</span>
+          </button>
+        </div>
+
+        <div class="pb-2.5 w-full md:w-72">
+          <div class="flex items-center bg-light-surface-container-lowest border border-light-outline-variant focus-within:border-brand-blue rounded-lg px-3 py-1.5">
+            <span class="material-symbols-outlined text-title-md text-light-outline" aria-hidden="true">search</span>
+            <input id="order-search" type="search" aria-label="Cari kode pesanan atau nama acara" placeholder="Cari kode atau acara..." class="w-full border-0 bg-transparent px-2.5 py-1 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:ring-0">
+          </div>
+        </div>
+      </section>
+
+      <!-- Order List -->
+      <section id="order-list" class="flex flex-col gap-4">
+
+        <!-- Order 1: Aktif -->
+        <article data-order-card data-status="aktif" data-search="tkt-gbk-88412 persija jakarta vs persib bandung stadion utama gbk" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl p-5 md:p-6 shadow-sm flex flex-col gap-5 transition-colors duration-state-change ease-state-change">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-light-outline-variant pb-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="font-mono text-mono-sm text-light-on-surface bg-light-surface px-3 py-1 rounded-full border border-light-outline-variant" data-design-text-token="mono-sm">TKT-GBK-88412</span>
+              <span class="font-label text-label-md text-light-outline tabular-nums" data-design-text-token="label-md">Dipesan 10 Des 2026 · 14:22 WIB</span>
+            </div>
+            <span class="inline-flex items-center gap-1.5 bg-light-surface-container-lowest border border-light-outline-variant text-light-on-surface px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">
+              <span class="w-2 h-2 rounded-full bg-success"></span>
+              E-Tiket Aktif
+            </span>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div class="flex items-start sm:items-center gap-4">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrBMiILm9Zwh5M72qc8bJXr1BTUjJJEv3GYph5Xi4ynEq9rOjtWL1ouyTVmDBrue4fcL2SGE_Jyk3Ays8mODbdebfcCCLNS7X3fHuLndWsvoRy8sxsJXpEs-N2Hq8B6-WX7lYdt0hv5rd8OURJXnGn7AQml97h57ZdFMpoYLcro7RT5Bh2wglDf0-y6-nkJdCdj4OuzTEa6aCCoXJE5IIpLD_BBxUyZ5mc2npjcDM1Vu1FmvcSq2OfGgbK0cSb0v" alt="Persija Jakarta vs Persib Bandung" class="w-24 h-20 sm:w-28 sm:h-20 rounded-lg object-cover shrink-0 bg-light-surface-container">
+              <div class="flex flex-col gap-1">
+                <span class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Sab, 14 Des 2026 · 19:30 WIB</span>
+                <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Persija Jakarta vs Persib Bandung</h2>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+                  Stadion Utama GBK · 2x Tribun Timur (Kursi E-14, E-15)
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between md:justify-end gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-light-outline-variant shrink-0">
+              <div class="flex flex-col md:items-end">
+                <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Total Pembayaran</span>
+                <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 420.000</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button type="button" onclick="openOrderDetail(&#39;TKT-GBK-88412&#39;, &#39;Persija Jakarta vs Persib Bandung&#39;, &#39;E-Tiket Aktif&#39;, &#39;Sab, 14 Des 2026 · 19:30 WIB&#39;, &#39;Stadion Utama GBK (Gate 5–8)&#39;, &#39;2x Tribun Timur (Kursi E-14, E-15)&#39;, &#39;QRIS Instan&#39;, &#39;Rp 400.000&#39;, &#39;Rp 20.000&#39;, &#39;Rp 420.000&#39;)" class="inline-flex items-center justify-center bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface border border-light-outline-variant px-4 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change cursor-pointer">
+                  <span data-design-text-token="label-lg">Detail</span>
+                </button>
+                <a href="../e-tiket/ETiket.html" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-5 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change">
+                  <span class="material-symbols-outlined text-title-md" aria-hidden="true">qr_code_2</span>
+                  <span data-design-text-token="label-lg">Lihat E-Tiket</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Order 2: Menunggu Bayar -->
+        <article data-order-card data-status="menunggu" data-search="tkt-gbk-88390 konser musik nusantara gbk stadion madya" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl p-5 md:p-6 shadow-sm flex flex-col gap-5 transition-colors duration-state-change ease-state-change">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-light-outline-variant pb-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="font-mono text-mono-sm text-light-on-surface bg-light-surface px-3 py-1 rounded-full border border-light-outline-variant" data-design-text-token="mono-sm">TKT-GBK-88390</span>
+              <span class="font-label text-label-md text-light-outline tabular-nums" data-design-text-token="label-md">Batas bayar: 14:40 menit lagi</span>
+            </div>
+            <span class="inline-flex items-center gap-1.5 bg-brand-tint text-brand-deep px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">
+              <span class="material-symbols-outlined text-body-lg" aria-hidden="true">schedule</span>
+              Menunggu Pembayaran
+            </span>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div class="flex items-start sm:items-center gap-4">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCoFVIvKzDDiOtciK3KakEnC58uJXy0OpEmCPQSvSof2imS9GR19bHFgNoGJRw-Z3OUeEN37B_a2uy7SxW2ciF68UamDDuFzNFO674mtyKxPGXQbxYMXKq0bjYAx2zoxGlOiuTcR21MUeFSrv8rPj9AV0MUFVg0bsysLrRKZ-IfE3GXfnNcEDStBU0LVR077Ns8QHaC31MihpyZH3WtvCgJbiPYOgOhMtNFps3dZGqHD74EECZRnlqMRHWQ" alt="Konser Musik Nusantara GBK" class="w-24 h-20 sm:w-28 sm:h-20 rounded-lg object-cover shrink-0 bg-light-surface-container">
+              <div class="flex flex-col gap-1">
+                <span class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Min, 22 Des 2026 · 20:00 WIB</span>
+                <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Konser Musik Nusantara GBK</h2>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+                  Stadion Madya GBK · 1x Festival A (Standing)
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between md:justify-end gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-light-outline-variant shrink-0">
+              <div class="flex flex-col md:items-end">
+                <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Total Tagihan</span>
+                <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 375.000</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button type="button" onclick="openOrderDetail(&#39;TKT-GBK-88390&#39;, &#39;Konser Musik Nusantara GBK&#39;, &#39;Menunggu Pembayaran&#39;, &#39;Min, 22 Des 2026 · 20:00 WIB&#39;, &#39;Stadion Madya GBK (Gate B)&#39;, &#39;1x Festival A (Standing)&#39;, &#39;Virtual Account BCA&#39;, &#39;Rp 350.000&#39;, &#39;Rp 25.000&#39;, &#39;Rp 375.000&#39;)" class="inline-flex items-center justify-center bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface border border-light-outline-variant px-4 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change cursor-pointer">
+                  <span data-design-text-token="label-lg">Detail</span>
+                </button>
+                <a href="../checkout/Checkout.html" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-5 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change">
+                  <span data-design-text-token="label-lg">Bayar Sekarang</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Order 3: Selesai -->
+        <article data-order-card data-status="selesai" data-search="tkt-gbk-87904 indonesia open super 1000 istora senayan gbk" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl p-5 md:p-6 shadow-sm flex flex-col gap-5 transition-colors duration-state-change ease-state-change">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-light-outline-variant pb-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="font-mono text-mono-sm text-light-on-surface bg-light-surface px-3 py-1 rounded-full border border-light-outline-variant" data-design-text-token="mono-sm">TKT-GBK-87904</span>
+              <span class="font-label text-label-md text-light-outline tabular-nums" data-design-text-token="label-md">Dipesan 02 Nov 2026 · 09:15 WIB</span>
+            </div>
+            <span class="inline-flex items-center gap-1.5 bg-light-surface text-light-on-surface-variant border border-light-outline-variant px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">
+              Acara Selesai
+            </span>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div class="flex items-start sm:items-center gap-4">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrB1Km0aKZmEZyj_CtafvGI0PwrzpzMzT5vZEMHGtwrnYuoxbrezJlnVwQL0R_eFswUM7RegVEP950WvXtfJm7-jK8S1OC_Rzf-Alg0emQf1MCryBQeAahJP78mGB6YoD9ZuUGQZ9DHVIdxVyz-xdSDd4QiAiCkQnParfg44vv2VXoVgKi5Tqrnm5pj_DpaGT6GhVdo2p_EBsIC6sK7Jnj3mxrZPv0jAJXXKa-pI4bgUeKHV1C55BAjXFfPZVMLQ" alt="Indonesia Open Super 1000" class="w-24 h-20 sm:w-28 sm:h-20 rounded-lg object-cover shrink-0 bg-light-surface-container">
+              <div class="flex flex-col gap-1">
+                <span class="font-label text-label-md text-light-outline tabular-nums" data-design-text-token="label-md">Min, 10 Nov 2026 · 13:00 WIB</span>
+                <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Indonesia Open Super 1000 — Final</h2>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+                  Istora Senayan GBK · 2x VIP Tengah
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between md:justify-end gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-light-outline-variant shrink-0">
+              <div class="flex flex-col md:items-end">
+                <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Total Pembayaran</span>
+                <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 1.150.000</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button type="button" onclick="openOrderDetail(&#39;TKT-GBK-87904&#39;, &#39;Indonesia Open Super 1000 — Final&#39;, &#39;Acara Selesai&#39;, &#39;Min, 10 Nov 2026 · 13:00 WIB&#39;, &#39;Istora Senayan GBK (Pintu Utama)&#39;, &#39;2x VIP Tengah&#39;, &#39;Kartu Kredit Visa&#39;, &#39;Rp 1.100.000&#39;, &#39;Rp 50.000&#39;, &#39;Rp 1.150.000&#39;)" class="inline-flex items-center justify-center bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface border border-light-outline-variant px-4 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change cursor-pointer">
+                  <span data-design-text-token="label-lg">Lihat Bukti Bayar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Order 4: Dibatalkan -->
+        <article data-order-card data-status="dibatalkan" data-search="tkt-gbk-87511 jakarta indie fest 2026 plaza timur gbk" class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-5 md:p-6 shadow-sm flex flex-col gap-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-light-outline-variant pb-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="font-mono text-mono-sm text-light-on-surface-variant bg-light-surface px-3 py-1 rounded-full border border-light-outline-variant" data-design-text-token="mono-sm">TKT-GBK-87511</span>
+              <span class="font-label text-label-md text-light-on-surface-variant tabular-nums" data-design-text-token="label-md">Dipesan 20 Okt 2026 · 19:05 WIB</span>
+            </div>
+            <span class="inline-flex items-center gap-1.5 bg-light-surface-container-lowest border border-light-outline-variant text-danger px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">
+              <span class="w-2 h-2 rounded-full bg-danger"></span>
+              Dibatalkan
+            </span>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div class="flex items-start sm:items-center gap-4">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCYSdl7OSB8FjXY2EYGZicx65iw9s4dqkIv2tKLIuVGtuA0_zxf3aLmTu_f_aG_eDDdoZUul0XvFUUzirC3VPv1dYneSWFVKRitdsyvlUjQMgNKziE-CHslyrQ0EY0LYIQNsVfBPf7gU9LVj2GOr2CmmbQs1KBAtv-F5mc48gWtu5gBXdygcVexNkW5bPpANsGU-J7bXTcxfh4CrWWWP2gfiGxcBDHiBwOX-IQl3aT70HpHs7yjXqVxU1Y" alt="Jakarta Indie Fest 2026" class="w-24 h-20 sm:w-28 sm:h-20 rounded-lg object-cover shrink-0 bg-light-surface-container grayscale">
+              <div class="flex flex-col gap-1">
+                <span class="font-label text-label-md text-light-on-surface-variant tabular-nums" data-design-text-token="label-md">Sab, 26 Okt 2026 · 16:00 WIB</span>
+                <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Jakarta Indie Fest 2026</h2>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+                  Plaza Timur GBK · 1x Early Bird Pass
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between md:justify-end gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-light-outline-variant shrink-0">
+              <div class="flex flex-col md:items-end">
+                <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Total Tagihan</span>
+                <span class="font-mono text-mono-md text-light-on-surface-variant tabular-nums line-through" data-design-text-token="mono-md">Rp 210.000</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <a href="../katalog-tiket/KatalogTiket.html" class="inline-flex items-center justify-center bg-light-surface-container-lowest hover:bg-light-surface-container-high text-light-on-surface border border-light-outline-variant px-4 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change">
+                  <span data-design-text-token="label-lg">Cari Acara Lain</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Empty State (Hidden by default) -->
+      <div id="empty-orders" class="hidden bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-12 text-center flex-col items-center gap-3">
+        <span class="material-symbols-outlined text-headline-lg text-light-outline" aria-hidden="true">receipt_long</span>
+        <h3 class="font-title text-title-lg text-light-on-surface">Tidak ada pesanan ditemukan</h3>
+        <p class="font-body text-body-md text-light-on-surface-variant">Coba ubah filter status atau kata kunci pencarian Anda.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Order Detail Modal -->
+  <dialog id="order-detail-dialog" class="rounded-xl p-0 border border-light-outline-variant shadow-xl max-w-lg w-full backdrop:bg-light-inverse-surface/60 bg-light-surface-container-lowest text-light-on-surface">
+    <div class="flex flex-col">
+      <header class="flex items-center justify-between px-6 py-4 border-b border-light-outline-variant">
+        <div class="flex flex-col">
+          <span id="modal-order-id" class="font-mono text-mono-sm text-brand-deep">TKT-GBK-88412</span>
+          <h3 class="font-title text-title-lg text-light-on-surface">Rincian Transaksi</h3>
+        </div>
+        <button type="button" onclick="document.getElementById(&#39;order-detail-dialog&#39;).close()" aria-label="Tutup" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-light-outline-variant hover:bg-light-surface-container-high text-light-on-surface cursor-pointer">
+          <span class="material-symbols-outlined text-title-lg" aria-hidden="true">close</span>
+        </button>
+      </header>
+      <div class="p-6 flex flex-col gap-4 text-body-md">
+        <div class="flex flex-col gap-1">
+          <span class="font-label text-label-md text-light-outline">Acara</span>
+          <span id="modal-event-title" class="font-title text-title-md text-light-on-surface">-</span>
+          <span id="modal-event-date" class="text-light-on-surface-variant">-</span>
+          <span id="modal-event-venue" class="text-light-on-surface-variant">-</span>
+        </div>
+        <div class="bg-light-surface rounded-lg p-4 flex flex-col gap-2 border border-light-outline-variant">
+          <div class="flex items-center justify-between">
+            <span class="text-light-on-surface-variant">Status</span>
+            <span id="modal-status" class="font-label text-label-lg text-brand-deep">-</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-light-on-surface-variant">Kategori Tiket</span>
+            <span id="modal-tier" class="font-label text-label-md text-light-on-surface">-</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-light-on-surface-variant">Metode Pembayaran</span>
+            <span id="modal-method" class="font-label text-label-md text-light-on-surface">-</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 pt-2 border-t border-light-outline-variant">
+          <div class="flex items-center justify-between">
+            <span class="text-light-on-surface-variant">Subtotal Tiket</span>
+            <span id="modal-subtotal" class="font-mono text-mono-sm tabular-nums">-</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-light-on-surface-variant">Biaya Layanan</span>
+            <span id="modal-fee" class="font-mono text-mono-sm tabular-nums">-</span>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-light-outline-variant">
+            <span class="font-title text-title-md text-light-on-surface">Total</span>
+            <span id="modal-total" class="font-mono text-mono-md text-brand-deep tabular-nums">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    let activeStatus = 'semua';
+    const searchInput = document.getElementById('order-search');
+    const cards = document.querySelectorAll('[data-order-card]');
+    const emptyEl = document.getElementById('empty-orders');
+
+    function filterOrders() {
+      const query = (searchInput?.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const status = card.getAttribute('data-status');
+        const haystack = card.getAttribute('data-search') || '';
+        const matchesStatus = activeStatus === 'semua' || status === activeStatus;
+        const matchesQuery = !query || haystack.includes(query);
+        if (matchesStatus && matchesQuery) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (emptyEl) {
+        if (visibleCount === 0) {
+          emptyEl.classList.remove('hidden');
+          emptyEl.classList.add('flex');
+        } else {
+          emptyEl.classList.add('hidden');
+          emptyEl.classList.remove('flex');
+        }
+      }
+    }
+
+    document.querySelectorAll('[data-status-tab]').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        activeStatus = tab.getAttribute('data-status-tab') || 'semua';
+        document.querySelectorAll('[data-status-tab]').forEach((t) => {
+          t.setAttribute('aria-selected', 'false');
+          t.classList.remove('border-brand-blue', 'text-light-on-surface');
+          t.classList.add('border-transparent', 'text-light-outline');
+        });
+        tab.setAttribute('aria-selected', 'true');
+        tab.classList.remove('border-transparent', 'text-light-outline');
+        tab.classList.add('border-brand-blue', 'text-light-on-surface');
+        filterOrders();
+      });
+    });
+
+    searchInput?.addEventListener('input', filterOrders);
+
+    function openOrderDetail(id, title, status, date, venue, tier, method, subtotal, fee, total) {
+      document.getElementById('modal-order-id').textContent = id;
+      document.getElementById('modal-event-title').textContent = title;
+      document.getElementById('modal-status').textContent = status;
+      document.getElementById('modal-event-date').textContent = date;
+      document.getElementById('modal-event-venue').textContent = venue;
+      document.getElementById('modal-tier').textContent = tier;
+      document.getElementById('modal-method').textContent = method;
+      document.getElementById('modal-subtotal').textContent = subtotal;
+      document.getElementById('modal-fee').textContent = fee;
+      document.getElementById('modal-total').textContent = total;
+      document.getElementById('order-detail-dialog').showModal();
+    }
+  </script>
+
+
+</body></html>

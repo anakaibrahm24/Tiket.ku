@@ -1,67 +1,215 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap");
 
 @import "tailwindcss";
 
 @theme {
-  --color-aquamarine: oklch(91.693% 0.12524 177.03);
-  --color-aquamarine-50: oklch(100% 0 none);
-  --color-aquamarine-100: oklch(100% 0 none);
-  --color-aquamarine-200: oklch(99.127% 0.01184 184.09);
-  --color-aquamarine-300: oklch(96.186% 0.05376 180.49);
-  --color-aquamarine-400: oklch(93.67% 0.09255 178.85);
-  --color-aquamarine-500: oklch(91.693% 0.12524 177.03);
-  --color-aquamarine-600: oklch(89.887% 0.15727 174.15);
-  --color-aquamarine-700: oklch(89.012% 0.1746 170.43);
-  --color-aquamarine-800: oklch(76.53% 0.15221 169.57);
-  --color-aquamarine-900: oklch(60.738% 0.12045 169.84);
-  --color-aquamarine-950: oklch(52.454% 0.10378 170.06);
+  /* Warna kanonik Stitch */
+  --color-brand-blue: #146DFC;
+  --color-brand-hover: #006FFF;
+  --color-brand-deep: #0056EC;
+  --color-brand-sky: #BADFFF;
+  --color-brand-tint: #DEF1FF;
+  --color-accent: #F97316;
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-danger: #DC2626;
 
-  --color-ecstasy: oklch(70.487% 0.18672 47.604);
-  --color-ecstasy-50: oklch(92.356% 0.04522 57.493);
-  --color-ecstasy-100: oklch(89.526% 0.06193 57.367);
-  --color-ecstasy-200: oklch(84.144% 0.09654 56.275);
-  --color-ecstasy-300: oklch(79.112% 0.12987 54.397);
-  --color-ecstasy-400: oklch(74.51% 0.16108 51.973);
-  --color-ecstasy-500: oklch(70.487% 0.18672 47.604);
-  --color-ecstasy-600: oklch(60.979% 0.17085 45.611);
-  --color-ecstasy-700: oklch(49.022% 0.13426 46.673);
-  --color-ecstasy-800: oklch(36.298% 0.09494 48.816);
-  --color-ecstasy-900: oklch(22.158% 0.05268 54.981);
-  --color-ecstasy-950: oklch(14.602% 0.03107 73.213);
+  --color-light-primary: #146DFC;
+  --color-light-on-primary: #FFFFFF;
+  --color-light-primary-container: #006FFF;
+  --color-light-on-primary-container: #070707;
+  --color-light-secondary: #0891B2;
+  --color-light-on-secondary: #1E1E1E;
+  --color-light-secondary-container: #DEF1FF;
+  --color-light-on-secondary-container: #0056EC;
+  --color-light-background: #FFFFFF;
+  --color-light-on-background: #27272A;
+  --color-light-surface: #F7F8F7;
+  --color-light-surface-dim: #EDEEF0;
+  --color-light-surface-bright: #FFFFFF;
+  --color-light-surface-container-lowest: #FFFFFF;
+  --color-light-surface-container-low: #F7F8F7;
+  --color-light-surface-container: #F2F2F3;
+  --color-light-surface-container-high: #EDEEF0;
+  --color-light-on-surface: #27272A;
+  --color-light-surface-variant: #F2F2F3;
+  --color-light-on-surface-variant: #606169;
+  --color-light-outline: #71717A;
+  --color-light-outline-variant: #E2E8F0;
+  --color-light-inverse-surface: #020918;
+  --color-light-inverse-on-surface: #FFFFFF;
 
-  --color-te-papa-green: oklch(32.739% 0.03687 179.01);
-  --color-te-papa-green-50: oklch(69.962% 0.08063 178.83);
-  --color-te-papa-green-100: oklch(67.165% 0.08482 178.35);
-  --color-te-papa-green-200: oklch(59.072% 0.07374 178.74);
-  --color-te-papa-green-300: oklch(50.738% 0.06143 179.13);
-  --color-te-papa-green-400: oklch(41.963% 0.04983 178.21);
-  --color-te-papa-green-500: oklch(32.739% 0.03687 179.01);
-  --color-te-papa-green-600: oklch(18.88% 0.01653 181.81);
-  --color-te-papa-green-700: oklch(0% 0 none);
-  --color-te-papa-green-800: oklch(0% 0 none);
-  --color-te-papa-green-900: oklch(0% 0 none);
-  --color-te-papa-green-950: oklch(0% 0 none);
+  --color-dark-primary: #BADFFF;
+  --color-dark-on-primary: #020918;
+  --color-dark-primary-container: #146DFC;
+  --color-dark-on-primary-container: #FFFFFF;
+  --color-dark-background: #020918;
+  --color-dark-on-background: #FFFFFF;
+  --color-dark-surface: #051027;
+  --color-dark-surface-container-lowest: #020918;
+  --color-dark-surface-container-low: #051027;
+  --color-dark-surface-container: #27272A;
+  --color-dark-surface-container-high: #3B3C3F;
+  --color-dark-on-surface: #FFFFFF;
+  --color-dark-on-surface-variant: #BADFFF;
+  --color-dark-outline: #71717A;
+  --color-dark-outline-variant: #434349;
+
+  /* Alias kompatibilitas; lihat DESIGN.md §01 */
+  --color-surface-white: var(--color-light-surface-bright);
+  --color-surface-subtle: var(--color-light-surface);
+  --color-surface-muted: var(--color-light-surface-container);
+  --color-surface-tint: var(--color-light-surface-dim);
+  --color-surface-line: var(--color-light-outline-variant);
+  --color-ink-900: var(--color-light-on-surface);
+  --color-ink-700: #4F4F55;
+  --color-ink-600: var(--color-light-on-surface-variant);
+  --color-ink-500: var(--color-light-outline);
+  --color-ink-300: #BABABF;
+  --color-night-950: var(--color-light-inverse-surface);
+  --color-night-800: var(--color-dark-surface);
+  --color-dark-900: var(--color-dark-surface-container);
+  --color-dark-800: var(--color-dark-surface-container-high);
+  --color-dark-700: var(--color-dark-outline-variant);
+  --color-line-soft: #0000000F;
+  --color-line-on-dark: var(--color-dark-outline-variant);
+  --color-background: var(--color-light-background);
+  --color-surface: #F8FAFC;
+  --color-foreground: #0F172A;
+  --color-muted: #64748B;
+  --color-border: var(--color-light-outline-variant);
+  --color-primary: var(--color-light-secondary);
+  --color-primary-hover: #0E7490;
+  --color-primary-foreground: var(--color-light-on-primary);
+  --color-accent-foreground: #000000;
+  --color-info: var(--color-light-secondary);
+  --color-support: var(--color-muted);
+
+  /* Font */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Inter", monospace;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-display);
+  --font-headline: var(--font-display);
+  --font-title: var(--font-sans);
+  --font-label: var(--font-sans);
+
+  /* Ukuran teks */
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 52px;
+  --text-display-lg--letter-spacing: -1.5px;
+  --text-display-lg--font-weight: 600;
+  --text-display-lg-mobile: 32px;
+  --text-display-lg-mobile--line-height: 38px;
+  --text-display-lg-mobile--letter-spacing: -0.75px;
+  --text-display-lg-mobile--font-weight: 600;
+  --text-headline-lg: 38px;
+  --text-headline-lg--line-height: 44px;
+  --text-headline-lg--letter-spacing: -0.76px;
+  --text-headline-lg--font-weight: 600;
+  --text-headline-lg-mobile: 28px;
+  --text-headline-lg-mobile--line-height: 34px;
+  --text-headline-lg-mobile--letter-spacing: -0.5px;
+  --text-headline-lg-mobile--font-weight: 600;
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--font-weight: 600;
+  --text-title-lg: 18px;
+  --text-title-lg--line-height: 24px;
+  --text-title-lg--font-weight: 600;
+  --text-title-md: 16px;
+  --text-title-md--line-height: 22px;
+  --text-title-md--font-weight: 600;
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 24px;
+  --text-body-lg--letter-spacing: -0.16px;
+  --text-body-lg--font-weight: 400;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 20px;
+  --text-body-md--font-weight: 400;
+  --text-label-lg: 14px;
+  --text-label-lg--line-height: 20px;
+  --text-label-lg--font-weight: 600;
+  --text-label-md: 12px;
+  --text-label-md--line-height: 16px;
+  --text-label-md--font-weight: 500;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--font-weight: 600;
+  --text-mono-md: 16px;
+  --text-mono-md--line-height: 22px;
+  --text-mono-md--font-weight: 700;
+  --text-mono-sm: 12px;
+  --text-mono-sm--line-height: 16px;
+  --text-mono-sm--font-weight: 500;
+
+  /* Spacing kanonik Stitch */
+  --spacing-gutter-xs: 4px;
+  --spacing-gutter-sm: 8px;
+  --spacing-gutter-md: 16px;
+  --spacing-gutter-lg: 24px;
+  --spacing-gutter-xl: 32px;
+  --spacing-section: 56px;
+  --spacing-page-margin: 64px;
+
+  /* Radius */
+  --radius: 10px;
+  --radius-sm: 12px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --radius-base: var(--radius);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+  /* Motion */
+  --transition-duration-state-change: 150ms;
+  --transition-duration-surface-enter: 220ms;
+  --transition-timing-state-change: ease-out;
+  --transition-timing-surface-enter: cubic-bezier(0.2, 0, 0, 1);
 }
 
-@layer components {
-  .glassmorphism-base {
-    @apply bg-aquamarine-500/15 border-aquamarine-500/45 backdrop-blur-md;
-  }
-  .glassmorphism-left {
-    @apply bg-aquamarine-500/15 border-aquamarine-500/45 backdrop-blur-md border-t border-b border-l rounded-l-2xl;
-  }
-  .glassmorphism-right {
-    @apply bg-aquamarine-500/15 border-aquamarine-500/45 backdrop-blur-md border-t border-b border-r rounded-r-2xl;
-  }
-  .glassmorphism {
-    @apply bg-aquamarine-500/15 border-aquamarine-500/45 backdrop-blur-md border rounded-2xl;
-  }
+@utility duration-state-change {
+  transition-duration: var(--transition-duration-state-change);
+}
 
-  .label-required {
-    @apply absolute -top-0 -right-1.5 text-xs text-red-500;
-  }
+@utility ease-state-change {
+  transition-timing-function: var(--transition-timing-state-change);
+}
+
+@utility duration-surface-enter {
+  transition-duration: var(--transition-duration-surface-enter);
+}
+
+@utility ease-surface-enter {
+  transition-timing-function: var(--transition-timing-surface-enter);
 }
 
 :root {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-sans);
 }
+
+*:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; line-height: 1; }

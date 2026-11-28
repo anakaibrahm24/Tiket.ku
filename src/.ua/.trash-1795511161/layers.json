@@ -1,0 +1,90 @@
+[
+  {
+    "id": "layer:ui",
+    "name": "UI Layer",
+    "description": "React components, pages, routing, and styling for the Tiket.ku interface.",
+    "nodeIds": [
+      "file:features/matches/components/Card.tsx",
+      "file:features/matches/components/TeamSection.tsx",
+      "file:features/matches/page/Matches.tsx",
+      "file:App.tsx",
+      "file:features/auth/page/AuthCallbackPage.tsx",
+      "file:features/auth/page/LoginPage.tsx",
+      "file:features/auth/page/SignupPage.tsx",
+      "file:features/home/page/Home.tsx",
+      "file:components/index.ts",
+      "file:features/payment/components/PaymentMethods.tsx",
+      "file:features/payment/page/Payment.tsx",
+      "file:features/users/components/TicketCard.tsx",
+      "file:app.css",
+      "file:components/Alerts.tsx",
+      "file:components/Button.tsx",
+      "file:components/CTABanner.tsx",
+      "file:components/Dropdown.tsx",
+      "file:components/FeatureCard.tsx",
+      "file:components/Features.tsx",
+      "file:components/Footer.tsx",
+      "file:components/FooterLinks.tsx",
+      "file:components/Hero.tsx",
+      "file:components/InputField.tsx",
+      "file:components/Navbar.tsx",
+      "file:components/ScheduleCard.tsx",
+      "file:components/SchedulePreview.tsx",
+      "file:features/tickets/component/Ticket.tsx",
+      "file:features/users/page/RegisterForm.tsx",
+      "file:main.tsx"
+    ]
+  },
+  {
+    "id": "layer:hooks",
+    "name": "Hooks Layer",
+    "description": "Custom React hooks for data fetching, form handling, and session state.",
+    "nodeIds": [
+      "file:features/matches/hooks/useMatchData.ts",
+      "file:features/payment/hooks/usePayment.ts",
+      "file:features/users/hooks/useUserRegister.ts",
+      "file:features/users/hooks/useUsers.ts",
+      "file:hooks/useCounter.ts",
+      "file:hooks/useSession.ts"
+    ]
+  },
+  {
+    "id": "layer:service",
+    "name": "Service Layer",
+    "description": "Supabase-backed data access and business logic for events, orders, tickets, and auth.",
+    "nodeIds": [
+      "file:features/matches/service/matchService.ts",
+      "file:features/auth/service/authService.ts",
+      "file:features/events/service/eventService.ts",
+      "file:features/orders/service/orderService.ts",
+      "file:features/tickets/service/ticketService.ts",
+      "file:features/users/service/userServices.ts",
+      "file:lib/supabase.ts",
+      "file:services/userService.ts"
+    ]
+  },
+  {
+    "id": "layer:types",
+    "name": "Types & Schemas",
+    "description": "TypeScript types, Zod validation schemas, and environment declarations.",
+    "nodeIds": [
+      "file:features/matches/components/matchesProps.ts",
+      "file:features/matches/types/matchesPayload.ts",
+      "file:features/matches/types/matchesPayload.types.ts",
+      "file:features/payment/schemas/paymentSchema.ts",
+      "file:features/users/schema/userSchema.ts",
+      "file:features/auth/schema/authSchemas.ts",
+      "file:features/events/types/event.types.ts",
+      "file:features/users/types/userPayload.d.ts",
+      "file:vite-env.d.ts"
+    ]
+  },
+  {
+    "id": "layer:utility",
+    "name": "Utility Layer",
+    "description": "Shared helpers such as Tailwind class merging.",
+    "nodeIds": [
+      "file:lib/utiils.ts"
+    ]
+  }
+]

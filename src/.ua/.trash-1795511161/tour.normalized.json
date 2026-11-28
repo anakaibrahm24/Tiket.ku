@@ -1,0 +1,130 @@
+[
+  {
+    "order": 1,
+    "title": "Application Entry & Routing",
+    "description": "main.tsx mounts the root React component into the DOM and imports App together with app.css. App.tsx configures React Router and declares the top-level routes for home, matches, login, signup, and the auth callback, giving a bird's-eye view of the runtime structure.",
+    "nodeIds": [
+      "file:main.tsx",
+      "file:App.tsx"
+    ],
+    "languageLesson": "React 19 uses createRoot to mount the app; BrowserRouter enables client-side routing without full page reloads."
+  },
+  {
+    "order": 2,
+    "title": "Design Tokens & Styling Utilities",
+    "description": "app.css defines the Tailwind CSS v4 theme tokens (colors, fonts, radius, spacing, shadows) for Tiket.ku. lib/utiils.ts exports the cn helper that merges clsx and tailwind-merge, and shared UI components depend on it to resolve conflicting utility classes.",
+    "nodeIds": [
+      "file:app.css",
+      "file:lib/utiils.ts"
+    ],
+    "languageLesson": "tailwind-merge resolves conflicting Tailwind utility classes so the last declared class wins."
+  },
+  {
+    "order": 3,
+    "title": "Shared UI Primitives",
+    "description": "components/index.ts is a barrel file that re-exports shared components for convenient single-path imports. Button, InputField, and Alerts provide loading spinners, floating labels, and animated toast alerts used across pages.",
+    "nodeIds": [
+      "file:components/index.ts",
+      "file:components/Button.tsx",
+      "file:components/InputField.tsx",
+      "file:components/Alerts.tsx"
+    ],
+    "languageLesson": "Barrel files (index.ts) re-export modules to simplify import paths across the codebase."
+  },
+  {
+    "order": 4,
+    "title": "Landing Page Composition",
+    "description": "Home.tsx composes the navbar, hero, features, schedule preview, and footer into the landing page. Hero and Features present the value proposition, while SchedulePreview surfaces upcoming events through a ScheduleCard grid.",
+    "nodeIds": [
+      "file:features/home/page/Home.tsx",
+      "file:components/Hero.tsx",
+      "file:components/Features.tsx",
+      "file:components/SchedulePreview.tsx"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Match Schedule UI",
+    "description": "The Matches page renders a grid of match cards and navigates to the match form with the selected match id. Card composes two TeamSection blocks with kickoff time, date, and stadium, while TeamSection renders a team name and logo.",
+    "nodeIds": [
+      "file:features/matches/page/Matches.tsx",
+      "file:features/matches/components/Card.tsx",
+      "file:features/matches/components/TeamSection.tsx"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Match Data Flow & Types",
+    "description": "useMatchData fetches matches on mount and exposes matches, loading, and error state. matchService adapts event records into the legacy MatchPayload shape, including derived team payloads and ticket category pricing. The payload type files define the MatchPayload and TeamPayload contracts used throughout.",
+    "nodeIds": [
+      "file:features/matches/hooks/useMatchData.ts",
+      "file:features/matches/service/matchService.ts",
+      "file:features/matches/types/matchesPayload.ts",
+      "file:features/matches/types/matchesPayload.types.ts"
+    ],
+    "languageLesson": "TypeScript interfaces establish the data contracts that connect services, hooks, and components."
+  },
+  {
+    "order": 7,
+    "title": "Event Service & Domain Types",
+    "description": "eventService queries Supabase for upcoming events with an optional type filter and maps database rows to EventRecord. event.types.ts defines the event, category, order, and ticket types shared across the service layer.",
+    "nodeIds": [
+      "file:features/events/service/eventService.ts",
+      "file:features/events/types/event.types.ts"
+    ]
+  },
+  {
+    "order": 8,
+    "title": "Supabase Client",
+    "description": "lib/supabase.ts creates and exports a singleton Supabase client from Vite environment variables. Centralizing the client keeps configuration consistent and gives every service a single shared entry point to the database and auth.",
+    "nodeIds": [
+      "file:lib/supabase.ts"
+    ],
+    "languageLesson": "Vite exposes env vars via import.meta.env, prefixed with VITE_ for client-side access."
+  },
+  {
+    "order": 9,
+    "title": "Authentication Service & Session",
+    "description": "authService wraps Supabase auth for session retrieval, email and Google sign-in, sign-up, sign-out, and error mapping to Indonesian messages. authSchemas validate login and signup forms with Zod, while useSession subscribes to auth state changes and exposes session, user, and loading status.",
+    "nodeIds": [
+      "file:features/auth/service/authService.ts",
+      "file:features/auth/schema/authSchemas.ts",
+      "file:hooks/useSession.ts"
+    ],
+    "languageLesson": "Zod schemas provide runtime validation that aligns with TypeScript types at compile time."
+  },
+  {
+    "order": 10,
+    "title": "Authentication Pages",
+    "description": "LoginPage and SignupPage render email/password and Google authentication flows with validation and redirect handling. AuthCallbackPage completes the OAuth redirect by checking the Supabase session and routing to the intended destination or back to login.",
+    "nodeIds": [
+      "file:features/auth/page/LoginPage.tsx",
+      "file:features/auth/page/SignupPage.tsx",
+      "file:features/auth/page/AuthCallbackPage.tsx"
+    ]
+  },
+  {
+    "order": 11,
+    "title": "Payment Form & Order Processing",
+    "description": "The Payment page manages the selected payment method and a card details form validated by paymentSchema through usePayment, navigating to the ticket route on submit. PaymentMethods renders selectable method buttons with pressed-state styling, and orderService creates and completes orders via Supabase RPCs while requiring an authenticated user.",
+    "nodeIds": [
+      "file:features/payment/page/Payment.tsx",
+      "file:features/payment/components/PaymentMethods.tsx",
+      "file:features/payment/hooks/usePayment.ts",
+      "file:features/payment/schemas/paymentSchema.ts",
+      "file:features/orders/service/orderService.ts"
+    ],
+    "languageLesson": "react-hook-form combined with zodResolver connects schema validation directly to form state."
+  },
+  {
+    "order": 12,
+    "title": "Buyer Registration & Tickets",
+    "description": "useUserRegister configures react-hook-form with userSchema to validate registration fields including identity number, email, and ticket quantities. TicketCard displays tribune pricing with quantity controls, and ticketService fetches a ticket by order id for e-ticket display.",
+    "nodeIds": [
+      "file:features/users/hooks/useUserRegister.ts",
+      "file:features/users/schema/userSchema.ts",
+      "file:features/users/components/TicketCard.tsx",
+      "file:features/tickets/service/ticketService.ts"
+    ]
+  }
+]

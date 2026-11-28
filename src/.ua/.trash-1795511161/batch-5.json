@@ -1,0 +1,973 @@
+{
+  "nodes": [
+    {
+      "id": "file:app.css",
+      "type": "file",
+      "name": "app.css",
+      "filePath": "app.css",
+      "summary": "Tailwind CSS v4 theme defining design tokens (colors, fonts, radius, spacing, shadows) and base styles for Tiket.ku.",
+      "tags": ["styling", "design-tokens", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Alerts.tsx",
+      "type": "file",
+      "name": "Alerts.tsx",
+      "filePath": "components/Alerts.tsx",
+      "summary": "Toast-style alert component with animated enter/exit and auto-dismiss progress bar, supporting multiple variants.",
+      "tags": ["component", "ui", "alert"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Alerts.tsx:Alerts",
+      "type": "function",
+      "name": "Alerts",
+      "filePath": "components/Alerts.tsx",
+      "lineRange": [50, 117],
+      "summary": "Renders an animated alert toast with variant styling, auto-dismiss timer, and progress bar.",
+      "tags": ["component", "ui", "alert"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Button.tsx",
+      "type": "file",
+      "name": "Button.tsx",
+      "filePath": "components/Button.tsx",
+      "summary": "Reusable button component with loading spinner and disabled styling.",
+      "tags": ["component", "ui", "button"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/Button.tsx:Button",
+      "type": "function",
+      "name": "Button",
+      "filePath": "components/Button.tsx",
+      "lineRange": [8, 32],
+      "summary": "Renders a button with loading spinner state and disabled styling.",
+      "tags": ["component", "ui", "button"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/CTABanner.tsx",
+      "type": "file",
+      "name": "CTABanner.tsx",
+      "filePath": "components/CTABanner.tsx",
+      "summary": "Call-to-action banner prompting users to book tickets.",
+      "tags": ["component", "ui", "cta"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/CTABanner.tsx:CTABanner",
+      "type": "function",
+      "name": "CTABanner",
+      "filePath": "components/CTABanner.tsx",
+      "lineRange": [5, 24],
+      "summary": "Renders a CTA banner with headline and book-now button.",
+      "tags": ["component", "ui", "cta"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/Dropdown.tsx",
+      "type": "file",
+      "name": "Dropdown.tsx",
+      "filePath": "components/Dropdown.tsx",
+      "summary": "Form dropdown select integrated with react-hook-form registration and error display.",
+      "tags": ["component", "form", "dropdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Dropdown.tsx:Dropdown",
+      "type": "function",
+      "name": "Dropdown",
+      "filePath": "components/Dropdown.tsx",
+      "lineRange": [11, 47],
+      "summary": "Renders a labeled select input with validation error message.",
+      "tags": ["component", "form", "dropdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/FeatureCard.tsx",
+      "type": "file",
+      "name": "FeatureCard.tsx",
+      "filePath": "components/FeatureCard.tsx",
+      "summary": "Card displaying a feature icon, title, and description.",
+      "tags": ["component", "ui", "card"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "function",
+      "name": "FeatureCard",
+      "filePath": "components/FeatureCard.tsx",
+      "lineRange": [9, 19],
+      "summary": "Renders a feature card with icon, title, and description.",
+      "tags": ["component", "ui", "card"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/Features.tsx",
+      "type": "file",
+      "name": "Features.tsx",
+      "filePath": "components/Features.tsx",
+      "summary": "Section listing platform features in a responsive grid of FeatureCards.",
+      "tags": ["component", "section", "features"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Features.tsx:Features",
+      "type": "function",
+      "name": "Features",
+      "filePath": "components/Features.tsx",
+      "lineRange": [27, 52],
+      "summary": "Renders the features section grid.",
+      "tags": ["component", "section", "features"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Footer.tsx",
+      "type": "file",
+      "name": "Footer.tsx",
+      "filePath": "components/Footer.tsx",
+      "summary": "Site footer with copyright and footer links.",
+      "tags": ["component", "layout", "footer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/Footer.tsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "components/Footer.tsx",
+      "lineRange": [3, 14],
+      "summary": "Renders the site footer with copyright and links.",
+      "tags": ["component", "layout", "footer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/FooterLinks.tsx",
+      "type": "file",
+      "name": "FooterLinks.tsx",
+      "filePath": "components/FooterLinks.tsx",
+      "summary": "Navigation links list for the footer.",
+      "tags": ["component", "navigation", "footer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "function",
+      "name": "FooterLinks",
+      "filePath": "components/FooterLinks.tsx",
+      "lineRange": [3, 17],
+      "summary": "Renders footer navigation links.",
+      "tags": ["component", "navigation", "footer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/Hero.tsx",
+      "type": "file",
+      "name": "Hero.tsx",
+      "filePath": "components/Hero.tsx",
+      "summary": "Hero section with headline and CTA buttons for booking and schedule.",
+      "tags": ["component", "section", "hero"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Hero.tsx:Hero",
+      "type": "function",
+      "name": "Hero",
+      "filePath": "components/Hero.tsx",
+      "lineRange": [8, 46],
+      "summary": "Renders the hero section with headline and CTA buttons.",
+      "tags": ["component", "section", "hero"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/InputField.tsx",
+      "type": "file",
+      "name": "InputField.tsx",
+      "filePath": "components/InputField.tsx",
+      "summary": "Form input with floating label, password toggle, and error display.",
+      "tags": ["component", "form", "input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/InputField.tsx:InputField",
+      "type": "function",
+      "name": "InputField",
+      "filePath": "components/InputField.tsx",
+      "lineRange": [15, 89],
+      "summary": "Renders a labeled input with validation error and password visibility toggle.",
+      "tags": ["component", "form", "input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/Navbar.tsx",
+      "type": "file",
+      "name": "Navbar.tsx",
+      "filePath": "components/Navbar.tsx",
+      "summary": "Sticky navigation bar with route links and auth buttons.",
+      "tags": ["component", "navigation", "navbar"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/Navbar.tsx:Navbar",
+      "type": "function",
+      "name": "Navbar",
+      "filePath": "components/Navbar.tsx",
+      "lineRange": [7, 64],
+      "summary": "Renders the sticky navbar with navigation and auth actions.",
+      "tags": ["component", "navigation", "navbar"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/ScheduleCard.tsx",
+      "type": "file",
+      "name": "ScheduleCard.tsx",
+      "filePath": "components/ScheduleCard.tsx",
+      "summary": "Card displaying event schedule details with badge and detail button.",
+      "tags": ["component", "card", "schedule"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "function",
+      "name": "ScheduleCard",
+      "filePath": "components/ScheduleCard.tsx",
+      "lineRange": [11, 40],
+      "summary": "Renders an event schedule card with details and detail button.",
+      "tags": ["component", "card", "schedule"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/SchedulePreview.tsx",
+      "type": "file",
+      "name": "SchedulePreview.tsx",
+      "filePath": "components/SchedulePreview.tsx",
+      "summary": "Section previewing upcoming events using ScheduleCard grid.",
+      "tags": ["component", "section", "schedule"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "type": "function",
+      "name": "SchedulePreview",
+      "filePath": "components/SchedulePreview.tsx",
+      "lineRange": [34, 54],
+      "summary": "Renders a preview grid of upcoming events.",
+      "tags": ["component", "section", "schedule"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/auth/schema/authSchemas.ts",
+      "type": "file",
+      "name": "authSchemas.ts",
+      "filePath": "features/auth/schema/authSchemas.ts",
+      "summary": "Zod schemas for login and signup validation with Indonesian error messages.",
+      "tags": ["validation", "schema", "auth"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/auth/service/authService.ts",
+      "type": "file",
+      "name": "authService.ts",
+      "filePath": "features/auth/service/authService.ts",
+      "summary": "Supabase auth helpers: session, sign-in/up, Google OAuth, sign-out, and error mapping.",
+      "tags": ["service", "auth", "supabase"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:getSession",
+      "type": "function",
+      "name": "getSession",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [5, 5],
+      "summary": "Returns the current Supabase session.",
+      "tags": ["auth", "session", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "function",
+      "name": "onAuthStateChange",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [7, 9],
+      "summary": "Subscribes to Supabase auth state changes.",
+      "tags": ["auth", "session", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "function",
+      "name": "requireUserId",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [11, 17],
+      "summary": "Returns the authenticated user id or throws if not signed in.",
+      "tags": ["auth", "validation", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signInWithEmail",
+      "type": "function",
+      "name": "signInWithEmail",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [19, 20],
+      "summary": "Signs in with email and password via Supabase.",
+      "tags": ["auth", "login", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "type": "function",
+      "name": "signUpWithEmail",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [22, 27],
+      "summary": "Registers a new user with email, password, and full name.",
+      "tags": ["auth", "signup", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "function",
+      "name": "signInWithGoogle",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [29, 33],
+      "summary": "Initiates Google OAuth sign-in redirecting to auth callback.",
+      "tags": ["auth", "oauth", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signOut",
+      "type": "function",
+      "name": "signOut",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [35, 35],
+      "summary": "Signs out the current user.",
+      "tags": ["auth", "session", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "function",
+      "name": "mapAuthError",
+      "filePath": "features/auth/service/authService.ts",
+      "lineRange": [37, 60],
+      "summary": "Maps Supabase auth errors to Indonesian user-facing messages.",
+      "tags": ["auth", "error-handling", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/events/service/eventService.ts",
+      "type": "file",
+      "name": "eventService.ts",
+      "filePath": "features/events/service/eventService.ts",
+      "summary": "Supabase queries for events with category mapping and date filtering.",
+      "tags": ["service", "events", "supabase"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:mapEvent",
+      "type": "function",
+      "name": "mapEvent",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [28, 49],
+      "summary": "Maps a database event row to the EventRecord domain model.",
+      "tags": ["events", "mapping", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:buildQuery",
+      "type": "function",
+      "name": "buildQuery",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [51, 61],
+      "summary": "Builds a Supabase query for upcoming events with optional type filter.",
+      "tags": ["events", "query", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:getEvents",
+      "type": "function",
+      "name": "getEvents",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [63, 67],
+      "summary": "Fetches upcoming events optionally filtered by type.",
+      "tags": ["events", "service", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:getEventById",
+      "type": "function",
+      "name": "getEventById",
+      "filePath": "features/events/service/eventService.ts",
+      "lineRange": [69, 74],
+      "summary": "Fetches a single event by id.",
+      "tags": ["events", "service", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/events/types/event.types.ts",
+      "type": "file",
+      "name": "event.types.ts",
+      "filePath": "features/events/types/event.types.ts",
+      "summary": "TypeScript types for events, categories, orders, and tickets.",
+      "tags": ["type-definition", "events", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/orders/service/orderService.ts",
+      "type": "file",
+      "name": "orderService.ts",
+      "filePath": "features/orders/service/orderService.ts",
+      "summary": "Order creation and payment completion via Supabase RPCs.",
+      "tags": ["service", "orders", "payment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/orders/service/orderService.ts:createOrder",
+      "type": "function",
+      "name": "createOrder",
+      "filePath": "features/orders/service/orderService.ts",
+      "lineRange": [21, 41],
+      "summary": "Creates an order via Supabase RPC and returns order id and total.",
+      "tags": ["orders", "payment", "supabase"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:features/orders/service/orderService.ts:completePayment",
+      "type": "function",
+      "name": "completePayment",
+      "filePath": "features/orders/service/orderService.ts",
+      "lineRange": [43, 54],
+      "summary": "Completes payment for an order via Supabase RPC.",
+      "tags": ["orders", "payment", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/tickets/component/Ticket.tsx",
+      "type": "file",
+      "name": "Ticket.tsx",
+      "filePath": "features/tickets/component/Ticket.tsx",
+      "summary": "Legacy ticket display component currently commented out.",
+      "tags": ["component", "ticket", "legacy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/tickets/service/ticketService.ts",
+      "type": "file",
+      "name": "ticketService.ts",
+      "filePath": "features/tickets/service/ticketService.ts",
+      "summary": "Fetches a ticket by order id from Supabase.",
+      "tags": ["service", "tickets", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/tickets/service/ticketService.ts:getTicketByOrderId",
+      "type": "function",
+      "name": "getTicketByOrderId",
+      "filePath": "features/tickets/service/ticketService.ts",
+      "lineRange": [11, 28],
+      "summary": "Fetches a ticket by order id.",
+      "tags": ["tickets", "service", "supabase"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/hooks/useUsers.ts",
+      "type": "file",
+      "name": "useUsers.ts",
+      "filePath": "features/users/hooks/useUsers.ts",
+      "summary": "Legacy hook for fetching users currently commented out.",
+      "tags": ["hook", "users", "legacy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/page/RegisterForm.tsx",
+      "type": "file",
+      "name": "RegisterForm.tsx",
+      "filePath": "features/users/page/RegisterForm.tsx",
+      "summary": "Legacy registration form currently commented out.",
+      "tags": ["page", "users", "legacy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:features/users/service/userServices.ts",
+      "type": "file",
+      "name": "userServices.ts",
+      "filePath": "features/users/service/userServices.ts",
+      "summary": "Legacy user registration service currently commented out.",
+      "tags": ["service", "users", "legacy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/users/types/userPayload.d.ts",
+      "type": "file",
+      "name": "userPayload.d.ts",
+      "filePath": "features/users/types/userPayload.d.ts",
+      "summary": "UserPayload interface for registration data.",
+      "tags": ["type-definition", "users", "data-model"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:components/Alerts.tsx",
+      "target": "function:components/Alerts.tsx:Alerts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Alerts.tsx",
+      "target": "function:components/Alerts.tsx:Alerts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Button.tsx",
+      "target": "function:components/Button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Button.tsx",
+      "target": "function:components/Button.tsx:Button",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/CTABanner.tsx",
+      "target": "function:components/CTABanner.tsx:CTABanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/CTABanner.tsx",
+      "target": "function:components/CTABanner.tsx:CTABanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Dropdown.tsx",
+      "target": "function:components/Dropdown.tsx:Dropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Dropdown.tsx",
+      "target": "function:components/Dropdown.tsx:Dropdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/FeatureCard.tsx",
+      "target": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/FeatureCard.tsx",
+      "target": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "function:components/Features.tsx:Features",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "function:components/Features.tsx:Features",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Features.tsx",
+      "target": "file:components/FeatureCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "function:components/Footer.tsx:Footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "function:components/Footer.tsx:Footer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Footer.tsx",
+      "target": "file:components/FooterLinks.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/FooterLinks.tsx",
+      "target": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/FooterLinks.tsx",
+      "target": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "function:components/Hero.tsx:Hero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "function:components/Hero.tsx:Hero",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Hero.tsx",
+      "target": "file:components/Button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/InputField.tsx",
+      "target": "function:components/InputField.tsx:InputField",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/InputField.tsx",
+      "target": "function:components/InputField.tsx:InputField",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/Navbar.tsx",
+      "target": "function:components/Navbar.tsx:Navbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/Navbar.tsx",
+      "target": "function:components/Navbar.tsx:Navbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/ScheduleCard.tsx",
+      "target": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/ScheduleCard.tsx",
+      "target": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:components/SchedulePreview.tsx",
+      "target": "file:components/ScheduleCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:getSession",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithEmail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signOut",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:signOut",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/service/authService.ts",
+      "target": "function:features/auth/service/authService.ts:mapAuthError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:mapEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:buildQuery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEvents",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEvents",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEventById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/events/service/eventService.ts",
+      "target": "function:features/events/service/eventService.ts:getEventById",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:createOrder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:createOrder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:completePayment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/orders/service/orderService.ts",
+      "target": "function:features/orders/service/orderService.ts:completePayment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/tickets/service/ticketService.ts",
+      "target": "function:features/tickets/service/ticketService.ts:getTicketByOrderId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/tickets/service/ticketService.ts",
+      "target": "function:features/tickets/service/ticketService.ts:getTicketByOrderId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:components/Features.tsx:Features",
+      "target": "function:components/FeatureCard.tsx:FeatureCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/Footer.tsx:Footer",
+      "target": "function:components/FooterLinks.tsx:FooterLinks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/Hero.tsx:Hero",
+      "target": "function:components/Button.tsx:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/SchedulePreview.tsx:SchedulePreview",
+      "target": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:components/Alerts.tsx:Alerts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:components/Button.tsx:Button",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:components/InputField.tsx:InputField",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/orders/service/orderService.ts:createOrder",
+      "target": "function:features/auth/service/authService.ts:requireUserId",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

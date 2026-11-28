@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "baseCommit": "f380ff666b3b2f38a3363d50f0dd6493bbba3328",
+  "headCommit": "9cb949b672fe4c04e42f752ef5e51820da75bf07",
+  "attempt": 1,
+  "filesToReanalyze": [
+    "features/auth/page/SignupPage.tsx",
+    "features/home/page/Home.tsx"
+  ],
+  "batches": [
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "features/auth/page/SignupPage.tsx",
+          "language": "typescript",
+          "sizeLines": 234,
+          "fileCategory": "code"
+        },
+        {
+          "path": "features/home/page/Home.tsx",
+          "language": "typescript",
+          "sizeLines": 368,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "features/auth/page/SignupPage.tsx": [],
+        "features/home/page/Home.tsx": []
+      },
+      "neighborMap": {
+        "features/auth/page/SignupPage.tsx": [
+          {
+            "path": "App.tsx",
+            "batchIndex": 2,
+            "symbols": []
+          }
+        ],
+        "features/home/page/Home.tsx": [
+          {
+            "path": "App.tsx",
+            "batchIndex": 2,
+            "symbols": []
+          }
+        ]
+      },
+      "previousSymbols": [
+        {
+          "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+          "name": "SignupPage",
+          "type": "function",
+          "filePath": "features/auth/page/SignupPage.tsx",
+          "lineRange": [
+            19,
+            233
+          ]
+        },
+        {
+          "id": "function:features/home/page/Home.tsx:HomePage",
+          "name": "HomePage",
+          "type": "function",
+          "filePath": "features/home/page/Home.tsx",
+          "lineRange": [
+            9,
+            39
+          ]
+        }
+      ],
+      "missingSymbols": [
+        {
+          "filePath": "features/auth/page/SignupPage.tsx",
+          "beforeCount": 2,
+          "afterCount": 2,
+          "beforeSymbolCount": 1,
+          "afterSymbolCount": 1,
+          "missing": [
+            {
+              "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+              "name": "SignupPage",
+              "type": "function",
+              "status": "unknown",
+              "reason": "Old symbol cannot be mapped uniquely, or source parsing is unavailable/failed"
+            }
+          ],
+          "replacements": []
+        },
+        {
+          "filePath": "features/home/page/Home.tsx",
+          "beforeCount": 2,
+          "afterCount": 2,
+          "beforeSymbolCount": 1,
+          "afterSymbolCount": 1,
+          "missing": [
+            {
+              "id": "function:features/home/page/Home.tsx:HomePage",
+              "name": "HomePage",
+              "type": "function",
+              "status": "unknown",
+              "reason": "Old symbol cannot be mapped uniquely, or source parsing is unavailable/failed"
+            }
+          ],
+          "replacements": []
+        }
+      ]
+    }
+  ],
+  "inboundEdgeCandidates": [
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/auth/page/SignupPage.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    },
+    {
+      "source": "file:App.tsx",
+      "target": "file:features/home/page/Home.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7,
+      "recoveredFromImportMap": true
+    }
+  ],
+  "currentFiles": [
+    {
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "nodes": [
+        {
+          "id": "file:features/auth/page/SignupPage.tsx",
+          "type": "file",
+          "name": "SignupPage.tsx",
+          "filePath": "features/auth/page/SignupPage.tsx",
+          "summary": "Halaman pendaftaran akun dengan formulir nama/email/kata sandi, opsi daftar melalui Google, validasi Zod, dan umpan balik verifikasi email.",
+          "tags": [
+            "komponen",
+            "autentikasi",
+            "pendaftaran",
+            "formulir",
+            "validasi"
+          ],
+          "complexity": "complex"
+        },
+        {
+          "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+          "type": "function",
+          "name": "SignupPage",
+          "filePath": "features/auth/page/SignupPage.tsx",
+          "lineRange": [
+            21,
+            232
+          ],
+          "summary": "Merender antarmuka pendaftaran, mengirim data akun lewat signUpWithEmail, memeriksa sesi setelah pendaftaran, dan menampilkan pesan verifikasi email bila sesi belum aktif.",
+          "tags": [
+            "komponen",
+            "autentikasi",
+            "pendaftaran",
+            "formulir",
+            "penanganan-error"
+          ],
+          "complexity": "complex"
+        }
+      ],
+      "edges": [
+        {
+          "source": "file:features/auth/page/SignupPage.tsx",
+          "target": "function:features/auth/page/SignupPage.tsx:SignupPage",
+          "type": "contains",
+          "direction": "forward",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "filePath": "features/home/page/Home.tsx",
+      "nodes": [
+        {
+          "id": "file:features/home/page/Home.tsx",
+          "type": "file",
+          "name": "Home.tsx",
+          "filePath": "features/home/page/Home.tsx",
+          "summary": "Halaman beranda yang menyusun navbar, hero, ringkasan fitur, pratinjau jadwal acara, daftar venue GBK, ajakan bertindak, dan footer.",
+          "tags": [
+            "komponen",
+            "beranda",
+            "tata-letak",
+            "navigasi",
+            "pemasaran"
+          ],
+          "complexity": "complex",
+          "languageNotes": "Daftar acara dan venue masih berupa array statis di dalam berkas, bukan hasil kueri Supabase; layout responsif memakai utilitas Tailwind."
+        },
+        {
+          "id": "function:features/home/page/Home.tsx:HomePage",
+          "type": "function",
+          "name": "HomePage",
+          "filePath": "features/home/page/Home.tsx",
+          "lineRange": [
+            58,
+            366
+          ],
+          "summary": "Merender seluruh bagian beranda sekaligus menangani navigasi beli tiket dengan pemeriksaan status login, navigasi lihat jadwal, dan gulir halus ke bagian jadwal serta venue.",
+          "tags": [
+            "komponen",
+            "beranda",
+            "navigasi",
+            "penanganan-acara"
+          ],
+          "complexity": "complex"
+        }
+      ],
+      "edges": [
+        {
+          "source": "file:features/home/page/Home.tsx",
+          "target": "function:features/home/page/Home.tsx:HomePage",
+          "type": "contains",
+          "direction": "forward",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "filePath": "App.tsx",
+      "nodes": [
+        {
+          "id": "file:App.tsx",
+          "type": "file",
+          "name": "App.tsx",
+          "filePath": "App.tsx",
+          "summary": "Root component that configures React Router and declares all top-level routes for the application.",
+          "tags": [
+            "entry-point",
+            "routing",
+            "component"
+          ],
+          "complexity": "simple"
+        },
+        {
+          "id": "function:App.tsx:App",
+          "type": "function",
+          "name": "App",
+          "filePath": "App.tsx",
+          "lineRange": [
+            11,
+            27
+          ],
+          "summary": "Renders the BrowserRouter with route definitions for home, matches, login, signup, and auth callback pages.",
+          "tags": [
+            "component",
+            "routing",
+            "entry-point"
+          ],
+          "complexity": "simple"
+        }
+      ],
+      "edges": [
+        {
+          "source": "file:App.tsx",
+          "target": "function:App.tsx:App",
+          "type": "contains",
+          "direction": "forward",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

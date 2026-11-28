@@ -1,0 +1,189 @@
+{
+  "tour": [
+    {
+      "order": 1,
+      "title": "Bootstrap dan Perutean",
+      "description": "Mulai dari main.tsx yang memasang root React pada elemen #root dan merender App di dalam StrictMode bersama stylesheet global. App.tsx lalu mendefinisikan BrowserRouter dan rute utama: beranda, jadwal pertandingan, masuk, daftar, serta callback autentikasi. Dari sini terlihat bahwa proyek disusun feature-first dengan rute sebagai pintu masuk ke setiap alur.",
+      "nodeIds": [
+        "file:main.tsx",
+        "file:App.tsx"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Token Gaya Global",
+      "description": "Melanjutkan bootstrap, app.css menjadi titik masuk styling global: Tailwind CSS diimpor bersama font Inter dan Plus Jakarta Sans, lalu token warna, tipografi, spacing, radius, bayangan, dan motion didefinisikan lewat @theme. Button.tsx menunjukkan token itu dipakai lewat tujuh varian dan dua ukuran, sementara helper cn() di lib/utiils.ts menggabungkan kelas dan menyelesaikan konflik Tailwind. Memahami lapisan ini penting sebelum membaca komponen mana pun karena hampir semua tampilan bergantung pada konvensi ini.",
+      "nodeIds": [
+        "file:app.css",
+        "file:components/Button.tsx",
+        "file:lib/utiils.ts"
+      ],
+      "languageLesson": "Tailwind CSS v4 menyimpan token desain di blok @theme; kelas utilitas lalu memakai token tersebut. Fungsi cn() menggabungkan clsx dan tailwind-merge sehingga kelas yang saling bertentangan, misalnya dua warna background, tidak keduanya masuk ke DOM."
+    },
+    {
+      "order": 3,
+      "title": "Beranda dan Agenda GBK",
+      "description": "Halaman Home.tsx adalah contoh pertama penggunaan fondasi tersebut: hero, agenda acara GBK, keunggulan layanan, venue, dan ajakan memesan tiket. CardAction.tsx merangkum kartu acara dengan media, kategori, status, tanggal, judul, lokasi, harga, dan tombol aksi, sementara Searchbar.tsx serta Banner.tsx melengkapi pencarian dan sorotan informasi. Langkah ini menghubungkan token dan komponen dasar ke tampilan nyata yang dilihat pengguna.",
+      "nodeIds": [
+        "file:features/home/page/Home.tsx",
+        "file:components/CardAction.tsx",
+        "file:components/Searchbar.tsx",
+        "file:components/Banner.tsx"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Pustaka Komponen Bersama",
+      "description": "Beranda memakai tombol dan kartu dari pustaka bersama; sekarang lihat pusatnya lewat components/index.ts yang mengekspor ulang seluruh komponen UI bersama. Alerts.tsx menyampaikan notifikasi dengan varian, deskripsi, auto-close, dan callback onClose; Navbar.tsx mengarahkan navigasi sesuai status pengguna; InputField.tsx menangani label, error, penanda wajib, dan toggle password; Stepper.tsx menandai langkah aktif dalam alur pemesanan. Pola barrel ini membuat fitur lain cukup mengimpor dari satu jalur.",
+      "nodeIds": [
+        "file:components/index.ts",
+        "file:components/Alerts.tsx",
+        "file:components/Navbar.tsx",
+        "file:components/InputField.tsx",
+        "file:components/Stepper.tsx"
+      ],
+      "languageLesson": "Barrel file memakai `export ... from` untuk menyatukan beberapa modul di satu titik impor. Perubahan struktur folder di dalam pustaka tetap bisa dirapikan tanpa mengubah semua import di tiap fitur."
+    },
+    {
+      "order": 5,
+      "title": "Kontrak Tipe Domain",
+      "description": "Sebelum masuk ke Supabase, pahami kontrak datanya. event.types.ts mendefinisikan Event, kategori tiket, item pesanan, data pembeli, dan tiket yang dihasilkan; matchesPayload.ts beserta matchesPayload.types.ts menjadi kontrak tipe dengan fan-in tinggi untuk komponen, hook, dan service fitur matches. Tipe-tipe ini menjelaskan bentuk objek yang mengalir dari database ke UI.",
+      "nodeIds": [
+        "file:features/events/types/event.types.ts",
+        "file:features/matches/types/matchesPayload.ts",
+        "file:features/matches/types/matchesPayload.types.ts"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Klien dan Service Supabase",
+      "description": "Kontrak pada langkah sebelumnya dipakai oleh lapisan service. lib/supabase.ts membuat satu klien Supabase dari VITE_SUPABASE_URL dan VITE_SUPABASE_PUBLISHABLE_KEY serta menolak konfigurasi kosong. authService.ts membungkus Supabase Auth untuk sesi, login email, daftar, Google, logout, dan terjemahan error. eventService.ts memetakan baris database ke model Event dengan filter tanggal dan tipe. Memisahkan akses data di service menjaga komponen tetap fokus pada tampilan.",
+      "nodeIds": [
+        "file:lib/supabase.ts",
+        "file:features/auth/service/authService.ts",
+        "file:features/events/service/eventService.ts"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Sesi dan Autentikasi",
+      "description": "Service autentikasi dari langkah sebelumnya dikonsumsi lewat hook dan halaman. useSession.ts menyediakan session, isLoading, isLoggedIn, user, serta listener perubahan auth; authSchemas.ts menetapkan aturan email dan kata sandi untuk formulir. LoginPage.tsx dan SignupPage.tsx memakai skema itu plus opsi Google, sementara AuthCallbackPage.tsx memeriksa sesi lalu mengalihkan pengguna. Ini menunjukkan pola umum: logika state ditempatkan di hook, validasi di skema, dan navigasi di halaman.",
+      "nodeIds": [
+        "file:hooks/useSession.ts",
+        "file:features/auth/schema/authSchemas.ts",
+        "file:features/auth/page/LoginPage.tsx",
+        "file:features/auth/page/SignupPage.tsx",
+        "file:features/auth/page/AuthCallbackPage.tsx"
+      ],
+      "languageLesson": "Hook kustom seperti useSession merangkum state dan subscription Supabase agar komponen tidak mengelola listener auth sendiri. Dengan pendekatan ini, beberapa halaman bisa memakai status sesi yang sama tanpa duplikasi kode."
+    },
+    {
+      "order": 8,
+      "title": "Daftar Pertandingan",
+      "description": "Dengan sesi dan tipe yang sudah dikenal, ikuti alur jadwal pertandingan. matchService.ts mengubah data event beserta kategorinya menjadi bentuk pertandingan untuk UI; useMatchData.ts mengambil data lewat service itu dan mengelola state data, loading, serta error. Matches.tsx merender Card.tsx dan TeamSection.tsx untuk setiap pertandingan, lalu menyimpan pilihan ke sessionStorage sebelum bernavigasi. Rantai service → hook → halaman → komponen ini adalah pola yang dipakai berulang di proyek.",
+      "nodeIds": [
+        "file:features/matches/service/matchService.ts",
+        "file:features/matches/hooks/useMatchData.ts",
+        "file:features/matches/page/Matches.tsx",
+        "file:features/matches/components/Card.tsx",
+        "file:features/matches/components/TeamSection.tsx"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "Formulir Pembayaran",
+      "description": "Setelah memilih pertandingan, pengguna masuk ke pembayaran. paymentSchema.ts memvalidasi nama pemegang kartu, nomor kartu, CVV, dan tanggal kedaluwarsa; usePayment.ts membungkus useForm dengan zodResolver dan skema tersebut. PaymentMethods.tsx mengelola pilihan kartu atau transfer bank, sedangkan Payment.tsx menyatukan formulir dan mengarahkan pengguna ke halaman tiket setelah submit. Validasi berada di luar komponen supaya aturan bisa dipakai ulang dan halaman tetap ringkas.",
+      "nodeIds": [
+        "file:features/payment/schemas/paymentSchema.ts",
+        "file:features/payment/hooks/usePayment.ts",
+        "file:features/payment/components/PaymentMethods.tsx",
+        "file:features/payment/page/Payment.tsx"
+      ],
+      "languageLesson": "zodResolver menjembatani skema Zod ke React Hook Form: pesan error dari Zod otomatis menjadi field error, dan submit hanya berjalan bila data lolos validasi."
+    },
+    {
+      "order": 10,
+      "title": "Pemesanan dan E-Ticket",
+      "description": "Formulir yang valid berujung pada pemesanan dan tiket. orderService.ts membuat order melalui RPC Supabase dengan item serta data pembeli, lalu menyelesaikan pembayaran simulasi; ticketService.ts mengambil tiket berdasarkan orderId beserta kode QR dan waktu penerbitan. QrPassCard.tsx menampilkan tiket digital, sementara SummaryCard.tsx merangkum pesanan. Di sinilah alur dari pilihan tribun sampai e-ticket menjadi satu rangkaian utuh.",
+      "nodeIds": [
+        "file:features/orders/service/orderService.ts",
+        "file:features/tickets/service/ticketService.ts",
+        "file:components/QrPassCard.tsx",
+        "file:components/SummaryCard.tsx"
+      ],
+      "languageLesson": "RPC Supabase memanggil fungsi yang disimpan di database layaknya fungsi JavaScript dari client. Logika transaksi seperti membuat order dan menyelesaikan pembayaran dapat ditempatkan di Postgres, bukan di komponen React."
+    },
+    {
+      "order": 11,
+      "title": "Pendaftaran Pengguna",
+      "description": "Data pembeli yang dipakai orderService berasal dari alur pendaftaran pengguna. userSchema.ts memeriksa nama, nomor identitas, email, jenis kelamin, dan peta jumlah tiket; useUserRegister.ts menyiapkan React Hook Form dengan resolver Zod serta nilai awal. TicketCard.tsx menampilkan tribun dan harga dengan tombol +/- yang mengubah jumlah lewat callback onCountChange. Langkah ini merangkai input pengguna sebelum order dibuat.",
+      "nodeIds": [
+        "file:features/users/schema/userSchema.ts",
+        "file:features/users/hooks/useUserRegister.ts",
+        "file:features/users/components/TicketCard.tsx"
+      ]
+    },
+    {
+      "order": 12,
+      "title": "Jejak Kode Legacy",
+      "description": "Terakhir, kenali berkas yang tidak dipakai alur aktif. Lapisan legacy berisi Ticket.tsx, userServices.ts, useUsers.ts, userService.ts, dan RegisterForm.tsx yang seluruh implementasinya masih dikomentari. Membacanya bisa menyesatkan karena tidak ada komponen atau fungsi aktif yang diekspor; gunakan riwayat git bila perlu referensi. Dengan ini peta alur aktif dan batasannya sudah lengkap.",
+      "nodeIds": [
+        "file:features/tickets/component/Ticket.tsx",
+        "file:features/users/service/userServices.ts",
+        "file:features/users/hooks/useUsers.ts",
+        "file:services/userService.ts",
+        "file:features/users/page/RegisterForm.tsx"
+      ]
+    }
+  ],
+  "detailedFiles": [
+    {
+      "filePath": "main.tsx",
+      "tourOrder": 1
+    },
+    {
+      "filePath": "App.tsx",
+      "tourOrder": 1
+    },
+    {
+      "filePath": "app.css",
+      "tourOrder": 2
+    },
+    {
+      "filePath": "components/Button.tsx",
+      "tourOrder": 2
+    },
+    {
+      "filePath": "lib/utiils.ts",
+      "tourOrder": 2
+    },
+    {
+      "filePath": "features/home/page/Home.tsx",
+      "tourOrder": 3
+    },
+    {
+      "filePath": "components/CardAction.tsx",
+      "tourOrder": 3
+    },
+    {
+      "filePath": "components/Searchbar.tsx",
+      "tourOrder": 3
+    },
+    {
+      "filePath": "components/Banner.tsx",
+      "tourOrder": 3
+    },
+    {
+      "filePath": "components/index.ts",
+      "tourOrder": 4
+    },
+    {
+      "filePath": "components/Alerts.tsx",
+      "tourOrder": 4
+    },
+    {
+      "filePath": "components/Navbar.tsx",
+      "tourOrder": 4
+    }
+  ]
+}

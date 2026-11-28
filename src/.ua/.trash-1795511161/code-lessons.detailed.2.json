@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-24T00:00:00.000Z",
+  "files": {
+    "features/matches/components/Card.tsx": {
+      "overview": "Renders a single match schedule card as a 3-column grid: home team, kickoff time and timezone, away team, plus a spanning footer with date and stadium. Combines MatchPayload data with an optional onClick handler from MatchCardProps.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 3],
+          "explanation": "Imports the MatchPayload type, TeamSection component, and MatchCardProps. Keeping these imports typed ensures the card stays aligned with the legacy match payload and shared prop contract.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Match card layout",
+          "lineRange": [5, 31],
+          "explanation": "Destructures home/away teams, match time, timezone, date, stadium, and onClick, then renders a CSS grid. TeamSection displays each side, the middle section shows kickoff time and timezone, and the bottom section spans all columns for date and stadium. The root div carries onClick so the whole card is clickable.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Default export",
+          "lineRange": [33, 33],
+          "explanation": "Default-exports MatchScheduleCard for consumption by the Matches page.",
+          "tourOrder": 5
+        }
+      ]
+    },
+    "features/matches/components/TeamSection.tsx": {
+      "overview": "Small presentational component rendering a team's name and logo inside a centered section. It is used twice by MatchScheduleCard for the home and away sides.",
+      "sections": [
+        {
+          "title": "Import",
+          "lineRange": [1, 1],
+          "explanation": "Imports TeamPayload, which defines the name and logo fields rendered by this component.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Team section",
+          "lineRange": [3, 14],
+          "explanation": "Accepts a TeamPayload and renders an uppercase team name plus logo image. The logo is constrained to a fixed box and uses object-contain so differently sized logos stay consistent. The component is stateless and reusable for both teams.",
+          "tourOrder": 5
+        }
+      ]
+    },
+    "features/matches/page/Matches.tsx": {
+      "overview": "Page component that fetches matches via useMatchData and renders a 3x3 grid of cards. It stores the selected match id in sessionStorage and navigates to the match form on click.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 3],
+          "explanation": "Imports navigation, the Card component, and the useMatchData hook used to load and display matches.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Matches page",
+          "lineRange": [5, 23],
+          "explanation": "Calls useMatchData to get matches, defines handleCardClick to persist selectedMatchId in sessionStorage and navigate to /matchs/{id}/form when an id exists, and maps each match to a Card with an onClick handler. The grid layout uses three columns and rows.",
+          "tourOrder": 5
+        },
+        {
+          "title": "Default export",
+          "lineRange": [25, 25],
+          "explanation": "Default-exports the Matches page for routing in App.tsx.",
+          "tourOrder": 5
+        }
+      ]
+    },
+    "features/matches/hooks/useMatchData.ts": {
+      "overview": "Custom hook that fetches matches on mount and exposes matches, loading, and error state. The Matches page currently consumes only matches.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 4],
+          "explanation": "Includes a source-path comment plus React hooks, the getMatches service, and the MatchPayload type used for state.",
+          "tourOrder": 6
+        },
+        {
+          "title": "useMatchData hook",
+          "lineRange": [6, 28],
+          "explanation": "Initializes state for matches, loading, and error. The effect runs an async fetchData that calls getMatches, stores results, clears any previous error, and always resets loading in finally. An empty dependency array ensures a single fetch on mount, and all three values are returned to consumers.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "features/matches/service/matchService.ts": {
+      "overview": "Adapter service converting EventRecord records from eventService into the legacy MatchPayload shape used by the match schedule UI. It is intentionally shallow, with an upgrade path to use EventRecord directly.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 2],
+          "explanation": "Imports getEvents from the events service and the MatchPayload type that the legacy UI expects.",
+          "tourOrder": 6
+        },
+        {
+          "title": "Adapter rationale",
+          "lineRange": [4, 5],
+          "explanation": "A ponytail comment documents that this adapter is deliberately shallow to keep the old UI compiling, and points to using EventRecord directly once the schedule page is redesigned.",
+          "tourOrder": 6
+        },
+        {
+          "title": "getMatches",
+          "lineRange": [6, 24],
+          "explanation": "Calls getEvents(), then maps each event to a MatchPayload. Home team uses event title and image, away team uses subtitle or title, time/date/venue are copied, and tickets is built from event categories. This keeps the legacy card UI working while the newer event model carries richer data.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "features/matches/types/matchesPayload.ts": {
+      "overview": "Defines the MatchPayload interface describing a scheduled match: identifiers, home/away teams, time and timezone, date, stadium, and a ticket price/quota map.",
+      "sections": [
+        {
+          "title": "Import",
+          "lineRange": [1, 1],
+          "explanation": "Imports TeamPayload used for the home and away team fields.",
+          "tourOrder": 6
+        },
+        {
+          "title": "MatchPayload interface",
+          "lineRange": [3, 13],
+          "explanation": "Declares the fields consumed by the match card and schedule UI. tickets is a record keyed by category name with price and quota, mirroring the adapted event categories.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "features/matches/types/matchesPayload.types.ts": {
+      "overview": "Defines the TeamPayload interface with name and logo fields used by match payloads and the TeamSection component.",
+      "sections": [
+        {
+          "title": "TeamPayload interface",
+          "lineRange": [1, 4],
+          "explanation": "Declares the minimal team shape needed to render a team section: a display name and logo URL.",
+          "tourOrder": 6
+        }
+      ]
+    },
+    "features/events/service/eventService.ts": {
+      "overview": "Supabase data access for events: defines row interfaces, maps database rows to EventRecord, builds an upcoming-event query with an optional type filter, and exposes getEvents and getEventById.",
+      "sections": [
+        {
+          "title": "Row interfaces",
+          "lineRange": [4, 26],
+          "explanation": "Defines CategoryRow and EventRow matching the database columns returned by Supabase, including the nested ticket_categories array. These interfaces type the raw query result before mapping.",
+          "tourOrder": 7
+        },
+        {
+          "title": "mapEvent",
+          "lineRange": [28, 49],
+          "explanation": "Converts an EventRow into an EventRecord, renaming snake_case columns to camelCase and deriving remaining as quota minus sold for each category. Null category arrays are normalized to an empty list.",
+          "tourOrder": 7
+        },
+        {
+          "title": "buildQuery",
+          "lineRange": [51, 61],
+          "explanation": "Builds a Supabase query selecting events with their categories, filtering to events on or after today, and ordering by date then time. An optional EventType filter is applied when provided.",
+          "tourOrder": 7
+        },
+        {
+          "title": "getEvents",
+          "lineRange": [63, 67],
+          "explanation": "Executes buildQuery, throws on error, and maps the returned rows to EventRecord objects.",
+          "tourOrder": 7
+        },
+        {
+          "title": "getEventById",
+          "lineRange": [69, 74],
+          "explanation": "Reuses buildQuery, adds an id equality filter and single-row selection. A PGRST116 error is treated as not found and returns null; other errors are thrown.",
+          "tourOrder": 7
+        }
+      ]
+    },
+    "features/events/types/event.types.ts": {
+      "overview": "Domain type definitions for the events feature: event types, category and event records, order item input, buyer input, and issued ticket shape.",
+      "sections": [
+        {
+          "title": "EventType",
+          "lineRange": [1, 1],
+          "explanation": "Union type restricting events to football or concert.",
+          "tourOrder": 7
+        },
+        {
+          "title": "EventCategoryRecord",
+          "lineRange": [3, 11],
+          "explanation": "Describes a ticket category including price, quota, sold count, and derived remaining availability.",
+          "tourOrder": 7
+        },
+        {
+          "title": "EventRecord",
+          "lineRange": [13, 26],
+          "explanation": "Describes an event with schedule, venue, media, and its categories. This is the primary domain model used by services and UI.",
+          "tourOrder": 7
+        },
+        {
+          "title": "Order inputs",
+          "lineRange": [28, 38],
+          "explanation": "Defines OrderItemInput for category/quantity pairs and BuyerInput for buyer identity fields used during registration and ordering.",
+          "tourOrder": 7
+        },
+        {
+          "title": "OrderTicket",
+          "lineRange": [40, 45],
+          "explanation": "Describes an issued ticket with id, order id, QR code, and issuance timestamp.",
+          "tourOrder": 7
+        }
+      ]
+    },
+    "lib/supabase.ts": {
+      "overview": "Creates and exports a singleton Supabase client from Vite environment variables, throwing if either required value is missing.",
+      "sections": [
+        {
+          "title": "Import",
+          "lineRange": [1, 1],
+          "explanation": "Imports createClient from @supabase/supabase-js.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Environment validation",
+          "lineRange": [3, 10],
+          "explanation": "Reads VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY from import.meta.env and throws a clear Indonesian error if either is absent, prompting use of .env.local.",
+          "tourOrder": 8
+        },
+        {
+          "title": "Client export",
+          "lineRange": [12, 12],
+          "explanation": "Creates and exports the shared supabase client used by all services.",
+          "tourOrder": 8
+        }
+      ]
+    },
+    "features/auth/schema/authSchemas.ts": {
+      "overview": "Zod schemas for authentication forms: a base authSchema, a loginSchema alias, and a signupSchema with name and password confirmation, plus inferred TypeScript types.",
+      "sections": [
+        {
+          "title": "Imports and base field",
+          "lineRange": [1, 3],
+          "explanation": "Imports zod and defines errorMessageInput as a non-empty string used as the starting point for validated fields.",
+          "tourOrder": 9
+        },
+        {
+          "title": "authSchema",
+          "lineRange": [5, 10],
+          "explanation": "Validates email format and password length between 6 and 20 characters, with Indonesian error messages.",
+          "tourOrder": 9
+        },
+        {
+          "title": "loginSchema",
+          "lineRange": [12, 12],
+          "explanation": "Aliases authSchema for the login form.",
+          "tourOrder": 9
+        },
+        {
+          "title": "signupSchema",
+          "lineRange": [14, 28],
+          "explanation": "Extends validation with a name field restricted to letters and spaces, plus confirmPassword and a refine check ensuring passwords match.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Inferred types",
+          "lineRange": [30, 32],
+          "explanation": "Exports AuthSchema, LoginSchema, and SignupSchema inferred from the Zod schemas for use with react-hook-form.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/auth/service/authService.ts": {
+      "overview": "Thin wrappers around Supabase auth: session retrieval, state subscription, user id requirement, email and Google sign-in, sign-up, sign-out, and mapping auth errors to Indonesian messages.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 3],
+          "explanation": "Imports the AuthError type and the shared supabase client used by all auth helpers.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Session helpers",
+          "lineRange": [5, 9],
+          "explanation": "getSession returns the current Supabase session, and onAuthStateChange subscribes to auth state changes using Supabase's callback type.",
+          "tourOrder": 9
+        },
+        {
+          "title": "requireUserId",
+          "lineRange": [11, 17],
+          "explanation": "Fetches the current user and returns their id, or throws an Indonesian message prompting sign-in when no authenticated user exists.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Email auth",
+          "lineRange": [19, 27],
+          "explanation": "signInWithEmail delegates to signInWithPassword, while signUpWithEmail calls signUp with full name stored in user metadata.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Google and sign-out",
+          "lineRange": [29, 35],
+          "explanation": "signInWithGoogle starts Google OAuth redirecting to /auth/callback, and signOut ends the current session.",
+          "tourOrder": 9
+        },
+        {
+          "title": "mapAuthError",
+          "lineRange": [37, 60],
+          "explanation": "Maps Supabase auth errors to Indonesian user-facing messages by checking known error strings, with a generic fallback. Covers invalid credentials, duplicate registration, unconfirmed email, weak password, OAuth, and network failures.",
+          "tourOrder": 9
+        }
+      ]
+    }
+  }
+}

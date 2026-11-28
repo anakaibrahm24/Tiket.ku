@@ -1,0 +1,149 @@
+{
+  "nodes": [
+    {
+      "id": "file:hooks/useSession.ts",
+      "type": "file",
+      "name": "useSession.ts",
+      "filePath": "hooks/useSession.ts",
+      "summary": "Hook React yang menyediakan status sesi autentikasi Supabase (session, isLoading, isLoggedIn, user) dan mendengarkan perubahan auth.",
+      "tags": ["hook", "auth", "session", "react", "state"],
+      "complexity": "moderate",
+      "languageNotes": "Memakai flag mounted di useEffect serta unsubscribe listener agar tidak ada pembaruan state setelah komponen dilepas."
+    },
+    {
+      "id": "function:hooks/useSession.ts:useSession",
+      "type": "function",
+      "name": "useSession",
+      "filePath": "hooks/useSession.ts",
+      "lineRange": [9, 43],
+      "summary": "Mengambil sesi awal dari Supabase, membuka langganan onAuthStateChange, lalu mengembalikan status login, status loading, sesi, dan pengguna saat ini.",
+      "tags": ["hook", "auth", "session", "react", "state"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/supabase.ts",
+      "type": "file",
+      "name": "supabase.ts",
+      "filePath": "lib/supabase.ts",
+      "summary": "Membuat dan mengekspor satu klien Supabase dari VITE_SUPABASE_URL serta VITE_SUPABASE_PUBLISHABLE_KEY, dan melempar error bila keduanya kosong.",
+      "tags": ["service", "supabase", "client", "singleton", "configuration"],
+      "complexity": "simple",
+      "languageNotes": "Memvalidasi import.meta.env Vite saat modul dimuat sehingga kegagalan konfigurasi langsung terlihat."
+    },
+    {
+      "id": "file:lib/utiils.ts",
+      "type": "file",
+      "name": "utiils.ts",
+      "filePath": "lib/utiils.ts",
+      "summary": "Menyediakan helper cn untuk menggabungkan class Tailwind dengan clsx dan tailwind-merge agar konflik kelas terselesaikan.",
+      "tags": ["utility", "tailwind", "class-merge", "helper", "styling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/utiils.ts:cn",
+      "type": "function",
+      "name": "cn",
+      "filePath": "lib/utiils.ts",
+      "lineRange": [4, 6],
+      "summary": "Menggabungkan daftar ClassValue melalui clsx lalu menyatukannya dengan twMerge menjadi satu string class Tailwind.",
+      "tags": ["utility", "tailwind", "class-merge", "helper"],
+      "complexity": "simple",
+      "languageNotes": "Pola twMerge(clsx(inputs)) adalah cara standar shadcn/ui untuk menghindari kelas Tailwind yang saling menimpa."
+    },
+    {
+      "id": "file:main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "main.tsx",
+      "summary": "Titik masuk aplikasi React: memasang root pada elemen #root dan merender App di dalam StrictMode bersama stylesheet global.",
+      "tags": ["entry-point", "react", "bootstrap", "rendering", "frontend"],
+      "complexity": "simple",
+      "languageNotes": "Menggunakan createRoot dari react-dom/client, API mounting React 18+."
+    },
+    {
+      "id": "file:services/userService.ts",
+      "type": "file",
+      "name": "userService.ts",
+      "filePath": "services/userService.ts",
+      "summary": "Berkas service user legacy yang seluruh isinya masih berupa komentar, sehingga tidak ada modul maupun fungsi aktif yang diekspor.",
+      "tags": ["service", "legacy", "user", "inactive", "dead-code"],
+      "complexity": "simple",
+      "languageNotes": "Semua baris adalah komentar sehingga tree-sitter tidak menemukan simbol aktif."
+    },
+    {
+      "id": "file:vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "vite-env.d.ts",
+      "summary": "Deklarasi tipe ambient yang memuat referensi vite/client untuk dukungan TypeScript pada aset dan import.meta.env.",
+      "tags": ["type-definition", "vite", "typescript", "ambient", "configuration"],
+      "complexity": "simple",
+      "languageNotes": "Directive triple-slash reference types=\"vite/client\" menyuntikkan tipe global Vite ke proyek."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "function:hooks/useSession.ts:useSession",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:hooks/useSession.ts:useSession",
+      "target": "function:features/auth/service/authService:getSession",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:hooks/useSession.ts:useSession",
+      "target": "function:features/auth/service/authService:onAuthStateChange",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:hooks/useSession.ts",
+      "target": "file:features/auth/service/authService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:lib/utiils.ts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/utiils.ts",
+      "target": "function:lib/utiils.ts:cn",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:App.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:main.tsx",
+      "target": "file:app.css",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

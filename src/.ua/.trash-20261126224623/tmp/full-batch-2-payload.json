@@ -1,0 +1,58 @@
+{
+  "batchIndex": 2,
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "files": [
+    {
+      "path": "App.tsx",
+      "language": "typescript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/page/AuthCallbackPage.tsx",
+      "language": "typescript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/page/LoginPage.tsx",
+      "language": "typescript",
+      "sizeLines": 199,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/auth/page/SignupPage.tsx",
+      "language": "typescript",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "features/home/page/Home.tsx",
+      "language": "typescript",
+      "sizeLines": 368,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "App.tsx": [
+      "features/auth/page/AuthCallbackPage.tsx",
+      "features/auth/page/LoginPage.tsx",
+      "features/auth/page/SignupPage.tsx",
+      "features/home/page/Home.tsx",
+      "features/matches/page/Matches.tsx"
+    ],
+    "features/auth/page/AuthCallbackPage.tsx": [],
+    "features/auth/page/LoginPage.tsx": [],
+    "features/auth/page/SignupPage.tsx": [],
+    "features/home/page/Home.tsx": []
+  },
+  "neighborMap": {
+    "App.tsx": [
+      {
+        "path": "features/matches/page/Matches.tsx",
+        "batchIndex": 1,
+        "symbols": []
+      }
+    ]
+  }
+}

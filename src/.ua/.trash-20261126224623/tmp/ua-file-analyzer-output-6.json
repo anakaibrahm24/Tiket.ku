@@ -1,0 +1,447 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 10,
+  "filesSkipped": [
+    "app.css"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 10,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "components/Badge.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "Badge",
+          "startLine": 9,
+          "endLine": 31,
+          "params": [
+            "{ children, variant = \"neutral\", className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Badge",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Badge",
+          "callee": "cn",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Banner.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "Banner",
+          "startLine": 13,
+          "endLine": 49,
+          "params": [
+            "{\n  title,\n  description,\n  code,\n  icon = \"verified\",\n  className = \"\",\n  children,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Banner",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Banner",
+          "callee": "cn",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Drawer.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "Drawer",
+          "startLine": 12,
+          "endLine": 38,
+          "params": [
+            "{ open, title, children, onClose, className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Drawer",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Drawer",
+          "callee": "cn",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Footer.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "Footer",
+          "startLine": 3,
+          "endLine": 24,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Footer",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/InputField.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "InputField",
+          "startLine": 15,
+          "endLine": 77,
+          "params": [
+            "{\n  className = \"\",\n  labelName,\n  error,\n  required = false,\n  showForgotPasswordLink = false,\n  forgotPasswordPath = \"#\",\n  type = \"text\",\n  ...props\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InputField",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "InputField",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "InputField",
+          "callee": "cn",
+          "lineNumber": 48
+        },
+        {
+          "caller": "InputField",
+          "callee": "setShowPassword",
+          "lineNumber": 60
+        },
+        {
+          "caller": "InputField",
+          "callee": "cn",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/QrPassCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "QrPassCard",
+          "startLine": 11,
+          "endLine": 33,
+          "params": [
+            "{\n  title,\n  subtitle,\n  code,\n  status,\n  className = \"\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "QrPassCard",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "QrPassCard",
+          "callee": "cn",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/RadioSelector.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 57,
+      "functions": [
+        {
+          "name": "RadioSelector",
+          "startLine": 16,
+          "endLine": 59,
+          "params": [
+            "{\n  options,\n  value,\n  onChange,\n  className = \"\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RadioSelector",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "RadioSelector",
+          "callee": "cn",
+          "lineNumber": 23
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "options.map",
+          "lineNumber": 24
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "onChange",
+          "lineNumber": 30
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "cn",
+          "lineNumber": 31
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "cn",
+          "lineNumber": 39
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Stepper.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 42,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "Stepper",
+          "startLine": 9,
+          "endLine": 40,
+          "params": [
+            "{ steps, activeIndex, className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Stepper",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Stepper",
+          "callee": "cn",
+          "lineNumber": 11
+        },
+        {
+          "caller": "Stepper",
+          "callee": "steps.map",
+          "lineNumber": 12
+        },
+        {
+          "caller": "Stepper",
+          "callee": "cn",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Stepper",
+          "callee": "cn",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/SummaryCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "SummaryCard",
+          "startLine": 14,
+          "endLine": 44,
+          "params": [
+            "{\n  title = \"Ringkasan\",\n  children,\n  totalLabel = \"Total\",\n  totalValue,\n  actionLabel,\n  onAction,\n  className = \"\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SummaryCard",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SummaryCard",
+          "callee": "cn",
+          "lineNumber": 24
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Tabs.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "Tabs",
+          "startLine": 16,
+          "endLine": 46,
+          "params": [
+            "{ items, activeId, onChange, className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Tabs",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Tabs",
+          "callee": "cn",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Tabs",
+          "callee": "items.map",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Tabs",
+          "callee": "onChange",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Tabs",
+          "callee": "cn",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

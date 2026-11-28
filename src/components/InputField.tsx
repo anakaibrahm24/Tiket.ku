@@ -7,83 +7,73 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   labelName: string;
   error?: string;
-  type?: "email" | "text" | "password";
-  required: boolean;
+  required?: boolean;
   showForgotPasswordLink?: boolean;
   forgotPasswordPath?: string;
 }
+
 export const InputField = ({
   className = "",
   labelName,
   error,
-  type = "text",
-  required,
-  showForgotPasswordLink,
+  required = false,
+  showForgotPasswordLink = false,
   forgotPasswordPath = "#",
+  type = "text",
   ...props
 }: InputFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = type === "password";
+
   return (
-    <div>
-      <label className="relative">
+    <div className="flex w-full flex-col gap-1.5">
+      <div className="flex items-center justify-between gap-2">
+        <label className="font-label text-label-lg text-ink-900">
+          {labelName}
+          {required ? <span className="text-danger"> *</span> : null}
+        </label>
+        {isPassword && showForgotPasswordLink ? (
+          <Link
+            to={props.disabled ? "#" : forgotPasswordPath}
+            className="font-label text-label-md text-brand-deep hover:text-brand-blue"
+          >
+            Lupa kata sandi?
+          </Link>
+        ) : null}
+      </div>
+
+      <div className="relative flex items-center">
         <input
           type={isPassword ? (showPassword ? "text" : "password") : type}
           className={cn(
-            "peer mt-0.5 w-full h-8 rounded border border-gray-300 px-4 pb-4.5 pt-5 sm:text-sm focus:border-gray-500 focus:outline-none",
-            className,
-            error && "border-red-500 focus:border-red-500",
-            props.disabled && "cursor-not-allowed"
+            "h-11 w-full rounded-lg border border-line-soft bg-surface-white px-3.5 font-body text-body-md text-ink-900 placeholder:text-ink-500 transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue",
+            error && "border-danger focus:border-danger focus:ring-danger",
+            props.disabled && "cursor-not-allowed opacity-50",
+            className
           )}
           {...props}
         />
-
-        <span className="absolute inset-y-0 start-3 -translate-y-5.5 px-0.5 text-sm font-medium bg-white text-gray-700 transition-transform peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-5.5">
-          {labelName}
-          {required ? <span className="label-required">*</span> : null}
-        </span>
-
-        {isPassword && (
+        {isPassword ? (
           <button
             type="button"
-            onClick={
-              props.disabled
-                ? undefined
-                : () => setShowPassword((prev) => !prev)
+            onClick={() =>
+              props.disabled ? undefined : setShowPassword((prev) => !prev)
             }
             className={cn(
-              "absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700 cursor-pointer",
+              "absolute right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-md text-ink-500 hover:text-ink-900",
               props.disabled && "cursor-not-allowed"
             )}
-            aria-label={showPassword ? "Hide password" : "show password"}
+            aria-label={showPassword ? "Sembunyikan kata sandi" : "Tampilkan kata sandi"}
           >
-            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
-        )}
-      </label>
-      <p className="text-xs text-red-500 pt-1 pl-1">{error ?? "\u00A0"}</p>
-
-      {isPassword && (
-        <div className="flex justify-end">
-          {showForgotPasswordLink ? (
-            <Link
-              to={props.disabled ? "#" : forgotPasswordPath}
-              onClick={(e) => {
-                if (props.disabled) e.preventDefault(); // blokir navigasi
-              }}
-              className={cn(
-                "text-xs text-blue-500 hover:underline hover:text-blue-700 cursor-pointer",
-                props.disabled &&
-                  "text-gray-400 cursor-not-allowed hover:no-underline hover:text-gray-400"
-              )}
-            >
-              Forgot password?
-            </Link>
-          ) : (
-            <p className="text-xs">{"\u00A0"}</p>
-          )}
-        </div>
-      )}
+        ) : null}
+      </div>
+      <p className="font-label text-label-md text-danger">
+        {error ?? "\u00A0"}
+      </p>
     </div>
   );
 };
+
+export default InputField;

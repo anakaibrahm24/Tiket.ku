@@ -1,0 +1,390 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-26T22:42:58Z",
+  "files": {
+    "main.tsx": {
+      "overview": "Titik masuk aplikasi yang memuat stylesheet global lalu memasang root React pada elemen `#root`. Komponen `App` dirender di dalam `StrictMode` agar pemeriksaan pengembangan React aktif. Berada di langkah 1 tour, file ini menjadi pintu teknis sebelum rute dan fitur dibaca.",
+      "sections": [
+        {
+          "title": "Impor global dan React",
+          "lineRange": [1, 4],
+          "explanation": "Baris pertama mengimpor `app.css` sehingga token Tailwind dan gaya global termuat sebelum komponen apa pun dirender. `App` diimpor lewat alias `@/`, diikuti `StrictMode` dan `createRoot` dari React DOM. Urutan ini memastikan fondasi styling siap saat pohon komponen dibuat.",
+          "tourOrder": 1
+        },
+        {
+          "title": "Pemasangan root React",
+          "lineRange": [6, 10],
+          "explanation": "`createRoot(document.getElementById(\"root\")!)` mengambil kontainer dari HTML dan Assertion `!` menandakan kontainer dianggap pasti ada. Render membungkus `App` dengan `StrictMode`, yang di pengembangan menjalankan pemeriksaan tambahan seperti deteksi efek samping. Dari sini seluruh rute di `App.tsx` mulai hidup.",
+          "tourOrder": 1
+        }
+      ]
+    },
+    "App.tsx": {
+      "overview": "Pusat deklarasi rute aplikasi berbasis React Router. File ini memetakan beranda, jadwal pertandingan, masuk, daftar, dan callback autentikasi ke halaman masing-masing. Bersama `main.tsx`, file ini menyusun langkah 1 tour tentang bootstrap dan perutean.",
+      "sections": [
+        {
+          "title": "Impor router dan halaman",
+          "lineRange": [1, 7],
+          "explanation": "`BrowserRouter` di-alias menjadi `Router` bersama `Route` dan `Routes` diimpor dari `react-router-dom`. Lima halaman aktif diimpor dari folder `features`, mencerminkan struktur feature-first proyek. Impor `Ticket` dan `RegisterForm` masih dikomentari, menandakan jalur lama yang tidak dipakai alur aktif.",
+          "tourOrder": 1
+        },
+        {
+          "title": "Deklarasi rute aktif",
+          "lineRange": [11, 26],
+          "explanation": "`Router` membungkus `Routes`, lalu enam tag `Route` mendefinisikan pintu masuk tiap alur: `/`, `/matchs`, `/login`, `/signup`, dan `/auth/callback`. Perhatikan ejaan `/matchs` yang memang dipakai kode, bukan `/matches`. Tiga rute bertema formulir, pembayaran, dan tiket dikomentari pada baris 20-22 sehingga tidak terdaftar.",
+          "tourOrder": 1
+        },
+        {
+          "title": "Ekspor komponen App",
+          "lineRange": [28, 28],
+          "explanation": "`App` diekspor sebagai default agar `main.tsx` dapat merendernya. Ekspor ini menutup rantai bootstrap dari HTML ke root React ke tabel rute.",
+          "tourOrder": 1
+        }
+      ]
+    },
+    "app.css": {
+      "overview": "Entri styling global yang mengimpor Tailwind CSS v4 dan mendefinisikan seluruh token desain di blok `@theme`. Di sini warna, font, skala teks, spacing, radius, bayangan, dan motion ditetapkan sebelum dipakai komponen. Langkah 2 tour menjadikan file ini fondasi yang harus dipahami sebelum membaca tampilan lain.",
+      "sections": [
+        {
+          "title": "Impor font dan Tailwind",
+          "lineRange": [1, 5],
+          "explanation": "Dua `@import` URL memuat Inter, Plus Jakarta Sans, dan Material Symbols Outlined dari Google Fonts. `@import \"tailwindcss\"` menghadirkan mesin utilitas Tailwind v4. Font dan ikon ini dipakai ulang lewat token di bawah, jadi tidak perlu deklarasi font per komponen.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Token warna kanonik",
+          "lineRange": [6, 58],
+          "explanation": "Blok `@theme` membuka kumpulan variabel CSS yang menjadi token desain. Bagian ini memuat warna merek seperti `--color-brand-blue`, warna status, serta paleta `light-*` dan `dark-*` untuk permukaan, teks, dan outline. Mendefinisikan semuanya di satu tempat membuat perubahan tema cukup dilakukan sekali.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Alias warna kompatibilitas",
+          "lineRange": [59, 88],
+          "explanation": "Alias seperti `--color-surface-white` dan `--color-ink-900` merujuk ke token kanonik atau nilai eksplisit. Komentar pada baris 59 menandakan ini lapisan kompatibilitas yang menghubungkan nama lama dengan token baru. Komponen dapat memakai nama pendek sambil tetap berasal dari paleta tunggal.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Token keluarga font",
+          "lineRange": [89, 98],
+          "explanation": " `--font-sans`, `--font-mono`, `--font-display`, dan turunannya memetakan peran tipografi ke font yang sudah diimpor. `--font-heading` dan `--font-headline` misalnya menunjuk ke `--font-display`. Pola ini memisahkan peran visual dari nama font konkret.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Skala ukuran teks",
+          "lineRange": [99, 147],
+          "explanation": "Token `--text-*` menyimpan ukuran, tinggi baris, jarak huruf, dan bobot untuk tiap peran teks. Beberapa ukuran punya variasi `-mobile` agar headline tetap proporsional di layar kecil. Kelas seperti `text-display-lg` atau `text-label-md` memakai token ini, bukan angka ad-hoc.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Token spacing",
+          "lineRange": [148, 163],
+          "explanation": "Spacing kanonik memakai awalan `--spacing-gutter-*`, ditambah `--spacing-section` dan `--spacing-page-margin` untuk ritme halaman. Alias `--spacing-xs` sampai `--spacing-xxl` memberikan nama yang lebih pendek. Nilai mobile dan desktop tetap konsisten karena berasal dari satu skala.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Radius bayangan dan motion",
+          "lineRange": [165, 184],
+          "explanation": "Token radius mencakup `--radius-sm` sampai `--radius-full`, sementara `--shadow-*` menyediakan empat tingkat kedalaman. Bagian motion menyimpan durasi dan easing untuk perubahan status serta entri permukaan. Memisahkan durasi dari easing memudahkan pemakaian ulang pada transisi berbeda.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Utilitas motion kustom",
+          "lineRange": [187, 201],
+          "explanation": "Empat blok `@utility` membungkus token motion menjadi kelas siap pakai: `duration-state-change`, `ease-state-change`, `duration-surface-enter`, dan `ease-surface-enter`. Tiap utilitas hanya menetapkan satu properti CSS dari token terkait. Ini jembatan antara variabel desain dan kelas Tailwind di JSX.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Gaya dasar dan aksesibilitas",
+          "lineRange": [203, 223],
+          "explanation": "`:root` menetapkan `--font-sans` sebagai font dasar dokumen. Aturan `*:focus-visible` memberi outline biru sehingga navigasi keyboard terlihat. Media query `prefers-reduced-motion` mematikan animasi dan transisi bagi pengguna yang memilih gerakan minimal, lalu baris terakhir mengatur variasi font Material Symbols.",
+          "tourOrder": 2
+        }
+      ]
+    },
+    "components/Button.tsx": {
+      "overview": "Tombol bersama dengan tujuh varian visual dan dua ukuran. Komponen ini memakai helper `cn` agar kelas bawaan, kelas varian, dan kelas pemanggil dapat digabung tanpa konflik Tailwind. Langkah 2 tour memakainya sebagai contoh nyata pemakaian token dari `app.css`.",
+      "sections": [
+        {
+          "title": "Kontrak props tombol",
+          "lineRange": [1, 17],
+          "explanation": "`ButtonProps` memperluas `ButtonHTMLAttributes<HTMLButtonElement>`, sehingga atribut native seperti `onClick` dan `disabled` tetap tersedia. Props tambahan mencakup `label`, `children`, `icon`, `size`, serta `variant` dengan tujuh nilai literal. `label` dan `children` keduanya opsional, memberi dua cara mengisi teks tombol.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Default dan pemetaan varian",
+          "lineRange": [19, 38],
+          "explanation": "Destructuring menetapkan `variant=\"primary\"`, `type=\"button\"`, `size=\"md\"`, dan `className` kosong sebagai nilai awal. `sizeClass` memilih padding, lalu objek `variants` memetakan tiap varian ke kelas token seperti `bg-brand-blue` atau `bg-surface-subtle`. Varian `icon` dan `oauth` sudah membawa padding sendiri sehingga ukuran umum tidak diterapkan padanya.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Render dan penggabungan kelas",
+          "lineRange": [40, 56],
+          "explanation": "`cn` menggabungkan kelas dasar, kelas ukuran bersyarat, kelas varian, `className` dari pemanggil, dan kelas tambahan saat `props.disabled`. Spread `{...props}` meneruskan atribut native ke elemen `button`, sehingga perilaku standar tetap bekerja. Isi tombol memakai `children ?? label`, lalu `icon` dirender setelahnya.",
+          "tourOrder": 2
+        }
+      ]
+    },
+    "lib/utiils.ts": {
+      "overview": "Helper kecil untuk menggabungkan kelas CSS di seluruh proyek. Fungsi `cn` menyatukan `clsx` dan `tailwind-merge` agar kelas bersyarat tetap rapi dan konflik utilitas terselesaikan. Langkah 2 tour menjadikannya kunci untuk memahami semua komponen yang menerima `className`.",
+      "sections": [
+        {
+          "title": "Impor penggabung kelas",
+          "lineRange": [1, 2],
+          "explanation": "`clsx` menangani ekspresi bersyarat dan menyaring nilai falsy, sementara `twMerge` menyelesaikan kelas Tailwind yang saling bertentangan. Tipe `ClassValue` diimpor agar parameter fungsi menerima bentuk input yang didukung `clsx`. Nama file `utiils.ts` memang ejaan yang dipakai seluruh impor, termasuk di komponen lain.",
+          "tourOrder": 2
+        },
+        {
+          "title": "Fungsi cn",
+          "lineRange": [4, 6],
+          "explanation": "`twMerge(clsx(inputs))` menjalankan `clsx` lebih dulu untuk membangun daftar kelas, lalu `twMerge` membuang kelas yang tertimpa. Hasilnya satu string kelas yang aman dipakai pada `className`. Pola ini mencegah dua warna latar masuk bersamaan ketika komponen memberi kelas override.",
+          "tourOrder": 2
+        }
+      ]
+    },
+    "features/home/page/Home.tsx": {
+      "overview": "Halaman beranda yang menyusun hero, agenda GBK, keunggulan layanan, venue, dan ajakan memesan tiket. Halaman ini memakai `Button`, `CardAction`, `Navbar`, dan `Footer` serta status sesi untuk mengarahkan tombol pembelian. Meski tour langkah 3 menyebut `Searchbar` dan `Banner`, file ini tidak mengimpor keduanya; sorotan acara dibuat langsung dengan markup sendiri.",
+      "sections": [
+        {
+          "title": "Impor halaman beranda",
+          "lineRange": [1, 6],
+          "explanation": "Komponen bersama yang dipakai adalah `Button`, `CardAction`, `Footer`, dan `Navbar`. Hook `useSession` memberi status login, sedangkan `useNavigate` dari React Router dipakai untuk pindah halaman. Tidak ada impor `Searchbar` atau `Banner` di sini.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Data contoh acara dan venue",
+          "lineRange": [8, 56],
+          "explanation": "Array `events` berisi tiga objek dengan nilai placeholder seperti `Kategori`, `Status`, dan `Rp ---`; ini bukan data Supabase. Array `venues` memuat empat lokasi GBK beserta kapasitas dan deskripsi yang lebih konkret. Keduanya ditaruh di level modul karena statis untuk halaman ini.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Aksi navigasi dan scroll",
+          "lineRange": [58, 76],
+          "explanation": "`useNavigate` dan `useSession` dipanggil di awal komponen. `handlePesanTiket` mengarahkan pengguna yang belum login ke `/login`, jika sudah login ke `/matchs`; `handleLihatJadwal` langsung ke `/matchs`. Fungsi `scrollTo` memakai `getElementById` dan `scrollIntoView({ behavior: \"smooth\" })` untuk CTA internal.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Kerangka dan skip link",
+          "lineRange": [78, 85],
+          "explanation": "`main` membungkus seluruh halaman dengan latar `bg-surface-white`. Tautan `sr-only` menjadi skip link yang muncul saat fokus dan mengarah ke `#main-content`. `Navbar` menerima `user={isLoggedIn}` agar tampilannya mengikuti status sesi.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Hero dan kartu sorotan",
+          "lineRange": [87, 194],
+          "explanation": "Bagian hero memakai latar gelap `bg-night-950`, lencana mitra resmi, headline, dan dua tombol yang memanggil `scrollTo`. Placeholder gambar dirender sebagai ikon Material Symbols `image` dengan `aria-hidden=\"true\"`. Di sisi kanan, kartu sorotan menampilkan badge `Sorotan Utama` dan `Hampir Habis`, harga placeholder, serta tombol `Pilih Kursi` yang memanggil `handleLihatJadwal`.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Agenda acara GBK",
+          "lineRange": [196, 246],
+          "explanation": "Section dengan `id=\"jadwal-gbk\"` menjadi target tombol hero. Tiga entri `events` dipetakan ke `CardAction` dengan media placeholder dan aksi `handleLihatJadwal`. Karena datanya contoh, kartu ini memperlihatkan komposisi UI sebelum data nyata tersedia.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Bagian keunggulan",
+          "lineRange": [248, 299],
+          "explanation": "Section `id=\"keunggulan\"` memuat tiga kartu statis: e-tiket QR, pilihan zona tribun, dan transaksi aman. Tiap kartu memakai ikon Material Symbols berbeda dan token warna yang sama. Ini menjelaskan nilai produk tanpa bergantung pada data backend.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Daftar venue GBK",
+          "lineRange": [301, 332],
+          "explanation": "Section `id=\"venue-gbk\"` memetakan array `venues` menjadi kartu dalam grid responsif. Kartu menampilkan kapasitas, nama venue, dan deskripsi singkat. Grid berubah dari satu kolom di layar kecil menjadi empat kolom di layar besar.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Ajakan beli dan footer",
+          "lineRange": [334, 364],
+          "explanation": "Section `id=\"cta-gbk\"` menutup konten dengan tombol `Beli Tiket Sekarang` yang memanggil `handlePesanTiket`. Tombol ini menghormati status login lewat fungsi tersebut. Setelah `div#main-content` ditutup, `Footer` dirender sebagai penutup halaman.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/CardAction.tsx": {
+      "overview": "Kartu acara bersama yang merangkum media, kategori, status, tanggal, judul, lokasi, harga, dan tombol aksi. Komponen ini dipakai beranda untuk menampilkan entri agenda dengan gaya yang konsisten. Langkah 3 tour memakainya sebagai contoh kartu yang menyusun informasi acara menjadi satu unit visual.",
+      "sections": [
+        {
+          "title": "Props kartu aksi",
+          "lineRange": [1, 17],
+          "explanation": "Sebagian besar props bersifat opsional, kecuali `title` yang wajib. `media` bertipe `ReactNode` sehingga pemanggil bisa mengirim gambar atau placeholder apa pun. `onAction` berupa callback tanpa argumen, sementara `disabled` dan `className` mengontrol tampilan serta override gaya.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Pemetaan warna status",
+          "lineRange": [19, 37],
+          "explanation": "Nilai `status === \"Hampir Habis\"` memakai `bg-danger`, `Tersedia` memakai `bg-surface-muted`, dan nilai lain jatuh ke `bg-brand-tint`. `statusClassName` dihitung sebelum render agar badge tetap konsisten. Ini menghindari percabangan gaya di dalam JSX badge.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Media dan badge",
+          "lineRange": [39, 71],
+          "explanation": "`article` memakai `cn` untuk menggabungkan gaya dasar dengan `opacity-80` saat disabled atau `hover:border-brand-blue` saat aktif. Area media memakai `media ??` placeholder ikon `image`, lalu badge kategori dan status diposisikan absolut di sudut. Kedua badge hanya muncul bila propsnya diisi.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Detail judul acara",
+          "lineRange": [72, 83],
+          "explanation": "Blok ini merender tanggal, judul, dan lokasi secara berturut-turut. Ikon `location_on` diberi `aria-hidden=\"true\"` agar pembaca layar tidak membacanya sebagai teks. Semua field bersifat opsional sehingga kartu tetap valid untuk data yang belum lengkap.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Harga dan tombol aksi",
+          "lineRange": [84, 104],
+          "explanation": "Footer hanya dirender jika `price` atau `actionLabel` tersedia. Harga ditampilkan dengan font mono dan `tabular-nums` agar angka sejajar. `Button` memakai varian `disabled` saat prop `disabled` benar, dengan `size=\"sm\"` dan `onClick={onAction}`.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/Searchbar.tsx": {
+      "overview": "Form pencarian ringan yang mengambil nilai input `q` lewat `FormData` saat submit. Komponen ini menyediakan `placeholder`, `className`, dan callback `onSearch` agar bisa dipakai ulang di berbagai halaman. Langkah 3 tour menyebutnya sebagai pelengkap pencarian beranda, meskipun `Home.tsx` tidak mengimpornya.",
+      "sections": [
+        {
+          "title": "Props searchbar",
+          "lineRange": [1, 8],
+          "explanation": "`SearchbarProps` hanya berisi tiga field: `placeholder`, `onSearch`, dan `className`. Callback `onSearch` menerima satu string nilai pencarian. Antarmuka ini sengaja kecil agar komponen tidak terikat pada logika pencarian tertentu.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Nilai props awal",
+          "lineRange": [10, 14],
+          "explanation": "Destructuring memberi `placeholder=\"Placeholder pencarian...\"` dan `className=\"\"` sebagai default. `onSearch` tidak diberi nilai awal karena pemanggil boleh tidak memakai callback. Pola ini membuat komponen tetap render tanpa konfigurasi tambahan.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Submit dan FormData",
+          "lineRange": [16, 27],
+          "explanation": "Form memakai `role=\"search\"` dan menangani `onSubmit` dengan `preventDefault()`. Nilai diambil dari `new FormData(e.currentTarget).get(\"q\")?.toString() ?? \"\"`, lalu diteruskan ke `onSearch?.()`. Kelas form digabung lewat `cn` sehingga `className` pemanggil dapat menimpa gaya dasar.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Input dan tombol cari",
+          "lineRange": [28, 39],
+          "explanation": "Ikon `search` ditempatkan di sisi kiri, diikuti input dengan `name=\"q\"`, `type=\"search\"`, dan `aria-label=\"Kolom pencarian\"`. Tombol `Cari` memakai `Button` dengan `type=\"submit\"` sehingga memicu handler form yang sama. Tombol diberi `shrink-0` agar tidak menyusut saat ruang sempit.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/Banner.tsx": {
+      "overview": "Komponen banner informatif dengan ikon, judul, kode opsional, deskripsi, dan konten tambahan. Gaya visualnya memakai token bersama seperti `bg-brand-tint` dan `bg-surface`. Langkah 3 tour menyebutnya sebagai pelengkap sorotan informasi, meskipun `Home.tsx` tidak mengimpor komponen ini.",
+      "sections": [
+        {
+          "title": "Props banner",
+          "lineRange": [1, 11],
+          "explanation": "Hanya `title` yang wajib; `description`, `code`, `icon`, `className`, dan `children` bersifat opsional. `children` bertipe `ReactNode` sehingga pemanggil bisa menyisipkan elemen tambahan di bawah teks. Ini memberi banner satu struktur dengan banyak tingkat detail.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Destructuring dan default",
+          "lineRange": [13, 20],
+          "explanation": "Nilai awal `icon=\"verified\"` dan `className=\"\"` membuat banner tetap tampil walaupun pemanggil tidak mengirim keduanya. Props `description`, `code`, dan `children` dibiarkan tanpa default karena render bersifat kondisional. Gaya ini khas komponen presentasional yang aman dipakai ulang.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Kontainer dan ikon",
+          "lineRange": [22, 32],
+          "explanation": "Div luar memakai `cn` untuk menggabungkan gaya dasar dengan `className` pemanggil. Ikon ditempatkan dalam lingkaran `h-10 w-10` berlatar `bg-brand-tint` dan berwarna `text-brand-deep`. `aria-hidden=\"true\"` menandakan ikon hanya dekoratif.",
+          "tourOrder": 3
+        },
+        {
+          "title": "Judul kode dan deskripsi",
+          "lineRange": [33, 47],
+          "explanation": "Judul dan kode berada dalam satu baris yang bisa membungkus bila sempit. Kode memakai font mono dan border tipis agar terlihat seperti label teknis. Deskripsi dirender hanya bila tersedia, lalu `children` ditempatkan terakhir sebagai konten bebas.",
+          "tourOrder": 3
+        }
+      ]
+    },
+    "components/index.ts": {
+      "overview": "Barrel file yang mengekspor ulang seluruh komponen bersama dari satu jalur. Fitur lain cukup mengimpor dari `components/index.ts` tanpa perlu mengetahui file asal tiap komponen. Langkah 4 tour memakainya untuk menjelaskan pola ekspor terpusat pada pustaka UI.",
+      "sections": [
+        {
+          "title": "Ekspor komponen awal",
+          "lineRange": [1, 8],
+          "explanation": "Delapan baris pertama mengekspor `Alerts`, `Badge`, `Banner`, `Button`, `CardAction`, `Drawer`, `Footer`, dan `FooterLinks`. Tiap baris memakai `export * from` sehingga seluruh ekspor named dari modul asal diteruskan. Perubahan isi modul tidak mengubah jalur impor bagi fitur pengguna.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Ekspor komponen berikutnya",
+          "lineRange": [9, 16],
+          "explanation": "Delapan baris berikutnya mengekspor `InputField`, `Navbar`, `QrPassCard`, `RadioSelector`, `Searchbar`, `Stepper`, `SummaryCard`, dan `Tabs`. Bersama bagian pertama, barrel ini menyatukan 16 komponen UI. File ini hanya berisi re-ekspor, tanpa logika atau state sama sekali.",
+          "tourOrder": 4
+        }
+      ]
+    },
+    "components/Alerts.tsx": {
+      "overview": "Notifikasi toast yang muncul di pojok kanan atas dengan animasi masuk dan keluar dari Framer Motion. Komponen mendukung lima varian, auto-close setelah durasi tertentu, dan callback `onClose` saat animasi keluar selesai. Langkah 4 tour menjadikannya contoh notifikasi dengan varian dan penutupan terkontrol.",
+      "sections": [
+        {
+          "title": "Impor dan kontrak alert",
+          "lineRange": [1, 12],
+          "explanation": "`cn` dipakai untuk menggabungkan kelas, sementara `AnimatePresence` dan `motion` dari Framer Motion mengatur animasi. `AlertVariant` terdiri dari `info`, `danger`, `success`, `warning`, dan `dark`. `AlertProps` mewajibkan `variant` serta `desc`, dan menerima `duration` serta `onClose` opsional.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Peta gaya varian",
+          "lineRange": [14, 48],
+          "explanation": "`variantStyles` bertipe `Record<AlertVariant, { text; border; bg; bar }>` sehingga setiap varian wajib memiliki empat kelas. Warna status memakai token seperti `text-danger`, `bg-success/10`, dan `bg-warning`. Varian `dark` memakai `text-ink-900` dan `bg-surface-subtle` agar tetap netral.",
+          "tourOrder": 4
+        },
+        {
+          "title": "State dan timer auto-close",
+          "lineRange": [50, 64],
+          "explanation": "Props `duration` default-nya 5000 milidetik dan `styles` diambil dari peta varian. State `isVisible` diawali `true`, lalu `useEffect` menjadwalkan `setIsVisible(false)` setelah durasi. Fungsi cleanup memanggil `clearTimeout` bila komponen dibongkar atau durasi berubah.",
+          "tourOrder": 4
+        },
+        {
+          "title": "AnimatePresence dan kartu",
+          "lineRange": [66, 85],
+          "explanation": "`AnimatePresence` menjalankan `onClose` hanya setelah animasi keluar selesai. `motion.div` diberi `key=\"alert\"` agar siklus masuk dan keluar terdeteksi, dengan transisi opasitas serta posisi `x`. Kartu diposisikan `fixed top-4 right-4 z-50`, memakai `role=\"alert\"`, dan menggabungkan kelas gaya varian.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Ikon pesan dan tombol tutup",
+          "lineRange": [87, 104],
+          "explanation": "SVG inline di samping teks ditandai `aria-hidden=\"true\"` karena hanya simbol informasi. `desc` dirender sebagai isi utama dengan `flex-1`. Tombol `×` langsung memanggil `setIsVisible(false)` agar animasi keluar dimulai lebih cepat dari timer.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Progress bar",
+          "lineRange": [106, 113],
+          "explanation": "Bar di bawah kartu memakai `motion.div` yang lebarnya berubah dari `100%` ke `0%`. Durasi animasi `duration / 1000` detik dan easing linear membuatnya sejalan dengan timer auto-close. Warna bar berasal dari `styles.bar`, sehingga mengikuti varian yang aktif.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Penutup dan ekspor",
+          "lineRange": [115, 119],
+          "explanation": "Baris 115 menutup `AnimatePresence`, lalu komponen diakhiri dengan blok return dan fungsi. `Alerts` diekspor sebagai default sekaligus tersedia lewat barrel `components/index.ts`. Struktur ini menutup seluruh siklus tampil, tunggu, dan tutup notifikasi.",
+          "tourOrder": 4
+        }
+      ]
+    },
+    "components/Navbar.tsx": {
+      "overview": "Bilah navigasi atas dengan identitas merek Tiket.ku, menu desktop, dan tombol yang berubah mengikuti status pengguna. Prop `user` berupa boolean membuat komponen ini murni presentasional; keputusan login berada di pemanggil. Langkah 4 tour menjadikannya contoh navigasi yang menyesuaikan status pengguna.",
+      "sections": [
+        {
+          "title": "Impor dan props",
+          "lineRange": [1, 6],
+          "explanation": "Komponen mengimpor `Button` dari folder yang sama dan `useNavigate` dari React Router. `NavbarProps` hanya berisi `user: boolean`, tanpa data profil atau callback. Ini menjaga navbar tetap sederhana dan mudah dipakai dari beranda maupun halaman lain.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Brand dan tautan beranda",
+          "lineRange": [8, 25],
+          "explanation": "`useNavigate` dipanggil sekali di awal komponen. `nav` memakai `sticky top-0 z-50` dengan latar semi-transparan dan `backdrop-blur`. Tombol logo berisi ikon `confirmation_number` dan teks `Tiket.ku`, lalu mengarah ke `/` ketika diklik.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Menu desktop",
+          "lineRange": [27, 41],
+          "explanation": "Grup ini hanya tampil pada layar sedang ke atas karena `hidden md:flex`. Tombol `Jadwal` mengarah ke `/matchs`, sementara `Tentang` dan `Bantuan` masih berupa anchor `href=\"#\"`. Perbedaan ini menunjukkan tautan yang sudah terhubung rute versus tautan placeholder.",
+          "tourOrder": 4
+        },
+        {
+          "title": "Aksi sesuai status pengguna",
+          "lineRange": [43, 67],
+          "explanation": "Cabang `user ?` menampilkan satu tombol `Jadwal` berubah ke `/matchs`. Cabang lain menampilkan tombol `Masuk` ke `/login` dan `Daftar` ke `/signup` dengan varian berbeda. Seluruh tombol memakai komponen `Button` bersama sehingga gaya tetap konsisten.",
+          "tourOrder": 4
+        }
+      ]
+    }
+  }
+}

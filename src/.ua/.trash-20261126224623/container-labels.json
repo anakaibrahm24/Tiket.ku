@@ -1,0 +1,83 @@
+[
+  {
+    "layerId": "layer:ui",
+    "labels": [
+      {
+        "name": "Primitif UI",
+        "nodeIds": [
+          "file:components/index.ts",
+          "file:components/Button.tsx",
+          "file:components/Badge.tsx",
+          "file:components/Tabs.tsx"
+        ]
+      },
+      {
+        "name": "Kartu Acara Tiket",
+        "nodeIds": [
+          "file:components/CardAction.tsx",
+          "file:components/QrPassCard.tsx"
+        ]
+      },
+      {
+        "name": "Navigasi Situs",
+        "nodeIds": [
+          "file:components/Navbar.tsx",
+          "file:components/Footer.tsx",
+          "file:components/FooterLinks.tsx"
+        ]
+      },
+      {
+        "name": "Formulir Input",
+        "nodeIds": [
+          "file:components/Searchbar.tsx",
+          "file:components/InputField.tsx",
+          "file:components/RadioSelector.tsx"
+        ]
+      },
+      {
+        "name": "Notifikasi Panel",
+        "nodeIds": [
+          "file:components/Alerts.tsx",
+          "file:components/Banner.tsx",
+          "file:components/Drawer.tsx"
+        ]
+      },
+      {
+        "name": "Ringkasan Checkout",
+        "nodeIds": [
+          "file:components/Stepper.tsx",
+          "file:components/SummaryCard.tsx"
+        ]
+      }
+    ]
+  },
+  {
+    "layerId": "layer:feature-ui",
+    "labels": [
+      {
+        "name": "Jadwal Pertandingan",
+        "nodeIds": [
+          "file:features/matches/components/Card.tsx",
+          "file:features/matches/components/TeamSection.tsx",
+          "file:features/matches/page/Matches.tsx"
+        ]
+      },
+      {
+        "name": "Autentikasi",
+        "nodeIds": [
+          "file:features/auth/page/AuthCallbackPage.tsx",
+          "file:features/auth/page/LoginPage.tsx",
+          "file:features/auth/page/SignupPage.tsx"
+        ]
+      },
+      {
+        "name": "Alur Pemesanan",
+        "nodeIds": [
+          "file:features/payment/components/PaymentMethods.tsx",
+          "file:features/payment/page/Payment.tsx",
+          "file:features/users/components/TicketCard.tsx"
+        ]
+      }
+    ]
+  }
+]

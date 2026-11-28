@@ -1,0 +1,425 @@
+[
+  {
+    "id": "layer:ui",
+    "name": "Komponen UI Bersama",
+    "description": "Primitif tampilan reusable seperti Button, Alerts, Navbar, dan barrel components/index.ts yang dipakai lintas fitur.",
+    "nodes": [
+      {
+        "id": "file:components/index.ts",
+        "name": "index.ts",
+        "filePath": "components/index.ts",
+        "summary": "Barrel file yang mengekspor ulang seluruh komponen UI bersama (Alerts, Button, Navbar, dan lain-lain) dari folder components. Menyediakan satu titik impor tunggal bagi fitur lain di proyek.",
+        "tags": [
+          "barrel",
+          "entry-point",
+          "komponen",
+          "exports"
+        ]
+      },
+      {
+        "id": "file:components/Button.tsx",
+        "name": "Button.tsx",
+        "filePath": "components/Button.tsx",
+        "summary": "Komponen tombol bersama dengan tujuh varian gaya (primary, with-icon, secondary, icon, oauth, glass, disabled) dan dua ukuran. Menggabungkan kelas CSS dinamis lewat cn() serta meneruskan atribut button standar dari props.",
+        "tags": [
+          "komponen",
+          "tombol",
+          "varian-gaya",
+          "primitif-ui",
+          "styling"
+        ]
+      },
+      {
+        "id": "file:components/CardAction.tsx",
+        "name": "CardAction.tsx",
+        "filePath": "components/CardAction.tsx",
+        "summary": "Kartu acara yang menampilkan media, kategori, status ketersediaan, tanggal, judul, lokasi, harga, dan tombol aksi. Warna badge status ditentukan secara dinamis dan aksi utama memakai komponen Button.",
+        "tags": [
+          "komponen",
+          "kartu-acara",
+          "tampilan",
+          "status-badge",
+          "aksi"
+        ]
+      },
+      {
+        "id": "file:components/Navbar.tsx",
+        "name": "Navbar.tsx",
+        "filePath": "components/Navbar.tsx",
+        "summary": "Bilah navigasi sticky berisi logo Tiket.ku, tautan Jadwal/Tentang/Bantuan, dan tombol autentikasi. Navigasi pengguna diarahkan ke beranda, jadwal, masuk, atau daftar sesuai status user.",
+        "tags": [
+          "komponen",
+          "navigasi",
+          "routing",
+          "autentikasi",
+          "header"
+        ]
+      },
+      {
+        "id": "file:components/Searchbar.tsx",
+        "name": "Searchbar.tsx",
+        "filePath": "components/Searchbar.tsx",
+        "summary": "Formulir pencarian dengan ikon, input bertipe search, dan tombol Cari. Saat disubmit, form mencegah reload halaman lalu meneruskan nilai kueri ke callback onSearch.",
+        "tags": [
+          "komponen",
+          "pencarian",
+          "form",
+          "input",
+          "event-handler"
+        ]
+      },
+      {
+        "id": "file:components/Alerts.tsx",
+        "name": "Alerts.tsx",
+        "filePath": "components/Alerts.tsx",
+        "summary": "Komponen notifikasi reusable dengan varian, deskripsi, durasi auto-close, dan callback onClose untuk menyampaikan pesan kepada pengguna.",
+        "tags": [
+          "component",
+          "notification",
+          "ui",
+          "stateful",
+          "auto-dismiss"
+        ]
+      },
+      {
+        "id": "file:components/Badge.tsx",
+        "name": "Badge.tsx",
+        "filePath": "components/Badge.tsx",
+        "summary": "Komponen badge ringkas dengan beberapa varian warna untuk menandai status atau kategori.",
+        "tags": [
+          "component",
+          "badge",
+          "variant",
+          "utility"
+        ]
+      },
+      {
+        "id": "file:components/Banner.tsx",
+        "name": "Banner.tsx",
+        "filePath": "components/Banner.tsx",
+        "summary": "Komponen banner informatif dengan judul, deskripsi, kode status, ikon, dan konten tambahan untuk menarik perhatian pengguna.",
+        "tags": [
+          "component",
+          "banner",
+          "informational",
+          "variant"
+        ]
+      },
+      {
+        "id": "file:components/Drawer.tsx",
+        "name": "Drawer.tsx",
+        "filePath": "components/Drawer.tsx",
+        "summary": "Komponen panel geser (drawer) dengan judul, konten, dan callback penutupan untuk menampilkan detail tanpa mengganti halaman.",
+        "tags": [
+          "component",
+          "drawer",
+          "overlay",
+          "ui"
+        ]
+      },
+      {
+        "id": "file:components/Footer.tsx",
+        "name": "Footer.tsx",
+        "filePath": "components/Footer.tsx",
+        "summary": "Komponen footer situs yang menampilkan informasi dan tautan navigasi pada bagian bawah halaman.",
+        "tags": [
+          "component",
+          "footer",
+          "layout",
+          "navigation"
+        ]
+      },
+      {
+        "id": "file:components/FooterLinks.tsx",
+        "name": "FooterLinks.tsx",
+        "filePath": "components/FooterLinks.tsx",
+        "summary": "Komponen ringkas yang merender daftar tautan footer dari sebuah array data.",
+        "tags": [
+          "component",
+          "footer",
+          "links",
+          "list"
+        ]
+      },
+      {
+        "id": "file:components/InputField.tsx",
+        "name": "InputField.tsx",
+        "filePath": "components/InputField.tsx",
+        "summary": "Komponen input formulir dengan label, pesan error, penanda wajib, opsi tautan lupa kata sandi, dan toggle visibilitas untuk tipe password.",
+        "tags": [
+          "component",
+          "form",
+          "input",
+          "validation",
+          "password"
+        ]
+      },
+      {
+        "id": "file:components/QrPassCard.tsx",
+        "name": "QrPassCard.tsx",
+        "filePath": "components/QrPassCard.tsx",
+        "summary": "Kartu tiket digital yang menampilkan judul, subtitle, kode QR, dan status untuk kebutuhan e-ticket.",
+        "tags": [
+          "component",
+          "ticket",
+          "qr-code",
+          "card"
+        ]
+      },
+      {
+        "id": "file:components/RadioSelector.tsx",
+        "name": "RadioSelector.tsx",
+        "filePath": "components/RadioSelector.tsx",
+        "summary": "Komponen pemilih radio dengan daftar opsi, nilai terpilih, dan callback perubahan untuk pilihan tunggal.",
+        "tags": [
+          "component",
+          "form",
+          "radio",
+          "selection"
+        ]
+      },
+      {
+        "id": "file:components/Stepper.tsx",
+        "name": "Stepper.tsx",
+        "filePath": "components/Stepper.tsx",
+        "summary": "Komponen indikator langkah yang merender daftar langkah dan menyoroti langkah aktif dalam alur pemesanan.",
+        "tags": [
+          "component",
+          "stepper",
+          "progress",
+          "checkout"
+        ]
+      },
+      {
+        "id": "file:components/SummaryCard.tsx",
+        "name": "SummaryCard.tsx",
+        "filePath": "components/SummaryCard.tsx",
+        "summary": "Kartu ringkasan pesanan dengan judul, konten, label dan nilai total, serta tombol aksi opsional.",
+        "tags": [
+          "component",
+          "summary",
+          "card",
+          "checkout"
+        ]
+      },
+      {
+        "id": "file:components/Tabs.tsx",
+        "name": "Tabs.tsx",
+        "filePath": "components/Tabs.tsx",
+        "summary": "Komponen tab dengan daftar item, id aktif, dan callback pergantian untuk membagi konten menjadi beberapa panel.",
+        "tags": [
+          "component",
+          "tabs",
+          "navigation",
+          "ui"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "source": "file:features/matches/components/Card.tsx",
+        "target": "file:features/matches/components/TeamSection.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:features/matches/page/Matches.tsx",
+        "target": "file:features/matches/components/Card.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:features/payment/page/Payment.tsx",
+        "target": "file:components/index.ts",
+        "type": "imports"
+      },
+      {
+        "source": "file:features/payment/page/Payment.tsx",
+        "target": "file:features/payment/components/PaymentMethods.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:components/CardAction.tsx",
+        "target": "file:components/Button.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:components/Navbar.tsx",
+        "target": "file:components/Button.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:components/Searchbar.tsx",
+        "target": "file:components/Button.tsx",
+        "type": "imports"
+      }
+    ]
+  },
+  {
+    "id": "layer:feature-ui",
+    "name": "Tampilan Fitur",
+    "description": "Halaman dan komponen spesifik fitur beranda, pertandingan, autentikasi, pembayaran, serta kartu tiket pengguna dalam alur pemesanan.",
+    "nodes": [
+      {
+        "id": "file:features/matches/components/Card.tsx",
+        "name": "Card.tsx",
+        "filePath": "features/matches/components/Card.tsx",
+        "summary": "Komponen kartu jadwal pertandingan yang menampilkan kedua tim, waktu, zona waktu, tanggal, dan stadion, lalu meneruskan klik ke induknya.",
+        "tags": [
+          "komponen",
+          "tampilan",
+          "react",
+          "kartu-jadwal"
+        ]
+      },
+      {
+        "id": "file:features/matches/components/TeamSection.tsx",
+        "name": "TeamSection.tsx",
+        "filePath": "features/matches/components/TeamSection.tsx",
+        "summary": "Komponen tampilan untuk satu tim yang merender nama dan logo tim di dalam kartu pertandingan.",
+        "tags": [
+          "komponen",
+          "tampilan",
+          "react",
+          "tim"
+        ]
+      },
+      {
+        "id": "file:features/matches/page/Matches.tsx",
+        "name": "Matches.tsx",
+        "filePath": "features/matches/page/Matches.tsx",
+        "summary": "Halaman daftar pertandingan yang memakai hook useMatchData, merender kartu untuk setiap pertandingan, dan menyimpan pilihan ke sessionStorage sebelum bernavigasi.",
+        "tags": [
+          "halaman",
+          "komponen",
+          "react",
+          "navigasi"
+        ]
+      },
+      {
+        "id": "file:features/auth/page/AuthCallbackPage.tsx",
+        "name": "AuthCallbackPage.tsx",
+        "filePath": "features/auth/page/AuthCallbackPage.tsx",
+        "summary": "Halaman transisi setelah autentikasi yang memeriksa sesi Supabase lalu mengalihkan pengguna ke halaman tujuan atau login.",
+        "tags": [
+          "autentikasi",
+          "halaman",
+          "callback",
+          "navigasi"
+        ]
+      },
+      {
+        "id": "file:features/auth/page/LoginPage.tsx",
+        "name": "LoginPage.tsx",
+        "filePath": "features/auth/page/LoginPage.tsx",
+        "summary": "Halaman masuk dengan formulir email dan kata sandi serta opsi login Google, memakai Zod untuk validasi dan komponen Alerts untuk error.",
+        "tags": [
+          "autentikasi",
+          "halaman",
+          "formulir",
+          "validasi",
+          "komponen"
+        ]
+      },
+      {
+        "id": "file:features/auth/page/SignupPage.tsx",
+        "name": "SignupPage.tsx",
+        "filePath": "features/auth/page/SignupPage.tsx",
+        "summary": "Halaman pendaftaran akun dengan formulir nama, email, kata sandi, konfirmasi kata sandi, dan opsi daftar dengan Google.",
+        "tags": [
+          "autentikasi",
+          "halaman",
+          "formulir",
+          "validasi",
+          "komponen"
+        ]
+      },
+      {
+        "id": "file:features/home/page/Home.tsx",
+        "name": "Home.tsx",
+        "filePath": "features/home/page/Home.tsx",
+        "summary": "Halaman beranda Tiket.ku yang menampilkan hero, agenda acara GBK, keunggulan layanan, venue, dan ajakan memesan tiket.",
+        "tags": [
+          "halaman",
+          "beranda",
+          "komponen",
+          "navigasi",
+          "tampilan"
+        ]
+      },
+      {
+        "id": "file:features/payment/components/PaymentMethods.tsx",
+        "name": "PaymentMethods.tsx",
+        "filePath": "features/payment/components/PaymentMethods.tsx",
+        "summary": "Komponen React untuk tombol pilihan metode pembayaran (kartu atau transfer bank) yang menampilkan status terpilih dan memanggil callback onSelect saat diklik.",
+        "tags": [
+          "komponen",
+          "react",
+          "ui",
+          "pembayaran",
+          "event-handler"
+        ]
+      },
+      {
+        "id": "file:features/payment/page/Payment.tsx",
+        "name": "Payment.tsx",
+        "filePath": "features/payment/page/Payment.tsx",
+        "summary": "Halaman pembayaran yang menampilkan pilihan metode bayar dan formulir data kartu, lalu mengarahkan pengguna ke halaman tiket setelah formulir disubmit.",
+        "tags": [
+          "halaman",
+          "komponen",
+          "pembayaran",
+          "form",
+          "routing"
+        ]
+      },
+      {
+        "id": "file:features/users/components/TicketCard.tsx",
+        "name": "TicketCard.tsx",
+        "filePath": "features/users/components/TicketCard.tsx",
+        "summary": "Komponen kartu tribun tiket yang menampilkan nama tribun dan harga, dengan tombol +/- untuk mengubah jumlah tiket melalui callback onCountChange.",
+        "tags": [
+          "component",
+          "ticket",
+          "counter",
+          "ui"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "source": "file:features/matches/components/Card.tsx",
+        "target": "file:features/matches/components/TeamSection.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:features/matches/page/Matches.tsx",
+        "target": "file:features/matches/components/Card.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:features/payment/page/Payment.tsx",
+        "target": "file:components/index.ts",
+        "type": "imports"
+      },
+      {
+        "source": "file:features/payment/page/Payment.tsx",
+        "target": "file:features/payment/components/PaymentMethods.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:components/CardAction.tsx",
+        "target": "file:components/Button.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:components/Navbar.tsx",
+        "target": "file:components/Button.tsx",
+        "type": "imports"
+      },
+      {
+        "source": "file:components/Searchbar.tsx",
+        "target": "file:components/Button.tsx",
+        "type": "imports"
+      }
+    ]
+  }
+]

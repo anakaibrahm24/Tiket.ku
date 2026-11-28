@@ -1,0 +1,284 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-26T15:42:53.886Z",
+  "files": {
+    "components/QrPassCard.tsx": {
+      "overview": "Komponen kartu e-ticket yang menampilkan judul acara, subjudul, status, placeholder QR, dan kode tiket. Berada di pustaka bersama sehingga halaman tiket dapat memakai tampilan yang konsisten. Termasuk dalam langkah tur 10 tentang pemesanan dan e-ticket, tempat tiket digital disajikan kepada pengguna. Kode QR belum digambar sebagai QR asli; yang tampil adalah ikon `qr_code_2` plus teks kode bila tersedia.",
+      "sections": [
+        {
+          "title": "Impor dan Kontrak Props",
+          "lineRange": [1, 9],
+          "explanation": "Baris 1 mengimpor helper `cn` dari alias `@/lib/utiils` untuk menggabungkan kelas Tailwind. Antarmuka `QrPassCardProps` mendefinisikan `title` wajib serta `subtitle`, `code`, `status`, dan `className` opsional. Props opsional membuat komponen bisa dipakai untuk kartu dengan atau tanpa kode QR lengkap. Kontrak ini sederhana karena komponen hanya menerima data tampilan, bukan objek tiket dari database.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Deklarasi Komponen",
+          "lineRange": [11, 17],
+          "explanation": "Komponen dideklarasikan sebagai arrow function yang langsung melakukan destructuring props. Nilai `className` diberi default string kosong supaya pemanggilan `cn` selalu menerima nilai string. Pola ini menghindari percabangan saat menambahkan kelas dari pemanggil. Tidak ada state atau efek di sini, sehingga komponen murni bergantung pada props.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Struktur Kartu QR",
+          "lineRange": [18, 32],
+          "explanation": "Wrapper memakai token desain seperti `border-line-soft`, `bg-surface-white`, dan `shadow-sm`, lalu memberi ruang internal `p-5`. Header memakai `justify-between` sehingga judul di kiri dan badge status di kanan; keduanya baru dirender bila propsnya ada. Area QR berupa kotak tinggi `h-40` berisi ikon Material Symbols, bukan QR code yang dihasilkan dari `code`. Teks `code` ditampilkan terpisah dengan font mono bila tersedia.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Ekspor Ganda",
+          "lineRange": [33, 35],
+          "explanation": "Komponen diekspor dua kali: sebagai named export dan sebagai default export. Ini memberi fleksibilitas bagi pemanggil untuk memakai `import { QrPassCard }` maupun `import QrPassCard`. Keduanya merujuk ke fungsi yang sama, jadi tidak ada duplikasi implementasi.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "components/SummaryCard.tsx": {
+      "overview": "Kartu ringkasan generik untuk menampilkan daftar detail pesanan, total, dan tombol aksi. Komponen ini memakai `children` sehingga halaman pemesanan dapat mengisi sendiri baris-baris ringkasannya. Bersama `QrPassCard`, komponen ini menjadi bagian dari langkah tur 10 yang merangkai alur order sampai e-ticket. Semua bagian opsional kecuali `children`, sehingga satu komponen melayani beberapa konteks tampilan.",
+      "sections": [
+        {
+          "title": "Impor dan Kontrak Props",
+          "lineRange": [1, 12],
+          "explanation": "`cn` diimpor untuk menggabungkan kelas, sementara `ReactNode` mengetik konten arbitrer yang disisipkan lewat `children`. Props `title`, `totalLabel`, `totalValue`, `actionLabel`, `onAction`, dan `className` semuanya opsional. Hanya `children` yang wajib karena itulah isi utama kartu. Kontrak ini memisahkan struktur kartu dari data spesifik pesanan.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Nilai Default Props",
+          "lineRange": [14, 22],
+          "explanation": "Destructuring langsung menetapkan default `title = \"Ringkasan\"` dan `totalLabel = \"Total\"`. Default `className = \"\"` memastikan helper `cn` tidak menerima `undefined`. Callback `onAction` sengaja tidak diberi default; tombol hanya muncul bila `actionLabel` diisi. Pola ini membuat komponen aman dipakai tanpa konfigurasi lengkap.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Konten dan Total",
+          "lineRange": [23, 32],
+          "explanation": "Wrapper luar memakai token yang sama dengan kartu lain, lalu judul dirender memakai `font-title text-title-lg`. `children` ditempatkan dalam kolom flex dengan jarak `gap-3` agar tiap baris ringkasan rapi. Blok total baru dirender bila `totalValue` ada dan dipisahkan dengan garis atas `border-t`. Label memakai font label, sedangkan nilai memakai font mono supaya angka mudah dibaca.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Bagian Aksi",
+          "lineRange": [33, 41],
+          "explanation": "Tombol aksi muncul hanya ketika `actionLabel` diberikan. Atribut `type=\"button\"` mencegah tombol mengirim formulir induk secara tidak sengaja. Klik tombol diteruskan ke `onAction` yang disediakan pemanggil, sehingga komponen tidak menentukan navigasi sendiri. Gaya hover memakai transisi warna dari `bg-brand-blue` ke `bg-brand-deep`.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Ekspor Ganda",
+          "lineRange": [43, 46],
+          "explanation": "Baris terakhir mengekspor `SummaryCard` sebagai named export sekaligus default export. Pemanggil dapat memilih gaya impor yang sesuai dengan konvensi fiturnya. Tidak ada logika tambahan sehingga ekspor ini murni soal kompatibilitas konsumsi.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "features/users/schema/userSchema.ts": {
+      "overview": "Skema Zod yang menetapkan aturan data pendaftaran pengguna. Dipakai oleh `useUserRegister` melalui `zodResolver` untuk memvalidasi formulir sebelum data pembeli dipakai alur order. Langkah tur 11 menjadikan skema ini sebagai titik awal input pengguna. Tipe `UserSchema` diinference dari skema sehingga form dan validator tidak bisa saling menyimpang.",
+      "sections": [
+        {
+          "title": "Pesan Error Dasar",
+          "lineRange": [1, 4],
+          "explanation": "Baris 1 mengimpor `z` dari Zod. Dua konstanta kecil dibuat untuk pesan `_string` kosong: `errorMessageInput` untuk input teks biasa dan `errorMessageOption` untuk pilihan dropdown. Keduanya memakai `nonempty` agar nilai kosong ditolak lebih awal. Pemisahan ini menghindari pengulangan pesan error di tiap field.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Skema Pengguna",
+          "lineRange": [6, 16],
+          "explanation": "`userSchema` adalah objek dengan lima field. `fullName` hanya boleh huruf dan spasi, `identityNumber` hanya angka, dan `email` memakai validator email bawaan Zod. `gender` memakai `errorMessageOption` sehingga wajib dipilih. `tickets` bertipe `z.record(z.number())`, yaitu peta jumlah tiket per tribun; ini selaras dengan `TicketCard` yang mengubah jumlah lewat callback.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Tipe Turunan",
+          "lineRange": [18, 18],
+          "explanation": "`UserSchema` diperoleh dari `z.infer<typeof userSchema>`, sehingga tipe TypeScript mengikuti skema runtime secara otomatis. Jika aturan field berubah, tipe form ikut berubah tanpa sunting manual. Hook `useUserRegister` memakai tipe ini sebagai generic `useForm`. Ini menjaga validasi dan tipe tetap satu sumber kebenaran.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/users/hooks/useUserRegister.ts": {
+      "overview": "Hook kustom yang menyiapkan React Hook Form untuk formulir pendaftaran pengguna. Hook ini menjembatani `userSchema` memakai `zodResolver` dan mengembalikan seluruh methods form ke komponen. Langkah tur 11 menempatkannya sebagai lapisan state formulir sebelum data dikirim ke order. Tidak ada logika submit di sini; keputusan akhir tetap di halaman.",
+      "sections": [
+        {
+          "title": "Impor dan Resolver",
+          "lineRange": [1, 3],
+          "explanation": "Baris 1-2 mengimpor `zodResolver` dan `useForm`. Baris 3 mengimpor skema beserta tipe turunannya dari `../schema/userSchema`. Pemakaian resolver berarti aturan validasi tinggal di satu file skema, bukan tersebar di komponen. Ini mengikuti konvensi proyek yang memisahkan validasi Zod dari tampilan.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Inisialisasi Formulir",
+          "lineRange": [5, 15],
+          "explanation": "`useForm<UserSchema>` membuat state formulir bertipe skema pengguna. Opsi `resolver: zodResolver(userSchema)` menyambungkan error Zod ke `formState.errors`. `defaultValues` mengisi semua field dengan string kosong dan `tickets` dengan objek kosong. Nilai awal yang eksplisit mencegah input terkontrol menjadi `undefined` saat pertama render.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Ekspor Methods",
+          "lineRange": [17, 18],
+          "explanation": "Hook mengembalikan salinan seluruh methods dengan spread `{ ...methods }`. Pemanggil mendapat `register`, `handleSubmit`, `control`, dan `formState` tanpa hook perlu memilihnya satu per satu. Karena spread dibuat baru, penambahan methods di masa depan otomatis tersedia. Tidak ada state tambahan yang dikelola hook ini.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/users/components/TicketCard.tsx": {
+      "overview": "Kartu baris tribun dengan harga dan kontrol jumlah tiket ber tombol plus/minus. Komponen ini dipakai dalam alur pendaftaran pengguna pada langkah tur 11 untuk menyusun data `tickets`. Perubahan jumlah tidak disimpan internal, melainkan diteruskan lewat `onCountChange`. Ada sisa kode legacy: impor API dikomentari dan props `name`/`control` diterima tetapi tidak dipakai.",
+      "sections": [
+        {
+          "title": "Impor dan Tipe Props",
+          "lineRange": [1, 4],
+          "explanation": "Baris 1 adalah impor lama `GetDatas` yang sudah dikomentari dan tidak berpengaruh. Baris 2-4 mengimpor `React`, tipe `Control` dari React Hook Form, serta `UserSchema`. Kehadiran `Control` menunjukkan komponen ini awalnya direncanakan terhubung langsung ke form. Saat ini callback saja yang dipakai untuk memperbarui jumlah.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Antarmuka dan Parameter",
+          "lineRange": [6, 20],
+          "explanation": "`TicketCardProps` mendefinisikan `name`, `tribune`, `price`, `count`, `control`, dan `onCountChange`. Destructuring pada komponen hanya mengambil `tribune`, `price`, `count`, dan `onCountChange`, sehingga `name` dan `control` efektif diabaikan. Ini gotcha penting saat membaca kode: tipe props lebih luas daripada perilaku nyata. Komponen dinterval arrow function yang dibungkus `React.FC`.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Penanganan Jumlah Tiket",
+          "lineRange": [21, 27],
+          "explanation": "`handleDecrease` hanya memanggil `onCountChange` jika `count > 0`, jadi jumlah tidak pernah negatif. `handleIncrease` langsung menaikkan `count` tanpa batas atas. Keduanya tidak menyimpan state lokal; pemanggil yang memiliki state bertanggung jawab memperbaruinya. Pola ini membuat kartu menjadi komponen terkontrol.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Tampilan Kartu",
+          "lineRange": [29, 59],
+          "explanation": "Marker `tribune` dan `price` ditampilkan pada kolom kiri memakai warna heksadesimal hardcoded, bukan token dari `DESIGN.md`. Kolom kanan berisi grup tombol dengan `select-none` agar teks jumlah tidak tersorot saat diklik berulang. Kedua tombol memakai `type=\"button\"` supaya tidak mengirim formulir induk. Kelas `hover:bg-gray-100` memberi umpan balik visual tanpa mengubah data.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Ekspor Komponen",
+          "lineRange": [60, 62],
+          "explanation": "Baris terakhir hanya mengekspor `TicketCard` sebagai default export. Tidak ada named export untuk komponen ini. Konsumen harus memakai `import TicketCard from ...` sesuai pola lama berkas ini.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/tickets/component/Ticket.tsx": {
+      "overview": "Berkas tiket lama yang seluruh isinya dikomentari. Tidak ada komponen, fungsi, atau ekspor aktif, sehingga mengimpor berkas ini tidak menghasilkan apa pun. Langkah tur 12 menyebutnya sebagai jejak kode legacy yang sebaiknya tidak dijadikan referensi alur aktif. Versi e-ticket yang dipakai sekarang ada di `components/QrPassCard.tsx` lewat alur `orderService` dan `ticketService`.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [1, 4],
+          "explanation": "Keempat baris pertama adalah komentar untuk impor `useEffect`, `useMatchData`, dan `useUsers`. Karena dikomentari, tidak ada dependensi yang benar-benar dimuat. Impor `useUsers` sendiri merujuk ke hook yang juga seluruhnya dikomentari. Ini menandakan berkas tidak lagi berpartisipasi dalam build aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Komponen dan Pencarian Data",
+          "lineRange": [5, 27],
+          "explanation": "Blok ini berisi komponen `Ticket` versi lama yang juga dikomentari. Logikanya dulu mengambil `selectedMatchId` dan `selectedUserId` dari `sessionStorage`, lalu mencari kecocokan di `matches` dan `userData`. `useEffect` dipakai untuk memanggil `window.print()` khi kedua data tersedia. Guard `if (!match || !user)` menampilkan pesan jika data tidak ditemukan; semuanya kini hanya teks komentar.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Tampilan Tiket Nonaktif",
+          "lineRange": [28, 80],
+          "explanation": "Bagian ini memuat markup tiket cetak lama: judul `Soccer Match Ticket`, nama tim, tanggal, waktu, stadion, kursi, dan nomor tiket. Semua baris adalah komentar, termasuk ekspresi JSX yang tersemat di dalam komentar bertingkat. Tidak ada token desain proyek yang dipakai di sini; warna memakai gradien dan kelas Tailwind langsung. Membacanya sebagai contoh implementasi bisa menyesatkan.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Baris Ekspor Nonaktif",
+          "lineRange": [81, 82],
+          "explanation": "`export default Ticket;` juga berada di dalam komentar. Akibatnya modul ini tidak mengekspor nilai apa pun. Jika ada kode yang mencoba mengimpornya, hasilnya bukan komponen. Riwayat git lebih tepat dipakai kalau ingin melihat versi lama yang masih berfungsi.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/service/userServices.ts": {
+      "overview": "Lapisan service lama untuk mendaftarkan dan mengambil pengguna yang seluruhnya dikomentari. Tidak ada fungsi aktif yang diekspor, sehingga tidak bisa dipanggil dari halaman maupun hook. Langkah tur 12 mengelompokkannya sebagai kode legacy bersama hook dan halaman pendaftaran lama. Alur aktif kini memakai Supabase Auth dan RPC pada layanan orders, bukan service ini.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [1, 1],
+          "explanation": "Satu-satunya baris awal adalah komentar impor `UserPayload` dari `../types/userPayload`. Karena dikomentari, tipe tersebut tidak tersedia di modul ini. Menjadi petunjuk bahwa berkas tidak dirawat bersama kontrak tipe aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Fungsi registerUser Nonaktif",
+          "lineRange": [3, 11],
+          "explanation": "Blok berisi `registerUser` lama dengan pola `try`/`catch` dan `console.log` saat gagal. Perlu dicatat bahwa pemanggilan `await .post<UserPayload>(\"/users\", data)` bahkan tidak memiliki objek sebelum titik, sehingga tidak akan valid bila sekadar di-uncomment. Ini bukan contoh service yang bisa dipakai ulang. Kini pembuatan data pembeli ditangani lewat RPC Supabase di `orderService`.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Fungsi getUsers Nonaktif",
+          "lineRange": [12, 19],
+          "explanation": "Blok kedua berisi `getUsers` lama yang memanggil `.get(\"/users\")` di dalam `try`/`catch`. Sama seperti fungsi sebelumnya, pemanggilan tidak valid karena tidak ada receiver. Tidak ada nilai yang dikembalikan secara eksplisit pada jalur error. Seluruh blok tetap dikomentari agar tidak mengganggu kompilasi.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/hooks/useUsers.ts": {
+      "overview": "Hook lama untuk mengambil daftar pengguna, seluruhnya dikomentari. Tidak ada state, efek, atau nilai kembalian yang aktif pada runtime. Tur langkah 12 menyebutnya sebagai bagian dari jejak legacy yang sebaiknya dibaca hanya untuk konteks historis. Status sesi aktif kini berasal dari `hooks/useSession.ts`, bukan hook ini.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [1, 3],
+          "explanation": "Tiga baris pertama mengomentari impor `useEffect`, `useState`, `getUsers`, dan tipe `User`. Karena tidak diimpor, tidak ada ketergantungan ke service lama. Ini mengonfirmasi berkas tidak terhubung ke lapisan data aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Hook Nonaktif",
+          "lineRange": [5, 21],
+          "explanation": "Blok komentar menggambarkan hook dengan state `userData` dan `useEffect` yang memanggil `fetchUsers` sekali saat mount. Data hasil `getUsers()` disimpan bila truthy, dan error hanya dicetak ke konsol. Nilai kembalian berupa `{ userData }` juga ikut dikomentari. Tidak ada ekspor aktif, jadi berkas ini aman diabaikan saat menelusuri alur aplikasi.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "services/userService.ts": {
+      "overview": "Berkas service generik lama di folder `src/services`, bukan folder fitur. Seluruh implementasinya dikomentari dan tidak mengekspor apa pun. Langkah tur 12 memasukkannya ke dalam kumpulan kode legacy bersama `userServices.ts`, `useUsers.ts`, dan `RegisterForm.tsx`. Pola aktif proyek meletakkan akses data di `src/features/<fitur>/service` yang memanggil Supabase.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [1, 1],
+          "explanation": "Baris pertama mengomentari impor `useEffect` dan `useState` dari React. Keduanya tidak benar-benar diimpor. Karena seluruh berkas komentar, tidak ada efek samping saat modul dibaca.",
+          "tourOrder": 12
+        },
+        {
+          "title": "PostDatas Nonaktif",
+          "lineRange": [3, 23],
+          "explanation": "Blok ini menggambarkan hook `PostDatas` lama dengan state `userFormDatas` dan fungsi `postUserDatas`. Fungsi tersebut dulu memanggil `axiosInstance.post<UserDatas>(\"/users\", data)` dan mengembalikan `null` saat gagal. Baik state maupun fungsi berada di dalam komentar. Hilangnya impor `axiosInstance` dan tipe `UserDatas` membuat blok ini tidak bisa dijalankan begitu saja.",
+          "tourOrder": 12
+        },
+        {
+          "title": "GetUsers Nonaktif",
+          "lineRange": [25, 41],
+          "explanation": "Blok kedua menggambarkan `GetUsers` dengan state array `userDatas` dan `useEffect` yang mengambil data sekali saat mount. Hasil `axiosInstance.get` dulu disimpan ke state, sementara error hanya dicetak dengan `console.error`. Semua baris tetap dikomentari sehingga tidak ada permintaan jaringan dari berkas ini. Ini contoh pola lama yang sudah digantikan service berbasis Supabase.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/page/RegisterForm.tsx": {
+      "overview": "Halaman formulir pendaftaran pengguna versi lama yang seluruh implementasinya dikomentari. Dulunya halaman ini menggabungkan pilihan tribun, data pembeli, dan navigasi ke pembayaran. Langkah tur 12 menyebutnya sebagai jejak kode legacy karena tidak ada komponen aktif yang diekspor. Alur aktif sekarang memisahkan pendaftaran/auth dari formulir pemesanan yang memakai Supabase.",
+      "sections": [
+        {
+          "title": "Impor Nonaktif",
+          "lineRange": [1, 8],
+          "explanation": "Delapan baris pertama mengomentari impor `useState`, `useNavigate`, komponen UI, `useMatchData`, `TicketCard`, `useUserRegister`, dan `registerUser`. Karena dikomentari, tidak ada dependensi yang dimuat. Tumpukan impor ini menunjukkan bagaimana halaman lama menggabungkan banyak lapisan dalam satu berkas.",
+          "tourOrder": 12
+        },
+        {
+          "title": "State dan Turunan Tribun",
+          "lineRange": [9, 29],
+          "explanation": "Blok komentar ini mendefinisikan state `ticketCounts` berbentuk peta jumlah per tribun. Hook `useUserRegister` dulu dipakai untuk mendapatkan `register`, `handleSubmit`, `formState`, dan `control`. `selectedMatch` dicari dari `matchId` di `sessionStorage`, lalu `tribunList` diambil dari `Object.entries(selectedMatch.tickets[0])`. Callback `onTicketCountChange` memperbarui state dengan spread objek sebelumnya.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Alur Submit Nonaktif",
+          "lineRange": [30, 45],
+          "explanation": "`onSubmit` lama menggabungkan nilai form dengan `ticketCounts` menjadi `payload`, lalu memanggil `registerUser`. Jika gagal, kode memakai `alert(\"gagal\")`, yang bertentangan dengan konvensi proyek sekarang yang memakai komponen `Alerts`. Jika berhasil, kode menavigasi ke rute pembayaran lama dan menyimpan `selectedUserId` di `sessionStorage`. Semua baris adalah komentar, termasuk baris `console.log` yang juga dinonaktifkan.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Daftar Kartu Tiket",
+          "lineRange": [47, 62],
+          "explanation": "Bagian ini menggambarkan `form` dengan `FormField` yang memetakan `tribunList` ke komponen `TicketCard`. Setiap kartu menerima `key`, `name`, `price`, `control`, `tribune`, `count`, dan callback per tribun. `count` diambil dari state dengan default `0`. Karena dikomentari, tidak ada kartu yang dirender dari berkas ini.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Formulir Pembeli Nonaktif",
+          "lineRange": [63, 96],
+          "explanation": "Blok ini berisi field lama untuk nama lengkap, jenis kelamin, nomor identitas, dan email. Tiap field menghubungkan `register(...)` dari React Hook Form dengan `errorMessage` dari `formState.errors`. Dropdown jenis kelamin memakai dua opsi statis, sedangkan tombol submit memakai kelas warna lama. Sebagai komentar, field-field ini tidak akan pernah muncul di UI aktif.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Penutup Formulir dan Ekspor",
+          "lineRange": [97, 102],
+          "explanation": "Enam baris terakhir menutup struktur `form`, `main`, dan komponen dalam bentuk komentar. Baris 102 juga mengomentari `export default RegisterForm`. Akibatnya modul tidak mengekspor komponen sama sekali. Ini menutup bukti bahwa berkas tergolong kode mati yang disimpan untuk referensi historis.",
+          "tourOrder": 12
+        }
+      ]
+    }
+  }
+}

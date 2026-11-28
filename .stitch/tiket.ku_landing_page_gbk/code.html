@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket.ku — Platform Resmi Tiket Stadion GBK</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'brand-blue': '#146DFC',
+        'brand-hover': '#006FFF',
+        'brand-deep': '#0056EC',
+        'brand-sky': '#BADFFF',
+        'brand-tint': '#DEF1FF',
+        'accent': '#F97316',
+        'success': '#16A34A',
+        'warning': '#F59E0B',
+        'danger': '#DC2626',
+        'light-primary': '#146DFC',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#006FFF',
+        'light-on-primary-container': '#070707',
+        'light-secondary': '#0891B2',
+        'light-on-secondary': '#1E1E1E',
+        'light-secondary-container': '#DEF1FF',
+        'light-on-secondary-container': '#0056EC',
+        'light-background': '#FFFFFF',
+        'light-on-background': '#27272A',
+        'light-surface': '#F7F8F7',
+        'light-surface-dim': '#EDEEF0',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F7F8F7',
+        'light-surface-container': '#F2F2F3',
+        'light-surface-container-high': '#EDEEF0',
+        'light-on-surface': '#27272A',
+        'light-surface-variant': '#F2F2F3',
+        'light-on-surface-variant': '#606169',
+        'light-outline': '#71717A',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#020918',
+        'light-inverse-on-surface': '#FFFFFF',
+        'dark-primary': '#BADFFF',
+        'dark-on-primary': '#020918',
+        'dark-primary-container': '#146DFC',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-background': '#020918',
+        'dark-on-background': '#FFFFFF',
+        'dark-surface': '#051027',
+        'dark-surface-container-lowest': '#020918',
+        'dark-surface-container-low': '#051027',
+        'dark-surface-container': '#27272A',
+        'dark-surface-container-high': '#3B3C3F',
+        'dark-on-surface': '#FFFFFF',
+        'dark-on-surface-variant': '#BADFFF',
+        'dark-outline': '#71717A',
+        'dark-outline-variant': '#434349',
+      },
+      borderRadius: {
+        'sm': '12px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '14px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '56px',
+        'page-margin': '64px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Inter"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['48px', { lineHeight: '52px', letterSpacing: '-1.5px', fontWeight: '600' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.75px', fontWeight: '600' }],
+        'headline-lg': ['38px', { lineHeight: '44px', letterSpacing: '-0.76px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.5px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '-0.16px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '220ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex flex-col bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <main id="top" class="flex-1">
+      <!-- Dark Night-950 Hero Section -->
+      <section class="relative bg-light-inverse-surface border-b border-dark-outline-variant overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrAFghPgsUqkpDmo_QCDKy4lDYI3oqL39G5iWAX6B8r3KOjpO108yIO80QUTCeXbmYe29qTcxMz8sRO9lxqfVMm-baSAoG4-8S4lar8f5Fva9_qXATgk24kGuYf4GCVrDjaJYSHUSIj_t5HwNrMatM3Z-yPexoFprhv6X18yQX2yu4Mc-nx_ymWPEL8DGoKJJmimyQ2tqDdYZLPkGSDp_ROCXVFPHN-mULos-hekGzL4xAO6ngsqmTc-3xQ_dmjq" alt="Stadion Utama Gelora Bung Karno saat acara malam" class="absolute inset-0 w-full h-full object-cover opacity-35">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 flex flex-col gap-6">
+            <div class="inline-flex items-center gap-2 self-start bg-brand-blue text-light-on-primary px-3.5 py-1.5 rounded-full">
+              <span class="material-symbols-outlined text-label-lg" aria-hidden="true">verified</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Mitra Resmi Tiket Kawasan GBK</span>
+            </div>
+
+            <h1 class="font-display text-display-lg-mobile lg:text-display-lg text-light-inverse-on-surface text-balance" data-design-text-token="display-lg">
+              Pesan tiket resmi acara Stadion GBK tanpa antre.
+            </h1>
+
+            <p class="font-body text-body-lg text-brand-sky text-pretty max-w-prose" data-design-text-token="body-lg">
+              Satu pintu untuk laga timnas, pertandingan Liga 1, konser musik akbar, dan turnamen internasional di Gelora Bung Karno dengan e-tiket QR instan.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-1">
+              <a href="#jadwal-gbk" data-component-id="button-primary" data-component-type="button" data-component-variant="primary" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change">
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Jelajahi Jadwal GBK</span>
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_forward</span>
+              </a>
+              <a href="#venue-gbk" data-component-id="button-glass" data-component-type="button" data-component-variant="glass" class="inline-flex items-center justify-center gap-2 bg-light-surface-container-lowest/10 hover:bg-light-surface-container-lowest/20 text-light-inverse-on-surface border border-dark-outline-variant px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change">
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Lihat Venue GBK</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Featured Matchday Highlight Card -->
+          <div class="lg:col-span-5">
+            <article class="bg-dark-surface border border-dark-outline-variant rounded-xl overflow-hidden shadow-lg">
+              <div class="relative aspect-[16/10] overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrD0iFwXrDg-yeDx9fEUr8tXJIADINYQRahf8BaUAjArfNHfUUI9IGYVli1pphhi-J8hDuy_d0D86mT4NdbLEcMZ6cBFcg5IaoeRx8QHam5zlb2as3JXhibxDC-J0h4nh44ri84qybooRPt8axRubWJkavVzc6FuUKYvydiezdBOP7dKR0EN42CAFnLJodW7YJlXis5i-SP5XXRC-bxRt-Q4IRuC1KeVcuyHyjHiAXhq3qYBQdv13jG4UQRurQ" alt="Indonesia vs Jepang di Stadion Utama GBK" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-brand-blue text-light-on-primary px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Sorotan Utama</span>
+                <span class="absolute top-3 right-3 bg-danger text-light-on-primary px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Hampir Habis</span>
+              </div>
+              <div class="p-6 flex flex-col gap-3">
+                <p class="font-label text-label-md text-brand-sky tabular-nums" data-design-text-token="label-md">Kam, 19 Des · 19:00 WIB</p>
+                <h2 class="font-title text-headline-md text-light-inverse-on-surface" data-design-text-token="headline-md">Indonesia vs Jepang</h2>
+                <p class="font-body text-body-md text-brand-sky flex items-center gap-1.5" data-design-text-token="body-md">
+                  <span class="material-symbols-outlined text-body-lg" aria-hidden="true">location_on</span>
+                  <span>Stadion Utama GBK, Senayan</span>
+                </p>
+                <div class="pt-3 mt-1 border-t border-dark-outline-variant flex items-center justify-between gap-4">
+                  <div class="flex flex-col">
+                    <span class="font-label text-label-md text-brand-sky" data-design-text-token="label-md">Mulai dari</span>
+                    <span class="font-mono text-mono-md text-light-inverse-on-surface tabular-nums" data-design-text-token="mono-md">Rp 250.000</span>
+                  </div>
+                  <a href="#jadwal-gbk" class="bg-brand-blue hover:bg-brand-deep text-light-on-primary px-5 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change ease-state-change">
+                    <span data-design-text-token="label-lg">Pilih Kursi</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sorotan Acara Terdekat di GBK -->
+      <section id="jadwal-gbk" class="max-w-7xl mx-auto px-6 lg:px-16 py-14 flex flex-col gap-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div class="flex flex-col gap-2">
+            <span class="font-label text-label-md text-brand-deep" data-design-text-token="label-md">Agenda Terdekat</span>
+            <h2 class="font-headline text-headline-lg-mobile lg:text-headline-lg text-light-on-surface text-balance" data-design-text-token="headline-lg">Acara pilihan di Kawasan GBK</h2>
+          </div>
+          <a href="#venue-gbk" class="inline-flex items-center gap-1.5 font-label text-label-lg text-brand-deep hover:text-brand-blue transition-colors duration-state-change ease-state-change">
+            <span data-design-text-token="label-lg">Lihat Semua Venue</span>
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <!-- Card 1 -->
+          <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl shadow-sm flex flex-col justify-between overflow-hidden transition-colors duration-state-change ease-state-change h-full">
+            <div>
+              <div class="relative aspect-[16/10] bg-light-surface-container overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBMiILm9Zwh5M72qc8bJXr1BTUjJJEv3GYph5Xi4ynEq9rOjtWL1ouyTVmDBrue4fcL2SGE_Jyk3Ays8mODbdebfcCCLNS7X3fHuLndWsvoRy8sxsJXpEs-N2Hq8B6-WX7lYdt0hv5rd8OURJXnGn7AQml97h57ZdFMpoYLcro7RT5Bh2wglDf0-y6-nkJdCdj4OuzTEa6aCCoXJE5IIpLD_BBxUyZ5mc2npjcDM1Vu1FmvcSq2OfGgbK0cSb0v" alt="Persija vs Persib" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-light-inverse-surface text-light-inverse-on-surface px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Sepak Bola</span>
+                <span class="absolute top-3 right-3 bg-brand-tint text-brand-deep px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Terbatas</span>
+              </div>
+              <header class="p-5 flex flex-col gap-2">
+                <p class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Sab, 14 Des · 19:30 WIB</p>
+                <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Persija vs Persib</h3>
+                <p class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5" data-design-text-token="body-md">
+                  <span class="material-symbols-outlined text-body-lg text-light-outline shrink-0" aria-hidden="true">location_on</span>
+                  <span>Stadion Utama GBK</span>
+                </p>
+              </header>
+            </div>
+            <footer class="px-5 py-4 border-t border-light-outline-variant flex items-center justify-between gap-3">
+              <div class="flex flex-col">
+                <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Mulai dari</span>
+                <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 150.000</span>
+              </div>
+              <a href="#cta-gbk" class="bg-brand-blue hover:bg-brand-deep text-light-on-primary px-4 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change ease-state-change">
+                <span data-design-text-token="label-lg">Pilih Tiket</span>
+              </a>
+            </footer>
+          </article>
+
+          <!-- Card 2 -->
+          <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl shadow-sm flex flex-col justify-between overflow-hidden transition-colors duration-state-change ease-state-change h-full">
+            <div>
+              <div class="relative aspect-[16/10] bg-light-surface-container overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrCoFVIvKzDDiOtciK3KakEnC58uJXy0OpEmCPQSvSof2imS9GR19bHFgNoGJRw-Z3OUeEN37B_a2uy7SxW2ciF68UamDDuFzNFO674mtyKxPGXQbxYMXKq0bjYAx2zoxGlOiuTcR21MUeFSrv8rPj9AV0MUFVg0bsysLrRKZ-IfE3GXfnNcEDStBU0LVR077Ns8QHaC31MihpyZH3WtvCgJbiPYOgOhMtNFps3dZGqHD74EECZRnlqMRHWQ" alt="Konser Sheila on 7" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-light-inverse-surface text-light-inverse-on-surface px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Konser</span>
+                <span class="absolute top-3 right-3 bg-danger text-light-on-primary px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Hampir Habis</span>
+              </div>
+              <header class="p-5 flex flex-col gap-2">
+                <p class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Min, 22 Des · 20:00 WIB</p>
+                <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Konser Sheila on 7</h3>
+                <p class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5" data-design-text-token="body-md">
+                  <span class="material-symbols-outlined text-body-lg text-light-outline shrink-0" aria-hidden="true">location_on</span>
+                  <span>Stadion Utama GBK</span>
+                </p>
+              </header>
+            </div>
+            <footer class="px-5 py-4 border-t border-light-outline-variant flex items-center justify-between gap-3">
+              <div class="flex flex-col">
+                <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Mulai dari</span>
+                <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 350.000</span>
+              </div>
+              <a href="#cta-gbk" class="bg-brand-blue hover:bg-brand-deep text-light-on-primary px-4 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change ease-state-change">
+                <span data-design-text-token="label-lg">Pilih Tiket</span>
+              </a>
+            </footer>
+          </article>
+
+          <!-- Card 3 -->
+          <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant hover:border-brand-blue rounded-xl shadow-sm flex flex-col justify-between overflow-hidden transition-colors duration-state-change ease-state-change h-full">
+            <div>
+              <div class="relative aspect-[16/10] bg-light-surface-container overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrB1Km0aKZmEZyj_CtafvGI0PwrzpzMzT5vZEMHGtwrnYuoxbrezJlnVwQL0R_eFswUM7RegVEP950WvXtfJm7-jK8S1OC_Rzf-Alg0emQf1MCryBQeAahJP78mGB6YoD9ZuUGQZ9DHVIdxVyz-xdSDd4QiAiCkQnParfg44vv2VXoVgKi5Tqrnm5pj_DpaGT6GhVdo2p_EBsIC6sK7Jnj3mxrZPv0jAJXXKa-pI4bgUeKHV1C55BAjXFfPZVMLQ" alt="Indonesia Open Final" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-light-inverse-surface text-light-inverse-on-surface px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Olahraga</span>
+                <span class="absolute top-3 right-3 bg-light-surface-container text-light-on-surface-variant px-3 py-1 rounded-full font-label text-label-md" data-design-text-token="label-md">Tersedia</span>
+              </div>
+              <header class="p-5 flex flex-col gap-2">
+                <p class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Min, 29 Des · 13:00 WIB</p>
+                <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Indonesia Open Final</h3>
+                <p class="font-body text-body-md text-light-on-surface-variant flex items-center gap-1.5" data-design-text-token="body-md">
+                  <span class="material-symbols-outlined text-body-lg text-light-outline shrink-0" aria-hidden="true">location_on</span>
+                  <span>Istora Senayan GBK</span>
+                </p>
+              </header>
+            </div>
+            <footer class="px-5 py-4 border-t border-light-outline-variant flex items-center justify-between gap-3">
+              <div class="flex flex-col">
+                <span class="font-label text-label-md text-light-outline" data-design-text-token="label-md">Mulai dari</span>
+                <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">Rp 175.000</span>
+              </div>
+              <a href="#cta-gbk" class="bg-brand-blue hover:bg-brand-deep text-light-on-primary px-4 py-2.5 rounded-lg font-label text-label-lg transition-colors duration-state-change ease-state-change">
+                <span data-design-text-token="label-lg">Pilih Tiket</span>
+              </a>
+            </footer>
+          </article>
+        </div>
+      </section>
+
+      <!-- Keunggulan Resmi GBK -->
+      <section id="keunggulan" class="bg-light-surface-container-lowest border-y border-light-outline-variant">
+        <div class="max-w-7xl mx-auto px-6 lg:px-16 py-14 flex flex-col gap-8">
+          <div class="max-w-2xl flex flex-col gap-2">
+            <span class="font-label text-label-md text-brand-deep" data-design-text-token="label-md">Kenapa Tiket.ku</span>
+            <h2 class="font-headline text-headline-lg-mobile lg:text-headline-lg text-light-on-surface text-balance" data-design-text-token="headline-lg">Pengalaman masuk stadion yang rapi dan pasti.</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            <div class="bg-light-surface border border-light-outline-variant rounded-xl p-6 flex flex-col gap-3">
+              <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-brand-tint text-brand-deep">
+                <span class="material-symbols-outlined text-headline-md" aria-hidden="true">qr_code_scanner</span>
+              </span>
+              <h3 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">E-Tiket QR Pintu Resmi</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant text-pretty" data-design-text-token="body-md">
+                Pindai langsung di gerbang elektronik GBK tanpa perlu menukar tiket fisik di loket stadion.
+              </p>
+            </div>
+
+            <div class="bg-light-surface border border-light-outline-variant rounded-xl p-6 flex flex-col gap-3">
+              <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-brand-tint text-brand-deep">
+                <span class="material-symbols-outlined text-headline-md" aria-hidden="true">event_seat</span>
+              </span>
+              <h3 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Pilihan Zona Tribun Jelas</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant text-pretty" data-design-text-token="body-md">
+                Bandingkan ketersediaan kursi dari Tribun Utara, Timur, hingga VIP Barat secara real-time.
+              </p>
+            </div>
+
+            <div class="bg-light-surface border border-light-outline-variant rounded-xl p-6 flex flex-col gap-3">
+              <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-brand-tint text-brand-deep">
+                <span class="material-symbols-outlined text-headline-md" aria-hidden="true">verified_user</span>
+              </span>
+              <h3 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Transaksi Aman &amp; Instan</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant text-balance" data-design-text-token="body-md">
+                Bayar lewat QRIS, transfer bank, atau kartu debit dengan konfirmasi e-tiket instan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Venue Kawasan GBK -->
+      <section id="venue-gbk" class="max-w-7xl mx-auto px-6 lg:px-16 py-14 flex flex-col gap-8">
+        <div class="flex flex-col gap-2">
+          <span class="font-label text-label-md text-brand-deep" data-design-text-token="label-md">Kawasan Senayan</span>
+          <h2 class="font-headline text-headline-lg-mobile lg:text-headline-lg text-light-on-surface text-balance" data-design-text-token="headline-lg">Empat venue utama yang kami layani</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
+            <div class="flex flex-col gap-1.5">
+              <span class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Kapasitas 77.000</span>
+              <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Stadion Utama GBK</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Laga timnas, Liga 1, dan konser stadion akbar.</p>
+            </div>
+          </div>
+
+          <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
+            <div class="flex flex-col gap-1.5">
+              <span class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Kapasitas 7.166</span>
+              <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Istora Senayan</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Turnamen bulu tangkis, basket, dan konser indoor.</p>
+            </div>
+          </div>
+
+          <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
+            <div class="flex flex-col gap-1.5">
+              <span class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Kapasitas 3.700</span>
+              <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Tennis Indoor GBK</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Konser intim, pertunjukan komedi, dan esports.</p>
+            </div>
+          </div>
+
+          <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 flex flex-col justify-between gap-4 shadow-sm">
+            <div class="flex flex-col gap-1.5">
+              <span class="font-label text-label-md text-brand-deep tabular-nums" data-design-text-token="label-md">Area Terbuka</span>
+              <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Plaza Timur GBK</h3>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Festival musik akhir pekan dan acara komunitas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Banner Penutup -->
+      <section id="cta-gbk" class="max-w-7xl mx-auto px-6 lg:px-16 pb-14">
+        <div class="bg-light-inverse-surface border border-dark-outline-variant rounded-xl p-8 lg:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          <div class="flex flex-col gap-2 max-w-xl">
+            <h2 class="font-headline text-headline-lg-mobile lg:text-headline-lg text-light-inverse-on-surface text-balance" data-design-text-token="headline-lg">Siap mengamankan kursi Anda di GBK?</h2>
+            <p class="font-body text-body-lg text-brand-sky" data-design-text-token="body-lg">
+              Buka katalog jadwal lengkap dan pilih kategori tribun yang sesuai sebelum kuota habis.
+            </p>
+          </div>
+          <a href="#jadwal-gbk" data-component-id="button-primary" data-component-type="button" data-component-variant="primary" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-deep text-light-on-primary px-6 py-3 rounded-lg transition-colors duration-state-change ease-state-change shrink-0">
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Beli Tiket Sekarang</span>
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">confirmation_number</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-light-outline-variant bg-light-surface-container-lowest">
+      <div class="max-w-7xl mx-auto px-6 lg:px-16 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-brand-blue text-light-on-primary">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">confirmation_number</span>
+          </span>
+          <span class="font-display text-title-md text-light-on-surface" data-design-text-token="title-md">Tiket.ku</span>
+          <span class="font-body text-body-md text-light-on-surface-variant ml-2" data-design-text-token="body-md">Platform resmi pemesanan tiket kawasan Stadion GBK.</span>
+        </div>
+        <p class="font-label text-label-md text-light-outline tabular-nums" data-design-text-token="label-md">
+          Layanan Pelanggan 24/7 · E-Tiket Terverifikasi
+        </p>
+      </div>
+    </footer>
+  </div>
+
+
+</body></html>

@@ -1,0 +1,249 @@
+{
+  "batchIndex": 6,
+  "projectRoot": "D:/naka/project/Tiket.ku_Fork_V.2/src",
+  "files": [
+    {
+      "path": "app.css",
+      "language": "css",
+      "sizeLines": 223,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "components/Badge.tsx",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Banner.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Drawer.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/InputField.tsx",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/QrPassCard.tsx",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/RadioSelector.tsx",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Stepper.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/SummaryCard.tsx",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Tabs.tsx",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "app.css": [],
+    "components/Badge.tsx": [],
+    "components/Banner.tsx": [],
+    "components/Drawer.tsx": [],
+    "components/Footer.tsx": [],
+    "components/InputField.tsx": [],
+    "components/QrPassCard.tsx": [],
+    "components/RadioSelector.tsx": [],
+    "components/Stepper.tsx": [],
+    "components/SummaryCard.tsx": [],
+    "components/Tabs.tsx": []
+  },
+  "neighborMap": {},
+  "previousSymbols": [
+    {
+      "filePath": "app.css",
+      "nodes": [
+        {
+          "id": "file:app.css",
+          "type": "file",
+          "name": "app.css",
+          "filePath": "app.css",
+          "summary": "Tailwind CSS v4 theme defining design tokens (colors, fonts, radius, spacing, shadows) and base styles for Tiket.ku.",
+          "tags": [
+            "styling",
+            "design-tokens",
+            "configuration"
+          ],
+          "complexity": "moderate"
+        }
+      ],
+      "edges": []
+    },
+    {
+      "filePath": "components/Badge.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "components/Banner.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "components/Drawer.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "components/Footer.tsx",
+      "nodes": [
+        {
+          "id": "file:components/Footer.tsx",
+          "type": "file",
+          "name": "Footer.tsx",
+          "filePath": "components/Footer.tsx",
+          "summary": "Site footer with copyright and footer links.",
+          "tags": [
+            "component",
+            "layout",
+            "footer"
+          ],
+          "complexity": "simple"
+        },
+        {
+          "id": "function:components/Footer.tsx:Footer",
+          "type": "function",
+          "name": "Footer",
+          "filePath": "components/Footer.tsx",
+          "lineRange": [
+            3,
+            14
+          ],
+          "summary": "Renders the site footer with copyright and links.",
+          "tags": [
+            "component",
+            "layout",
+            "footer"
+          ],
+          "complexity": "simple"
+        }
+      ],
+      "edges": [
+        {
+          "source": "file:components/Footer.tsx",
+          "target": "function:components/Footer.tsx:Footer",
+          "type": "contains",
+          "direction": "forward",
+          "weight": 1
+        },
+        {
+          "source": "file:components/Footer.tsx",
+          "target": "function:components/Footer.tsx:Footer",
+          "type": "exports",
+          "direction": "forward",
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "filePath": "components/InputField.tsx",
+      "nodes": [
+        {
+          "id": "file:components/InputField.tsx",
+          "type": "file",
+          "name": "InputField.tsx",
+          "filePath": "components/InputField.tsx",
+          "summary": "Form input with floating label, password toggle, and error display.",
+          "tags": [
+            "component",
+            "form",
+            "input"
+          ],
+          "complexity": "moderate"
+        },
+        {
+          "id": "function:components/InputField.tsx:InputField",
+          "type": "function",
+          "name": "InputField",
+          "filePath": "components/InputField.tsx",
+          "lineRange": [
+            15,
+            89
+          ],
+          "summary": "Renders a labeled input with validation error and password visibility toggle.",
+          "tags": [
+            "component",
+            "form",
+            "input"
+          ],
+          "complexity": "moderate"
+        }
+      ],
+      "edges": [
+        {
+          "source": "file:components/InputField.tsx",
+          "target": "function:components/InputField.tsx:InputField",
+          "type": "contains",
+          "direction": "forward",
+          "weight": 1
+        },
+        {
+          "source": "file:components/InputField.tsx",
+          "target": "function:components/InputField.tsx:InputField",
+          "type": "exports",
+          "direction": "forward",
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "filePath": "components/QrPassCard.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "components/RadioSelector.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "components/Stepper.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "components/SummaryCard.tsx",
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "filePath": "components/Tabs.tsx",
+      "nodes": [],
+      "edges": []
+    }
+  ]
+}

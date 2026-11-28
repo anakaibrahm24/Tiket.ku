@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {
+      "id": "file:features/auth/page/SignupPage.tsx",
+      "type": "file",
+      "name": "SignupPage.tsx",
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "summary": "Halaman pendaftaran akun Tiket.ku yang menyatukan formulir email, opsi daftar melalui Google, validasi Zod, dan penanganan sesi beserta notifikasi verifikasi.",
+      "tags": ["komponen", "autentikasi", "formulir", "validasi", "oauth"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "function",
+      "name": "SignupPage",
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "lineRange": [21, 232],
+      "summary": "Komponen halaman pendaftaran yang mengelola formulir dengan react-hook-form, mengirim data akun lewat signUpWithEmail, memproses pendaftaran Google, lalu mengalihkan pengguna yang sudah login atau menampilkan pesan cek email untuk verifikasi.",
+      "tags": ["komponen", "pendaftaran", "formulir", "oauth", "penanganan-error"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:features/home/page/Home.tsx",
+      "type": "file",
+      "name": "Home.tsx",
+      "filePath": "features/home/page/Home.tsx",
+      "summary": "Halaman beranda Tiket.ku yang menyusun navbar, hero, pratinjau acara, bagian keunggulan, daftar venue GBK, ajakan beli tiket, dan footer dengan data contoh statis.",
+      "tags": ["komponen", "beranda", "tata-letak", "pemasaran", "navigasi"],
+      "complexity": "complex",
+      "languageNotes": "Data acara dan venue masih berupa array statis di dalam berkas; gulir halus memakai scrollIntoView bawaan DOM dan tata letak responsif memakai utilitas Tailwind."
+    },
+    {
+      "id": "function:features/home/page/Home.tsx:HomePage",
+      "type": "function",
+      "name": "HomePage",
+      "filePath": "features/home/page/Home.tsx",
+      "lineRange": [58, 366],
+      "summary": "Komponen beranda yang merender seluruh bagian halaman dan menangani navigasi beli tiket dengan pemeriksaan status login, navigasi ke jadwal pertandingan, serta gulir halus ke bagian jadwal dan venue.",
+      "tags": ["komponen", "beranda", "navigasi", "penanganan-acara", "tata-letak"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/auth/page/SignupPage.tsx",
+      "target": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "function:features/home/page/Home.tsx:HomePage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/home/page/Home.tsx",
+      "target": "function:features/home/page/Home.tsx:HomePage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

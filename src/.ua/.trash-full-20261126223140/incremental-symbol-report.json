@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "ok": false,
+  "files": [
+    {
+      "filePath": "app.css",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 0,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Badge.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Banner.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Button.tsx",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "beforeSymbolCount": 1,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/CardAction.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Drawer.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Footer.tsx",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "beforeSymbolCount": 1,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/InputField.tsx",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "beforeSymbolCount": 1,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Navbar.tsx",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "beforeSymbolCount": 1,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/QrPassCard.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/RadioSelector.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Searchbar.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Stepper.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/SummaryCard.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "components/Tabs.tsx",
+      "beforeCount": 0,
+      "afterCount": 2,
+      "beforeSymbolCount": 0,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "features/auth/page/LoginPage.tsx",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "beforeSymbolCount": 1,
+      "afterSymbolCount": 1,
+      "missing": [],
+      "replacements": []
+    },
+    {
+      "filePath": "features/auth/page/SignupPage.tsx",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "beforeSymbolCount": 1,
+      "afterSymbolCount": 1,
+      "missing": [
+        {
+          "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+          "name": "SignupPage",
+          "type": "function",
+          "status": "unknown",
+          "reason": "Old symbol cannot be mapped uniquely, or source parsing is unavailable/failed"
+        }
+      ],
+      "replacements": []
+    },
+    {
+      "filePath": "features/home/page/Home.tsx",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "beforeSymbolCount": 1,
+      "afterSymbolCount": 1,
+      "missing": [
+        {
+          "id": "function:features/home/page/Home.tsx:HomePage",
+          "name": "HomePage",
+          "type": "function",
+          "status": "unknown",
+          "reason": "Old symbol cannot be mapped uniquely, or source parsing is unavailable/failed"
+        }
+      ],
+      "replacements": []
+    }
+  ],
+  "unresolvedFiles": [
+    "features/auth/page/SignupPage.tsx",
+    "features/home/page/Home.tsx"
+  ],
+  "errors": [],
+  "baseCommit": "f380ff666b3b2f38a3363d50f0dd6493bbba3328",
+  "headCommit": "9cb949b672fe4c04e42f752ef5e51820da75bf07",
+  "graphHash": "e8ac19ddd4c082617d41e45fb30d4fc1b96e438d7cb501fbdd404b90b065a782"
+}

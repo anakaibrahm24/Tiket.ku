@@ -1,0 +1,20 @@
+[
+  "app.css",
+  "components/Badge.tsx",
+  "components/Banner.tsx",
+  "components/Button.tsx",
+  "components/CardAction.tsx",
+  "components/Drawer.tsx",
+  "components/Footer.tsx",
+  "components/InputField.tsx",
+  "components/Navbar.tsx",
+  "components/QrPassCard.tsx",
+  "components/RadioSelector.tsx",
+  "components/Searchbar.tsx",
+  "components/Stepper.tsx",
+  "components/SummaryCard.tsx",
+  "components/Tabs.tsx",
+  "features/auth/page/LoginPage.tsx",
+  "features/auth/page/SignupPage.tsx",
+  "features/home/page/Home.tsx"
+]

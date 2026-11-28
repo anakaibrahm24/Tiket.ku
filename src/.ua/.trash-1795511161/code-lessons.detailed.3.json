@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-24T00:00:00.000Z",
+  "files": {
+    "hooks/useSession.ts": {
+      "overview": "Custom hook that tracks the current Supabase auth session and loading state. It fetches the initial session on mount and subscribes to auth state changes, exposing isLoggedIn, isLoading, session, and user. It is referenced by the authentication service and session tour step.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 8],
+          "explanation": "Imports React's useEffect and useState along with the Supabase Session type. Pulls getSession and onAuthStateChange from authService so the hook stays a thin wrapper over the auth service.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Session state and effect",
+          "lineRange": [9, 35],
+          "explanation": "Initializes state with session null and isLoading true. On mount it fetches the current session, guards against updates after unmount with a mounted flag, and subscribes to auth state changes to keep session in sync. The cleanup unsubscribes the listener and flips mounted to false.",
+          "tourOrder": 9
+        },
+        {
+          "title": "Derived return values",
+          "lineRange": [36, 43],
+          "explanation": "Destructures session and isLoading from state and returns isLoggedIn, isLoading, session, and user. Deriving isLoggedIn from !!session keeps consumers from handling null checks repeatedly.",
+          "tourOrder": 9
+        }
+      ]
+    },
+    "features/auth/page/AuthCallbackPage.tsx": {
+      "overview": "Handles the OAuth redirect callback by checking the Supabase session and routing to the intended destination or back to login. It is a minimal effect-driven component with a spinner fallback. It relates to the authentication pages tour step.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 4],
+          "explanation": "Imports useEffect from React and routing hooks from react-router-dom. Imports getSession from authService to verify the redirected session.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Callback redirect logic",
+          "lineRange": [6, 28],
+          "explanation": "Reads the intended destination from location.state with a fallback to /matchs. On mount it calls getSession; if there is an error or no session it navigates to /login, otherwise to the intended route. A mounted flag prevents navigation after unmount.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Loading spinner",
+          "lineRange": [30, 35],
+          "explanation": "Renders a centered spinning indicator while the session check resolves. The component returns this UI for the brief async window before navigation occurs.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "features/auth/page/LoginPage.tsx": {
+      "overview": "Login screen with email/password and Google sign-in forms, validation, and redirect handling. It uses react-hook-form with a Zod resolver and surfaces auth errors via Alerts. It is part of the authentication pages tour step.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 19],
+          "explanation": "Imports icons, form libraries, routing, shared UI primitives, the session hook, and auth schemas/services. Keeps the page wired to the same validation and auth helpers used elsewhere.",
+          "tourOrder": 10
+        },
+        {
+          "title": "State and form setup",
+          "lineRange": [21, 36],
+          "explanation": "Initializes navigation, location, session status, alert state, and Google loading flag. Configures react-hook-form with zodResolver(loginSchema) and destructures register, handleSubmit, errors, and isSubmitting.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Redirect when already logged in",
+          "lineRange": [38, 42],
+          "explanation": "Effect redirects authenticated users away from the login page to the intended destination. It waits until isLoading is false to avoid premature redirects.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Submit handlers",
+          "lineRange": [44, 66],
+          "explanation": "onSubmit calls signInWithEmail and shows a mapped error alert on failure or navigates on success. handleGoogle triggers Google OAuth and manages its loading state, showing an alert on error.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Login form UI",
+          "lineRange": [68, 188],
+          "explanation": "Renders the gradient hero, Google button, divider, and email/password form with floating labels and inline errors. Disables inputs while submitting and shows a spinner on the Google button. Footer is rendered at the bottom.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "features/auth/page/SignupPage.tsx": {
+      "overview": "Registration screen with name/email/password form, Google sign-up, and email verification feedback. It validates with signupSchema and checks the session after signup to decide between redirect and verification prompt. It is part of the authentication pages tour step.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 17],
+          "explanation": "Imports icons, form libraries, routing, shared UI, the session hook, and auth schemas/services including getSession for the post-signup check.",
+          "tourOrder": 10
+        },
+        {
+          "title": "State and form setup",
+          "lineRange": [19, 34],
+          "explanation": "Initializes navigation, location, session status, alert state, and Google loading flag. Configures react-hook-form with zodResolver(signupSchema).",
+          "tourOrder": 10
+        },
+        {
+          "title": "Redirect when already logged in",
+          "lineRange": [36, 40],
+          "explanation": "Effect redirects authenticated users away from the signup page. It waits for isLoading to finish before navigating.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Submit handlers",
+          "lineRange": [42, 76],
+          "explanation": "onSubmit calls signUpWithEmail with name, email, and password; on error it shows a mapped alert. On success it calls getSession and either navigates if a session exists or shows a success message asking the user to verify their email. handleGoogle starts Google OAuth and handles errors.",
+          "tourOrder": 10
+        },
+        {
+          "title": "Signup form UI",
+          "lineRange": [78, 235],
+          "explanation": "Renders the hero, Google button, divider, and a four-field form (name, email, password, confirm password) with inline validation errors. Disables inputs while submitting and includes a link back to login.",
+          "tourOrder": 10
+        }
+      ]
+    },
+    "features/orders/service/orderService.ts": {
+      "overview": "Order creation and payment completion via Supabase RPCs. createOrder requires an authenticated user and maps the buyer and items into RPC parameters; completePayment completes an order by id and method. It belongs to the payment form and order processing tour step.",
+      "sections": [
+        {
+          "title": "Imports and interfaces",
+          "lineRange": [1, 19],
+          "explanation": "Imports requireUserId, buyer/order types, and the Supabase client. Defines CreateOrderInput, CompletePaymentInput, and CreateOrderResult interfaces that shape the RPC calls and returned data.",
+          "tourOrder": 11
+        },
+        {
+          "title": "createOrder",
+          "lineRange": [21, 41],
+          "explanation": "Ensures the user is authenticated, then calls the create_order RPC with event id, mapped items, and buyer details. Throws on error or empty result and returns the order id and total amount.",
+          "tourOrder": 11
+        },
+        {
+          "title": "completePayment",
+          "lineRange": [43, 54],
+          "explanation": "Calls the complete_payment RPC with order id and payment method. Throws on error and returns the resulting ticket id.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/payment/components/PaymentMethods.tsx": {
+      "overview": "Selectable payment method button component with selected/hover styling and aria-pressed state. It is a small presentational component used by the Payment page. It belongs to the payment form and order processing tour step.",
+      "sections": [
+        {
+          "title": "Props interface",
+          "lineRange": [1, 9],
+          "explanation": "Imports React and defines PaymentMethodsProps with label, value, selected, and onSelect. The icon prop is commented out, leaving only the label rendered.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Selectable button",
+          "lineRange": [10, 36],
+          "explanation": "Renders a button that calls onSelect with its value on click. Applies selected or unselected Tailwind classes and sets aria-pressed to reflect selection state. Exports the component as default.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/payment/hooks/usePayment.ts": {
+      "overview": "Hook providing a react-hook-form instance configured with zodResolver and the payment schema. It keeps form setup reusable for the Payment page. It belongs to the payment form and order processing tour step.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 4],
+          "explanation": "Imports zodResolver, useForm, and the payment schema with its inferred type. These wire schema validation into react-hook-form.",
+          "tourOrder": 11
+        },
+        {
+          "title": "PaymentFormValidation hook",
+          "lineRange": [5, 13],
+          "explanation": "Creates and returns a useForm instance validated by paymentSchema via zodResolver. Spreading methods keeps all form helpers available to callers.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/payment/page/Payment.tsx": {
+      "overview": "Payment page rendering payment method options and a card details form, navigating to the ticket page on submit. It manages the selected method state and registers form fields. It belongs to the payment form and order processing tour step.",
+      "sections": [
+        {
+          "title": "Imports and constants",
+          "lineRange": [1, 18],
+          "explanation": "Imports React state, routing, shared UI, PaymentMethods, and the usePayment hook. Defines the PaymentOption type and the PAYMENT_METHODS list with card and bank options.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Component state and submit",
+          "lineRange": [19, 35],
+          "explanation": "Initializes params, form registration, navigation, and selected method state. onSubmit is wrapped by handleSubmit and navigates to the ticket route using userId; the legacy user lookup is commented out.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Payment form UI",
+          "lineRange": [38, 83],
+          "explanation": "Renders the payment method buttons, four card detail InputFields with error messages, and a submit button. Passes selected state to PaymentMethods and updates it via onSelect.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/payment/schemas/paymentSchema.ts": {
+      "overview": "Zod schema validating payment form fields: cardholder name, 4-digit card number, CVV, and expiry. It is used by usePayment through zodResolver. It belongs to the payment form and order processing tour step.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 1],
+          "explanation": "Imports zod for schema construction. Single import keeps the schema module minimal.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Schema definition",
+          "lineRange": [3, 21],
+          "explanation": "Defines a reusable nonempty string helper and the paymentSchema object with regex and length rules for nameOnCard, cardNumber, cvv, and validTHRU. Error messages are in Indonesian.",
+          "tourOrder": 11
+        },
+        {
+          "title": "Type export",
+          "lineRange": [23, 23],
+          "explanation": "Exports PaymentSchema as the inferred type of paymentSchema, giving the form a compile-time contract matching validation.",
+          "tourOrder": 11
+        }
+      ]
+    },
+    "features/tickets/service/ticketService.ts": {
+      "overview": "Fetches a ticket by order id from Supabase, mapping snake_case database columns to the camelCase OrderTicket domain type. It belongs to the buyer registration and tickets tour step.",
+      "sections": [
+        {
+          "title": "Imports and row type",
+          "lineRange": [1, 9],
+          "explanation": "Imports OrderTicket type and the Supabase client. Defines TicketRow describing the selected columns id, order_id, qr_code, and issued_at.",
+          "tourOrder": 12
+        },
+        {
+          "title": "getTicketByOrderId",
+          "lineRange": [11, 28],
+          "explanation": "Queries the tickets table filtered by order_id using single(). Returns null on PGRST116 (no rows), throws other errors, and maps the row to OrderTicket with camelCase fields.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/components/TicketCard.tsx": {
+      "overview": "React component rendering a ticket tribune card with price display and quantity increase/decrease controls. It notifies the parent via onCountChange. It belongs to the buyer registration and tickets tour step.",
+      "sections": [
+        {
+          "title": "Imports and props",
+          "lineRange": [1, 13],
+          "explanation": "Imports React, Control type, and UserSchema. Defines TicketCardProps including name, tribune, price, count, control, and onCountChange; the GetDatas import is commented out.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Quantity handlers",
+          "lineRange": [15, 27],
+          "explanation": "Destructures tribune, price, count, and onCountChange from props. handleDecrease decrements only when count is greater than zero; handleIncrease increments unconditionally.",
+          "tourOrder": 12
+        },
+        {
+          "title": "Card UI",
+          "lineRange": [29, 62],
+          "explanation": "Renders the tribune name, price, and a stepper with minus, count, and plus buttons. Clicking the buttons updates quantity through onCountChange.",
+          "tourOrder": 12
+        }
+      ]
+    },
+    "features/users/hooks/useUserRegister.ts": {
+      "overview": "Custom hook wrapping react-hook-form with zod validation for user registration form state. It provides default values for all fields. It belongs to the buyer registration and tickets tour step.",
+      "sections": [
+        {
+          "title": "Imports",
+          "lineRange": [1, 4],
+          "explanation": "Imports zodResolver, useForm, and userSchema with its inferred type. These connect schema validation to form state.",
+          "tourOrder": 12
+        },
+        {
+          "title": "useUserRegister hook",
+          "lineRange": [5, 18],
+          "explanation": "Creates a useForm instance with userSchema resolver and default values for fullName, identityNumber, email, gender, and tickets. Returns all form methods spread for convenient use in components.",
+          "tourOrder": 12
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "nodes": [
+    {
+      "id": "file:features/matches/components/Card.tsx",
+      "type": "file",
+      "name": "Card.tsx",
+      "filePath": "features/matches/components/Card.tsx",
+      "summary": "Komponen kartu jadwal pertandingan yang menampilkan kedua tim, waktu, zona waktu, tanggal, dan stadion, lalu meneruskan klik ke induknya.",
+      "tags": ["komponen", "tampilan", "react", "kartu-jadwal"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/components/Card.tsx:MatchScheduleCard",
+      "type": "function",
+      "name": "MatchScheduleCard",
+      "filePath": "features/matches/components/Card.tsx",
+      "lineRange": [5, 31],
+      "summary": "Merender kartu pertandingan lengkap dengan dua bagian tim dan detail jadwal, serta memanggil onClick saat kartu dipilih.",
+      "tags": ["komponen", "tampilan", "react", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/components/TeamSection.tsx",
+      "type": "file",
+      "name": "TeamSection.tsx",
+      "filePath": "features/matches/components/TeamSection.tsx",
+      "summary": "Komponen tampilan untuk satu tim yang merender nama dan logo tim di dalam kartu pertandingan.",
+      "tags": ["komponen", "tampilan", "react", "tim"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/components/TeamSection.tsx:TeamSection",
+      "type": "function",
+      "name": "TeamSection",
+      "filePath": "features/matches/components/TeamSection.tsx",
+      "lineRange": [3, 14],
+      "summary": "Menampilkan nama tim dan gambar logo berdasarkan properti name serta logo yang diterimanya.",
+      "tags": ["komponen", "tampilan", "react", "tim"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/components/matchesProps.ts",
+      "type": "file",
+      "name": "matchesProps.ts",
+      "filePath": "features/matches/components/matchesProps.ts",
+      "summary": "Deklarasi tipe TypeScript untuk properti komponen kartu pertandingan yang dipakai oleh modul tampilan.",
+      "tags": ["tipe", "props", "typescript", "deklarasi"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/hooks/useMatchData.ts",
+      "type": "file",
+      "name": "useMatchData.ts",
+      "filePath": "features/matches/hooks/useMatchData.ts",
+      "summary": "Hook React yang mengambil daftar pertandingan lewat layanan matchService dan mengelola state data, loading, serta error.",
+      "tags": ["hook", "react", "pengambilan-data", "state"],
+      "complexity": "simple",
+      "languageNotes": "Memakai pola useState dan useEffect dengan fungsi fetchData internal yang dipanggil saat mount."
+    },
+    {
+      "id": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "function",
+      "name": "useMatchData",
+      "filePath": "features/matches/hooks/useMatchData.ts",
+      "lineRange": [6, 28],
+      "summary": "Custom hook yang memuat pertandingan melalui getMatches, menyimpan hasil ke state, dan menangani kegagalan dengan pesan error.",
+      "tags": ["hook", "react", "pengambilan-data", "state"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/page/Matches.tsx",
+      "type": "file",
+      "name": "Matches.tsx",
+      "filePath": "features/matches/page/Matches.tsx",
+      "summary": "Halaman daftar pertandingan yang memakai hook useMatchData, merender kartu untuk setiap pertandingan, dan menyimpan pilihan ke sessionStorage sebelum bernavigasi.",
+      "tags": ["halaman", "komponen", "react", "navigasi"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:features/matches/page/Matches.tsx:Matches",
+      "type": "function",
+      "name": "Matches",
+      "filePath": "features/matches/page/Matches.tsx",
+      "lineRange": [5, 23],
+      "summary": "Komponen halaman yang mengambil data pertandingan, memetakan setiap entri ke MatchScheduleCard, dan mengarahkan pengguna setelah memilih kartu.",
+      "tags": ["komponen", "halaman", "react", "navigasi"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/service/matchService.ts",
+      "type": "file",
+      "name": "matchService.ts",
+      "filePath": "features/matches/service/matchService.ts",
+      "summary": "Layanan pengambilan data pertandingan yang mengubah data event beserta kategorinya menjadi bentuk pertandingan yang dipakai lapisan UI.",
+      "tags": ["layanan", "data", "transformasi", "pertandingan"],
+      "complexity": "simple",
+      "languageNotes": "Memakai Object.fromEntries untuk mengubah array kategori menjadi objek peta kunci-nilai."
+    },
+    {
+      "id": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "function",
+      "name": "getMatches",
+      "filePath": "features/matches/service/matchService.ts",
+      "lineRange": [6, 24],
+      "summary": "Mengambil daftar event lalu memetakannya menjadi array pertandingan dengan kategori yang dikelompokkan per event.",
+      "tags": ["layanan", "data", "transformasi", "pertandingan"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/types/matchesPayload.ts",
+      "type": "file",
+      "name": "matchesPayload.ts",
+      "filePath": "features/matches/types/matchesPayload.ts",
+      "summary": "Definisi tipe payload pertandingan yang menjadi kontrak data bersama untuk komponen, hook, dan layanan pada fitur matches.",
+      "tags": ["tipe", "data", "deklarasi", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "file",
+      "name": "matchesPayload.types.ts",
+      "filePath": "features/matches/types/matchesPayload.types.ts",
+      "summary": "Definisi tipe dasar untuk payload pertandingan yang diimpor oleh modul tipe terkait di fitur matches.",
+      "tags": ["tipe", "deklarasi", "typescript"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/TeamSection.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/components/matchesProps.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/service/matchService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/components/Card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "file:features/matches/hooks/useMatchData.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "file:features/matches/types/matchesPayload.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/types/matchesPayload.ts",
+      "target": "file:features/matches/types/matchesPayload.types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:features/matches/components/Card.tsx",
+      "target": "function:features/matches/components/Card.tsx:MatchScheduleCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "function:features/matches/components/TeamSection.tsx:TeamSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/page/Matches.tsx",
+      "target": "function:features/matches/page/Matches.tsx:Matches",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:features/matches/components/TeamSection.tsx",
+      "target": "function:features/matches/components/TeamSection.tsx:TeamSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/matches/hooks/useMatchData.ts",
+      "target": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:features/matches/service/matchService.ts",
+      "target": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "target": "function:features/matches/service/matchService.ts:getMatches",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:features/matches/page/Matches.tsx:Matches",
+      "target": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,1153 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 24,
+  "filesSkipped": [
+    "app.css"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 24,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 24,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "components/Alerts.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 119,
+      "nonEmptyLines": 111,
+      "functions": [
+        {
+          "name": "Alerts",
+          "startLine": 50,
+          "endLine": 117,
+          "params": [
+            "{\r\n  variant,\r\n  desc,\r\n  duration = 5000,\r\n  onClose,\r\n}"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Alerts",
+          "callee": "useState",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Alerts",
+          "callee": "useEffect",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Alerts",
+          "callee": "setTimeout",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Alerts",
+          "callee": "setIsVisible",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Alerts",
+          "callee": "clearTimeout",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Alerts",
+          "callee": "onClose",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Alerts",
+          "callee": "cn",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Alerts",
+          "callee": "setIsVisible",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Alerts",
+          "callee": "cn",
+          "lineNumber": 108
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Badge.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "Badge",
+          "startLine": 9,
+          "endLine": 31,
+          "params": [
+            "{ children, variant = \"neutral\", className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Badge",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Badge",
+          "callee": "cn",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Banner.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "Banner",
+          "startLine": 13,
+          "endLine": 49,
+          "params": [
+            "{\n  title,\n  description,\n  code,\n  icon = \"verified\",\n  className = \"\",\n  children,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Banner",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Banner",
+          "callee": "cn",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Drawer.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "Drawer",
+          "startLine": 12,
+          "endLine": 38,
+          "params": [
+            "{ open, title, children, onClose, className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Drawer",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Drawer",
+          "callee": "cn",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Footer.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "Footer",
+          "startLine": 3,
+          "endLine": 24,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Footer",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/FooterLinks.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 16,
+      "functions": [
+        {
+          "name": "FooterLinks",
+          "startLine": 3,
+          "endLine": 17,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "FooterLinks",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "FooterLinks",
+          "callee": "links.map",
+          "lineNumber": 6
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/InputField.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "InputField",
+          "startLine": 15,
+          "endLine": 77,
+          "params": [
+            "{\n  className = \"\",\n  labelName,\n  error,\n  required = false,\n  showForgotPasswordLink = false,\n  forgotPasswordPath = \"#\",\n  type = \"text\",\n  ...props\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InputField",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "InputField",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "InputField",
+          "callee": "cn",
+          "lineNumber": 48
+        },
+        {
+          "caller": "InputField",
+          "callee": "setShowPassword",
+          "lineNumber": 60
+        },
+        {
+          "caller": "InputField",
+          "callee": "cn",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/QrPassCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "QrPassCard",
+          "startLine": 11,
+          "endLine": 33,
+          "params": [
+            "{\n  title,\n  subtitle,\n  code,\n  status,\n  className = \"\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "QrPassCard",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "QrPassCard",
+          "callee": "cn",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/RadioSelector.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 57,
+      "functions": [
+        {
+          "name": "RadioSelector",
+          "startLine": 16,
+          "endLine": 59,
+          "params": [
+            "{\n  options,\n  value,\n  onChange,\n  className = \"\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RadioSelector",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "RadioSelector",
+          "callee": "cn",
+          "lineNumber": 23
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "options.map",
+          "lineNumber": 24
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "onChange",
+          "lineNumber": 30
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "cn",
+          "lineNumber": 31
+        },
+        {
+          "caller": "RadioSelector",
+          "callee": "cn",
+          "lineNumber": 39
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Stepper.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 42,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "Stepper",
+          "startLine": 9,
+          "endLine": 40,
+          "params": [
+            "{ steps, activeIndex, className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Stepper",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Stepper",
+          "callee": "cn",
+          "lineNumber": 11
+        },
+        {
+          "caller": "Stepper",
+          "callee": "steps.map",
+          "lineNumber": 12
+        },
+        {
+          "caller": "Stepper",
+          "callee": "cn",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Stepper",
+          "callee": "cn",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/SummaryCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "SummaryCard",
+          "startLine": 14,
+          "endLine": 44,
+          "params": [
+            "{\n  title = \"Ringkasan\",\n  children,\n  totalLabel = \"Total\",\n  totalValue,\n  actionLabel,\n  onAction,\n  className = \"\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SummaryCard",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SummaryCard",
+          "callee": "cn",
+          "lineNumber": 24
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "components/Tabs.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "Tabs",
+          "startLine": 16,
+          "endLine": 46,
+          "params": [
+            "{ items, activeId, onChange, className = \"\" }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Tabs",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Tabs",
+          "callee": "cn",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Tabs",
+          "callee": "items.map",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Tabs",
+          "callee": "onChange",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Tabs",
+          "callee": "cn",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/schema/authSchemas.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 27,
+      "exports": [
+        {
+          "name": "authSchema",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "loginSchema",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "signupSchema",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/service/authService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "getSession",
+          "startLine": 5,
+          "endLine": 5,
+          "params": []
+        },
+        {
+          "name": "onAuthStateChange",
+          "startLine": 7,
+          "endLine": 9,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "requireUserId",
+          "startLine": 11,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "signInWithEmail",
+          "startLine": 19,
+          "endLine": 20,
+          "params": [
+            "email",
+            "password"
+          ]
+        },
+        {
+          "name": "signUpWithEmail",
+          "startLine": 22,
+          "endLine": 27,
+          "params": [
+            "email",
+            "password",
+            "fullName"
+          ]
+        },
+        {
+          "name": "signInWithGoogle",
+          "startLine": 29,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "signOut",
+          "startLine": 35,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "mapAuthError",
+          "startLine": 37,
+          "endLine": 60,
+          "params": [
+            "error"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getSession",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "onAuthStateChange",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "requireUserId",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "signInWithEmail",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "signUpWithEmail",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "signInWithGoogle",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "signOut",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "mapAuthError",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getSession",
+          "callee": "supabase.auth.getSession",
+          "lineNumber": 5
+        },
+        {
+          "caller": "onAuthStateChange",
+          "callee": "supabase.auth.onAuthStateChange",
+          "lineNumber": 9
+        },
+        {
+          "caller": "requireUserId",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 12
+        },
+        {
+          "caller": "signInWithEmail",
+          "callee": "supabase.auth.signInWithPassword",
+          "lineNumber": 20
+        },
+        {
+          "caller": "signUpWithEmail",
+          "callee": "supabase.auth.signUp",
+          "lineNumber": 23
+        },
+        {
+          "caller": "signInWithGoogle",
+          "callee": "supabase.auth.signInWithOAuth",
+          "lineNumber": 30
+        },
+        {
+          "caller": "signOut",
+          "callee": "supabase.auth.signOut",
+          "lineNumber": 35
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "message.toLowerCase",
+          "lineNumber": 40
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "message.includes",
+          "lineNumber": 41
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "message.includes",
+          "lineNumber": 44
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "message.includes",
+          "lineNumber": 47
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "lowerMessage.includes",
+          "lineNumber": 50
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "lowerMessage.includes",
+          "lineNumber": 53
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "lowerMessage.includes",
+          "lineNumber": 56
+        },
+        {
+          "caller": "mapAuthError",
+          "callee": "lowerMessage.includes",
+          "lineNumber": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/events/service/eventService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 74,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "mapEvent",
+          "startLine": 28,
+          "endLine": 49,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "buildQuery",
+          "startLine": 51,
+          "endLine": 61,
+          "params": [
+            "type"
+          ]
+        },
+        {
+          "name": "getEvents",
+          "startLine": 63,
+          "endLine": 67,
+          "params": [
+            "type"
+          ]
+        },
+        {
+          "name": "getEventById",
+          "startLine": 69,
+          "endLine": 74,
+          "params": [
+            "eventId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getEvents",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "getEventById",
+          "line": 69,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mapEvent",
+          "callee": "(row.ticket_categories ?? []).map",
+          "lineNumber": 40
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "supabase\r\n    .from(\"events\")\r\n    .select(\"*, ticket_categories(*)\")\r\n    .gte(\"event_date\", new Date().toISOString().slice(0, 10))\r\n    .order(\"event_date\", { ascending: true })\r\n    .order",
+          "lineNumber": 52
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "supabase\r\n    .from(\"events\")\r\n    .select(\"*, ticket_categories(*)\")\r\n    .gte(\"event_date\", new Date().toISOString().slice(0, 10))\r\n    .order",
+          "lineNumber": 52
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "supabase\r\n    .from(\"events\")\r\n    .select(\"*, ticket_categories(*)\")\r\n    .gte",
+          "lineNumber": 52
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "supabase\r\n    .from(\"events\")\r\n    .select",
+          "lineNumber": 52
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "supabase\r\n    .from",
+          "lineNumber": 52
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "new Date().toISOString().slice",
+          "lineNumber": 55
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "new Date().toISOString",
+          "lineNumber": 55
+        },
+        {
+          "caller": "buildQuery",
+          "callee": "query.eq",
+          "lineNumber": 59
+        },
+        {
+          "caller": "getEvents",
+          "callee": "buildQuery",
+          "lineNumber": 64
+        },
+        {
+          "caller": "getEvents",
+          "callee": "(data as EventRow[]).map",
+          "lineNumber": 66
+        },
+        {
+          "caller": "getEventById",
+          "callee": "buildQuery().eq(\"id\", eventId).single",
+          "lineNumber": 70
+        },
+        {
+          "caller": "getEventById",
+          "callee": "buildQuery().eq",
+          "lineNumber": 70
+        },
+        {
+          "caller": "getEventById",
+          "callee": "buildQuery",
+          "lineNumber": 70
+        },
+        {
+          "caller": "getEventById",
+          "callee": "mapEvent",
+          "lineNumber": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/events/types/event.types.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/orders/service/orderService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 46,
+      "functions": [
+        {
+          "name": "createOrder",
+          "startLine": 21,
+          "endLine": 41,
+          "params": [
+            "{\r\n  eventId,\r\n  items,\r\n  buyer,\r\n}"
+          ]
+        },
+        {
+          "name": "completePayment",
+          "startLine": 43,
+          "endLine": 54,
+          "params": [
+            "{\r\n  orderId,\r\n  method,\r\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createOrder",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "completePayment",
+          "line": 43,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createOrder",
+          "callee": "requireUserId",
+          "lineNumber": 26
+        },
+        {
+          "caller": "createOrder",
+          "callee": "supabase.rpc",
+          "lineNumber": 28
+        },
+        {
+          "caller": "createOrder",
+          "callee": "items.map",
+          "lineNumber": 30
+        },
+        {
+          "caller": "completePayment",
+          "callee": "supabase.rpc",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/tickets/component/Ticket.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 71,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/tickets/service/ticketService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "getTicketByOrderId",
+          "startLine": 11,
+          "endLine": 28,
+          "params": [
+            "orderId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getTicketByOrderId",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getTicketByOrderId",
+          "callee": "supabase\r\n    .from(\"tickets\")\r\n    .select(\"id, order_id, qr_code, issued_at\")\r\n    .eq(\"order_id\", orderId)\r\n    .single",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getTicketByOrderId",
+          "callee": "supabase\r\n    .from(\"tickets\")\r\n    .select(\"id, order_id, qr_code, issued_at\")\r\n    .eq",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getTicketByOrderId",
+          "callee": "supabase\r\n    .from(\"tickets\")\r\n    .select",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getTicketByOrderId",
+          "callee": "supabase\r\n    .from",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/users/hooks/useUsers.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/users/page/RegisterForm.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 94,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/users/service/userServices.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/users/types/userPayload.d.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "hooks/useCounter.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 11,
+      "functions": [
+        {
+          "name": "useCounter",
+          "startLine": 3,
+          "endLine": 15,
+          "params": [
+            "defaultValue"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useCounter",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useCounter",
+          "callee": "useState",
+          "lineNumber": 4
+        },
+        {
+          "caller": "counterIncrease",
+          "callee": "setCount",
+          "lineNumber": 7
+        },
+        {
+          "caller": "counterDecrease",
+          "callee": "setCount",
+          "lineNumber": 11
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

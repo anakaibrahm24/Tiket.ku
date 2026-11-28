@@ -1,0 +1,789 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "file:components/index.ts",
+      "score": 5,
+      "name": "index.ts",
+      "summary": "Barrel file re-exporting all shared UI components (Alerts, Button, Dropdown, Hero, etc.) for convenient single-path imports."
+    },
+    {
+      "id": "file:App.tsx",
+      "score": 3,
+      "name": "App.tsx",
+      "summary": "Root component that configures React Router and declares all top-level routes for the application."
+    },
+    {
+      "id": "file:features/auth/page/LoginPage.tsx",
+      "score": 2,
+      "name": "LoginPage.tsx",
+      "summary": "Login screen with email/password and Google sign-in forms, validation, and redirect handling."
+    },
+    {
+      "id": "file:features/auth/page/SignupPage.tsx",
+      "score": 2,
+      "name": "SignupPage.tsx",
+      "summary": "Registration screen with name/email/password form, Google sign-up, and email verification feedback."
+    },
+    {
+      "id": "file:features/home/page/Home.tsx",
+      "score": 2,
+      "name": "Home.tsx",
+      "summary": "Landing page composing navbar, hero, features, schedule preview, and footer sections."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "function:features/auth/service/authService.ts:getSession",
+      "fanIn": 5,
+      "name": "getSession"
+    },
+    {
+      "id": "function:hooks/useSession.ts:useSession",
+      "fanIn": 5,
+      "name": "useSession"
+    },
+    {
+      "id": "function:lib/utiils.ts:cn",
+      "fanIn": 5,
+      "name": "cn"
+    },
+    {
+      "id": "file:features/auth/service/authService.ts",
+      "fanIn": 4,
+      "name": "authService.ts"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:mapAuthError",
+      "fanIn": 4,
+      "name": "mapAuthError"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signInWithGoogle",
+      "fanIn": 4,
+      "name": "signInWithGoogle"
+    },
+    {
+      "id": "file:components/Button.tsx",
+      "fanIn": 3,
+      "name": "Button.tsx"
+    },
+    {
+      "id": "file:components/Footer.tsx",
+      "fanIn": 3,
+      "name": "Footer.tsx"
+    },
+    {
+      "id": "file:features/matches/types/matchesPayload.ts",
+      "fanIn": 3,
+      "name": "matchesPayload.ts"
+    },
+    {
+      "id": "file:hooks/useSession.ts",
+      "fanIn": 3,
+      "name": "useSession.ts"
+    },
+    {
+      "id": "function:components/Button.tsx:Button",
+      "fanIn": 3,
+      "name": "Button"
+    },
+    {
+      "id": "function:components/FeatureCard.tsx:FeatureCard",
+      "fanIn": 3,
+      "name": "FeatureCard"
+    },
+    {
+      "id": "function:components/FooterLinks.tsx:FooterLinks",
+      "fanIn": 3,
+      "name": "FooterLinks"
+    },
+    {
+      "id": "function:components/ScheduleCard.tsx:ScheduleCard",
+      "fanIn": 3,
+      "name": "ScheduleCard"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:onAuthStateChange",
+      "fanIn": 3,
+      "name": "onAuthStateChange"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:requireUserId",
+      "fanIn": 3,
+      "name": "requireUserId"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signInWithEmail",
+      "fanIn": 3,
+      "name": "signInWithEmail"
+    },
+    {
+      "id": "function:features/auth/service/authService.ts:signUpWithEmail",
+      "fanIn": 3,
+      "name": "signUpWithEmail"
+    },
+    {
+      "id": "function:features/events/service/eventService.ts:getEvents",
+      "fanIn": 3,
+      "name": "getEvents"
+    },
+    {
+      "id": "function:features/matches/hooks/useMatchData.ts:useMatchData",
+      "fanIn": 3,
+      "name": "useMatchData"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:features/auth/service/authService.ts",
+      "fanOut": 16,
+      "name": "authService.ts"
+    },
+    {
+      "id": "file:features/auth/page/LoginPage.tsx",
+      "fanOut": 8,
+      "name": "LoginPage.tsx"
+    },
+    {
+      "id": "file:features/auth/page/SignupPage.tsx",
+      "fanOut": 8,
+      "name": "SignupPage.tsx"
+    },
+    {
+      "id": "file:features/home/page/Home.tsx",
+      "fanOut": 8,
+      "name": "Home.tsx"
+    },
+    {
+      "id": "file:App.tsx",
+      "fanOut": 7,
+      "name": "App.tsx"
+    },
+    {
+      "id": "file:features/events/service/eventService.ts",
+      "fanOut": 6,
+      "name": "eventService.ts"
+    },
+    {
+      "id": "file:features/matches/components/Card.tsx",
+      "fanOut": 5,
+      "name": "Card.tsx"
+    },
+    {
+      "id": "file:features/payment/page/Payment.tsx",
+      "fanOut": 5,
+      "name": "Payment.tsx"
+    },
+    {
+      "id": "function:features/auth/page/SignupPage.tsx:SignupPage",
+      "fanOut": 5,
+      "name": "SignupPage"
+    },
+    {
+      "id": "file:features/matches/hooks/useMatchData.ts",
+      "fanOut": 4,
+      "name": "useMatchData.ts"
+    },
+    {
+      "id": "file:features/matches/page/Matches.tsx",
+      "fanOut": 4,
+      "name": "Matches.tsx"
+    },
+    {
+      "id": "file:features/orders/service/orderService.ts",
+      "fanOut": 4,
+      "name": "orderService.ts"
+    },
+    {
+      "id": "function:features/auth/page/LoginPage.tsx:LoginPage",
+      "fanOut": 4,
+      "name": "LoginPage"
+    },
+    {
+      "id": "file:components/Features.tsx",
+      "fanOut": 3,
+      "name": "Features.tsx"
+    },
+    {
+      "id": "file:components/Footer.tsx",
+      "fanOut": 3,
+      "name": "Footer.tsx"
+    },
+    {
+      "id": "file:components/Hero.tsx",
+      "fanOut": 3,
+      "name": "Hero.tsx"
+    },
+    {
+      "id": "file:components/SchedulePreview.tsx",
+      "fanOut": 3,
+      "name": "SchedulePreview.tsx"
+    },
+    {
+      "id": "file:features/auth/page/AuthCallbackPage.tsx",
+      "fanOut": 3,
+      "name": "AuthCallbackPage.tsx"
+    },
+    {
+      "id": "file:features/matches/components/TeamSection.tsx",
+      "fanOut": 3,
+      "name": "TeamSection.tsx"
+    },
+    {
+      "id": "file:features/matches/service/matchService.ts",
+      "fanOut": 3,
+      "name": "matchService.ts"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:components/index.ts",
+    "order": [
+      "file:components/index.ts"
+    ],
+    "depthMap": {
+      "file:components/index.ts": 0
+    },
+    "byDepth": {
+      "0": [
+        "file:components/index.ts"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [],
+    "infrastructure": [],
+    "data": [],
+    "config": []
+  },
+  "clusters": [],
+  "layers": {
+    "count": 5,
+    "list": [
+      {
+        "id": "layer:ui",
+        "name": "UI Layer",
+        "description": "React components, pages, routing, and styling for the Tiket.ku interface."
+      },
+      {
+        "id": "layer:hooks",
+        "name": "Hooks Layer",
+        "description": "Custom React hooks for data fetching, form handling, and session state."
+      },
+      {
+        "id": "layer:service",
+        "name": "Service Layer",
+        "description": "Supabase-backed data access and business logic for events, orders, tickets, and auth."
+      },
+      {
+        "id": "layer:types",
+        "name": "Types & Schemas",
+        "description": "TypeScript types, Zod validation schemas, and environment declarations."
+      },
+      {
+        "id": "layer:utility",
+        "name": "Utility Layer",
+        "description": "Shared helpers such as Tailwind class merging."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:features/matches/components/Card.tsx": {
+      "name": "Card.tsx",
+      "type": "file",
+      "summary": "Renders a single match schedule card composing two TeamSection blocks with kickoff time, date, and stadium, invoking onClick when clicked."
+    },
+    "function:features/matches/components/Card.tsx:MatchScheduleCard": {
+      "name": "MatchScheduleCard",
+      "type": "function",
+      "summary": "React functional component displaying home/away teams, match time and timezone, date, and stadium for a scheduled match."
+    },
+    "file:features/matches/components/TeamSection.tsx": {
+      "name": "TeamSection.tsx",
+      "type": "file",
+      "summary": "Renders a team's name and logo in a centered section used inside the match schedule card."
+    },
+    "function:features/matches/components/TeamSection.tsx:TeamSection": {
+      "name": "TeamSection",
+      "type": "function",
+      "summary": "Stateless component rendering a team name heading and logo image from a TeamPayload."
+    },
+    "file:features/matches/components/matchesProps.ts": {
+      "name": "matchesProps.ts",
+      "type": "file",
+      "summary": "Defines the MatchCardProps interface carrying an optional onClick handler for match cards."
+    },
+    "file:features/matches/hooks/useMatchData.ts": {
+      "name": "useMatchData.ts",
+      "type": "file",
+      "summary": "Custom hook that fetches matches on mount and exposes matches, loading, and error state."
+    },
+    "function:features/matches/hooks/useMatchData.ts:useMatchData": {
+      "name": "useMatchData",
+      "type": "function",
+      "summary": "Fetches match data via getMatches on mount, managing loading and error state and returning matches, loading, error."
+    },
+    "file:features/matches/page/Matches.tsx": {
+      "name": "Matches.tsx",
+      "type": "file",
+      "summary": "Page component rendering a grid of match cards and navigating to the match form with the selected match id."
+    },
+    "function:features/matches/page/Matches.tsx:Matches": {
+      "name": "Matches",
+      "type": "function",
+      "summary": "Renders the matches page, mapping fetched matches to cards and handling card clicks by storing the match id and navigating."
+    },
+    "file:features/matches/service/matchService.ts": {
+      "name": "matchService.ts",
+      "type": "file",
+      "summary": "Adapter service converting event records into the legacy MatchPayload shape used by the match schedule UI."
+    },
+    "function:features/matches/service/matchService.ts:getMatches": {
+      "name": "getMatches",
+      "type": "function",
+      "summary": "Fetches events and maps each into a MatchPayload, including derived team payloads and ticket category pricing."
+    },
+    "file:features/matches/types/matchesPayload.ts": {
+      "name": "matchesPayload.ts",
+      "type": "file",
+      "summary": "Defines the MatchPayload interface describing a scheduled match including teams, times, venue, and ticket categories."
+    },
+    "file:features/matches/types/matchesPayload.types.ts": {
+      "name": "matchesPayload.types.ts",
+      "type": "file",
+      "summary": "Defines the TeamPayload interface with name and logo fields used by match payloads."
+    },
+    "file:App.tsx": {
+      "name": "App.tsx",
+      "type": "file",
+      "summary": "Root component that configures React Router and declares all top-level routes for the application."
+    },
+    "function:App.tsx:App": {
+      "name": "App",
+      "type": "function",
+      "summary": "Renders the BrowserRouter with route definitions for home, matches, login, signup, and auth callback pages."
+    },
+    "file:features/auth/page/AuthCallbackPage.tsx": {
+      "name": "AuthCallbackPage.tsx",
+      "type": "file",
+      "summary": "Handles the OAuth redirect callback by checking the Supabase session and redirecting to the intended route or login."
+    },
+    "function:features/auth/page/AuthCallbackPage.tsx:AuthCallbackPage": {
+      "name": "AuthCallbackPage",
+      "type": "function",
+      "summary": "Effect-driven component that calls getSession and navigates based on session presence."
+    },
+    "file:features/auth/page/LoginPage.tsx": {
+      "name": "LoginPage.tsx",
+      "type": "file",
+      "summary": "Login screen with email/password and Google sign-in forms, validation, and redirect handling."
+    },
+    "function:features/auth/page/LoginPage.tsx:LoginPage": {
+      "name": "LoginPage",
+      "type": "function",
+      "summary": "Renders the login UI and handles email/password and Google authentication flows."
+    },
+    "file:features/auth/page/SignupPage.tsx": {
+      "name": "SignupPage.tsx",
+      "type": "file",
+      "summary": "Registration screen with name/email/password form, Google sign-up, and email verification feedback."
+    },
+    "function:features/auth/page/SignupPage.tsx:SignupPage": {
+      "name": "SignupPage",
+      "type": "function",
+      "summary": "Renders the signup UI and handles account creation plus post-signup session check."
+    },
+    "file:features/home/page/Home.tsx": {
+      "name": "Home.tsx",
+      "type": "file",
+      "summary": "Landing page composing navbar, hero, features, schedule preview, and footer sections."
+    },
+    "function:features/home/page/Home.tsx:HomePage": {
+      "name": "HomePage",
+      "type": "function",
+      "summary": "Renders the home page and wires navigation handlers for ticket purchase and schedule viewing."
+    },
+    "file:components/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Barrel file re-exporting all shared UI components (Alerts, Button, Dropdown, Hero, etc.) for convenient single-path imports."
+    },
+    "file:features/payment/components/PaymentMethods.tsx": {
+      "name": "PaymentMethods.tsx",
+      "type": "file",
+      "summary": "Selectable payment method button component with selected/hover styling and aria-pressed state."
+    },
+    "function:features/payment/components/PaymentMethods.tsx:PaymentMethods": {
+      "name": "PaymentMethods",
+      "type": "function",
+      "summary": "Renders a selectable payment method button that calls onSelect with its value and reflects selected state via styling."
+    },
+    "file:features/payment/hooks/usePayment.ts": {
+      "name": "usePayment.ts",
+      "type": "file",
+      "summary": "Hook providing a react-hook-form instance configured with zodResolver and the payment schema."
+    },
+    "function:features/payment/hooks/usePayment.ts:PaymentFormValidation": {
+      "name": "PaymentFormValidation",
+      "type": "function",
+      "summary": "Creates and returns react-hook-form methods validated by paymentSchema using zodResolver."
+    },
+    "file:features/payment/page/Payment.tsx": {
+      "name": "Payment.tsx",
+      "type": "file",
+      "summary": "Payment page rendering payment method options and a card details form, navigating to the ticket page on submit."
+    },
+    "function:features/payment/page/Payment.tsx:Payment": {
+      "name": "Payment",
+      "type": "function",
+      "summary": "Payment page component managing the selected method, registering form fields, and navigating to the ticket route on submit."
+    },
+    "file:features/payment/schemas/paymentSchema.ts": {
+      "name": "paymentSchema.ts",
+      "type": "file",
+      "summary": "Zod schema validating payment form fields: cardholder name, 4-digit card number, CVV, and expiry."
+    },
+    "file:features/users/components/TicketCard.tsx": {
+      "name": "TicketCard.tsx",
+      "type": "file",
+      "summary": "React component rendering a ticket tribune card with price display and quantity increase/decrease controls."
+    },
+    "function:features/users/components/TicketCard.tsx:TicketCard": {
+      "name": "TicketCard",
+      "type": "function",
+      "summary": "Functional component displaying tribune name, price, and quantity stepper that notifies parent via onCountChange."
+    },
+    "file:features/users/hooks/useUserRegister.ts": {
+      "name": "useUserRegister.ts",
+      "type": "file",
+      "summary": "Custom hook wrapping react-hook-form with zod validation for user registration form state."
+    },
+    "function:features/users/hooks/useUserRegister.ts:useUserRegister": {
+      "name": "useUserRegister",
+      "type": "function",
+      "summary": "Initializes and returns a react-hook-form instance configured with userSchema zod resolver and default values."
+    },
+    "file:features/users/schema/userSchema.ts": {
+      "name": "userSchema.ts",
+      "type": "file",
+      "summary": "Zod schema defining validation rules for user registration fields including name, identity number, email, gender, and ticket quantities."
+    },
+    "file:app.css": {
+      "name": "app.css",
+      "type": "file",
+      "summary": "Tailwind CSS v4 theme defining design tokens (colors, fonts, radius, spacing, shadows) and base styles for Tiket.ku."
+    },
+    "file:components/Alerts.tsx": {
+      "name": "Alerts.tsx",
+      "type": "file",
+      "summary": "Toast-style alert component with animated enter/exit and auto-dismiss progress bar, supporting multiple variants."
+    },
+    "function:components/Alerts.tsx:Alerts": {
+      "name": "Alerts",
+      "type": "function",
+      "summary": "Renders an animated alert toast with variant styling, auto-dismiss timer, and progress bar."
+    },
+    "file:components/Button.tsx": {
+      "name": "Button.tsx",
+      "type": "file",
+      "summary": "Reusable button component with loading spinner and disabled styling."
+    },
+    "function:components/Button.tsx:Button": {
+      "name": "Button",
+      "type": "function",
+      "summary": "Renders a button with loading spinner state and disabled styling."
+    },
+    "file:components/CTABanner.tsx": {
+      "name": "CTABanner.tsx",
+      "type": "file",
+      "summary": "Call-to-action banner prompting users to book tickets."
+    },
+    "function:components/CTABanner.tsx:CTABanner": {
+      "name": "CTABanner",
+      "type": "function",
+      "summary": "Renders a CTA banner with headline and book-now button."
+    },
+    "file:components/Dropdown.tsx": {
+      "name": "Dropdown.tsx",
+      "type": "file",
+      "summary": "Form dropdown select integrated with react-hook-form registration and error display."
+    },
+    "function:components/Dropdown.tsx:Dropdown": {
+      "name": "Dropdown",
+      "type": "function",
+      "summary": "Renders a labeled select input with validation error message."
+    },
+    "file:components/FeatureCard.tsx": {
+      "name": "FeatureCard.tsx",
+      "type": "file",
+      "summary": "Card displaying a feature icon, title, and description."
+    },
+    "function:components/FeatureCard.tsx:FeatureCard": {
+      "name": "FeatureCard",
+      "type": "function",
+      "summary": "Renders a feature card with icon, title, and description."
+    },
+    "file:components/Features.tsx": {
+      "name": "Features.tsx",
+      "type": "file",
+      "summary": "Section listing platform features in a responsive grid of FeatureCards."
+    },
+    "function:components/Features.tsx:Features": {
+      "name": "Features",
+      "type": "function",
+      "summary": "Renders the features section grid."
+    },
+    "file:components/Footer.tsx": {
+      "name": "Footer.tsx",
+      "type": "file",
+      "summary": "Site footer with copyright and footer links."
+    },
+    "function:components/Footer.tsx:Footer": {
+      "name": "Footer",
+      "type": "function",
+      "summary": "Renders the site footer with copyright and links."
+    },
+    "file:components/FooterLinks.tsx": {
+      "name": "FooterLinks.tsx",
+      "type": "file",
+      "summary": "Navigation links list for the footer."
+    },
+    "function:components/FooterLinks.tsx:FooterLinks": {
+      "name": "FooterLinks",
+      "type": "function",
+      "summary": "Renders footer navigation links."
+    },
+    "file:components/Hero.tsx": {
+      "name": "Hero.tsx",
+      "type": "file",
+      "summary": "Hero section with headline and CTA buttons for booking and schedule."
+    },
+    "function:components/Hero.tsx:Hero": {
+      "name": "Hero",
+      "type": "function",
+      "summary": "Renders the hero section with headline and CTA buttons."
+    },
+    "file:components/InputField.tsx": {
+      "name": "InputField.tsx",
+      "type": "file",
+      "summary": "Form input with floating label, password toggle, and error display."
+    },
+    "function:components/InputField.tsx:InputField": {
+      "name": "InputField",
+      "type": "function",
+      "summary": "Renders a labeled input with validation error and password visibility toggle."
+    },
+    "file:components/Navbar.tsx": {
+      "name": "Navbar.tsx",
+      "type": "file",
+      "summary": "Sticky navigation bar with route links and auth buttons."
+    },
+    "function:components/Navbar.tsx:Navbar": {
+      "name": "Navbar",
+      "type": "function",
+      "summary": "Renders the sticky navbar with navigation and auth actions."
+    },
+    "file:components/ScheduleCard.tsx": {
+      "name": "ScheduleCard.tsx",
+      "type": "file",
+      "summary": "Card displaying event schedule details with badge and detail button."
+    },
+    "function:components/ScheduleCard.tsx:ScheduleCard": {
+      "name": "ScheduleCard",
+      "type": "function",
+      "summary": "Renders an event schedule card with details and detail button."
+    },
+    "file:components/SchedulePreview.tsx": {
+      "name": "SchedulePreview.tsx",
+      "type": "file",
+      "summary": "Section previewing upcoming events using ScheduleCard grid."
+    },
+    "function:components/SchedulePreview.tsx:SchedulePreview": {
+      "name": "SchedulePreview",
+      "type": "function",
+      "summary": "Renders a preview grid of upcoming events."
+    },
+    "file:features/auth/schema/authSchemas.ts": {
+      "name": "authSchemas.ts",
+      "type": "file",
+      "summary": "Zod schemas for login and signup validation with Indonesian error messages."
+    },
+    "file:features/auth/service/authService.ts": {
+      "name": "authService.ts",
+      "type": "file",
+      "summary": "Supabase auth helpers: session, sign-in/up, Google OAuth, sign-out, and error mapping."
+    },
+    "function:features/auth/service/authService.ts:getSession": {
+      "name": "getSession",
+      "type": "function",
+      "summary": "Returns the current Supabase session."
+    },
+    "function:features/auth/service/authService.ts:onAuthStateChange": {
+      "name": "onAuthStateChange",
+      "type": "function",
+      "summary": "Subscribes to Supabase auth state changes."
+    },
+    "function:features/auth/service/authService.ts:requireUserId": {
+      "name": "requireUserId",
+      "type": "function",
+      "summary": "Returns the authenticated user id or throws if not signed in."
+    },
+    "function:features/auth/service/authService.ts:signInWithEmail": {
+      "name": "signInWithEmail",
+      "type": "function",
+      "summary": "Signs in with email and password via Supabase."
+    },
+    "function:features/auth/service/authService.ts:signUpWithEmail": {
+      "name": "signUpWithEmail",
+      "type": "function",
+      "summary": "Registers a new user with email, password, and full name."
+    },
+    "function:features/auth/service/authService.ts:signInWithGoogle": {
+      "name": "signInWithGoogle",
+      "type": "function",
+      "summary": "Initiates Google OAuth sign-in redirecting to auth callback."
+    },
+    "function:features/auth/service/authService.ts:signOut": {
+      "name": "signOut",
+      "type": "function",
+      "summary": "Signs out the current user."
+    },
+    "function:features/auth/service/authService.ts:mapAuthError": {
+      "name": "mapAuthError",
+      "type": "function",
+      "summary": "Maps Supabase auth errors to Indonesian user-facing messages."
+    },
+    "file:features/events/service/eventService.ts": {
+      "name": "eventService.ts",
+      "type": "file",
+      "summary": "Supabase queries for events with category mapping and date filtering."
+    },
+    "function:features/events/service/eventService.ts:mapEvent": {
+      "name": "mapEvent",
+      "type": "function",
+      "summary": "Maps a database event row to the EventRecord domain model."
+    },
+    "function:features/events/service/eventService.ts:buildQuery": {
+      "name": "buildQuery",
+      "type": "function",
+      "summary": "Builds a Supabase query for upcoming events with optional type filter."
+    },
+    "function:features/events/service/eventService.ts:getEvents": {
+      "name": "getEvents",
+      "type": "function",
+      "summary": "Fetches upcoming events optionally filtered by type."
+    },
+    "function:features/events/service/eventService.ts:getEventById": {
+      "name": "getEventById",
+      "type": "function",
+      "summary": "Fetches a single event by id."
+    },
+    "file:features/events/types/event.types.ts": {
+      "name": "event.types.ts",
+      "type": "file",
+      "summary": "TypeScript types for events, categories, orders, and tickets."
+    },
+    "file:features/orders/service/orderService.ts": {
+      "name": "orderService.ts",
+      "type": "file",
+      "summary": "Order creation and payment completion via Supabase RPCs."
+    },
+    "function:features/orders/service/orderService.ts:createOrder": {
+      "name": "createOrder",
+      "type": "function",
+      "summary": "Creates an order via Supabase RPC and returns order id and total."
+    },
+    "function:features/orders/service/orderService.ts:completePayment": {
+      "name": "completePayment",
+      "type": "function",
+      "summary": "Completes payment for an order via Supabase RPC."
+    },
+    "file:features/tickets/component/Ticket.tsx": {
+      "name": "Ticket.tsx",
+      "type": "file",
+      "summary": "Legacy ticket display component currently commented out."
+    },
+    "file:features/tickets/service/ticketService.ts": {
+      "name": "ticketService.ts",
+      "type": "file",
+      "summary": "Fetches a ticket by order id from Supabase."
+    },
+    "function:features/tickets/service/ticketService.ts:getTicketByOrderId": {
+      "name": "getTicketByOrderId",
+      "type": "function",
+      "summary": "Fetches a ticket by order id."
+    },
+    "file:features/users/hooks/useUsers.ts": {
+      "name": "useUsers.ts",
+      "type": "file",
+      "summary": "Legacy hook for fetching users currently commented out."
+    },
+    "file:features/users/page/RegisterForm.tsx": {
+      "name": "RegisterForm.tsx",
+      "type": "file",
+      "summary": "Legacy registration form currently commented out."
+    },
+    "file:features/users/service/userServices.ts": {
+      "name": "userServices.ts",
+      "type": "file",
+      "summary": "Legacy user registration service currently commented out."
+    },
+    "file:features/users/types/userPayload.d.ts": {
+      "name": "userPayload.d.ts",
+      "type": "file",
+      "summary": "UserPayload interface for registration data."
+    },
+    "file:hooks/useCounter.ts": {
+      "name": "useCounter.ts",
+      "type": "file",
+      "summary": "React hook managing a counter state with increment and decrement helpers."
+    },
+    "function:hooks/useCounter.ts:useCounter": {
+      "name": "useCounter",
+      "type": "function",
+      "summary": "Custom hook wrapping useState to provide a counter with increase and decrease actions."
+    },
+    "file:hooks/useSession.ts": {
+      "name": "useSession.ts",
+      "type": "file",
+      "summary": "React hook tracking the current Supabase auth session and loading state."
+    },
+    "function:hooks/useSession.ts:useSession": {
+      "name": "useSession",
+      "type": "function",
+      "summary": "Subscribes to Supabase auth state changes and exposes session, user, and loading status."
+    },
+    "file:lib/supabase.ts": {
+      "name": "supabase.ts",
+      "type": "file",
+      "summary": "Creates and exports the shared Supabase client using Vite environment variables."
+    },
+    "file:lib/utiils.ts": {
+      "name": "utiils.ts",
+      "type": "file",
+      "summary": "Utility for merging Tailwind CSS classes using clsx and tailwind-merge."
+    },
+    "function:lib/utiils.ts:cn": {
+      "name": "cn",
+      "type": "function",
+      "summary": "Combines class values and resolves Tailwind conflicts into a single class string."
+    },
+    "file:main.tsx": {
+      "name": "main.tsx",
+      "type": "file",
+      "summary": "Application entry point that mounts the root React component into the DOM."
+    },
+    "file:services/userService.ts": {
+      "name": "userService.ts",
+      "type": "file",
+      "summary": "Legacy file containing only commented-out user service hook implementations."
+    },
+    "file:vite-env.d.ts": {
+      "name": "vite-env.d.ts",
+      "type": "file",
+      "summary": "TypeScript reference to Vite client types for import.meta.env support."
+    }
+  },
+  "totalNodes": 99,
+  "totalEdges": 163
+}

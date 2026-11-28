@@ -1,0 +1,462 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "App.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "App",
+          "startLine": 11,
+          "endLine": 27,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/page/AuthCallbackPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "AuthCallbackPage",
+          "startLine": 6,
+          "endLine": 35,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "useNavigate",
+          "lineNumber": 7
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "useLocation",
+          "lineNumber": 8
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "useEffect",
+          "lineNumber": 11
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "getSession()\r\n      .then(({ data: { session }, error }) => {\r\n        if (!mounted) return;\r\n        if (error || !session) {\r\n          navigate(\"/login\", { replace: true });\r\n        } else {\r\n          navigate(from, { replace: true });\r\n        }\r\n      })\r\n      .catch",
+          "lineNumber": 13
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "getSession()\r\n      .then",
+          "lineNumber": 13
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "getSession",
+          "lineNumber": 13
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "navigate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "navigate",
+          "lineNumber": 19
+        },
+        {
+          "caller": "AuthCallbackPage",
+          "callee": "navigate",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/page/LoginPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 188,
+      "nonEmptyLines": 174,
+      "functions": [
+        {
+          "name": "LoginPage",
+          "startLine": 21,
+          "endLine": 186,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "LoginPage",
+          "callee": "useNavigate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useLocation",
+          "lineNumber": 23
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useSession",
+          "lineNumber": 25
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useState",
+          "lineNumber": 30
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useForm",
+          "lineNumber": 36
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "zodResolver",
+          "lineNumber": 36
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "useEffect",
+          "lineNumber": 38
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "navigate",
+          "lineNumber": 40
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "signInWithEmail",
+          "lineNumber": 45
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "mapAuthError",
+          "lineNumber": 49
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "navigate",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "signInWithGoogle",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setAlert",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "mapAuthError",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 64
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "setAlert",
+          "lineNumber": 75
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "navigate",
+          "lineNumber": 81
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "handleSubmit",
+          "lineNumber": 113
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "register",
+          "lineNumber": 126
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "register",
+          "lineNumber": 152
+        },
+        {
+          "caller": "LoginPage",
+          "callee": "navigate",
+          "lineNumber": 175
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/auth/page/SignupPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 235,
+      "nonEmptyLines": 219,
+      "functions": [
+        {
+          "name": "SignupPage",
+          "startLine": 19,
+          "endLine": 233,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SignupPage",
+          "callee": "useNavigate",
+          "lineNumber": 20
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useLocation",
+          "lineNumber": 21
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useSession",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useState",
+          "lineNumber": 28
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useForm",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "zodResolver",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "useEffect",
+          "lineNumber": 36
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 38
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "signUpWithEmail",
+          "lineNumber": 43
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "mapAuthError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "getSession",
+          "lineNumber": 55
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "navigate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setAlert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "signInWithGoogle",
+          "lineNumber": 68
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setAlert",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "mapAuthError",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handleGoogle",
+          "callee": "setIsGoogleLoading",
+          "lineNumber": 74
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "setAlert",
+          "lineNumber": 85
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 91
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "handleSubmit",
+          "lineNumber": 125
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 134
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 154
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 176
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "register",
+          "lineNumber": 198
+        },
+        {
+          "caller": "SignupPage",
+          "callee": "navigate",
+          "lineNumber": 221
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/home/page/Home.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "HomePage",
+          "startLine": 9,
+          "endLine": 39,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "HomePage",
+          "callee": "useNavigate",
+          "lineNumber": 10
+        },
+        {
+          "caller": "HomePage",
+          "callee": "useSession",
+          "lineNumber": 11
+        },
+        {
+          "caller": "handlePesanTiket",
+          "callee": "navigate",
+          "lineNumber": 15
+        },
+        {
+          "caller": "handlePesanTiket",
+          "callee": "navigate",
+          "lineNumber": 18
+        },
+        {
+          "caller": "handleLihatJadwal",
+          "callee": "navigate",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

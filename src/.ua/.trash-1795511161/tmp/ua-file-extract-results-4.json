@@ -1,0 +1,114 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "features/users/components/TicketCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 57,
+      "functions": [
+        {
+          "name": "TicketCard",
+          "startLine": 15,
+          "endLine": 60,
+          "params": [
+            "{\r\n  tribune,\r\n  price,\r\n  count,\r\n  onCountChange,\r\n}"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "handleDecrease",
+          "callee": "onCountChange",
+          "lineNumber": 22
+        },
+        {
+          "caller": "handleIncrease",
+          "callee": "onCountChange",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/users/hooks/useUserRegister.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 16,
+      "functions": [
+        {
+          "name": "useUserRegister",
+          "startLine": 5,
+          "endLine": 18,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useUserRegister",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useUserRegister",
+          "callee": "useForm",
+          "lineNumber": 6
+        },
+        {
+          "caller": "useUserRegister",
+          "callee": "zodResolver",
+          "lineNumber": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "features/users/schema/userSchema.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "exports": [
+        {
+          "name": "userSchema",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}
